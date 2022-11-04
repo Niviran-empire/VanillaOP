@@ -1,0 +1,15 @@
+version="3.5.3"
+tags={
+	"Balance"
+	"Buildings"
+	"Gameplay"
+	"Translation"
+	"Utilities"
+	"Spaceships"
+	"Species"
+	"Technologies"
+	"Total Conversion"
+	"Galaxy Generation"
+}
+name="游戏性能优化"
+supported_version="3.5.3"

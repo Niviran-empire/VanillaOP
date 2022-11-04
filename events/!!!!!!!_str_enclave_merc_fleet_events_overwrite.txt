@@ -1,0 +1,48 @@
+namespace = enclave
+#Unemployed mercs return to merc station
+event = {
+	id = enclave.2065
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { always = no }
+
+	immediate = {
+		random_country = {
+			limit = {
+				is_country_type = enclave_mercenary
+				any_owned_fleet = { is_leased = no }
+			}
+			country_event = { id = enclave.2070 }
+		}
+	}
+}
+
+country_event = {
+	id = enclave.2070
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_fleet = {
+			is_leased = no
+			solar_system = { NOT = { any_fleet_in_system = { is_ship_size = enclave_mercenary_station } } }
+		}
+	}
+
+	immediate = {
+		random_owned_fleet = {
+			limit = { is_ship_size = enclave_mercenary_station }
+			save_event_target_as = mercenary_enclave_station
+		}
+		ordered_controlled_fleet = {
+			limit = {
+				is_ship_class = shipclass_military
+				is_leased = no
+			}
+			position = 0
+			order_by = trigger:fleet_power
+			set_location = event_target:mercenary_enclave_station
+		}
+	}
+}

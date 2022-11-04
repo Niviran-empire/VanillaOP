@@ -1,0 +1,64 @@
+str_planet_building = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	planet_max_buildings_add = 5
+}
+
+@primary = 0.35
+str_ai_modifier = {
+	hide_from_country_list = yes
+	country_base_produces_add = 10
+	country_produces_mult = 1
+	planet_stability_add = 1000
+	planet_crime_add = -1000
+	planet_crime_mult = -1
+	pc_arid_habitability = @primary
+	pc_desert_habitability = @primary
+	pc_savannah_habitability = @primary
+	pc_tropical_habitability = @primary
+	pc_continental_habitability = @primary
+	pc_tundra_habitability = @primary
+	pc_arctic_habitability = @primary
+	pc_ocean_habitability = @primary
+	pc_alpine_habitability = @primary
+	pc_nuked_habitability = @primary
+	pop_happiness = 1000
+}
+
+str_ai_modifier_ship = {
+	hide_from_country_list = yes
+	ships_upkeep_mult = -1
+}
+
+str_pop_static = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	pop_growth_speed = -10
+	planet_pop_assembly_organic_mult = -10
+	planet_pop_assembly_mult = -10
+	pop_growth_speed_reduction = 1
+}
+
+str_trade_pop = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	trade_value_add = 1
+}
+
+str_assemble_pop = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	planet_pop_assembly_organic_add = 1
+}
+
+str_pop_non_noxious_happiness_pop = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	pop_non_noxious_happiness = 1
+}
+
+str_pop_planet_amenities_add = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	planet_amenities_add = 1
+}

@@ -1,0 +1,5 @@
+is_ai_nirvana_empire = { always = no }
+is_ai_nirvana_empire = { always = no }
+is_nirvana_empire = { always = no }
+is_nirvana_empire_dragon = { always = no }
+is_nirvana_empire_council = { always = no }

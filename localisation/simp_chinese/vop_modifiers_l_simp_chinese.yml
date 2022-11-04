@@ -1,0 +1,134 @@
+﻿l_simp_chinese:
+
+ ####################################
+ # Modifiers
+ ####################################
+
+ #Country
+ 
+ #Pop
+  
+ #Ship
+
+ #Army
+ 
+ #Planet
+ 
+ #Fleet
+ 
+ #Leader
+ 
+ #Component
+ 
+ #Pop factions
+
+ #Spaceport
+
+ ####################################
+ # Economy Modifiers
+ ####################################
+ 
+ ####################################
+ # Resource Modifiers
+ ####################################
+ 
+
+ ####################################
+ # Dynamic Modifiers
+ ####################################
+
+ #vultaum_asteroid_category_research_speed_mult: "Anomaly Research Speed (Precursor - ADD CATEGORIES PROPER)"
+ #vultaum_asteroid_category_research_fail_risk_mult: "Anomaly Fail Risk (Precursor - ADD CATEGORIES PROPER)"
+ # TEMP should these be detailed?
+ 
+ ####################################
+ # Static Modifiers
+ ####################################
+
+ ####################################
+ # Pop Modifiers
+ ####################################
+
+ ####################################
+ # Triggered Modifiers
+ ####################################
+
+ ####################################
+ # Opinion Modifiers
+ ####################################
+ 
+ ## SPECIES
+ 
+ ## ETHOS
+ 
+ opinion_dragon_empire_vs_spiritualist_fallen_empire:0 "唯心永恒"
+ opinion_spiritualist_fallen_empire_vs_dragon_empire:0 "神圣崇拜"
+ opinion_xenophile_fallen_empire_nirvana:0 "先驱崇拜"
+ 
+ opinion_honored_holy_world:0 "荣耀圣地"
+ 
+
+ ## POLICIES
+
+ ## WAR
+
+ ## ACTIONS
+
+ ## WAR DEMANDS
+ 
+ ## DIPLOMACY
+ 
+ ## SUBJECT
+ 
+ # TRADE
+ 
+ ####################################
+ # Planet Modifiers
+ ####################################
+
+ 
+ ####################################
+ # Compatible with Mod Warshipgirls R
+ ####################################
+
+ opinion_nirvana_wg_fe:0 "落花有意"
+ opinion_nirvana_wg_crisis:0 "涅槃决心"
+ mod_country_produces_mult:0 "帝国生产资源"
+ mod_damage_vs_country_type_ag_zeta_crisis_country_mult:0 "对虚境伤害"
+ mod_damage_vs_country_type_ag_ancient_gamma_guardian_mult:0 "对防御系统伤害"
+ mod_damage_vs_country_type_ag_ancient_primitive_crisis_mult:0 "对失控防御系统伤害"
+ mod_damage_vs_country_type_original_empire_mult:0 "对始源帝国伤害"
+ str_planet_building:"$opinion_nirvana_wg_fe$"
+ str_planet_building_desc:"$opinion_nirvana_wg_fe$"
+ mod_starbase_shipyard_build_alloys_cost_mult:0 "造舰$alloys$花费"
+ mod_starbase_shipyard_build_food_cost_mult:0 "造舰$food$花费"
+ mod_ship_corvette_food_cost_add:0 "$corvette$$food$建造花费"
+ mod_ship_destroyer_food_cost_add:0 "$destroyer$$food$建造花费"
+ mod_ship_cruiser_food_cost_add:0 "$cruiser$$food$建造花费"
+ mod_ship_battleship_food_cost_add:0 "$battleship$$food$建造花费"
+ mod_ship_titan_food_cost_add:0 "$titan$$food$建造花费"
+ mod_ship_colossus_food_cost_add:0 "$colossus$$food$建造花费"
+ mod_ship_juggernaut_food_cost_add:0 "$juggernaut$$food$建造花费"
+ mod_ship_constructor_food_cost_add:"$constructor$$food$建造花费"
+ mod_ship_science_food_cost_add:"$science$$food$建造花费"
+
+ mod_ship_corvette_alloys_cost_mult:0 "$corvette$$alloys$建造花费"
+ mod_ship_destroyer_alloys_cost_mult:0 "$destroyer$$alloys$建造花费"
+ mod_ship_cruiser_alloys_cost_mult:0 "$cruiser$$alloys$建造花费"
+ mod_ship_battleship_alloys_cost_mult:0 "$battleship$$alloys$建造花费"
+ mod_ship_titan_alloys_cost_mult:0 "$titan$$alloys$建造花费"
+ mod_ship_colossus_alloys_cost_mult:0 "$colossus$$alloys$建造花费"
+ mod_ship_juggernaut_alloys_cost_mult:0 "$juggernaut$$alloys$建造花费"
+ mod_ship_constructor_alloys_cost_mult:"$constructor$$alloys$建造花费"
+ mod_ship_science_alloys_cost_mult:"$science$$alloys$建造花费"
+ str_trade_pop:"星球人口阶层补偿"
+ str_trade_pop_desc:"来自星球人口贸易额度优化补偿"
+ str_pop_static:"星球人口控制"
+ str_pop_static_desc:"星球人口控制"
+ str_assemble_pop:"星球人口阶层补偿"
+ str_assemble_pop_desc:"来自星球人口增长额度优化补偿"
+ str_pop_non_noxious_happiness_pop:"星球人口阶层补偿"
+ str_pop_non_noxious_happiness_pop_desc:"来自星球人口增长额度优化补偿"
+ str_pop_planet_amenities_add:"星球人口岗位补偿"
+ str_pop_planet_amenities_add_desc:"来自星球人口职员岗位的补偿"
+ 

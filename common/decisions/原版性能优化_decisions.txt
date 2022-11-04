@@ -1,0 +1,268 @@
+decision_sop_all_skill_zhongli_normal = {
+	owned_planets_only = yes
+
+	potential = {
+		has_global_flag = star_oath_project
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = sop_zhongli_skill_need_set
+			habitable_planet = yes
+			exists = space_owner
+			space_owner = {
+				has_leader_flag = SOP_zhongli
+				any_owned_leader = {
+					check_variable = {
+						which = sop_leader_zhongli_skill_point
+						value >= 1
+					}
+					check_variable = {
+						which = sop_zhongli_skill_flag
+						value > 0
+					}
+				}
+			}
+		}
+	}
+	effect = {
+		if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 1
+						}
+					}
+				}
+			}
+			change_pc = pc_desert
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 2
+						}
+					}
+				}
+			}
+			change_pc = pc_arid
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 3
+						}
+					}
+				}
+			}
+			change_pc = pc_savannah
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 4
+						}
+					}
+				}
+			}
+			change_pc = pc_tropical
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 5
+						}
+					}
+				}
+			}
+			change_pc = pc_continental
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 6
+						}
+					}
+				}
+			}
+			change_pc = pc_ocean
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 7
+						}
+					}
+				}
+			}
+			change_pc = pc_tundra
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 8
+						}
+					}
+				}
+			}
+			change_pc = pc_arctic
+		}
+		else_if = {
+			limit = {
+				space_owner = {
+					any_owned_leader = {
+						check_variable = {
+							which = sop_zhongli_skill_flag
+							value = 9
+						}
+					}
+				}
+			}
+			change_pc = pc_alpine
+		}
+		hidden_effect = {
+			space_owner = {
+				random_owned_leader = {
+					limit = {
+						has_leader_flag = SOP_zhongli
+					}
+					change_variable = {
+						which = sop_leader_zhongli_skill_point
+						value = -1
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = star_oath_not_use_sound
+						}
+					}
+					play_sound = SOP_Zhongli_SkillActivation
+				}
+			}
+		}
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+decision_sop_all_skill_zhongli_gaia = {
+	owned_planets_only = yes
+
+	potential = {
+		has_global_flag = star_oath_project
+	}
+
+	allow = { hidden_trigger = {
+		habitable_planet = yes
+		exists = space_owner
+		space_owner = {
+			any_owned_leader = {
+				has_leader_flag = SOP_zhongli
+				check_variable = {
+					which = sop_leader_zhongli_skill_point
+					value >= 3
+				}
+			}
+		}
+	} }
+
+	effect = {
+		change_pc = pc_gaia
+		hidden_effect = {
+			space_owner = {
+				random_owned_leader = {
+					limit = {
+						has_leader_flag = SOP_zhongli
+					}
+					change_variable = {
+						which = sop_leader_zhongli_skill_point
+						value = -3
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = star_oath_not_use_sound
+						}
+					}
+					play_sound = SOP_Zhongli_SkillActivation
+				}
+			}
+		}
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+decision_eos_tiamat_change_planet_class_to_hive = {
+	owned_planets_only = yes
+	enactment_time = 3600
+
+	potential = { 
+		has_global_flag = sop_eos_tiamat_project 
+	}
+
+	allow = {
+		habitable_planet = yes
+		exists = space_owner
+		space_owner = {
+			exists = ruler
+			ruler = {
+				is_same_value = event_target:eos_tiamat
+				OR = {
+					has_trait = leader_trait_ruler_EOS_tiamat_3
+					has_trait = leader_trait_ruler_EOS_tiamat_4
+					has_trait = leader_trait_ruler_EOS_tiamat_3_hive
+					has_trait = leader_trait_ruler_EOS_tiamat_4_hive
+				}
+			}
+			any_owned_planet = { has_building = building_eos_tiamat_03 }
+		}
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 100
+			food = 10000
+			minerals = 2500
+		}
+	}
+
+	effect = {
+		hidden_effect = {
+			change_pc = pc_tiamat_hive
+			add_district = district_arcology_housing 
+			add_district = district_arcology_housing 
+			add_district = district_arcology_arms_industry 
+			add_district = district_arcology_civilian_industry  
+			add_district = district_arcology_leisure   
+		}
+	}
+	ai_weight = {
+		weight = 0
+	}
+}

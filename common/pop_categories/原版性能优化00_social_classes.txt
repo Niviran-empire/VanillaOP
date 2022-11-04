@@ -1,0 +1,697 @@
+ruler = {
+	rank = 3
+	clothes_texture_index = 1
+
+	change_job_threshold = 2.0
+
+	keep_from_former_job = yes
+	demotion_time = 1800
+
+	should_apply_unemployment_penalties = {
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
+	}
+	unemployment_penalties = {
+		pop_happiness = -0.40
+	}
+	unemployment_resources = {
+		category = unemployment_resources
+
+		# Unemployment Benefits Crime event
+		upkeep = {
+			trigger = {
+				planet = {
+					has_modifier = unemployment_benefits
+				}
+			}
+			consumer_goods = 2
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+			is_unemployed = yes
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		pop_happiness = 0.10
+	}
+
+	weight = {
+		weight = 3
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_base = 1
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 500
+	}
+
+	resettlement_cost = {
+		trigger = {
+			owner = {
+				NOT = { has_valid_civic = civic_corvee_system }
+			}
+		}
+		unity = 50
+	}
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_1
+	# 	}
+	# 	trade_value_add = @trade_value_prosperity_gospel
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_2
+	# 	}
+	# 	trade_value_add = @trade_value_shared_burden
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_13
+	# 	}
+	# 	trade_value_add = @trade_value_very_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_5
+	# 	}
+	# 	trade_value_add = @trade_value_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_6
+	# 	}
+	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
+	# }
+
+
+	triggered_pop_modifier = {
+		potential = { has_pop_flag = trade_value_add_op_7 }
+		pop_happiness = 1
+		mult = modifier:pop_non_noxious_happiness
+	}
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_8
+	# 	}
+	# 	custom_tooltip = noxious_bastards
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
+
+	resources = {
+		category = pop_category_rulers
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_link_core
+			}
+			physics_research = 2
+			engineering_research = 2
+			society_research = 2
+		}
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_relic_core
+			}
+			energy = 4
+			physics_research = 6
+			engineering_research = 6
+			society_research = 6
+		}
+		# Biological Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_1
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_1
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_3
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+
+		# Lithoid Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_2
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_2
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+
+		# Robotic Upkeep
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+		# Exotic Metabolism Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = exotic_metabolism_op_1
+			}
+			exotic_gases = @exotic_metabolism
+		}
+
+		# Resource Production
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_inorganic_breath
+			}
+			exotic_gases = @inorganic_breath
+		}
+	}
+}
+
+specialist = {
+	rank = 2
+	clothes_texture_index = 3
+
+	keep_from_former_job = yes
+	demotion_time = 900
+
+	change_job_threshold = 1.25
+
+	should_apply_unemployment_penalties = {
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
+	}
+	unemployment_penalties = {
+		pop_happiness = -0.30
+	}
+	unemployment_resources = {
+		category = unemployment_resources
+
+		# Unemployment Benefits Crime event
+		upkeep = {
+			trigger = {
+				planet = {
+					has_modifier = unemployment_benefits
+				}
+			}
+			consumer_goods = 2
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+			is_unemployed = yes
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		pop_happiness = 0.10
+	}
+
+	weight = {
+		weight = 2
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_base = 1
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 250
+	}
+
+	resettlement_cost = {
+		trigger = {
+			owner = {
+				NOT = { has_valid_civic = civic_corvee_system }
+			}
+		}
+		unity = 25
+	}
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_1
+	# 	}
+	# 	trade_value_add = @trade_value_prosperity_gospel
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_2
+	# 	}
+	# 	trade_value_add = @trade_value_shared_burden
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_3
+	# 	}
+	# 	trade_value_add = @trade_value_very_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_4
+	# 	}
+	# 	trade_value_add = @trade_value_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_5
+	# 	}
+	# 	trade_value_add = @trade_value_normal
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_6
+	# 	}
+	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
+	# }
+	
+	triggered_pop_modifier = {
+		potential = {
+			has_pop_flag = trade_value_add_op_7
+		}
+		pop_happiness = 1
+		mult = modifier:pop_non_noxious_happiness
+	}
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_8
+	# 	}
+	# 	custom_tooltip = noxious_bastards
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
+
+	resources = {
+		category = pop_category_specialists
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_link_core
+			}
+			physics_research = 2
+			engineering_research = 2
+			society_research = 2
+		}
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_relic_core
+			}
+			energy = 4
+			physics_research = 4
+			engineering_research = 4
+			society_research = 4
+		}
+		# Biological Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_1
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_1
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_3
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+
+		# Lithoid Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_2
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_2
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+
+		# Robotic Upkeep
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+
+		# Exotic Metabolism Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = exotic_metabolism_op_1
+			}
+			exotic_gases = @exotic_metabolism
+		}
+
+		# Resource Production
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+		
+		produces = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_inorganic_breath
+			}
+			exotic_gases = @inorganic_breath
+		}
+	}
+}
+
+worker = {
+	rank = 1
+	clothes_texture_index = 2
+
+	change_job_threshold = 1.15
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_1
+	# 	}
+	# 	trade_value_add = @trade_value_prosperity_gospel
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_2
+	# 	}
+	# 	trade_value_add = @trade_value_shared_burden
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_9
+	# 	}
+	# 	trade_value_add = @trade_value_very_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_10
+	# 	}
+	# 	trade_value_add = @trade_value_high
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_11
+	# 	}
+	# 	trade_value_add = @trade_value_normal
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_12
+	# 	}
+	# 	trade_value_add = @trade_value_low
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_5
+	# 	}
+	# 	trade_value_add = @trade_value_very_low
+	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
+	# }
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_6
+	# 	}
+	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
+	# }
+
+	should_apply_unemployment_penalties = {
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
+	}
+	unemployment_penalties = {
+		pop_happiness = -0.20
+	}
+	unemployment_resources = {
+		category = unemployment_resources
+
+		# Unemployment Benefits Crime event
+		upkeep = {
+			trigger = {
+				planet = {
+					has_modifier = unemployment_benefits
+				}
+			}
+			consumer_goods = 2
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+			is_unemployed = yes
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
+			owner = { is_galactic_community_member = yes }
+		}
+
+		pop_happiness = 0.10
+	}
+
+	# This is called whenever a Pop is created, moved to a different planet, or gets a new owner
+	assign_to_pop = {
+		has_pop_flag = enable_work_pop_assign_to_pop
+	}
+	
+	weight = {
+		weight = 1
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_base = 1
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 100
+	}
+
+	resettlement_cost = {
+		trigger = {
+			owner = {
+				NOT = { has_valid_civic = civic_corvee_system }
+			}
+		}
+		unity = 10
+	}
+
+	triggered_pop_modifier = {
+		potential = { has_pop_flag = trade_value_add_op_7 }
+		pop_happiness = 1
+		mult = modifier:pop_non_noxious_happiness
+	}
+
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_pop_flag = trade_value_add_op_8
+	# 	}
+	# 	custom_tooltip = noxious_bastards
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
+
+	resources = {
+		category = pop_category_workers
+		
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_link_core
+			}
+			physics_research = 1
+			engineering_research = 1
+			society_research = 1
+		}
+		produces = {
+			trigger = {
+				has_trait = trait_robot_mind_relic_core
+			}
+			energy = 6
+			physics_research = 2
+			engineering_research = 2
+			society_research = 2
+		}
+		# Biological Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_1
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_1
+			}
+			food = @living_standard_phototrophic_normal
+		}
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_3
+			}
+			energy = @living_standard_phototrophic_normal
+		}
+
+		# Lithoid Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_food_normal_op_2
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				has_pop_flag = living_standard_phototrophic_normal_op_2
+			}
+			minerals = @living_standard_phototrophic_normal
+		}
+
+		# Robotic Upkeep
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+
+		# Exotic Metabolism Upkeep
+		upkeep = {
+			trigger = {
+				has_pop_flag = exotic_metabolism_op_1
+			}
+			exotic_gases = @exotic_metabolism
+		}
+
+		# Resource Production
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_inorganic_breath
+			}
+			exotic_gases = @inorganic_breath
+		}
+	}
+}

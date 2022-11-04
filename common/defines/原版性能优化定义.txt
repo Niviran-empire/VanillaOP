@@ -1,0 +1,67 @@
+NAI = {
+	AI_FREE_JOBS_DISTRICT_BUILD_CAP = 6						# AI will not build new districts on a planet with more than this many free jobs
+	AI_FREE_JOBS_BUILDING_BUILD_CAP = 6						# AI will not build new buildings on a planet with more than this many free jobs
+
+	AI_NO_RETREAT_LIMIT = 10
+	
+	AI_JUMP_DRIVE_BRAVERY = 5	# AI will not want to jump into systems unless enemy is this much weaker than them, relatively
+	WAR_OCCUPIED_BORDER_PRIO = 5	# Priority on targeting systems that are bordering our occupied space
+	WAR_OWN_BORDER_PRIO = 15	# Priority on targeting systems that are bordering us
+	WAR_ALLY_BORDER_PRIO = 10	# Priority on targeting systems that are bordering allies
+	WAR_NO_BORDER_PRIO = 0.01	# Priority on targeting systems that are in the middle of hostile space
+	WAR_DEFENSE_OWN_PRIO = 25	# Priority on defending own borders
+	WAR_DEFENSE_CONTROLLED_PRIO = 5	# Priority on defending conquered systems
+	WAR_DEFENSE_ALLY_PRIO = 20	# Priority on defending allies
+	WAR_NEUTRAL_SPACE_PRIO = 0.5	# Priority on targeting enemies in neutral space
+	WAR_ATTACK_CLAIM_PRIO = 1.5	# Priority on targeting enemy systems we have claimed
+	WAR_DEFENSE_CLAIM_PRIO = 1	# Priority on defending claimed system we have conquered
+	WAR_DEFENSE_OWN_PLANET_PRIO = 2	# Priority on defending own planets in a controlled system
+	WAR_DEFENSE_OWN_PLANET_ENEMY_CONTROL_PRIO = 5	# Priority on defending own planets in an enemy controlled system
+	WAR_ATTACK_PLANET_PRIO = 2	# Priority on targeting enemy systems with planets
+	WAR_ATTACK_PLANET_CONTROLLED_SYSTEM_PRIO = 10	# Priority on targeting enemy planets in controlled systems
+	WAR_ATTACK_STARBASE_PRIO = 0.5	# Priority on targeting enemy systems with upgraded starbases
+	WAR_DEFEND_STARBASE_PRIO = 1.5	# Priority on defending systems with an upgraded starbase
+	WAR_ATTACK_MILITARY_FLEET_PRIO = 3	# Priority on targeting enemy military fleets
+	WAR_ATTACK_JUMP_DRIVE_FLEET_PRIO = 2	# Priority on targeting vulnerable jump-drive fleets that are in cooldown
+	WAR_EXHAUSTION_TO_INTERVENE = 0.2
+
+	MIN_DISTANCE_TO_JUMP = 5	# Target must be at least this many systems away for AI to want to use jump drive
+
+	MIN_FLEET_FOR_OPERATIONS = 500 				# Minimum fleet power to get assigned to missions like attacking targets etc
+	MIN_FLEET_TO_RESTRICT_SYSTEM = 5000
+
+	TRANSPORT_FLEET_SIZE = 60					# AI will have transport fleets of this size
+	TRANSPORT_RETREAT_HEALTH_THRESHOLD = 0.75	# If a transport goes below this amount of HP it will try to emergency FTL
+
+	ENEMY_FLEET_POWER_MULT = 0.8
+	ENEMY_FLEET_POWER_HOME_SYSTEM_MULT = 0.4
+
+	FLEET_GROUP_ABORT_MISSION_MULT = 10 			# The wanted amount of fleet power needs to have increased by at least this much for the AI to reconsider a mission once commited
+
+	FLEET_DAMAGED_THRESHOLD_WAR = 0.10			# threshold when a fleet will be considered damaged and should return for repairs and avoid certain actions
+	FLEET_DAMAGED_THRESHOLD_PEACE = 0.99		# same but for peace
+	FLEET_ARMOR_DAMAGED_THRESHOLD_WAR = 0.10	# same as above but for armor
+	FLEET_ARMOR_DAMAGED_THRESHOLD_PEACE = 0.99	# same but for armor in peace
+}
+
+NShip = {
+	JUMP_DRIVE_WINDUP					= 5	# Jump drive windup in days
+}
+
+NGameplay = {
+	# Planetary Ascension Tier cap formula:
+	#     Max( ( Unlocked Ascension Perks Slots - 2 ), PLANET_ASCENSION_MIN ) +
+	#     ( ( Unlocked Ascension Perks Slots == ASCENSION_PERKS_SLOTS ? ) PLANET_ASCENSION_COMPLETION_BONUS : 0 )
+	PLANET_ASCENSION_STARTING_POINT		= 0 # Number of ascension perks unlocked slots required for Planetary Ascension
+	PLANET_ASCENSION_MIN				= 0 # Minimum Planetary Ascension tier
+	PLANET_ASCENSION_COMPLETION_BONUS	= 0 # Flat bonus on Planetary Ascension Tier cap when all the slots are unlocked
+
+	# Planetary Ascension cost formula: ( Empire Sprawl * PLANET_ASCENSION_SPRAWL_SCALE) * ( 1 + ( Empire Wide Sum of Ascension Tiers * PLANET_ASCENSION_SUM_SCALE )
+	PLANET_ASCENSION_SPRAWL_SCALE		= 10.0 # Scaling factor for Planetary Ascension cost based on the empire Sprawl
+	PLANET_ASCENSION_SUM_SCALE			= 0.25 # Scaling factor for Planetary Ascension cost based on the empire-wide sum of Ascension Tiers
+	PLANET_ASCENSION_SPRAWL_MODIFIER   = -0.10 # Reduction of planet sprawl per level of ascension
+
+	# Designation modifier formula: MOD * ( 1 + ( Ascension Tier * PLANET_ASCENSION_MODIFIER_SCALE )
+	PLANET_ASCENSION_MODIFIER_SCALE		= 0.50 # Scaling factor of the designation benefits, multiple instances will sum (first will be 1.25, then 1.50...)
+	AGREEMENT_CHANGE_COOLDOWN_MONTHS 	= 3		# How often an agreement can be changed in months
+}

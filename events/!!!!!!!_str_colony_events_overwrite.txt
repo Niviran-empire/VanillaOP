@@ -1,0 +1,107 @@
+namespace = colony
+# Forests Move
+planet_event = {
+	id = colony.12
+	title = "colony.12.name"
+	desc = "colony.12.desc"
+	picture = GFX_evt_alien_nature
+	show_sound = event_alien_nature
+	location = ROOT
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
+	trigger = {
+		has_modifier = "migrating_forests"
+		NOT = { has_planet_flag = recent_migrating_forests_movement }
+	}
+
+	mean_time_to_happen = {
+		months = 80
+	}
+
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_migrating_forests_movement
+			days = 360
+		}
+	}
+
+	option = {
+		name = PECULIAR
+		add_planet_devastation = 10
+	}
+}
+
+planet_event = {
+	id = colony.171
+	title = "colony.171.name"
+	desc = {
+		trigger = { owner = { NOT = { has_authority = auth_machine_intelligence } } }
+		text = colony.171.desc
+	}
+	desc = {
+		trigger = { owner = { has_authority = auth_machine_intelligence } }
+		text = colony.171.desc.mach
+	}
+	picture = GFX_evt_atmospheric_entry
+	show_sound = event_ship_explosion
+	location = ROOT
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		has_planet_flag = wasteland_orbital_debris
+		has_modifier = wasteland_orbital_debris
+		NOT = { has_planet_flag = wasteland_freighter_crash }
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		set_planet_flag = wasteland_freighter_crash
+	}
+
+	option = {
+		name = colony.171.a
+		add_deposit = d_crater
+	}
+}
+
+planet_event = {
+	id = colony.172
+	title = "colony.172.name"
+	desc = "colony.172.desc"
+	picture = GFX_evt_atmospheric_entry
+	show_sound = event_super_explosion
+	location = ROOT
+
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		has_modifier = wasteland_orbital_debris
+		has_planet_flag = wasteland_orbital_debris
+		NOT = { has_planet_flag = wasteland_debris_impact }
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_planet_flag = wasteland_debris_impact
+		}
+	}
+
+	option = {
+		name = colony.172.a
+		random_owned_pop = {
+			kill_pop = yes
+		}
+	}
+}

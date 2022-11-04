@@ -1,0 +1,85 @@
+namespace = observation
+# Planet Descends into Civil War (HIDDEN)
+planet_event = {
+	id = observation.16
+	hide_window = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+		has_planet_flag = cult_reported
+		owner = { is_country_type = primitive }
+		observation_outpost_owner = {
+			has_country_flag = captured_scientist_origin_1
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		remove_planet_flag = cult_reported
+		set_planet_flag = scientist_revealed
+		observation_outpost_owner = {
+			country_event = { id = observation.17 }
+		}
+	}
+}
+
+planet_event = {
+	id = observation.21
+	hide_window = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
+	trigger = {
+		has_planet_flag = extraction_civil_war
+		owner = { is_country_type = primitive }
+		observation_outpost_owner = {
+			has_country_flag = captured_scientist_origin_1
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		remove_planet_flag = extraction_civil_war
+		observation_outpost_owner = {
+			country_event = { id = observation.22 }
+		}
+	}
+}
+
+planet_event = {
+	id = observation.23
+	hide_window = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+
+	trigger = {
+		has_planet_flag = extraction_regression
+		owner = { is_country_type = primitive }
+		observation_outpost_owner = {
+			has_country_flag = captured_scientist_origin_1
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 240
+	}
+
+	immediate = {
+		remove_planet_flag = extraction_regression
+		observation_outpost_owner = {
+			country_event = { id = observation.24 }
+		}
+	}
+}

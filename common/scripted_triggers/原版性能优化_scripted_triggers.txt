@@ -1,0 +1,25 @@
+is_nivirana_battle_country = {
+	OR = {
+		is_country_type = ai_empire
+		is_country_type = extradimensional
+		is_country_type = extradimensional_2
+		is_country_type = extradimensional_3
+		is_country_type = swarm
+		is_crisis_mod_country = yes
+	}
+}
+
+allows_alien_leaders = {
+	has_country_flag = enable_allows_alien_leaders
+}
+
+is_crisis_mod_country = {
+	OR = {
+		is_country_type = wg_crisis_country
+		is_country_type = afk_crisis_country
+		is_country_type = ag_kae_ge_invasion_country
+		is_country_type = Infinite_empire
+		is_country_type = ag_kuat_invasion_country
+		is_country_type = awakened_return_kuat_empire
+	}
+}
