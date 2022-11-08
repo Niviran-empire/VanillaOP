@@ -64,4 +64,7 @@ NGameplay = {
 	# Designation modifier formula: MOD * ( 1 + ( Ascension Tier * PLANET_ASCENSION_MODIFIER_SCALE )
 	PLANET_ASCENSION_MODIFIER_SCALE		= 0.50 # Scaling factor of the designation benefits, multiple instances will sum (first will be 1.25, then 1.50...)
 	AGREEMENT_CHANGE_COOLDOWN_MONTHS 	= 3		# How often an agreement can be changed in months
+	ASCENSION_PERKS_SLOTS 				= 80
+	TRADITION_CATEGORIES_MAX			= 80	
+	MAX_PLANET_BUILDING_SLOTS 			= 36	
 }

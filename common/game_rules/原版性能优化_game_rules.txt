@@ -57,3 +57,20 @@ can_generate_military_leader_from_pop = {
 can_generate_leader_from_pop = {
 	has_pop_flag = can_enable_can_generate_leader_from_pop
 }
+
+can_modify_species = {
+	if = {
+		limit = { root.owner = { is_ai = yes } }
+		root.owner = { count_exact_species = {
+			count < 3
+			limit = { OR = {
+				is_same_species = root
+				is_subspecies = root
+			} }
+		} }
+	}
+	else = { OR = {
+		NOT = { has_trait = trait_self_modified }
+		is_same_species = root
+	} }
+}
