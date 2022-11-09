@@ -221,6 +221,9 @@ event = {
 			remove_pop_flag = enable_pop_has_random_ethics
 			remove_pop_flag = can_enable_can_generate_military_leader_from_pop
 			remove_pop_flag = can_enable_can_generate_leader_from_pop
+			remove_pop_flag = enable_canbe_enforcer_jobs_pop
+			remove_pop_flag = enable_canbe_fe_xeno_ward_jobs_pop
+			remove_pop_flag = enable_canbe_fe_hedonist_jobs_pop
 			species = {
 				remove_species_flag = can_enable_species_has_happiness
 				remove_species_flag = can_enable_should_force_decline_species
@@ -257,6 +260,37 @@ event = {
 						has_citizenship_rights = yes
 					}
 					owner = { set_country_flag = enable_allows_alien_leaders }
+				}
+				if = {
+					limit = { battle_thrall_job_check_trigger = yes }
+					set_pop_flag = enable_canbe_enforcer_jobs_pop
+				}
+				if = {
+					limit = { 
+						owner = {
+							is_fallen_empire = yes
+							is_xenophile = yes
+						}
+						NOT = { is_same_species = owner }
+						is_robot_pop = no
+						planet = { has_building = building_fe_xeno_zoo }
+					}
+					set_pop_flag = enable_canbe_fe_xeno_ward_jobs_pop
+				}
+				if = {
+					limit = { 
+						owner = {
+							is_fallen_empire = yes
+							is_fallen_empire_spiritualist = no
+							is_fallen_machine_empire = no
+						}
+						is_same_species = owner
+						NOR = {
+							has_trait = trait_mechanical
+							has_trait = trait_machine_unit
+						}
+					}
+					set_pop_flag = enable_canbe_fe_hedonist_jobs_pop
 				}
 			}
 			#pop should_apply_unemployment_penalties

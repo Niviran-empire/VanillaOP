@@ -62,3 +62,6 @@ str_pop_planet_amenities_add = {
 	icon_frame = 3
 	planet_amenities_add = 1
 }
+
+TT_mod_ascension_breakthrough = { ascension_perks_add = 1 hide_from_country_list = yes }
+TT_mod_ascension_breakthrough_EACI = { ascension_perks_add = 1 hide_from_country_list = yes }
