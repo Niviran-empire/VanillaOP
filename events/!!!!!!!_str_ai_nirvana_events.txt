@@ -507,15 +507,15 @@ event = {
 				if = {
 					limit = { 
 						exists = prev.planet #somehow this appeared in the error log. No idea how!
-						NAND = {
-							prev.planet = { is_planet_class = pc_machine }
-							NOR = {
+						if = {
+							limit = { prev.planet = { is_planet_class = pc_machine } }
+							OR = {
 								has_trait = trait_machine_unit
 								has_trait = trait_mechanical
 								AND = {
 									has_trait = trait_cybernetic
-									exists = prev.planet.owner
-									prev.planet.owner = {
+									exists = owner
+									owner = {
 										has_authority = auth_machine_intelligence
 										has_civic = civic_machine_assimilator # Assimilator empire
 									}
@@ -523,14 +523,12 @@ event = {
 							}
 						}
 						if = {
-							limit = {
-								prev.planet = { is_planet_class = pc_hive }
-							}
+							limit = { prev.planet = { is_planet_class = pc_hive } }
 							OR = {
 								has_trait = trait_hive_mind
 								AND = { #Necrophage Hive Mind can have Necrophytes
-									exists = prev.planet.owner
-									prev.planet.owner = {
+									exists = owner
+									owner = {
 										is_hive_empire = yes
 										has_origin = origin_necrophage
 										prev = { species_can_be_necrophaged = yes }
