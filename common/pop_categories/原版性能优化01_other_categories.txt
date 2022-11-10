@@ -1,3 +1,4 @@
+@noxious_happiness_penalty = -0.01
 purge = {
 	rank = 0
 	clothes_texture_index = 2
@@ -92,12 +93,12 @@ slave = {
 		energy = 50
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			can_assemble_budding_pop = yes
-		}
-		planet_pop_assembly_organic_add = @plantoid_budding_rate
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		can_assemble_budding_pop = yes
+	# 	}
+	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
+	# }
 
 	triggered_pop_modifier = {
 		potential = {
@@ -108,13 +109,13 @@ slave = {
 		mult = modifier:pop_non_noxious_happiness
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_noxious
-		}
-		key = trait_noxious
-		pop_non_noxious_happiness = @noxious_happiness_penalty
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_trait = trait_noxious
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
 
 	resources = {
 		category = pop_category_slave
@@ -245,20 +246,20 @@ bio_trophy = {
 		mult = modifier:pop_non_noxious_happiness
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_noxious
-		}
-		key = trait_noxious
-		pop_non_noxious_happiness = @noxious_happiness_penalty
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_trait = trait_noxious
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
 
-	triggered_planet_modifier = {
-		potential = {
-			can_assemble_budding_pop = yes
-		}
-		planet_pop_assembly_organic_add = @plantoid_budding_rate
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		can_assemble_budding_pop = yes
+	# 	}
+	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
+	# }
 
 	pop_modifier = {
 		pop_political_power = 10
@@ -444,13 +445,13 @@ criminal = {
 		mult = modifier:pop_non_noxious_happiness
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_noxious
-		}
-		key = trait_noxious
-		pop_non_noxious_happiness = @noxious_happiness_penalty
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_trait = trait_noxious
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
 
 	should_apply_unemployment_penalties = {
 		NOR = {
@@ -895,13 +896,13 @@ xeno_ward = {
 		mult = modifier:pop_non_noxious_happiness
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_noxious
-		}
-		key = trait_noxious
-		pop_non_noxious_happiness = @noxious_happiness_penalty
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_trait = trait_noxious
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
 
 	# scope: pop to be resettled
 	allow_resettlement = {
@@ -992,13 +993,13 @@ pre_sapients = {
 		mult = modifier:pop_non_noxious_happiness
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_noxious
-		}
-		key = trait_noxious
-		pop_non_noxious_happiness = @noxious_happiness_penalty
-	}
+	# triggered_planet_modifier = {
+	# 	potential = {
+	# 		has_trait = trait_noxious
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
+	# }
 
 	pop_modifier = {
 		pop_political_power = -1
@@ -1014,10 +1015,7 @@ pre_sapients = {
 
 	resources = {
 		category = pop_category_pre_sapients
-
 		# Organic Upkeep
-		upkeep = {
-		}
-
+		upkeep = { }
 	}
 }

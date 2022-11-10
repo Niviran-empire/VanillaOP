@@ -331,9 +331,7 @@ specialist = {
 	# }
 	
 	triggered_pop_modifier = {
-		potential = {
-			has_pop_flag = trade_value_add_op_7
-		}
+		potential = { has_pop_flag = trade_value_add_op_7 }
 		pop_happiness = 1
 		mult = modifier:pop_non_noxious_happiness
 	}
