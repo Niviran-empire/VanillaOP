@@ -208,8 +208,7 @@ simple_drone = {
 			engineering_research = 1
 			society_research = 1.5
 		}
-		upkeep = {
-		}
+		upkeep = { }
 	}
 
 	resources = {

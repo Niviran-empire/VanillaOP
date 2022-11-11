@@ -756,9 +756,7 @@ pop_event = {
 				set_pop_flag = trade_value_add_op_7
 			}
 			if = {
-				limit = { 
-					has_trait = trait_noxious
-				}
+				limit = { has_trait = trait_noxious }
 				set_pop_flag = trade_value_add_op_8
 			}
 			if = {
@@ -863,7 +861,7 @@ planet_event = {
 		set_update_modifiers_batch = begin
 		remove_modifier = str_trade_pop
 		remove_modifier = str_assemble_pop
-		remove_modifier = str_pop_non_noxious_happiness_pop
+		#remove_modifier = str_pop_non_noxious_happiness_pop
 		remove_modifier = str_pop_planet_amenities_add
 		clear_variable = trade_value_add_op_1_var
 		clear_variable = trade_value_add_op_2_var
@@ -881,7 +879,7 @@ planet_event = {
 		clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
 		clear_variable = trade_value_add_op_total
 		clear_variable = asseble_value_add_op_total
-		clear_variable = noxious_happiness_penalty_value_add_op_total
+		#clear_variable = noxious_happiness_penalty_value_add_op_total
 		clear_variable = planet_amenities_add_total
 		planet_event = { id = str_nirvana.8 days = 1 }
 		set_update_modifiers_batch = end
@@ -988,7 +986,7 @@ planet_event = {
 		}
 		set_variable = { which = trade_value_add_op_total value = 0 }
 		set_variable = { which = asseble_value_add_op_total value = 0 }
-		set_variable = { which = noxious_happiness_penalty_value_add_op_total value = 0 }
+		#set_variable = { which = noxious_happiness_penalty_value_add_op_total value = 0 }
 		set_variable = { which = planet_amenities_add_total value = 0 }
 		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
 		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
@@ -1001,13 +999,13 @@ planet_event = {
 		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
 		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
 		change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
-		change_variable = { which = noxious_happiness_penalty_value_add_op_total value = trade_value_add_op_8_var }
+		#change_variable = { which = noxious_happiness_penalty_value_add_op_total value = trade_value_add_op_8_var }
 		change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
 		change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
 		multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
 		add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
 		add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
-		add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = noxious_happiness_penalty_value_add_op_total }
+		#add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = noxious_happiness_penalty_value_add_op_total }
 		add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
 		set_update_modifiers_batch = end
 	}

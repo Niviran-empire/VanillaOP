@@ -100,14 +100,14 @@ slave = {
 	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
 	# }
 
-	triggered_pop_modifier = {
-		potential = {
-			NOT = { has_trait = trait_noxious }
-		}
-		key = trait_noxious
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOT = { has_trait = trait_noxious }
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -237,14 +237,14 @@ bio_trophy = {
 		unity = 25
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			NOT = { has_trait = trait_noxious }
-		}
-		key = trait_noxious
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOT = { has_trait = trait_noxious }
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -436,14 +436,14 @@ criminal = {
 		mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			NOT = { has_trait = trait_noxious }
-		}
-		key = trait_noxious
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOT = { has_trait = trait_noxious }
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -887,14 +887,14 @@ xeno_ward = {
 		pop_amenities_usage_base = 1
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			NOT = { has_trait = trait_noxious }
-		}
-		key = trait_noxious
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOT = { has_trait = trait_noxious }
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -984,14 +984,14 @@ pre_sapients = {
 		weight = 9000
 	}
 
-	triggered_pop_modifier = {
-		potential = {
-			NOT = { has_trait = trait_noxious }
-		}
-		key = trait_noxious
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = {
+	# 		NOT = { has_trait = trait_noxious }
+	# 	}
+	# 	key = trait_noxious
+	# 	pop_happiness = 1
+	# 	#mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {

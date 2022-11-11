@@ -102,11 +102,11 @@ ruler = {
 	# }
 
 
-	triggered_pop_modifier = {
-		potential = { has_pop_flag = trade_value_add_op_7 }
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = { has_pop_flag = trade_value_add_op_7 }
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -330,11 +330,11 @@ specialist = {
 	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
 	# }
 	
-	triggered_pop_modifier = {
-		potential = { has_pop_flag = trade_value_add_op_7 }
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = { has_pop_flag = trade_value_add_op_7 }
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
@@ -574,11 +574,11 @@ worker = {
 		unity = 10
 	}
 
-	triggered_pop_modifier = {
-		potential = { has_pop_flag = trade_value_add_op_7 }
-		pop_happiness = 1
-		mult = modifier:pop_non_noxious_happiness
-	}
+	# triggered_pop_modifier = {
+	# 	potential = { has_pop_flag = trade_value_add_op_7 }
+	# 	pop_happiness = 1
+	# 	mult = modifier:pop_non_noxious_happiness
+	# }
 
 	# triggered_planet_modifier = {
 	# 	potential = {
