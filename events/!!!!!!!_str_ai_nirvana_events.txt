@@ -253,7 +253,299 @@ event = {
 				remove_pop_flag = living_standard_phototrophic_normal_op_2
 				remove_pop_flag = exotic_metabolism_op_1
 				owner = { remove_country_flag = enable_allows_alien_leaders }
-				pop_event = { id = str_nirvana.6 days = 1 }
+				#Pop faction
+				if = {
+					limit = { owner = { count_pop_faction = { count > 0 } } }
+					if = {
+						limit = {
+							OR = {
+								has_ethic = ethic_materialist
+								is_robot_pop = yes
+							}
+							is_shackled_robot = no
+							can_think = yes
+							NOT = { has_ethic = ethic_spiritualist }
+							NOT = { has_pop_flag = can_join_faction_op_1 }
+							owner = { any_pop_faction = { is_pop_faction_type = technologist } }
+						}
+						set_pop_flag = can_join_faction_op_1
+					}
+					if = {
+						limit = { 
+							is_shackled_robot = no
+							can_think = yes
+							OR = {
+								NOT = { is_same_species = owner_species }
+								owner = {
+									OR = {
+										has_ethic = ethic_pacifist
+										has_ethic = ethic_fanatic_pacifist
+									}
+								}
+							}
+							NOT = { has_pop_flag = can_join_faction_op_2 }
+							owner = { any_pop_faction = { is_pop_faction_type = isolationist } }
+						}
+						set_pop_flag = can_join_faction_op_2
+					}
+					if = {
+						limit = { 
+							OR = {
+								has_ethic = ethic_egalitarian
+								has_ethic = ethic_xenophile
+								has_ethic = ethic_pacifist
+							}
+							is_shackled_robot = no
+							can_think = yes
+							NOT = { has_pop_flag = manifesti_bored }
+							NOT = { has_pop_flag = can_join_faction_op_3 }
+							owner = { any_pop_faction = { is_pop_faction_type = manifesti } }
+						}
+						set_pop_flag = can_join_faction_op_3
+					}
+					if = {
+						limit = { 
+							is_shackled_robot = no
+							can_think = yes
+							owner = {
+								NOR = {
+									has_ethic = ethic_pacifist
+									has_ethic = ethic_fanatic_pacifist
+								}
+							}
+							is_same_species = owner_species
+							NOT = { has_pop_flag = can_join_faction_op_4 }
+							owner = { any_pop_faction = { is_pop_faction_type = supremacist } }
+						}
+						set_pop_flag = can_join_faction_op_4
+					}
+					if = {
+						limit = { 
+							is_shackled_robot = no
+							can_think = yes
+							NOT = { has_pop_flag = can_join_faction_op_5 }
+							owner = { any_pop_faction = { OR = {
+								is_pop_faction_type = xenoist
+								is_pop_faction_type = imperialist
+								is_pop_faction_type = progressive
+								is_pop_faction_type = prosperity
+							} } }
+						}
+						set_pop_flag = can_join_faction_op_5
+					}
+					if = {
+						limit = { 
+							is_enslaved = no
+							is_shackled_robot = no
+							is_being_purged = no
+							can_think = yes
+							NOT = { has_pop_flag = can_join_faction_op_6 }
+							owner = { any_pop_faction = { is_pop_faction_type = traditionalist } }
+						}
+						set_pop_flag = can_join_faction_op_6
+					}
+					if = {
+						limit = { 
+							can_think = yes
+							NOT = { has_pop_flag = can_join_faction_op_7 }
+							owner = { any_pop_faction = { is_pop_faction_type = totalitarian } }
+						}
+						set_pop_flag = can_join_faction_op_7
+					}
+				}
+				#Pop category
+				if = {
+					limit = { is_gestalt = no }
+					if = {
+						limit = { 
+							is_organic_species = yes
+							is_phototrophic = no
+							is_lithoid = no
+						}
+						set_pop_flag = living_standard_food_normal_op_1
+					}
+					if = {
+						limit = { 
+							is_organic_species = yes
+							is_phototrophic = yes
+							is_lithoid = no
+						}
+						set_pop_flag = living_standard_phototrophic_normal_op_1
+					}
+					if = {
+						limit = { 
+							has_phototrophic_energy_upkeep = yes
+						}
+						set_pop_flag = living_standard_phototrophic_normal_op_3
+					}
+					if = {
+						limit = { 
+							is_organic_species = yes
+							is_phototrophic = no
+							is_lithoid = yes
+						}
+						set_pop_flag = living_standard_food_normal_op_2
+					}
+					if = {
+						limit = { 
+							is_organic_species = yes
+							is_phototrophic = yes
+							is_lithoid = yes
+						}
+						set_pop_flag = living_standard_phototrophic_normal_op_2
+					}
+					if = {
+						limit = { 
+							is_organic_species = yes
+							has_trait = trait_exotic_metabolism
+						}
+						set_pop_flag = exotic_metabolism_op_1
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							prosperity_gospel_check_trigger = yes
+						}
+						set_pop_flag = trade_value_add_op_1
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							has_shared_burden_living_standard_type = yes
+						}
+						set_pop_flag = trade_value_add_op_2
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							OR = {
+								has_academic_living_standard_type = yes
+								has_very_high_living_standard_type = yes
+								has_decadent_living_standard_type = yes
+							}
+						}
+						set_pop_flag = trade_value_add_op_3
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							OR = {
+								has_high_living_standard_type = yes
+								has_normal_living_standard_type = yes
+								has_stratified_living_standard_type = yes
+							}
+						}
+						set_pop_flag = trade_value_add_op_4
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							has_low_living_standard_type = yes
+						}
+						set_pop_flag = trade_value_add_op_5
+					}
+					if = {
+						limit = { 
+							can_assemble_budding_pop = yes
+						}
+						set_pop_flag = trade_value_add_op_6
+					}
+					if = {
+						limit = { 
+							NOT = { has_trait = trait_noxious }
+						}
+						set_pop_flag = trade_value_add_op_7
+					}
+					if = {
+						limit = { has_trait = trait_noxious }
+						set_pop_flag = trade_value_add_op_8
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							OR = {
+								has_decadent_living_standard_type = yes
+								has_very_high_living_standard_type = yes
+							}
+						}
+						set_pop_flag = trade_value_add_op_9
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							has_high_living_standard_type = yes
+						}
+						set_pop_flag = trade_value_add_op_10
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							OR = {
+								has_normal_living_standard_type = yes
+								has_academic_living_standard_type = yes
+							}
+						}
+						set_pop_flag = trade_value_add_op_11
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							has_stratified_living_standard_type = yes
+						}
+						set_pop_flag = trade_value_add_op_12
+					}
+					if = {
+						limit = { 
+							can_generate_trade_value = yes
+							OR = {
+								has_academic_living_standard_type = yes
+								has_very_high_living_standard_type = yes
+								has_high_living_standard_type = yes
+								has_normal_living_standard_type = yes
+								has_stratified_living_standard_type = yes
+								has_decadent_living_standard_type = yes
+							}
+						}
+						set_pop_flag = trade_value_add_op_13
+					}
+				}
+				#pop jobs
+				if = {
+					limit = { has_job = clerk }
+					set_pop_flag = clerk_has_planet_amenities_add
+					# if = {
+					# 	limit = { planet = {
+					# 		NOT = { has_planet_flag = has_franchise_headquarters }
+					# 	} }
+					# 	set_pop_flag = clerk_not_has_franchise_headquarters
+					# }
+					# if = {
+					# 	limit = { planet = {
+					# 		has_planet_flag = has_franchise_headquarters
+					# 	} }
+					# 	set_pop_flag = clerk_has_franchise_headquarters
+					# }
+					if = {
+						limit = { planet = {
+							exists = orbital_defence
+							orbital_defence = {
+								exists = starbase
+								starbase = {
+									has_starbase_building = ring_trade_hub
+								}
+							}
+						} }
+						set_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub
+					}
+					# if = {
+					# 	limit = { 
+					# 		exists = owner
+					# 		owner = { has_tradition = tr_mercantile_trickle_up_economics }
+					# 	}
+					# 	set_pop_flag = clerk_has_trade_value_add_tr_mercantile_trickle_up_economics
+					# }
+				}
+				#pop fallen jobs
 				if = {
 					limit = {
 						NOT = { is_same_species = owner }
@@ -540,309 +832,6 @@ event = {
 					set_species_flag = can_enable_species_can_live_on_planet
 				}
 			}
-		}
-		set_update_modifiers_batch = end
-	}
-}
-
-pop_event = {
-	id = str_nirvana.6
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { exists = this }
-	immediate = {
-		set_update_modifiers_batch = begin
-		#Pop faction
-		if = {
-			limit = { owner = { count_pop_faction = { count > 0 } } }
-			if = {
-				limit = {
-					OR = {
-						has_ethic = ethic_materialist
-						is_robot_pop = yes
-					}
-					is_shackled_robot = no
-					can_think = yes
-					NOT = { has_ethic = ethic_spiritualist }
-					NOT = { has_pop_flag = can_join_faction_op_1 }
-					owner = { any_pop_faction = { is_pop_faction_type = technologist } }
-				}
-				set_pop_flag = can_join_faction_op_1
-			}
-			if = {
-				limit = { 
-					is_shackled_robot = no
-					can_think = yes
-					OR = {
-						NOT = { is_same_species = owner_species }
-						owner = {
-							OR = {
-								has_ethic = ethic_pacifist
-								has_ethic = ethic_fanatic_pacifist
-							}
-						}
-					}
-					NOT = { has_pop_flag = can_join_faction_op_2 }
-					owner = { any_pop_faction = { is_pop_faction_type = isolationist } }
-				}
-				set_pop_flag = can_join_faction_op_2
-			}
-			if = {
-				limit = { 
-					OR = {
-						has_ethic = ethic_egalitarian
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_pacifist
-					}
-					is_shackled_robot = no
-					can_think = yes
-					NOT = { has_pop_flag = manifesti_bored }
-					NOT = { has_pop_flag = can_join_faction_op_3 }
-					owner = { any_pop_faction = { is_pop_faction_type = manifesti } }
-				}
-				set_pop_flag = can_join_faction_op_3
-			}
-			if = {
-				limit = { 
-					is_shackled_robot = no
-					can_think = yes
-					owner = {
-						NOR = {
-							has_ethic = ethic_pacifist
-							has_ethic = ethic_fanatic_pacifist
-						}
-					}
-					is_same_species = owner_species
-					NOT = { has_pop_flag = can_join_faction_op_4 }
-					owner = { any_pop_faction = { is_pop_faction_type = supremacist } }
-				}
-				set_pop_flag = can_join_faction_op_4
-			}
-			if = {
-				limit = { 
-					is_shackled_robot = no
-					can_think = yes
-					NOT = { has_pop_flag = can_join_faction_op_5 }
-					owner = { any_pop_faction = { OR = {
-						is_pop_faction_type = xenoist
-						is_pop_faction_type = imperialist
-						is_pop_faction_type = progressive
-						is_pop_faction_type = prosperity
-					} } }
-				}
-				set_pop_flag = can_join_faction_op_5
-			}
-			if = {
-				limit = { 
-					is_enslaved = no
-					is_shackled_robot = no
-					is_being_purged = no
-					can_think = yes
-					NOT = { has_pop_flag = can_join_faction_op_6 }
-					owner = { any_pop_faction = { is_pop_faction_type = traditionalist } }
-				}
-				set_pop_flag = can_join_faction_op_6
-			}
-			if = {
-				limit = { 
-					can_think = yes
-					NOT = { has_pop_flag = can_join_faction_op_7 }
-					owner = { any_pop_faction = { is_pop_faction_type = totalitarian } }
-				}
-				set_pop_flag = can_join_faction_op_7
-			}
-		}
-		#Pop category
-		if = {
-			limit = { is_gestalt = no }
-			if = {
-				limit = { 
-					is_organic_species = yes
-					is_phototrophic = no
-					is_lithoid = no
-				}
-				set_pop_flag = living_standard_food_normal_op_1
-			}
-			if = {
-				limit = { 
-					is_organic_species = yes
-					is_phototrophic = yes
-					is_lithoid = no
-				}
-				set_pop_flag = living_standard_phototrophic_normal_op_1
-			}
-			if = {
-				limit = { 
-					has_phototrophic_energy_upkeep = yes
-				}
-				set_pop_flag = living_standard_phototrophic_normal_op_3
-			}
-			if = {
-				limit = { 
-					is_organic_species = yes
-					is_phototrophic = no
-					is_lithoid = yes
-				}
-				set_pop_flag = living_standard_food_normal_op_2
-			}
-			if = {
-				limit = { 
-					is_organic_species = yes
-					is_phototrophic = yes
-					is_lithoid = yes
-				}
-				set_pop_flag = living_standard_phototrophic_normal_op_2
-			}
-			if = {
-				limit = { 
-					is_organic_species = yes
-					has_trait = trait_exotic_metabolism
-				}
-				set_pop_flag = exotic_metabolism_op_1
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					prosperity_gospel_check_trigger = yes
-				}
-				set_pop_flag = trade_value_add_op_1
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					has_shared_burden_living_standard_type = yes
-				}
-				set_pop_flag = trade_value_add_op_2
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					OR = {
-						has_academic_living_standard_type = yes
-						has_very_high_living_standard_type = yes
-						has_decadent_living_standard_type = yes
-					}
-				}
-				set_pop_flag = trade_value_add_op_3
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					OR = {
-						has_high_living_standard_type = yes
-						has_normal_living_standard_type = yes
-						has_stratified_living_standard_type = yes
-					}
-				}
-				set_pop_flag = trade_value_add_op_4
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					has_low_living_standard_type = yes
-				}
-				set_pop_flag = trade_value_add_op_5
-			}
-			if = {
-				limit = { 
-					can_assemble_budding_pop = yes
-				}
-				set_pop_flag = trade_value_add_op_6
-			}
-			if = {
-				limit = { 
-					NOT = { has_trait = trait_noxious }
-				}
-				set_pop_flag = trade_value_add_op_7
-			}
-			if = {
-				limit = { has_trait = trait_noxious }
-				set_pop_flag = trade_value_add_op_8
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					OR = {
-						has_decadent_living_standard_type = yes
-						has_very_high_living_standard_type = yes
-					}
-				}
-				set_pop_flag = trade_value_add_op_9
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					has_high_living_standard_type = yes
-				}
-				set_pop_flag = trade_value_add_op_10
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					OR = {
-						has_normal_living_standard_type = yes
-						has_academic_living_standard_type = yes
-					}
-				}
-				set_pop_flag = trade_value_add_op_11
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					has_stratified_living_standard_type = yes
-				}
-				set_pop_flag = trade_value_add_op_12
-			}
-			if = {
-				limit = { 
-					can_generate_trade_value = yes
-					OR = {
-						has_academic_living_standard_type = yes
-						has_very_high_living_standard_type = yes
-						has_high_living_standard_type = yes
-						has_normal_living_standard_type = yes
-						has_stratified_living_standard_type = yes
-						has_decadent_living_standard_type = yes
-					}
-				}
-				set_pop_flag = trade_value_add_op_13
-			}
-		}
-		#pop jobs
-		if = {
-			limit = { has_job = clerk }
-			set_pop_flag = clerk_has_planet_amenities_add
-			# if = {
-			# 	limit = { planet = {
-			# 		NOT = { has_planet_flag = has_franchise_headquarters }
-			# 	} }
-			# 	set_pop_flag = clerk_not_has_franchise_headquarters
-			# }
-			# if = {
-			# 	limit = { planet = {
-			# 		has_planet_flag = has_franchise_headquarters
-			# 	} }
-			# 	set_pop_flag = clerk_has_franchise_headquarters
-			# }
-			if = {
-				limit = {  planet = {
-					exists = orbital_defence
-					orbital_defence = {
-						exists = starbase
-						starbase = {
-							has_starbase_building = ring_trade_hub
-						}
-					}
-				} }
-				set_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub
-			}
-			# if = {
-			# 	limit = { 
-			# 		exists = owner
-			# 		owner = { has_tradition = tr_mercantile_trickle_up_economics }
-			# 	}
-			# 	set_pop_flag = clerk_has_trade_value_add_tr_mercantile_trickle_up_economics
-			# }
 		}
 		set_update_modifiers_batch = end
 	}
