@@ -13,6 +13,20 @@ event = {
 	trigger = { count_playable_country = { count > 0 } }
 	immediate = {
 		set_update_modifiers_batch = begin
+		every_system = {
+			remove_star_flag = can_enable_can_be_system_blocks_sensors
+			if = {
+				limit = { OR = {
+					##_|星云|	+RS/Sexp
+					is_inside_nebula = yes
+					has_modifier = space_storm
+					##_|封印星系|	+Sexp
+					has_star_flag = lcluster
+					has_star_flag = sealed_system
+				} }
+				set_star_flag = can_enable_can_be_system_blocks_sensors
+			}
+		}
 		# action 90
 		if = {
 			limit = { 

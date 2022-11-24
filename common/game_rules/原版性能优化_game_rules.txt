@@ -1,3 +1,11 @@
+###_[传感阻碍]	####################################
+#_mod	LCTR/RS/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉
+# this = system
+# root = country
+system_blocks_sensors = {
+	has_star_flag = can_enable_can_be_system_blocks_sensors
+}
+
 # This = pop
 pop_generates_crime = {
 	always = no
