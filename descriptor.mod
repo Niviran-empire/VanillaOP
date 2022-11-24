@@ -11,6 +11,6 @@ tags={
 	"Total Conversion"
 	"Galaxy Generation"
 }
-name="游戏性能优化"
-supported_version="3.5.3"
+name="========基础运行环境========"
+supported_version="3.5.*"
 remote_file_id="2857660469"
