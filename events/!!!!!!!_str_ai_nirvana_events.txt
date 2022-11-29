@@ -698,7 +698,7 @@ event = {
 				set_pop_flag = enable_pop_election_vote
 			}
 			if = {
-				limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
+				limit = { NOT = { has_citizenship_type = { country = owner type = citizenship_organic_trophy } } }
 				set_pop_flag = enable_pop_has_random_ethics
 			}
 			# can_generate_military_leader_from_pop

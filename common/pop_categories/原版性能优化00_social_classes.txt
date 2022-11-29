@@ -118,23 +118,6 @@ ruler = {
 
 	resources = {
 		category = pop_category_rulers
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_link_core
-			}
-			physics_research = 2
-			engineering_research = 2
-			society_research = 2
-		}
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_relic_core
-			}
-			energy = 4
-			physics_research = 6
-			engineering_research = 6
-			society_research = 6
-		}
 		# Biological Upkeep
 		upkeep = {
 			trigger = {
@@ -346,23 +329,6 @@ specialist = {
 
 	resources = {
 		category = pop_category_specialists
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_link_core
-			}
-			physics_research = 2
-			engineering_research = 2
-			society_research = 2
-		}
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_relic_core
-			}
-			energy = 4
-			physics_research = 4
-			engineering_research = 4
-			society_research = 4
-		}
 		# Biological Upkeep
 		upkeep = {
 			trigger = {
@@ -590,24 +556,6 @@ worker = {
 
 	resources = {
 		category = pop_category_workers
-		
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_link_core
-			}
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
-		}
-		produces = {
-			trigger = {
-				has_trait = trait_robot_mind_relic_core
-			}
-			energy = 6
-			physics_research = 2
-			engineering_research = 2
-			society_research = 2
-		}
 		# Biological Upkeep
 		upkeep = {
 			trigger = {

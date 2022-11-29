@@ -68,8 +68,8 @@ can_generate_leader_from_pop = {
 
 can_modify_species = {
 	if = {
-		limit = { root.owner = { is_ai = yes } }
-		root.owner = { count_exact_species = {
+		limit = { owner = { is_ai = yes } }
+		owner = { count_exact_species = {
 			count < 3
 			limit = { OR = {
 				is_same_species = root
