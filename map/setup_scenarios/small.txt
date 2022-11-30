@@ -59,8 +59,11 @@ setup_scenario = {
 	num_hyperlanes = { min=0.5 max= 2 }	#0.5	3
 	num_hyperlanes_default = 1
 	
+
 	supports_shape = elliptical
 	supports_shape = spiral_2
-	supports_shape = spiral_4			#
+	supports_shape = spiral_3
+	#supports_shape = spiral_4
 	supports_shape = ring
+	supports_shape = bar
 }
