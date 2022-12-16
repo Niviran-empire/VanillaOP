@@ -1,5 +1,5 @@
 galaxi_exp = {
-	core_radius_perc = 0.25	# соотношение ядра к основной галактике в долях десячиных
+	core_radius_perc = 0.05	# соотношение ядра к основной галактике в долях десячиных
 	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
@@ -24,8 +24,8 @@ galaxi_exp = {
 }
 
 galaxi_exp_1 = {
-	core_radius_perc = 0.1	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.1	# Количество звезд в ядре
+	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -45,8 +45,8 @@ galaxi_exp_1 = {
 }
 
 galaxi_exp_2 = {
-	core_radius_perc = 0.1	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.1	# Количество звезд в ядре
+	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -67,7 +67,7 @@ galaxi_exp_2 = {
 
 galaxi_exp_3 = {
 	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.05	# Количество звезд в ядре
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -88,7 +88,7 @@ galaxi_exp_3 = {
 
 galaxi_exp_4 = {
 	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.05	# Количество звезд в ядре
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -112,8 +112,8 @@ galaxi_exp_4 = {
 }
 
 galaxi_exp_5 = {
-	core_radius_perc = 0.2	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.1	# Количество звезд в ядре
+	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -133,8 +133,8 @@ galaxi_exp_5 = {
 }
 
 galaxi_exp_6 = {
-	core_radius_perc = 0.1	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.2	# Количество звезд в ядре
+	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -158,8 +158,8 @@ galaxi_exp_6 = {
 }
 
 galaxi_exp_7 = {
-	core_radius_perc = 0	# соотношение ядра к основной галактике в долях десячиных
-	num_stars_core_perc = 0.001	# Количество звезд в ядре
+	core_radius_perc = 0.05	# соотношение ядра к основной галактике в долях десячиных
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
@@ -179,7 +179,7 @@ galaxi_exp_7 = {
 }
 
 galaxi_exp_8 = {
-	core_radius_perc = 0.35	# соотношение ядра к основной галактике в долях десячиных
+	core_radius_perc = 0.05	# соотношение ядра к основной галактике в долях десячиных
 	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
@@ -204,8 +204,8 @@ galaxi_exp_8 = {
 }
 
 galaxi_exp_9 = {
-	core_radius_perc = 0.1	# Core radius is 30% of the galaxy radius
-	num_stars_core_perc = 0.1	# Количество звезд в ядре
+	core_radius_perc = 0.05	# Core radius is 30% of the galaxy radius
+	num_stars_core_perc = 0	# Количество звезд в ядре
 	stars_min_dist = 10	# Минимальное расстояние между звездами
 	countries = {
 		ideal_sq_dist_between = 4225		# 65*65 Ideal square distance between countries
