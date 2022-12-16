@@ -1,13 +1,13 @@
 ################################
 #
 # Origin Events
-# Written and Modded by StevT
+# Written and Modded by Eddy
 #
 ###############################
-namespace = str_nirvana
+namespace = vop_ai_fixed
 
 event = {
-	id = str_nirvana.5
+	id = vop_ai_fixed.5
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { count_playable_country = { count > 0 } }
@@ -146,7 +146,7 @@ event = {
 					is_country_type = default
 					is_country_type = enclave_mercenary
 				} }
-				country_event = { id = str_nirvana.9 days = 1 }
+				country_event = { id = vop_ai_fixed.9 days = 1 }
 			}
 			if = {
 				limit = { OR = { 
@@ -212,7 +212,7 @@ event = {
 		every_galaxy_planet = {
 			limit = { exists = owner }
 			planet_event = { id = crime.41 days = 1 }
-			planet_event = { id = str_nirvana.7 days = 1 }
+			planet_event = { id = vop_ai_fixed.7 days = 1 }
 			if = {
 				limit = { planet_stability > 50 }
 				remove_planet_flag = unrest_50_variable_set
@@ -220,7 +220,7 @@ event = {
 			}
 			if = {
 				limit = { owner = { is_ai = yes } }
-				planet_event = { id = str_nirvana.10 days = 1 }
+				planet_event = { id = vop_ai_fixed.10 days = 1 }
 			}
 		}
 		# pop events
@@ -852,7 +852,7 @@ event = {
 }
 
 planet_event = {
-	id = str_nirvana.7
+	id = vop_ai_fixed.7
 	hide_window = yes
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
@@ -884,14 +884,14 @@ planet_event = {
 		clear_variable = asseble_value_add_op_total
 		#clear_variable = noxious_happiness_penalty_value_add_op_total
 		clear_variable = planet_amenities_add_total
-		planet_event = { id = str_nirvana.8 days = 1 }
+		planet_event = { id = vop_ai_fixed.8 days = 1 }
 		set_update_modifiers_batch = end
 	}
 }
 
 @noxious_happiness_penalty = -0.01
 planet_event = {
-	id = str_nirvana.8
+	id = vop_ai_fixed.8
 	hide_window = yes
 	is_triggered_only = yes
 	pre_triggers = { has_owner = yes }
@@ -1015,24 +1015,25 @@ planet_event = {
 }
 
 country_event = {
-	id = str_nirvana.9
+	id = vop_ai_fixed.9
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { 
 		is_ai = yes 
 		OR = {
-			count_owned_ship = { limit = { is_ship_size = corvette } count > 200 }
-			count_owned_ship = { limit = { is_ship_size = destroyer } count > 200 }
-			count_owned_ship = { limit = { is_ship_size = cruiser } count > 200 }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 75 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 75 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 75 } }
 		}
+		has_existing_ship_design = battleship
 	}
 	immediate = {
 		set_update_modifiers_batch = begin
 		if = {
-			limit = { count_owned_ship = {
+			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = corvette }
-				count > 200
-			} }
+				count > 75
+			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = corvette } }
 				clear_variable = corvette_ai_var
@@ -1058,10 +1059,10 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { count_owned_ship = {
+			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = destroyer }
-				count > 200
-			} }
+				count > 75
+			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = destroyer } }
 				clear_variable = destroyer_ai_var
@@ -1087,10 +1088,10 @@ country_event = {
 			}
 		}
 		if = {
-			limit = { count_owned_ship = {
+			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = cruiser }
-				count > 200
-			} }
+				count > 75
+			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = cruiser } }
 				clear_variable = cruiser_ai_var
@@ -1120,7 +1121,7 @@ country_event = {
 }
 
 planet_event = {
-	id = str_nirvana.10
+	id = vop_ai_fixed.10
 	hide_window = yes
 	is_triggered_only = yes
 	pre_triggers = { is_ai = yes }
