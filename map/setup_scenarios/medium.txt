@@ -69,4 +69,14 @@ setup_scenario = {
 	supports_shape = starburst
 	supports_shape = cartwheel
 	supports_shape = spoked
+	supports_shape = galaxi_exp
+	supports_shape = galaxi_exp_1
+	supports_shape = galaxi_exp_2
+	supports_shape = galaxi_exp_3
+	supports_shape = galaxi_exp_4
+	supports_shape = galaxi_exp_5
+	supports_shape = galaxi_exp_6
+	supports_shape = galaxi_exp_7
+	supports_shape = galaxi_exp_8
+	supports_shape = galaxi_exp_9
 }
