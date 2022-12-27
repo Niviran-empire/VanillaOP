@@ -1,0 +1,54 @@
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_efficient_processors_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_logic_engines_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_loyalty_circuits_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_double_jointed_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_enhanced_memory_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_durable_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_learning_algorithms_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_trading_algorithms_op
+	}
+	energy = @cyborg_energy_upkeep
+}
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_streamlined_protocols_op
+	}
+	energy = @cyborg_energy_upkeep
+}

@@ -142,4 +142,7 @@
  galaxi_exp_7:0 "磁盘"
  galaxi_exp_8:0 "两个半圆"
  galaxi_exp_9:0 "四个旋臂"
+
+ str_assemble_tiyanki_pop:"$str_assemble_pop$"
+ str_assemble_tiyanki_pop_desc:"$str_assemble_pop_desc$"
  

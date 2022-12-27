@@ -24,6 +24,45 @@ is_crisis_mod_country = {
 	}
 }
 
+has_food_upkeep = {
+	species = {
+		has_species_flag = can_has_food_upkeep
+	}
+	NOT = { has_trait = trait_voidling }
+}
+
+can_have_food_upkeep_species = {
+	OR = {
+		is_archetype = BIOLOGICAL
+		is_archetype = STARSHIPGIRLS
+		is_archetype = Dolls
+		is_archetype = DEITY
+		is_archetype = ASCENDED
+		is_archetype = KANSEN
+		is_archetype = DATEALIVE
+		is_archetype = NYTO
+		is_archetype = KZ_VOY_TERRAN_DESCENDANT
+		is_archetype = KZ_VOY_TERRAN_GAIA
+		is_archetype = LILY
+		is_archetype = PUFFER
+		is_archetype = HUGE
+		is_archetype = FGOSW_SERVANT
+		is_archetype = WARSHIPGIRL
+		is_archetype = SHENHAI
+		is_archetype = NANITES_CROP
+		is_archetype = UNITED_FLEET
+		is_archetype = TOUHOUGIRLS
+		is_archetype = KANMUSU
+		is_archetype = SHINKAI
+		is_archetype = SRA_SR
+		is_archetype = Arp
+		is_archetype = GENSO_POP
+		is_archetype = REMILIA
+		is_archetype = LITTLE_DEVIL
+		is_archetype = SFDOLL
+	}
+}
+
 ###_[升级首都]	####################################################################
 #_pltn		[pd/avb/acot/aot/涅槃/kuat/mrpg/azl]
 has_upgraded_capital = {

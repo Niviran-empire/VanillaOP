@@ -51,6 +51,12 @@ str_assemble_pop = {
 	planet_pop_assembly_organic_add = 1
 }
 
+str_assemble_tiyanki_pop = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	icon_frame = 3
+	planet_pop_assembly_organic_add = 1
+}
+
 # str_pop_non_noxious_happiness_pop = {
 # 	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
 # 	icon_frame = 3

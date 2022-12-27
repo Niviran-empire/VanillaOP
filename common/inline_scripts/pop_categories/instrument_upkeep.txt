@@ -1,0 +1,69 @@
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_consumer_goods_op
+	}
+	consumer_goods = @instrument_upkeep_common
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_alloys_op
+	}
+	alloys = @instrument_upkeep_rare
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_unity_op
+	}
+	unity = @instrument_upkeep_rare
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_gas_op
+	}
+	exotic_gases = @instrument_upkeep_very_rare
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_crystal_op
+	}
+	rare_crystals = @instrument_upkeep_very_rare
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_motes_op
+	}
+	volatile_motes = @instrument_upkeep_very_rare
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_zro_op
+	}
+	sr_zro = @instrument_upkeep_legendary
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_dark_matter_op
+	}
+	sr_dark_matter = @instrument_upkeep_legendary
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_living_metal_op
+	}
+	sr_living_metal = @instrument_upkeep_epic
+}
+
+upkeep = {
+	trigger = {
+		has_pop_flag = VOP_livestanderd_POP_instrument_craving_nanites_op
+	}
+	nanites = @instrument_upkeep_epic
+}
