@@ -3,3 +3,4 @@ is_ai_nirvana_empire = { always = no }
 is_nirvana_empire = { always = no }
 is_nirvana_empire_dragon = { always = no }
 is_nirvana_empire_council = { always = no }
+kuat_is_kuat_system = { always = no }

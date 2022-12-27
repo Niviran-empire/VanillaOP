@@ -306,6 +306,7 @@ event = {
 			remove_pop_flag = can_enable_can_generate_military_leader_from_pop
 			remove_pop_flag = can_enable_can_generate_leader_from_pop
 			remove_pop_flag = enable_canbe_enforcer_jobs_pop
+			remove_pop_flag = enable_canbe_entertainer_jobs_pop
 			remove_pop_flag = enable_canbe_fe_xeno_ward_jobs_pop
 			remove_pop_flag = enable_canbe_fe_hedonist_jobs_pop
 			species = {
@@ -843,7 +844,6 @@ event = {
 					# 	set_pop_flag = clerk_has_trade_value_add_tr_mercantile_trickle_up_economics
 					# }
 				}
-				#pop fallen jobs
 				if = {
 					limit = {
 						NOT = { is_same_species = owner }
@@ -854,6 +854,10 @@ event = {
 				if = {
 					limit = { battle_thrall_job_check_trigger = yes }
 					set_pop_flag = enable_canbe_enforcer_jobs_pop
+				}
+				if = {
+					limit = { entertainer_job_check_trigger = yes }
+					set_pop_flag = enable_canbe_entertainer_jobs_pop
 				}
 				if = {
 					limit = { 
@@ -991,11 +995,14 @@ event = {
 					can_be_military_leader = yes
 					OR = {
 						is_robot_pop = no
-						root = {
-							OR = {
-								has_technology = tech_synthetic_leaders
-								has_authority = auth_machine_intelligence
-								is_mechanical_empire = yes
+						AND = {
+							exists = owner
+							owner = {
+								OR = {
+									has_technology = tech_synthetic_leaders
+									has_authority = auth_machine_intelligence
+									is_mechanical_empire = yes
+								}
 							}
 						}
 					}
@@ -1086,7 +1093,7 @@ event = {
 										OR = {
 											NOT = { has_origin = origin_clone_army }					# Can't have Vats.
 											has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-											NOT = { owner_main_species = { is_same_species = root } }	# Our Vats can't build this species.
+											NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
 										}
 									}
 								}
