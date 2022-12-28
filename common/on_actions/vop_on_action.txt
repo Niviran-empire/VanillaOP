@@ -16,6 +16,13 @@ on_five_year_pulse = {
 	}
 }
 
+on_five_year_pulse_country = {
+	events = {
+		vop_ai_fixed.21		#_[GE]
+		vop_ai_fixed.22		#_[sop]
+	}
+}
+
 # No scope, like on_game_start
 # Does not run when loading MP saves due to OOS concerns
 on_single_player_save_game_load = {

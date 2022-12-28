@@ -31,6 +31,95 @@ has_food_upkeep = {
 	NOT = { has_trait = trait_voidling }
 }
 
+chas_total_war_cb = {
+	OR = {
+		# Attacker checks
+		AND = {
+			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
+			OR = {
+				has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_2
+				AND = { has_valid_civic = civic_machine_terminator from = { is_synthetic_empire = no } }
+				AND = { has_valid_civic = civic_fanatic_purifiers NOT = { is_same_species = from } }
+			}
+		}
+		# End threat checks
+		AND = {
+			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_3
+			from = { has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4 }
+		}
+	}
+}
+
+VOP_cb_CNTR_has_total_war_cb_SECTION_1 = {
+	OR = {
+		# is_country_type_with_subjects = yes
+		is_country_type = default
+
+		#is_fallen_empire = yes
+		is_country_type = fallen_empire
+		is_country_type = awakened_fallen_empire
+		is_country_type = human_fallen_empire
+
+		#is_progenitor_empires = yes
+		is_country_type = original_empire
+		is_country_type = original_empire_passive
+		is_country_type = original_empire_active		
+	}
+}
+
+VOP_cb_CNTR_has_total_war_cb_SECTION_2 = {
+	OR = {
+		#is_progenitor_empires = yes
+		is_country_type = original_empire
+		is_country_type = original_empire_passive
+		is_country_type = original_empire_active	
+		is_country_type = awakened_fallen_empire
+		#merg_is_awakened_fe = yes
+		AND = {
+			is_country_type = human_fallen_empire
+			has_civic = hfe_civic_egypt_fury
+		}
+		has_valid_civic = civic_hive_devouring_swarm
+		has_valid_civic = civic_machine_assimilator	
+	}
+}
+
+VOP_cb_CNTR_has_total_war_cb_SECTION_3 = {
+	OR = {
+		is_country_type = original_empire
+		is_country_type = original_empire_passive
+		is_country_type = original_empire_active		
+		is_country_type = default
+	}
+	NOR = {
+		# is_country_type = awakened_fallen_empire meaningless
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_hive_devouring_swarm
+		has_valid_civic = civic_machine_assimilator
+		has_valid_civic = civic_machine_terminator
+	}
+}
+
+VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
+	OR = {
+		#is_progenitor_empires = yes
+		is_country_type = original_empire
+		is_country_type = original_empire_passive
+		is_country_type = original_empire_active	
+		
+		#merg_is_awakened_fe = yes
+		is_country_type = awakened_fallen_empire
+		AND = {
+			is_country_type = human_fallen_empire
+			has_civic = hfe_civic_egypt_fury
+		}
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_hive_devouring_swarm
+		has_valid_civic = civic_machine_assimilator
+		has_valid_civic = civic_machine_terminator
+	}
+}
+
 can_have_food_upkeep_species = {
 	OR = {
 		is_archetype = BIOLOGICAL

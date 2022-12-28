@@ -215,71 +215,102 @@ event = {
 		}
 		# tech
 		every_country = {
-			limit = { is_ai = yes }
+			# warcb
+			remove_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
+			remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
+			remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_2
+			remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_3
+			remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4
 			if = {
-				limit = { OR = {
-					is_country_type = default
-					is_country_type = enclave_mercenary
+				limit = { any_controlled_fleet = {
+					is_ship_class = shipclass_military_special
+					any_controlled_ship = { is_ship_size = colossus }
 				} }
-				country_event = { id = vop_ai_fixed.9 days = 1 }
+				set_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
 			}
 			if = {
-				limit = { OR = { 
-					NOT = { has_ethic = ethic_gestalt_consciousness }
-					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
-					has_relic = r_zro_crystal
-				} }
-				remove_country_flag = pop_has_trait_psionic
-				remove_country_flag = pop_has_trait_latent_psionic
-				if = {
-					limit = { any_owned_pop = {
-						pop_has_trait = trait_psionic
-					} }
-					set_country_flag = pop_has_trait_psionic
-				}
-				if = {
-					limit = { any_owned_pop = {
-						pop_has_trait = trait_latent_psionic
-					} }
-					set_country_flag = pop_has_trait_latent_psionic
-				}
+				limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_1 = yes }
+				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
 			}
 			if = {
-				limit = { is_regular_empire = yes }
-				remove_country_flag = is_enslaved_var_more_than_9
-				remove_country_flag = is_enslaved_var_more_than_19
-				remove_country_flag = is_enslaved_var_more_than_29
-				remove_country_flag = is_enslaved_var_more_than_initial
-				if = {
-					limit = { count_owned_pop = {
-						limit = { is_enslaved = yes }
-						count > 29
-					} }
-					set_country_flag = is_enslaved_var_more_than_29
-					set_country_flag = is_enslaved_var_more_than_19
-					set_country_flag = is_enslaved_var_more_than_9
-				}
-				else_if = {
-					limit = { count_owned_pop = {
-						limit = { is_enslaved = yes }
-						count > 19
-					} }
-					set_country_flag = is_enslaved_var_more_than_19
-					set_country_flag = is_enslaved_var_more_than_9
-				}
-				else_if = {
-					limit = { count_owned_pop = {
-						limit = { is_enslaved = yes }
-						count > 9
-					} }
-					set_country_flag = is_enslaved_var_more_than_9
-				}
+				limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_2 = yes }
+				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_2
+			}
+			if = {
+				limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_3 = yes }
+				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_3
+			}
+			if = {
+				limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_4 = yes }
+				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4
+			}
+			if = {
+				limit = { is_ai = yes }
 				if = {
 					limit = { OR = {
-						allows_slavery = no
-						NOT = { any_owned_pop = { is_enslaved = yes } }
+						is_country_type = default
+						is_country_type = enclave_mercenary
 					} }
-					set_country_flag = is_enslaved_var_more_than_initial
+					country_event = { id = vop_ai_fixed.9 days = 1 }
+				}
+				if = {
+					limit = { OR = { 
+						NOT = { has_ethic = ethic_gestalt_consciousness }
+						is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+						has_relic = r_zro_crystal
+					} }
+					remove_country_flag = pop_has_trait_psionic
+					remove_country_flag = pop_has_trait_latent_psionic
+					if = {
+						limit = { any_owned_pop = {
+							pop_has_trait = trait_psionic
+						} }
+						set_country_flag = pop_has_trait_psionic
+					}
+					if = {
+						limit = { any_owned_pop = {
+							pop_has_trait = trait_latent_psionic
+						} }
+						set_country_flag = pop_has_trait_latent_psionic
+					}
+				}
+				if = {
+					limit = { is_regular_empire = yes }
+					remove_country_flag = is_enslaved_var_more_than_9
+					remove_country_flag = is_enslaved_var_more_than_19
+					remove_country_flag = is_enslaved_var_more_than_29
+					remove_country_flag = is_enslaved_var_more_than_initial
+					if = {
+						limit = { count_owned_pop = {
+							limit = { is_enslaved = yes }
+							count > 29
+						} }
+						set_country_flag = is_enslaved_var_more_than_29
+						set_country_flag = is_enslaved_var_more_than_19
+						set_country_flag = is_enslaved_var_more_than_9
+					}
+					else_if = {
+						limit = { count_owned_pop = {
+							limit = { is_enslaved = yes }
+							count > 19
+						} }
+						set_country_flag = is_enslaved_var_more_than_19
+						set_country_flag = is_enslaved_var_more_than_9
+					}
+					else_if = {
+						limit = { count_owned_pop = {
+							limit = { is_enslaved = yes }
+							count > 9
+						} }
+						set_country_flag = is_enslaved_var_more_than_9
+					}
+					if = {
+						limit = { OR = {
+							allows_slavery = no
+							NOT = { any_owned_pop = { is_enslaved = yes } }
+						} }
+						set_country_flag = is_enslaved_var_more_than_initial
+					}
 				}
 			}
 		}
@@ -363,7 +394,25 @@ event = {
 				remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_2
 				remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_3
 				remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_4
+				remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
+				remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
 				owner = { remove_country_flag = enable_allows_alien_leaders }
+				#speceis_right
+				if = {
+					limit = { 
+						NAND = {
+							exists = owner
+							owner = { has_deficit = consumer_goods }
+						}
+					}
+					set_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
+				}
+				if = {
+					limit = { 
+						is_unemployed = yes
+					}
+					set_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
+				}
 				#Pop faction
 				if = {
 					limit = { owner = { count_pop_faction = { count > 0 } } }
@@ -812,37 +861,16 @@ event = {
 				if = {
 					limit = { has_job = clerk }
 					set_pop_flag = clerk_has_planet_amenities_add
-					# if = {
-					# 	limit = { planet = {
-					# 		NOT = { has_planet_flag = has_franchise_headquarters }
-					# 	} }
-					# 	set_pop_flag = clerk_not_has_franchise_headquarters
-					# }
-					# if = {
-					# 	limit = { planet = {
-					# 		has_planet_flag = has_franchise_headquarters
-					# 	} }
-					# 	set_pop_flag = clerk_has_franchise_headquarters
-					# }
 					if = {
 						limit = { planet = {
 							exists = orbital_defence
 							orbital_defence = {
 								exists = starbase
-								starbase = {
-									has_starbase_building = ring_trade_hub
-								}
+								starbase = { has_starbase_building = ring_trade_hub }
 							}
 						} }
 						set_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub
 					}
-					# if = {
-					# 	limit = { 
-					# 		exists = owner
-					# 		owner = { has_tradition = tr_mercantile_trickle_up_economics }
-					# 	}
-					# 	set_pop_flag = clerk_has_trade_value_add_tr_mercantile_trickle_up_economics
-					# }
 				}
 				if = {
 					limit = {
@@ -1446,6 +1474,384 @@ planet_event = {
 				has_modifier = str_pop_static 
 			} 
 			remove_modifier = str_pop_static 
+		}
+		set_update_modifiers_batch = end
+	}
+}
+
+# mod
+country_event = {
+	###科学家领导科研时加好感值
+	id = vop_ai_fixed.21
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		years_passed > 75
+		has_country_flag = ge_leader_suigintou_get
+		research_leader = {
+			area = society
+			OR = {
+				has_trait = leader_trait_ge_mercury_lamp_scientist
+				has_leader_flag = ge_suigintou_flag
+			}
+		}
+	}
+	immediate = {
+		every_owned_leader = {
+			limit = {
+				OR = {
+					has_leader_flag = ge_suigintou_flag
+					has_trait = leader_trait_ge_mercury_lamp
+					has_trait = leader_trait_ge_mercury_lamp_scientist
+				}
+			}
+			ge_add_aft_scientist_on_research = yes
+		}
+	}
+}
+
+country_event = {
+	id = vop_ai_fixed.22
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		years_passed > 75
+		has_country_flag = star_oath_project_has_used
+	}
+
+	immediate = {
+		set_update_modifiers_batch = begin
+		if = {
+			limit = {
+				any_owned_leader = {
+					is_researching_area = engineering
+					OR = {
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_1
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_2
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_3
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_4
+					}
+				}
+			}
+			change_variable = {
+				which = count_sop_country_knowledge_sharing
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					is_researching_area = society
+					OR = {
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_1
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_2
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_3
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_4
+					}
+				}
+			}
+			change_variable = {
+				which = count_sop_country_knowledge_sharing
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					is_researching_area = physics
+					OR = {
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_1
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_2
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_3
+						has_trait = leader_trait_scientist_SOP_knowledge_sharing_4
+					}
+				}
+			}
+			change_variable = {
+				which = count_sop_country_knowledge_sharing
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_belfast_T1
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 20
+			}
+			root = {
+				change_variable = {
+					which = sop_belfas_skill_has_used_count
+					value = 1
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_belfast_T2
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 40
+			}
+			root = {
+				change_variable = {
+					which = sop_belfas_skill_has_used_count
+					value = 2
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_belfast_T3
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 60
+			}
+			root = {
+				change_variable = {
+					which = sop_belfas_skill_has_used_count
+					value = 3
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_okabe_T1
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 10
+			}
+			root = {
+				change_variable = {
+					which = sop_belfas_skill_has_used_count
+					value = 2
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_okabe_T2
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 20
+			}
+			root = {
+				change_variable = {
+					which = sop_belfas_skill_has_used_count
+					value = 4
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_leader_flag = SOP_noel_mobius
+				}
+			}
+			root = {
+				change_variable = {
+					which = count_noel_mobius_tech_finish
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_leader_flag = SOP_abigail
+				}
+			}
+			root = {
+				change_variable = {
+					which = count_abigail_tech_finish
+					value = 1
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_trait = leader_trait_scientist_SOP_reines_T3
+				}
+			}
+			every_owned_leader = {
+				limit = {
+					sop_leader_trigger = yes
+				}
+				add_experience = 40
+			}
+		}
+		if = {
+			limit = {
+				any_owned_leader = {
+					OR = {
+						is_researching_area = engineering
+						is_researching_area = society
+						is_researching_area = physics
+					}
+					has_leader_flag = SOP_patchouli
+				}
+			}
+			random_list = {
+				20 = {
+					modifier = {
+						add = -10
+						any_owned_leader = {
+							OR = {
+								is_researching_area = engineering
+								is_researching_area = society
+								is_researching_area = physics
+							}
+							has_trait = leader_trait_scientist_SOP_patchouli_T2
+						}
+					}
+					modifier = {
+						add = -20
+						any_owned_leader = {
+							OR = {
+								is_researching_area = engineering
+								is_researching_area = society
+								is_researching_area = physics
+							}
+							has_trait = leader_trait_scientist_SOP_patchouli_T3
+						}
+					}
+				}
+				10 ={
+					random_list = {
+						3 = {
+							remove_modifier = sop_scientist_skill_patchouli_01
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_01
+								days = 90
+							}
+						}
+						3 = {
+							remove_modifier = sop_scientist_skill_patchouli_02
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_02
+								days = 90
+							}
+						}
+						3 = {
+							remove_modifier = sop_scientist_skill_patchouli_03
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_03
+								days = 90
+							}
+						}
+						3 = {
+							remove_modifier = sop_scientist_skill_patchouli_04
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_04
+								days = 90
+							}
+						}
+						3 = {
+							remove_modifier = sop_scientist_skill_patchouli_05
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_05
+								days = 90
+							}
+						}
+						2 = {
+							remove_modifier = sop_scientist_skill_patchouli_06
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_06
+								days = 90
+							}
+						}
+						2 = {
+							remove_modifier = sop_scientist_skill_patchouli_07
+							add_modifier = {
+								modifier = sop_scientist_skill_patchouli_07
+								days = 90
+							}
+						}
+					}
+					if = {
+						limit = {
+							NOT = {
+								has_country_flag = star_oath_not_use_sound
+							}
+						}
+						random_list = {
+							3 = {
+								play_sound = SOP_patchouli_SkillActivationJP01
+							}
+							3 = {
+								play_sound = SOP_patchouli_SkillActivationJP02
+							}
+						}
+					}
+				}
+			}
 		}
 		set_update_modifiers_batch = end
 	}
