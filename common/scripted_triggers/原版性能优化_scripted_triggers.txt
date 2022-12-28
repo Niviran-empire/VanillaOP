@@ -31,7 +31,7 @@ has_food_upkeep = {
 	NOT = { has_trait = trait_voidling }
 }
 
-chas_total_war_cb = {
+has_total_war_cb = {
 	OR = {
 		# Attacker checks
 		AND = {
