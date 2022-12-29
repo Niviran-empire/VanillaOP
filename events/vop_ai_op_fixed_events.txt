@@ -248,7 +248,10 @@ event = {
 				limit = { is_ai = yes }
 				# MOD COMPATIBILITY
 				if = {
-					limit = { has_technology = tech_ascension_theory }
+					limit = { 
+						has_technology = tech_ascension_theory 
+						has_global_flag = tidy_tradition_active 
+					}
 					if = {
 						limit = { NOT = { is_variable_set = TT_var_ascension_breakthrough_times } }
 						set_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
