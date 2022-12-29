@@ -686,3 +686,73 @@ ship_event = {
 		}
 	}
 }
+
+system_event = {
+	id = action.301
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		any_system_megastructure = {
+			OR = {
+				is_megastructure_type = gateway_ruined
+				is_megastructure_type = gateway_restored
+				is_megastructure_type = gateway_final
+				is_megastructure_type = hyper_relay_ruined
+				is_megastructure_type = hyper_relay_restored
+				is_megastructure_type = hyper_relay
+			}
+			exists = owner
+			owner = { NOT = { is_same_value = from } }
+		}
+	}
+	immediate = {
+		every_system_megastructure = {
+			limit = {
+				OR = {
+					is_megastructure_type = gateway_ruined
+					is_megastructure_type = gateway_restored
+					is_megastructure_type = gateway_final
+					is_megastructure_type = hyper_relay_ruined
+					is_megastructure_type = hyper_relay_restored
+					is_megastructure_type = hyper_relay
+				}
+			}
+			set_owner = FROM
+		}
+	}
+}
+
+system_event = {
+	id = action.300
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		any_system_megastructure = {
+			OR = {
+				is_megastructure_type = gateway_ruined
+				is_megastructure_type = gateway_restored
+				is_megastructure_type = gateway_final
+				is_megastructure_type = hyper_relay_ruined
+				is_megastructure_type = hyper_relay_restored
+				is_megastructure_type = hyper_relay
+			}
+			exists = owner
+			owner = { NOT = { is_same_value = from } }
+		}
+	}
+	immediate = {
+		every_system_megastructure = {
+			limit = {
+				OR = {
+					is_megastructure_type = gateway_ruined
+					is_megastructure_type = gateway_restored
+					is_megastructure_type = gateway_final
+					is_megastructure_type = hyper_relay_ruined
+					is_megastructure_type = hyper_relay_restored
+					is_megastructure_type = hyper_relay
+				}
+			}
+			set_owner = FROM
+		}
+	}
+}
