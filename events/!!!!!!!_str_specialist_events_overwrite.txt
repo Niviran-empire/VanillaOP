@@ -23,3 +23,184 @@ country_event = {
 		set_update_modifiers_batch = end
 	}
 }
+
+# On system gained.
+country_event = {
+	id = specialist.200
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_specialist_subject_type = { TYPE = bulwark }
+	}
+
+	immediate = {
+		if = {
+			limit = { is_specialist_subject_type = { TYPE = bulwark } }
+			FROM = {
+				if = {
+					limit = { exists = starbase }
+					starbase = { add_bulwark_array = yes }
+					if = {
+						limit = { ROOT = { any_agreement = { specialist_tier >= 3 } } }
+						starbase = { add_disintegrator_field = yes }
+					}
+				}
+			}
+		}
+	}
+}
+
+# On system lost.
+country_event = {
+	id = specialist.300
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = fromfrom
+		OR = {
+			AND = {
+				is_specialist_subject_type = { TYPE = bulwark }
+				FROMFROM = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
+			}
+			AND = {
+				is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
+				FROMFROM = {
+					is_specialist_subject_type = { TYPE = bulwark }
+					NOT = { any_agreement = { specialist_tier = 3 } }
+				}
+			}
+			from = {
+				exists = starbase
+				starbase = { fleet = { any_controlled_ship = {
+					is_ship_class = shipclass_starbase
+					OR = {
+						has_component = "STARBASE_AURA_DISINTEGRATOR_FIELD"
+						has_component = STARBASE_AURA_MEGA_DISINTEGRATOR_FIELD
+					}
+				} } }
+			}
+		}
+	}
+
+	immediate = {
+		if = { # checks if a new owner exists 
+			limit = { exists = FROMFROM }
+			if = {
+				limit = {
+					is_specialist_subject_type = { TYPE = bulwark }
+					FROMFROM = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
+				}
+				FROM = {
+					if = {
+						limit = { exists = starbase }
+						starbase = { remove_bulwark_array = yes }
+						if = {
+							limit = { ROOT = { any_agreement = { specialist_tier >= 3 } } }
+							starbase = { remove_disintegrator_field = yes }
+						}
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
+					FROMFROM = {
+						is_specialist_subject_type = { TYPE = bulwark }
+						NOT = { any_agreement = { specialist_tier = 3 } }
+					}
+				}
+				FROM = {
+					if = {
+						limit = { exists = starbase }
+						starbase = {
+							remove_disintegrator_field = yes
+						}
+					}
+				}
+			}
+		}
+		else = { # if no new owner, always remove the disintegrator field (just a failsafe, systems with no onwer shouldn't have a starbase)
+			FROM = {
+				if = {
+					limit = { exists = starbase }
+					starbase = {
+						remove_disintegrator_field = yes
+					}
+				}
+			}
+		}
+	}
+}
+
+# On leader spawned.
+country_event = {
+	id = specialist.400
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_specialist_subject = yes
+		OR = {
+			is_specialist_subject_tier = {
+				TYPE = bulwark
+				TIER = 2
+			}
+			is_specialist_subject_tier = {
+				TYPE = scholarium
+				TIER = 2
+			}
+			is_specialist_subject_tier = {
+				TYPE = prospectorium
+				TIER = 2
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { is_specialist_subject = yes }
+			if = {
+				limit = {
+					is_specialist_subject_tier = {
+						TYPE = bulwark
+						TIER = 2
+					}
+				}
+				FROM = {
+					add_specialist_trait_to_leader_in_pool = {
+						TYPE = bulwark
+						CLASS = admiral
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_specialist_subject_tier = {
+						TYPE = scholarium
+						TIER = 2
+					}
+				}
+				FROM = {
+					add_specialist_trait_to_leader_in_pool = {
+						TYPE = scholarium
+						CLASS = scientist
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_specialist_subject_tier = {
+						TYPE = prospectorium
+						TIER = 2
+					}
+				}
+				FROM = {
+					add_specialist_trait_to_leader_in_pool = {
+						TYPE = prospectorium
+						CLASS = governor
+					}
+				}
+			}
+		}
+	}
+}
