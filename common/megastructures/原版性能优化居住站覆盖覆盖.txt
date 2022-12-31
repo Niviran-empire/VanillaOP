@@ -8,6 +8,7 @@ habitat_0 = {
 	entity_offset = { x = -7 y = -7 }
 	build_time = 1800
 	show_galactic_map_icon = no
+	show_in_outliner = no
 	resources = {
 		category = megastructures_habitat
 		cost = {
