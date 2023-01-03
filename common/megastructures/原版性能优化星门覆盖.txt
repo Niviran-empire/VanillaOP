@@ -85,6 +85,11 @@ gateway_0 = {
 
 		modifier = {
 			factor = 0
+			solar_system = { exists = owner owner = { is_ai = yes } }
+		}
+
+		modifier = {
+			factor = 0
 			starbase = { NOT = { has_starbase_size >= starbase_starfortress } }
 		}
 
