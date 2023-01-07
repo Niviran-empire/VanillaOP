@@ -82,7 +82,11 @@ hyper_relay = {
 	# from = country
 	ai_weight = {
 		factor = 5
-		modifier = { factor = 0 solar_system = { exists = owner owner = { is_ai = yes } } }
+		
+		modifier = { factor = 0 from = { is_ai = yes } }
+
+		modifier = { factor = 0 exists = owner }
+
 		modifier = { factor = 3 is_capital_system = yes }
 
 		modifier = {
