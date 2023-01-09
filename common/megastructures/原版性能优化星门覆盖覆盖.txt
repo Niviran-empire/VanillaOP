@@ -40,27 +40,6 @@ gateway_0 = {
 				}
 			}
 		}
-		# 	|PF转化|不存在未探索星球太吃运算
-		# custom_tooltip = {
-		# 	fail_text = "requires_surveyed_system" # or is in my subject's territory
-		# 	OR = {
-		# 		NOT = {
-		# 			any_system_planet = {
-		# 				is_surveyed = {
-		# 					who = prev.from
-		# 					status = no
-		# 				}
-		# 			}
-		# 		}
-		# 		AND = {
-		# 			exists = owner
-		# 			owner = {
-		# 				is_subject = yes
-		# 				overlord = { is_same_value = from }
-		# 			}
-		# 		}
-		# 	}
-		# }
 		custom_tooltip = {
 			fail_text = "requires_no_existing_gateway"
 			NOR = {
@@ -81,36 +60,11 @@ gateway_0 = {
 
 	# root = system
 	# from = country
-	ai_weight = {
-		factor = 5
-
-		modifier = { factor = 0 from = { is_ai = yes } }
-
-		modifier = { factor = 0 exists = owner }
-
-		modifier = {
-			factor = 0
-			starbase = { NOT = { has_starbase_size >= starbase_starfortress } }
-		}
-
-		modifier = {
-			factor = 0
-			any_neighbor_system = {
-				OR = {
-					has_megastructure = gateway_0
-					has_megastructure = gateway_ruined
-					has_megastructure = gateway_restored
-					has_megastructure = gateway_final
-				}
-			}
-		}
-	}
+	ai_weight = { weight = 0 }
 
 	on_build_start = {}
 	on_build_cancel = {}
-	on_build_complete = {
-		from = { country_event = { id = apoc.14 } }
-	}
+	on_build_complete = { from = { country_event = { id = apoc.14 } } }
 }
 
 gateway_final = {
