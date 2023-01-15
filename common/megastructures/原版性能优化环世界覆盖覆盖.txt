@@ -108,18 +108,16 @@ ring_world_1 = {
 			factor = 0
 			solar_system = {
 				exists = owner 
-				owner = { 
-					OR = {
-						AND = {
-							is_nirvana_empire_dragon = yes  
-							event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_dragon value > 5 } }
-						}
-						AND = {
-							is_nirvana_empire_council = yes  
-							event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_council value > 5 } }
-						}
+				owner = { OR = {
+					AND = {
+						is_nirvana_empire_dragon = yes  
+						event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_dragon value > 3 } }
 					}
-				}
+					AND = {
+						is_nirvana_empire_council = yes  
+						event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_council value > 3 } }
+					}
+				} }
 			}
 		}
 		
