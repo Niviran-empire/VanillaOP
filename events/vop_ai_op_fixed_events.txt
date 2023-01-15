@@ -370,6 +370,12 @@ event = {
 		}
 		# pop events
 		every_galaxy_pop = {
+			species = {
+				remove_species_flag = can_enable_species_has_happiness
+				remove_species_flag = can_enable_should_force_decline_species
+				remove_species_flag = can_enable_species_can_live_on_planet
+				remove_species_flag = can_has_food_upkeep
+			}
 			remove_pop_flag = enable_purge_pop_assign_to_pop
 			remove_pop_flag = enable_robot_servant_pop_assign_to_pop
 			remove_pop_flag = enable_precursor_pop_assign_to_pop
@@ -384,11 +390,100 @@ event = {
 			remove_pop_flag = enable_canbe_entertainer_jobs_pop
 			remove_pop_flag = enable_canbe_fe_xeno_ward_jobs_pop
 			remove_pop_flag = enable_canbe_fe_hedonist_jobs_pop
-			species = {
-				remove_species_flag = can_enable_species_has_happiness
-				remove_species_flag = can_enable_should_force_decline_species
-				remove_species_flag = can_enable_species_can_live_on_planet
-				remove_species_flag = can_has_food_upkeep
+			species = { 
+				if = {
+					limit = { can_have_food_upkeep_species = yes }
+					set_species_flag = can_has_food_upkeep
+				} 
+				#happiniess species
+				if = {
+					limit = { NOR = {
+						has_trait = trait_machine_unit
+						has_trait = trait_hive_mind
+						can_think = no
+						AND = {
+							has_trait = trait_mechanical
+							OR = {
+								NOT = { exists = owner }
+								owner = { has_authority = auth_machine_intelligence }
+								owner = { NOT = { has_technology = tech_synthetic_workers } }
+								owner = { has_policy_flag = ai_outlawed }
+							}
+						}
+						AND = {
+							has_trait = trait_cybernetic
+							exists = owner
+							owner = {
+								has_authority = auth_machine_intelligence
+								has_civic = civic_machine_assimilator # Assimilator empire
+							}
+						}
+					} }
+					set_species_flag = can_enable_species_has_happiness
+				}
+				# should_force_decline_species
+				if = {
+					limit = {
+						OR = {
+							has_trait = trait_clone_soldier_infertile
+							has_trait = trait_clone_soldier_infertile_full_potential
+						}
+						prev.planet = {
+							OR = {
+								# Check if country is unable to build Vats for this species.
+								AND = {
+									exists = owner
+									owner = {
+										OR = {
+											NOT = { has_origin = origin_clone_army }					# Can't have Vats.
+											has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
+											NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
+										}
+									}
+								}
+								# Vats check out, but are there more pops than Vats support?
+								check_variable = { which = clone_pops_missing value < 0 }
+							}
+						}
+					}
+					set_species_flag = can_enable_should_force_decline_species
+				}
+				# species_can_live_on_planet
+				if = {
+					limit = { 
+						exists = prev.planet #somehow this appeared in the error log. No idea how!
+						if = {
+							limit = { prev.planet = { is_planet_class = pc_machine } }
+							OR = {
+								has_trait = trait_machine_unit
+								has_trait = trait_mechanical
+								AND = {
+									has_trait = trait_cybernetic
+									exists = owner
+									owner = {
+										has_authority = auth_machine_intelligence
+										has_civic = civic_machine_assimilator # Assimilator empire
+									}
+								}
+							}
+						}
+						if = {
+							limit = { prev.planet = { is_planet_class = pc_hive } }
+							OR = {
+								has_trait = trait_hive_mind
+								AND = { #Necrophage Hive Mind can have Necrophytes
+									exists = owner
+									owner = {
+										is_hive_empire = yes
+										has_origin = origin_necrophage
+										prev = { species_can_be_necrophaged = yes }
+									}
+								}
+							}
+						}
+					}
+					set_species_flag = can_enable_species_can_live_on_planet
+				}
 			}
 			if = {
 				limit = { exists = owner }
@@ -1116,102 +1211,6 @@ event = {
 					}
 				}
 				set_pop_flag = can_enable_can_generate_leader_from_pop
-			}
-			#happiniess
-			species = { 
-				if = {
-					limit = { can_have_food_upkeep_species = yes }
-					set_species_flag = can_has_food_upkeep
-				} 
-				#happiniess species
-				if = {
-					limit = { NOR = {
-						has_trait = trait_machine_unit
-						has_trait = trait_hive_mind
-						can_think = no
-						AND = {
-							has_trait = trait_mechanical
-							OR = {
-								NOT = { exists = owner }
-								owner = { has_authority = auth_machine_intelligence }
-								owner = { NOT = { has_technology = tech_synthetic_workers } }
-								owner = { has_policy_flag = ai_outlawed }
-							}
-						}
-						AND = {
-							has_trait = trait_cybernetic
-							exists = owner
-							owner = {
-								has_authority = auth_machine_intelligence
-								has_civic = civic_machine_assimilator # Assimilator empire
-							}
-						}
-					} }
-					set_species_flag = can_enable_species_has_happiness
-				}
-				# should_force_decline_species
-				if = {
-					limit = {
-						OR = {
-							has_trait = trait_clone_soldier_infertile
-							has_trait = trait_clone_soldier_infertile_full_potential
-						}
-						prev.planet = {
-							OR = {
-								# Check if country is unable to build Vats for this species.
-								AND = {
-									exists = owner
-									owner = {
-										OR = {
-											NOT = { has_origin = origin_clone_army }					# Can't have Vats.
-											has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-											NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
-										}
-									}
-								}
-								# Vats check out, but are there more pops than Vats support?
-								check_variable = { which = clone_pops_missing value < 0 }
-							}
-						}
-					}
-					set_species_flag = can_enable_should_force_decline_species
-				}
-				# species_can_live_on_planet
-				if = {
-					limit = { 
-						exists = prev.planet #somehow this appeared in the error log. No idea how!
-						if = {
-							limit = { prev.planet = { is_planet_class = pc_machine } }
-							OR = {
-								has_trait = trait_machine_unit
-								has_trait = trait_mechanical
-								AND = {
-									has_trait = trait_cybernetic
-									exists = owner
-									owner = {
-										has_authority = auth_machine_intelligence
-										has_civic = civic_machine_assimilator # Assimilator empire
-									}
-								}
-							}
-						}
-						if = {
-							limit = { prev.planet = { is_planet_class = pc_hive } }
-							OR = {
-								has_trait = trait_hive_mind
-								AND = { #Necrophage Hive Mind can have Necrophytes
-									exists = owner
-									owner = {
-										is_hive_empire = yes
-										has_origin = origin_necrophage
-										prev = { species_can_be_necrophaged = yes }
-									}
-								}
-							}
-						}
-					}
-					set_species_flag = can_enable_species_can_live_on_planet
-				}
 			}
 		}
 		set_update_modifiers_batch = end

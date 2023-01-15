@@ -126,13 +126,13 @@ ruler = {
 	resources = {
 		category = pop_category_rulers
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 
 		# Instrument of Desire Upkeep
-		inline_script = "pop_categories/instrument_upkeep"
+		inline_script = "pop_categories/str_instrument_upkeep"
 
 		# Exotic Metabolism Upkeep
 		upkeep = {
@@ -143,7 +143,7 @@ ruler = {
 		}
 
 		# Lithoid Trait Output
-		inline_script = "pop_categories/trait_production"
+		inline_script = "pop_categories/str_trait_production"
 
 		# Resource Production
 		produces = {
@@ -298,13 +298,13 @@ specialist = {
 		category = pop_category_specialists
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 
 		# Instrument of Desire Upkeep
-		inline_script = "pop_categories/instrument_upkeep"
+		inline_script = "pop_categories/str_instrument_upkeep"
 
 		# Exotic Metabolism Upkeep
 		upkeep = {
@@ -315,7 +315,7 @@ specialist = {
 		}
 
 		# Lithoid Trait Output
-		inline_script = "pop_categories/trait_production"
+		inline_script = "pop_categories/str_trait_production"
 
 		produces = {
 			trigger = {
@@ -484,13 +484,13 @@ worker = {
 		category = pop_category_workers
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 
 		# Instrument of Desire Upkeep
-		inline_script = "pop_categories/instrument_upkeep"
+		inline_script = "pop_categories/str_instrument_upkeep"
 
 		# Exotic Metabolism Upkeep
 		upkeep = {
@@ -503,7 +503,7 @@ worker = {
 		# Resource Production
 
 		# Lithoid Trait Output
-		inline_script = "pop_categories/trait_production"
+		inline_script = "pop_categories/str_trait_production"
 
 		produces = {
 			trigger = {

@@ -121,10 +121,10 @@ slave = {
 		category = pop_category_slave
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 
 		# Exotic Metabolism Upkeep
 		upkeep = {
@@ -138,7 +138,7 @@ slave = {
 		# Resource Production
 
 		# Lithoid Trait Output
-		inline_script = "pop_categories/trait_production"
+		inline_script = "pop_categories/str_trait_production"
 
 		produces = {
 			trigger = {
@@ -213,10 +213,10 @@ bio_trophy = {
 		category = pop_category_bio_trophy
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 
 		# Exotic Metabolism Upkeep
 		upkeep = {
@@ -230,7 +230,7 @@ bio_trophy = {
 		# Resource Production 
 		
 		# Lithoid Trait Output
-		inline_script = "pop_categories/trait_production"
+		inline_script = "pop_categories/str_trait_production"
 
 		produces = {
 			trigger = {
@@ -367,10 +367,10 @@ criminal = {
 		category = pop_category_workers
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 	}
 }
 
@@ -431,10 +431,10 @@ deviant_drone = {
 		category = pop_category_workers
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 	}
 }
 
@@ -512,10 +512,10 @@ corrupt_drone = {
 		category = pop_category_workers
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 	}
 }
 
@@ -679,10 +679,10 @@ xeno_ward = {
 		}
 
 		# Regular food, mineral and energy upkeep.
-		inline_script = "pop_categories/regular_upkeep"
+		inline_script = "pop_categories/str_regular_upkeep"
 
 		# Additional energy upkeep for cyborgs.
-		inline_script = "pop_categories/cyborg_upkeep"
+		inline_script = "pop_categories/str_cyborg_upkeep"
 	}
 }
 
