@@ -5,7 +5,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		years_passed < 75
+		years_passed < 50
 		has_country_flag = ge_leader_suigintou_get
 		research_leader = {
 			area = society
@@ -36,7 +36,7 @@ country_event = {	#知识分享计数器
 	hide_window = yes
 
 	trigger = {
-		years_passed < 75
+		years_passed < 50
 		has_country_flag = star_oath_project_has_used
 	}
 
@@ -103,7 +103,7 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
-		years_passed < 75
+		years_passed < 50
 		has_country_flag = star_oath_project_has_used
 	}
 

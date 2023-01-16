@@ -16,7 +16,7 @@ event = {
 		# action.116
 		if = {
 			limit = {
-				years_passed > 74
+				years_passed > 50
 				has_global_flag = galactic_market_founded
 				OR = {
 					NOT = { is_on_market = volatile_motes }
@@ -1529,7 +1529,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = {
-		years_passed > 75
+		years_passed > 50
 		has_country_flag = ge_leader_suigintou_get
 		research_leader = {
 			area = society
@@ -1559,7 +1559,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		years_passed > 75
+		years_passed > 50
 		has_country_flag = star_oath_project_has_used
 	}
 
