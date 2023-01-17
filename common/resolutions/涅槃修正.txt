@@ -1,0 +1,222 @@
+@resolution_weight_hated = 3
+@resolution_weight_disliked = 4
+@resolution_weight_unpopular = 5
+@resolution_weight_normal = 6
+@resolution_weight_popular = 6.5
+@resolution_weight_loved = 7
+
+@resolution_cost_t1 = 100
+@resolution_cost_t2 = 150
+@resolution_cost_t3 = 200
+@resolution_cost_t4 = 250
+@resolution_cost_t5 = 300
+@resolution_cost_denounce = 25
+
+@resolution_flag_timer = 360
+resolution_custodian_form_empire = {
+	icon = "GFX_resolution_form_galactic_empire"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t3
+		}
+	}
+	target = no
+
+	modifier = { }
+
+	effect = {
+		if = {
+			limit = { is_gestalt = no }
+			custom_tooltip = resolution_custodian_form_empire_tooltip
+		}
+		if = {
+			limit = { is_machine_empire = yes }
+			custom_tooltip = resolution_custodian_form_empire_tooltip_machine
+		}
+		if = {
+			limit = { is_hive_empire = yes }
+			custom_tooltip = resolution_custodian_form_empire_tooltip_hive
+		}
+		hidden_effect = {
+			random_playable_country = {
+				limit = { is_galactic_custodian = yes }
+				country_event = { id = emperor.1 }
+			}
+		}
+	}
+
+	fail_effects = { }
+
+	potential = {
+		has_nemesis = yes
+		has_emperor_auth_trigger = no
+		is_galactic_custodian = yes
+		is_nirvana_empire = no
+		is_active_resolution = "resolution_custodian_perpetual_custodianship"
+		has_galactic_emperor = no
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_no_war_in_heaven"
+			NOT = { has_global_flag = war_in_heaven_ongoing } # Can't become Emperor during WiH
+		}
+	}
+
+	active = {
+		has_galactic_custodian = yes
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_disliked
+		modifier = { factor = 10 any_neighbor_country = { is_crisis_faction = yes } }
+		modifier = { factor = 4 has_crisis_stage_1 = yes }
+		modifier = { factor = 6 has_crisis_stage_2 = yes }
+		modifier = { factor = 8 has_crisis_stage_3 = yes }
+		modifier = { factor = 20 has_crisis_stage_4 = yes }
+		modifier = { factor = 20 any_playable_country = { has_country_flag = crisis_sphere_revealed } }
+		modifier = { factor = 20 is_galactic_custodian = yes is_authoritarian = yes }
+		modifier = { factor = 4 is_galactic_custodian = yes }
+		modifier = { factor = 8 any_playable_country = { has_been_declared_crisis = yes } }
+		modifier = { factor = 8 has_global_flag = gray_goo_crisis_active }
+		modifier = { factor = 8 has_global_flag = marauder_crisis_ongoing }
+		modifier = { factor = 0 is_egalitarian = yes }
+		modifier = { factor = 0.5 has_ai_personality = xenophobic_isolationists }
+		modifier = { factor = 0 has_ascension_perk = ap_become_the_crisis }
+		modifier = {
+			factor = 0
+			is_subject = yes
+			overlord = { 
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+		modifier = { factor = 10 any_country = { is_country_type = awakened_fallen_empire } }
+		modifier = {
+			factor = 0
+			any_country = { has_emperor_auth_trigger = yes }
+		}
+	}
+}
+
+# Unseat Custodian
+resolution_galacticreforms_unseat_custodian = {
+	icon = "GFX_resolution_end_custodianship"
+
+	resources = {
+		category = resolutions
+		cost = {
+			influence = @resolution_cost_t3
+		}
+	}
+	target = yes
+	harmful = yes
+	valid_target = {
+		is_galactic_custodian = yes
+	}
+
+	modifier = {
+	}
+
+	effect = {
+		custom_tooltip = resolution_galacticreforms_unseat_custodian_tooltip
+		hidden_effect = {
+			if = {
+				limit = { is_active_resolution = "resolution_custodian_perpetual_custodianship" }
+				cancel_resolution = "resolution_custodian_perpetual_custodianship"
+			}
+			country_event = { id = custodian.16 }
+		}
+	}
+
+	fail_effects = {
+	}
+
+	potential = {
+		NOT = { has_global_flag = fired_republic_event }
+		is_galactic_custodian = no
+	}
+
+	active = {
+		has_galactic_custodian = yes
+	}
+
+	ai_weight = {
+		weight = @resolution_weight_unpopular
+		modifier = {
+			factor = 1.6
+			is_xenophobe = yes
+			NOT = { any_neighbor_country = { is_crisis_faction = yes } }
+		}
+		modifier = {
+			factor = 0.2
+			any_country = { is_crisis_faction = yes }
+		}
+		modifier = {
+			factor = 0.2
+			any_playable_country = { has_been_declared_crisis = yes }
+		}
+		modifier = {
+			factor = 0.2
+			has_global_flag = gray_goo_crisis_active
+		}
+		modifier = {
+			factor = 0.2
+			has_global_flag = marauder_crisis_ongoing
+		}
+		modifier = {
+			factor = 0.2
+			any_neighbor_country = { is_crisis_faction = yes }
+		}
+		modifier = {
+			factor = 0.1
+			has_crisis_stage_2 = yes
+		}
+		modifier = {
+			factor = 0
+			has_crisis_stage_3 = yes
+		}
+		modifier = {
+			factor = 0
+			has_crisis_stage_4 = yes
+		}
+		modifier = {
+			factor = 0
+			any_playable_country = { has_country_flag = crisis_sphere_revealed }
+		}
+		modifier = {
+			factor = 20
+			has_ascension_perk = ap_become_the_crisis
+		}
+		modifier = {
+			factor = 0
+			is_galactic_custodian = yes
+		}
+		modifier = {
+			factor = 20
+			is_subject = yes
+			overlord = {
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+		modifier = {
+			factor = 20
+			is_rival = from
+		}
+		modifier = {
+			factor = 0.2
+			any_country = { is_country_type = awakened_fallen_empire }
+		}
+		modifier = {
+			factor = 0.2
+			has_global_flag = war_in_heaven_ongoing
+		}
+	}
+}
