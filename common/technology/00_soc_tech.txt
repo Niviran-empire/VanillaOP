@@ -1081,7 +1081,7 @@ tech_arcane_deciphering = {
 
 #New Worlds Protocol
 tech_colonization_1 = {
-	cost = @tier0cost1
+	#cost = @tier0cost1
 	area = society
 	tier = 0
 	category = { new_worlds }

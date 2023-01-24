@@ -1398,6 +1398,7 @@ country_event = {
 	trigger = { 
 		is_ai = yes 
 		OR = {
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 75 } }
 			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 75 } }
 			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 75 } }
 			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 75 } }
@@ -1432,6 +1433,35 @@ country_event = {
 						create_ship = { random_existing_design = battleship }
 					}
 					every_owned_ship = { limit = { is_ship_size = corvette } destroy_ship = this }
+				}
+			}
+		}
+		if = {
+			limit = { any_owned_fleet = { count_owned_ship = {
+				limit = { is_ship_size = frigate }
+				count > 75
+			} } }
+			every_owned_fleet = {
+				limit = { any_owned_ship = { is_ship_size = frigate } }
+				clear_variable = frigate_ai_var
+				export_trigger_value_to_variable = {
+					trigger = count_owned_ship
+					parameters = { limit = { is_ship_size = frigate } }
+					variable = frigate_ai_var
+				}
+				divide_variable = { which = frigate_ai_var value = 10 }
+				floor_variable = frigate_ai_var
+				if = {
+					limit = { check_variable = { which = frigate_ai_var value < 1 } }
+					set_variable = { which = frigate_ai_var value = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { which = frigate_ai_var value >= 1 } }
+					while = {
+						count = frigate_ai_var
+						create_ship = { random_existing_design = battleship }
+					}
+					every_owned_ship = { limit = { is_ship_size = frigate } destroy_ship = this }
 				}
 			}
 		}
