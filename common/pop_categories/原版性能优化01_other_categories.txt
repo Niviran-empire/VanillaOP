@@ -4,7 +4,7 @@ purge = {
 	clothes_texture_index = 2
 
 	assign_to_pop = {
-		has_pop_flag = VOP_atp_POP_enable_purge_pop_assign_to_pop
+		has_pop_flag = enable_purge_pop_assign_to_pop
 	}
 
 	weight = {
@@ -41,7 +41,7 @@ robot_servant = {
 	}
 
 	assign_to_pop = {
-		has_pop_flag = VOP_atp_POP_enable_robot_servant_pop_assign_to_pop
+		has_pop_flag = enable_robot_servant_pop_assign_to_pop
 	}
 	weight = {
 		weight = 15
@@ -527,7 +527,7 @@ precursor = {
 	demotion_time = 5
 
 	assign_to_pop = {
-		has_pop_flag = VOP_atp_POP_enable_precursor_pop_assign_to_pop
+		has_pop_flag = enable_precursor_pop_assign_to_pop
 	}
 	weight = {
 		weight = 100

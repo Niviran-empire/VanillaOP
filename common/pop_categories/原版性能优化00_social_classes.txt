@@ -8,7 +8,7 @@ ruler = {
 	demotion_time = 1800
 
 	should_apply_unemployment_penalties = {
-		has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
 		pop_happiness = -0.40
@@ -30,7 +30,7 @@ ruler = {
 		potential = {
 			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
 			is_unemployed = yes
-			has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
 			exists = owner
 			owner = { is_galactic_community_member = yes }
 		}
@@ -173,7 +173,7 @@ specialist = {
 	change_job_threshold = 1.25
 
 	should_apply_unemployment_penalties = {
-		has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
 		pop_happiness = -0.30
@@ -195,7 +195,7 @@ specialist = {
 		potential = {
 			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
 			is_unemployed = yes
-			has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
 			exists = owner
 			owner = { is_galactic_community_member = yes }
 		}
@@ -405,7 +405,7 @@ worker = {
 	# }
 
 	should_apply_unemployment_penalties = {
-		has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
 		pop_happiness = -0.20
@@ -427,7 +427,7 @@ worker = {
 		potential = {
 			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
 			is_unemployed = yes
-			has_pop_flag = VOP_atp_POP_enable_should_apply_unemployment_penalties_op
+			has_pop_flag = enable_should_apply_unemployment_penalties_op
 			owner = { is_galactic_community_member = yes }
 		}
 
@@ -436,7 +436,7 @@ worker = {
 
 	# This is called whenever a Pop is created, moved to a different planet, or gets a new owner
 	assign_to_pop = {
-		has_pop_flag = VOP_atp_POP_enable_work_pop_assign_to_pop
+		has_pop_flag = enable_work_pop_assign_to_pop
 	}
 	
 	weight = {

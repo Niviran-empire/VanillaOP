@@ -93,7 +93,7 @@ simple_drone = {
 
 	# This is called whenever a Pop is created, moved to a different planet, or gets a new owner
 	assign_to_pop = {
-		has_pop_flag = VOP_atp_POP_enable_simple_drone_assign_to_pop
+		has_pop_flag = enable_simple_drone_assign_to_pop
 	}
 	weight = {
 		weight = 1
