@@ -145,4 +145,8 @@
 
  str_assemble_tiyanki_pop:"$str_assemble_pop$"
  str_assemble_tiyanki_pop_desc:"$str_assemble_pop_desc$"
+
+ job_sub_clerk:"$job_clerk$"
+ job_sub_clerk_plural:"$job_clerk_plural$"
+ job_sub_clerk_desc:"$job_clerk_desc$"
  
