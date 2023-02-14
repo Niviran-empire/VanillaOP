@@ -1,23 +1,4 @@
 namespace = action
-# Recalculate strategic data for attack/defense ( chokepoints etc. )
-country_event = {
-	id = action.200
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { exists = from }
-	immediate = {
-		set_update_modifiers_batch = begin
-		from = { #So you don't have to survey a system you just lost again
-			set_surveyed = {
-				surveyor = root
-				surveyed = yes
-			}
-		}
-		run_ai_strategic_war_data = yes
-		set_update_modifiers_batch = end
-	}
-}
-
 event = {
 	id = action.85
 	hide_window = yes
@@ -177,6 +158,7 @@ event = {
 }
 
 
+# Planet conquered（war）
 planet_event = {
 	id = action.350
 	hide_window = yes
@@ -191,7 +173,6 @@ planet_event = {
 	}
 }
 
-# Land appropriation
 planet_event = {
 	id = action.42
 	hide_window = yes
@@ -203,7 +184,6 @@ planet_event = {
 	immediate = { add_modifier = { modifier = "land_appropriation" years = 5 } }
 }
 
-# Planet conquered
 planet_event = {
 	id = action.84
 	hide_window = yes

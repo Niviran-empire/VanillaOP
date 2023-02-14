@@ -65,54 +65,6 @@ planet_event = {
 		planet_crime <= 10
 	}
 
-	#change
-	# mean_time_to_happen = {
-	# 	months = 180
-
-	# 	modifier = {
-	# 		factor = 0.5
-	# 		count_owned_pop = {
-	# 			limit = {
-	# 				OR = {
-	# 					has_job = enforcer
-	# 					has_job = coordinator
-	# 					has_job = synapse_drone
-	# 					has_job = patrol_drone
-	# 				}
-	# 			}
-	# 			count > 2
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		factor = 0.5
-	# 		count_owned_pop = {
-	# 			limit = {
-	# 				OR = {
-	# 					has_job = enforcer
-	# 					has_job = coordinator
-	# 					has_job = synapse_drone
-	# 					has_job = patrol_drone
-	# 				}
-	# 			}
-	# 			count > 3
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		factor = 0.5
-	# 		count_owned_pop = {
-	# 			limit = {
-	# 				OR = {
-	# 					has_job = enforcer
-	# 					has_job = coordinator
-	# 					has_job = synapse_drone
-	# 					has_job = patrol_drone
-	# 				}
-	# 			}
-	# 			count > 4
-	# 		}
-	# 	}
-	# }
-
 	option = {
 		name = GOOD
 		if = {

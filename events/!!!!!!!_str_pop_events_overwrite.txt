@@ -10,48 +10,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# exists = owner
-		# is_exact_same_species = owner
-		# is_enslaved = no
-		# is_being_purged = no
-		# is_robot_pop = no
-		# happiness < 0.5
-		# NOR = {
-		# 	has_trait = trait_necrophage
-		# 	has_trait = trait_clone_soldier_infertile
-		# 	has_trait = trait_clone_soldier_infertile_full_potential
-		# }
-		# planet = {
-		# 	NOT = { is_planet_class = pc_habitat }
-		# 	habitability = { who = root value < 0.4 }
-		# 	is_capital = no
-		# 	has_owner = yes
-		# 	owner = {
-		# 		is_country_type = default
-		# 		has_technology = "tech_gene_tailoring"
-		# 		NOT = { has_country_flag = pop_modification }
-		# 		prev = {
-		# 			is_ideal_planet_class = {
-		# 				who = prev
-		# 				status = no
-		# 			}
-		# 			controller = { is_same_value = prevprev }
-		# 		}
-		# 	}
-		# 	count_owned_pop = {
-		# 		limit = {
-		# 			is_exact_same_species = ROOT
-		# 			is_enslaved = no
-		# 			is_being_purged = no
-		# 		}
-		# 		count > 3
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 200
-	# }
 
 	immediate = {
 
@@ -260,34 +219,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	exists = owner
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# NOR = {
-		# 	has_ethic = ethic_fanatic_pacifist
-		# 	has_ethic = ethic_pacifist
-		# 	has_ethic = ethic_xenophile
-		# 	has_ethic = ethic_fanatic_xenophile
-		# }
-		# planet = {
-		# 	any_owned_pop = {
-		# 		NOT = { is_pop = ROOT }
-		# 		is_exact_same_species = owner
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = modified_pop_1
@@ -320,29 +252,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	has_planet_flag = popmod_rising_tensions
-		# 	NOT = { has_planet_flag = popmod_fertility }
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# planet = {
-		# 	any_owned_pop = {
-		# 		NOT = { is_pop = ROOT }
-		# 		is_same_species = owner
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = modified_pop_1
@@ -376,28 +286,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	has_planet_flag = popmod_rising_tensions
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# planet = {
-		# 	any_owned_pop = {
-		# 		NOT = { is_pop = ROOT }
-		# 		is_same_species = owner
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = modified_pop_1
@@ -430,27 +319,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	has_planet_flag = popmod_rising_tensions
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = non_modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# planet = {
-		# 	any_owned_pop = {
-		# 		has_pop_flag = modified_pop_1
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = non_modified_pop_1
@@ -482,28 +351,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	has_planet_flag = popmod_rising_tensions
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# planet = {
-		# 	any_owned_pop = {
-		# 		NOT = { is_pop = ROOT }
-		# 		is_same_species = owner
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = modified_pop_1
@@ -536,32 +384,7 @@ pop_event = {
 
 	trigger = {
 		always = no
-		# planet = {
-		# 	has_planet_flag = pop_modification
-		# 	has_planet_flag = popmod_rising_tensions
-		# 	NOT = { has_planet_flag = popmod_strength }
-		# 	owner = { has_country_flag = pop_modification }
-		# }
-		# has_pop_flag = modified_pop_1
-		# is_enslaved = no
-		# is_being_purged = no
-		# planet = {
-		# 	any_owned_pop = {
-		# 		NOR = {
-		# 			is_pop = ROOT
-		# 			has_trait = trait_strong
-		# 		}
-		# 		is_same_species = owner
-		# 		is_enslaved = no
-		# 		is_being_purged = no
-		# 		is_robot_pop = no
-		# 	}
-		# }
 	}
-
-	# mean_time_to_happen = {
-	# 	months = 220
-	# }
 
 	immediate = {
 		save_event_target_as = modified_pop_1

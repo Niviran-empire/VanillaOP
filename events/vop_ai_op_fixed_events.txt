@@ -245,116 +245,69 @@ event = {
 				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4
 			}
 			if = {
-				limit = { is_ai = yes }
-				# MOD COMPATIBILITY
+				limit = {  
+					OR = { is_country_type = default is_country_type = enclave_mercenary }
+					is_ai = yes 
+				}
+				country_event = { id = vop_ai_fixed.9 days = 1 }
+			}
+			if = {
+				limit = { OR = { 
+					NOT = { has_ethic = ethic_gestalt_consciousness }
+					is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+					has_relic = r_zro_crystal
+				} }
+				remove_country_flag = pop_has_trait_psionic
+				remove_country_flag = pop_has_trait_latent_psionic
 				if = {
-					limit = { 
-						has_technology = tech_ascension_theory 
-						has_global_flag = tidy_tradition_active 
-					}
-					if = {
-						limit = { NOT = { is_variable_set = TT_var_ascension_breakthrough_times } }
-						set_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
-					}
-					else_if = {
-						limit = {
-							is_variable_set = TT_var_ascension_breakthrough_times
-							resource_stockpile_compare = {
-								resource = unity
-								value >= 25000
-								mult = TT_var_ascension_breakthrough_times
-							}
-						}
-						add_resource = {
-							unity = -5000
-							mult = TT_var_ascension_breakthrough_times
-						}
-						remove_modifier = TT_mod_ascension_breakthrough
-						remove_modifier = TT_mod_ascension_breakthrough_EACI
-						if = {#原版加凝聚力
-							limit = { NOT = { has_global_flag = cultural_overhaul_active } }
-							add_modifier = {
-								modifier = TT_mod_ascension_breakthrough
-								multiplier = TT_var_ascension_breakthrough_times
-								days = -1
-							}
-						}
-						else_if = {#无限思潮mod加行政管理
-							limit = { has_global_flag = cultural_overhaul_active }
-							add_modifier = {
-								modifier = TT_mod_ascension_breakthrough_EACI
-								multiplier = TT_var_ascension_breakthrough_times
-								days = -1
-							}
-						}
-						change_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
-					}
+					limit = { any_owned_pop = {
+						pop_has_trait = trait_psionic
+					} }
+					set_country_flag = pop_has_trait_psionic
+				}
+				if = {
+					limit = { any_owned_pop = {
+						pop_has_trait = trait_latent_psionic
+					} }
+					set_country_flag = pop_has_trait_latent_psionic
+				}
+			}
+			if = {
+				limit = { is_regular_empire = yes }
+				remove_country_flag = is_enslaved_var_more_than_9
+				remove_country_flag = is_enslaved_var_more_than_19
+				remove_country_flag = is_enslaved_var_more_than_29
+				remove_country_flag = is_enslaved_var_more_than_initial
+				if = {
+					limit = { count_owned_pop = {
+						limit = { is_enslaved = yes }
+						count > 29
+					} }
+					set_country_flag = is_enslaved_var_more_than_29
+					set_country_flag = is_enslaved_var_more_than_19
+					set_country_flag = is_enslaved_var_more_than_9
+				}
+				else_if = {
+					limit = { count_owned_pop = {
+						limit = { is_enslaved = yes }
+						count > 19
+					} }
+					set_country_flag = is_enslaved_var_more_than_19
+					set_country_flag = is_enslaved_var_more_than_9
+				}
+				else_if = {
+					limit = { count_owned_pop = {
+						limit = { is_enslaved = yes }
+						count > 9
+					} }
+					set_country_flag = is_enslaved_var_more_than_9
 				}
 				if = {
 					limit = { OR = {
-						is_country_type = default
-						is_country_type = enclave_mercenary
+						allows_slavery = no
+						NOT = { any_owned_pop = { is_enslaved = yes } }
 					} }
-					country_event = { id = vop_ai_fixed.9 days = 1 }
-				}
-				if = {
-					limit = { OR = { 
-						NOT = { has_ethic = ethic_gestalt_consciousness }
-						is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
-						has_relic = r_zro_crystal
-					} }
-					remove_country_flag = pop_has_trait_psionic
-					remove_country_flag = pop_has_trait_latent_psionic
-					if = {
-						limit = { any_owned_pop = {
-							pop_has_trait = trait_psionic
-						} }
-						set_country_flag = pop_has_trait_psionic
-					}
-					if = {
-						limit = { any_owned_pop = {
-							pop_has_trait = trait_latent_psionic
-						} }
-						set_country_flag = pop_has_trait_latent_psionic
-					}
-				}
-				if = {
-					limit = { is_regular_empire = yes }
-					remove_country_flag = is_enslaved_var_more_than_9
-					remove_country_flag = is_enslaved_var_more_than_19
-					remove_country_flag = is_enslaved_var_more_than_29
-					remove_country_flag = is_enslaved_var_more_than_initial
-					if = {
-						limit = { count_owned_pop = {
-							limit = { is_enslaved = yes }
-							count > 29
-						} }
-						set_country_flag = is_enslaved_var_more_than_29
-						set_country_flag = is_enslaved_var_more_than_19
-						set_country_flag = is_enslaved_var_more_than_9
-					}
-					else_if = {
-						limit = { count_owned_pop = {
-							limit = { is_enslaved = yes }
-							count > 19
-						} }
-						set_country_flag = is_enslaved_var_more_than_19
-						set_country_flag = is_enslaved_var_more_than_9
-					}
-					else_if = {
-						limit = { count_owned_pop = {
-							limit = { is_enslaved = yes }
-							count > 9
-						} }
-						set_country_flag = is_enslaved_var_more_than_9
-					}
-					if = {
-						limit = { OR = {
-							allows_slavery = no
-							NOT = { any_owned_pop = { is_enslaved = yes } }
-						} }
-						set_country_flag = is_enslaved_var_more_than_initial
-					}
+					set_country_flag = is_enslaved_var_more_than_initial
 				}
 			}
 		}
@@ -363,10 +316,7 @@ event = {
 			limit = { exists = owner }
 			planet_event = { id = crime.41 days = 1 }
 			planet_event = { id = vop_ai_fixed.7 days = 1 }
-			if = {
-				limit = { owner = { is_ai = yes } }
-				planet_event = { id = vop_ai_fixed.10 days = 1 }
-			}
+			if = { limit = { owner = { is_ai = yes } } planet_event = { id = vop_ai_fixed.10 days = 1 } }
 		}
 		# pop events
 		every_galaxy_pop = {
@@ -1537,16 +1487,36 @@ planet_event = {
 		if = {
 			limit = { 
 				num_pops > 150 
-				NOT = { has_modifier = str_pop_static } 
+				NOT = { has_modifier = planet_population_control } 
 			}
-			add_modifier = { modifier = str_pop_static }
+			add_modifier = { modifier = planet_population_control }
+		}
+		if = {
+			limit = { 
+				num_pops > 150 
+				NOT = { has_modifier = planet_population_control_gestalt } 
+			}
+			add_modifier = { modifier = planet_population_control_gestalt }
+		}
+		if = {
+			limit = { 
+				num_pops > 150 
+				NOT = { has_modifier = planet_robot_assembly_control } 
+			}
+			add_modifier = { modifier = planet_robot_assembly_control }
 		}
 		else_if = { 
 			limit = { 
 				num_pops <= 150 
-				has_modifier = str_pop_static 
+				OR = {
+					has_modifier = planet_population_control
+					has_modifier =  planet_population_control_gestalt
+					has_modifier = planet_robot_assembly_control
+				}
 			} 
-			remove_modifier = str_pop_static 
+			remove_modifier = planet_population_control
+			remove_modifier = planet_population_control_gestalt
+			remove_modifier =  planet_robot_assembly_control
 		}
 		set_update_modifiers_batch = end
 	}
@@ -1927,5 +1897,53 @@ country_event = {
 			}
 		}
 		set_update_modifiers_batch = end
+	}
+}
+
+country_event = {
+	id = vop_ai_fixed.23
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { is_ai = yes }
+
+	immediate = {
+		if = {
+			limit = { NOT = { is_variable_set = TT_var_ascension_breakthrough_times } }
+			set_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
+		}
+		else_if = {
+			limit = {
+				is_variable_set = TT_var_ascension_breakthrough_times
+				resource_stockpile_compare = {
+					resource = unity
+					value >= 25000
+					mult = TT_var_ascension_breakthrough_times
+				}
+			}
+			add_resource = {
+				unity = -5000
+				mult = TT_var_ascension_breakthrough_times
+			}
+			remove_modifier = TT_mod_ascension_breakthrough
+			remove_modifier = TT_mod_ascension_breakthrough_EACI
+			if = {#原版加凝聚力
+				limit = { NOT = { has_global_flag = cultural_overhaul_active } }
+				add_modifier = {
+					modifier = TT_mod_ascension_breakthrough
+					multiplier = TT_var_ascension_breakthrough_times
+					days = -1
+				}
+			}
+			else_if = {#无限思潮mod加行政管理
+				limit = { has_global_flag = cultural_overhaul_active }
+				add_modifier = {
+					modifier = TT_mod_ascension_breakthrough_EACI
+					multiplier = TT_var_ascension_breakthrough_times
+					days = -1
+				}
+			}
+			change_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
+		}
 	}
 }
