@@ -1348,11 +1348,11 @@ country_event = {
 	trigger = { 
 		is_ai = yes 
 		OR = {
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 50 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 50 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 50 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 50 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 25 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 0 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 0 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 0 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 0 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 0 } }
 		}
 		OR = {
 			has_existing_ship_design = battleship
@@ -1364,7 +1364,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = small_ship_fallen_empire }
-				count > 25
+				count > 0
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
@@ -1393,7 +1393,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = corvette }
-				count > 50
+				count > 0
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = corvette } }
@@ -1422,7 +1422,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = frigate }
-				count > 50
+				count > 0
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = frigate } }
@@ -1451,7 +1451,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = destroyer }
-				count > 50
+				count > 0
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = destroyer } }
@@ -1461,7 +1461,7 @@ country_event = {
 					parameters = { limit = { is_ship_size = destroyer } }
 					variable = destroyer_ai_var
 				}
-				divide_variable = { which = destroyer_ai_var value = 5 }
+				divide_variable = { which = destroyer_ai_var value = 8 }
 				floor_variable = destroyer_ai_var
 				if = {
 					limit = { check_variable = { which = destroyer_ai_var value < 1 } }
@@ -1480,7 +1480,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = cruiser }
-				count > 50
+				count > 0
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = cruiser } }
@@ -1490,7 +1490,7 @@ country_event = {
 					parameters = { limit = { is_ship_size = cruiser } }
 					variable = cruiser_ai_var
 				}
-				divide_variable = { which = cruiser_ai_var value = 2 }
+				divide_variable = { which = cruiser_ai_var value = 5 }
 				floor_variable = cruiser_ai_var
 				if = {
 					limit = { check_variable = { which = cruiser_ai_var value < 1 } }

@@ -44,7 +44,7 @@ alloys_expenditure_ships = {
 		}
 		modifier = {
 			factor = 0
-			used_naval_capacity_integer >= 15000
+			used_naval_capacity_integer >= 5000
 		}
 	}
 }
@@ -72,7 +72,7 @@ alloys_expenditure_ship_upgrades = {
 		}
 		modifier = {
 			factor = 2.5
-			used_naval_capacity_integer > 15000
+			used_naval_capacity_integer > 5000
 		}
 	}
 }
@@ -99,7 +99,7 @@ alloys_expenditure_starbases = {
 
 		modifier = {
 			factor = 2
-			used_naval_capacity_integer > 15000
+			used_naval_capacity_integer > 5000
 		}
 
 		# Reduce spending on claiming new systems if we have unclaimed planets
@@ -150,10 +150,20 @@ alloys_expenditure_megastructures = {
 	weight = {
 		weight = 0.4
 
+		modifier = {
+			factor = 0.02
+			years_passed > 50
+		}
+
+		modifier = {
+			factor = 0
+			years_passed > 75
+		}
+
 		# increase budget if megastructures are unfinished
 		modifier = {
 			factor = 3
-			used_naval_capacity_percent > 0.8
+			used_naval_capacity_percent > 5000
 			any_owned_megastructure = { can_be_upgraded = yes }
 		}
 	}
