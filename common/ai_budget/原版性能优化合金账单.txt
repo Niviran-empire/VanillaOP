@@ -1,0 +1,164 @@
+## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+## It is possible to have multiple entries with the same category and resource ##
+
+#################
+## Expenditure ##
+#################
+alloys_expenditure_ships = {
+	resource = alloys
+	type = expenditure
+	category = ships
+
+	potential = { is_nirvana_empire = no }
+
+	weight = {
+		weight = 0.6
+
+		# spend more alloys building ships while at war
+		modifier = {
+			factor = 2
+			OR = {
+				recently_lost_war = yes
+				is_at_war = yes
+			}
+		}
+
+		# If we want to colonize and are at peace then prio that
+		modifier = {
+			factor = 0.25
+			AND = {
+				ai_colonize_plans > 0
+				is_at_war = no
+			}
+		}
+
+		# spend less alloys on ships if over capacity
+		modifier = {
+			factor = 0.5
+			used_naval_capacity_percent >= 0.5
+		}
+
+		modifier = {
+			factor = 5
+			used_naval_capacity_percent < 1.0
+		}
+		modifier = {
+			factor = 0
+			used_naval_capacity_integer >= 15000
+		}
+	}
+}
+
+alloys_expenditure_ship_upgrades = {
+	resource = alloys
+	type = expenditure
+	category = ship_upgrades
+
+	potential = {
+		is_at_war = no
+		any_owned_fleet = {
+			controller = { is_same_value = root }
+			can_be_upgraded = yes
+		}
+	}
+
+	weight = {
+		weight = 0.2
+
+		# spend more on ship upgrades if at capacity
+		modifier = {
+			factor = 2.5
+			used_naval_capacity_percent >= 1.0
+		}
+		modifier = {
+			factor = 2.5
+			used_naval_capacity_integer > 15000
+		}
+	}
+}
+
+alloys_expenditure_starbases = {
+	resource = alloys
+	type = expenditure
+	category = starbases
+
+	potential = {
+		NOT = {
+			is_country_type = fallen_empire
+		}
+	}
+
+	weight = {
+		weight = 0.3
+
+		# spend more on starbase upgrades if at fleet cap
+		modifier = {
+			factor = 2
+			used_naval_capacity_percent >= 1.0
+		}
+
+		modifier = {
+			factor = 2
+			used_naval_capacity_integer > 15000
+		}
+
+		# Reduce spending on claiming new systems if we have unclaimed planets
+		modifier = {
+			factor = 0.25
+			ai_colonize_plans > 0
+		}
+		modifier = {
+			factor = 1.5
+			used_starbase_capacity_percent < 1
+			any_owned_starbase = {
+				can_be_upgraded = yes
+			}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				any_owned_starbase = {
+					NOT = { has_starbase_size = starbase_outpost }
+					can_be_upgraded = yes
+				}
+				any_owned_nonprimary_starbase = {
+					can_be_upgraded = yes
+				}
+			}
+		}
+	}
+	desired_max = {
+		base = 12000
+	}
+}
+
+alloys_expenditure_megastructures = {
+	resource = alloys
+	type = expenditure
+	category = megastructures
+
+	potential = {
+		is_nirvana_empire = no
+		is_country_type = default
+		OR = {
+			is_at_war = no
+			used_naval_capacity_percent > 0.95
+		}
+		can_build_megastructures = yes
+	}
+
+	weight = {
+		weight = 0.4
+
+		# increase budget if megastructures are unfinished
+		modifier = {
+			factor = 3
+			used_naval_capacity_percent > 0.8
+			any_owned_megastructure = { can_be_upgraded = yes }
+		}
+	}
+
+	desired_max = {
+		base = 20000 # current max alloy cost for a stage
+	}
+}

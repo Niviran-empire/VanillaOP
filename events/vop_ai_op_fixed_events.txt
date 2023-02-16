@@ -1348,19 +1348,52 @@ country_event = {
 	trigger = { 
 		is_ai = yes 
 		OR = {
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 75 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 75 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 75 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 75 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 50 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 50 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 50 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 50 } }
+			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 25 } }
 		}
-		has_existing_ship_design = battleship
+		OR = {
+			has_existing_ship_design = battleship
+			has_existing_ship_design = large_ship_fallen_empire
+		}
 	}
 	immediate = {
 		set_update_modifiers_batch = begin
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
+				limit = { is_ship_size = small_ship_fallen_empire }
+				count > 25
+			} } }
+			every_owned_fleet = {
+				limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
+				clear_variable = small_ship_fallen_empire_ai_var
+				export_trigger_value_to_variable = {
+					trigger = count_owned_ship
+					parameters = { limit = { is_ship_size = small_ship_fallen_empire } }
+					variable = small_ship_fallen_empire_ai_var
+				}
+				divide_variable = { which = small_ship_fallen_empire_ai_var value = 10 }
+				floor_variable = small_ship_fallen_empire_ai_var
+				if = {
+					limit = { check_variable = { which = small_ship_fallen_empire_ai_var value < 1 } }
+					set_variable = { which = small_ship_fallen_empire_ai_var value = 0 }
+				}
+				else_if = {
+					limit = { check_variable = { which = small_ship_fallen_empire_ai_var value >= 1 } }
+					while = {
+						count = small_ship_fallen_empire_ai_var
+						create_ship = { random_existing_design = large_ship_fallen_empire }
+					}
+					every_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } destroy_ship = this }
+				}
+			}
+		}
+		if = {
+			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = corvette }
-				count > 75
+				count > 50
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = corvette } }
@@ -1389,7 +1422,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = frigate }
-				count > 75
+				count > 50
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = frigate } }
@@ -1418,7 +1451,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = destroyer }
-				count > 75
+				count > 50
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = destroyer } }
@@ -1447,7 +1480,7 @@ country_event = {
 		if = {
 			limit = { any_owned_fleet = { count_owned_ship = {
 				limit = { is_ship_size = cruiser }
-				count > 75
+				count > 50
 			} } }
 			every_owned_fleet = {
 				limit = { any_owned_ship = { is_ship_size = cruiser } }
