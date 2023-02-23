@@ -122,37 +122,37 @@ clerk = {
 	}
 }
 
-sub_clerk = {
-	category = worker
-	condition_string = WORKER_JOB_TRIGGER
-	icon = "gfx/interface/icons/jobs/job_clerk.dds"
-	clothes_texture_index = 2
-	is_capped_by_modifier = no
+# sub_clerk = {
+# 	category = worker
+# 	condition_string = WORKER_JOB_TRIGGER
+# 	icon = "gfx/interface/icons/jobs/job_clerk.dds"
+# 	clothes_texture_index = 2
+# 	is_capped_by_modifier = no
 
-	possible_pre_triggers = { has_owner = yes }
+# 	possible_pre_triggers = { has_owner = yes }
 
-	possible = { exists = owner owner = { is_ai = yes } }
+# 	possible = { exists = owner owner = { is_ai = yes } }
 
-	resources = {
-		category = planet_jobs
-		produces = {
-			food = 0.5
-			alloys = 0.5
-			minerals = 0.5
-			consumer_goods = 0.5
-			energy = 0.5
-			unity = 0.5
-			engineering_research = 0.5
-			physics_research = 0.5
-			society_research = 0.5
-		}
-	}
+# 	resources = {
+# 		category = planet_jobs
+# 		produces = {
+# 			food = 0.5
+# 			alloys = 0.5
+# 			minerals = 0.5
+# 			consumer_goods = 0.5
+# 			energy = 0.5
+# 			unity = 0.5
+# 			engineering_research = 0.5
+# 			physics_research = 0.5
+# 			society_research = 0.5
+# 		}
+# 	}
 
-	weight = { 
-		weight = 10 
-		modifier = {
-			factor = 0.01
-			exists = owner owner = { is_ai_nirvana_empire = yes }
-		}
-	}
-}
+# 	weight = { 
+# 		weight = 10 
+# 		modifier = {
+# 			factor = 0.01
+# 			exists = owner owner = { is_ai_nirvana_empire = yes }
+# 		}
+# 	}
+# }
