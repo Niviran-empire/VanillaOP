@@ -497,14 +497,18 @@ event = {
 					set_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
 				}
 				if = {
-					limit = { 
-						is_unemployed = yes
-					}
+					limit = { is_unemployed = yes }
 					set_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
 				}
 				#Pop faction
 				if = {
-					limit = { owner = { count_pop_faction = { count > 0 } } }
+					limit = { owner = { OR = {
+						has_authority = auth_democratic
+						has_authority = auth_oligarchic
+						has_authority = auth_dictatorial
+						has_authority = auth_imperial
+						has_authority = auth_corporate
+					} } }
 					if = {
 						limit = {
 							OR = {
@@ -515,7 +519,6 @@ event = {
 							can_think = yes
 							NOT = { has_ethic = ethic_spiritualist }
 							NOT = { has_pop_flag = can_join_faction_op_1 }
-							owner = { any_pop_faction = { is_pop_faction_type = technologist } }
 						}
 						set_pop_flag = can_join_faction_op_1
 					}
@@ -525,15 +528,12 @@ event = {
 							can_think = yes
 							OR = {
 								NOT = { is_same_species = owner_species }
-								owner = {
-									OR = {
-										has_ethic = ethic_pacifist
-										has_ethic = ethic_fanatic_pacifist
-									}
-								}
+								owner = { OR = {
+									has_ethic = ethic_pacifist
+									has_ethic = ethic_fanatic_pacifist
+								} }
 							}
 							NOT = { has_pop_flag = can_join_faction_op_2 }
-							owner = { any_pop_faction = { is_pop_faction_type = isolationist } }
 						}
 						set_pop_flag = can_join_faction_op_2
 					}
@@ -548,7 +548,6 @@ event = {
 							can_think = yes
 							NOT = { has_pop_flag = manifesti_bored }
 							NOT = { has_pop_flag = can_join_faction_op_3 }
-							owner = { any_pop_faction = { is_pop_faction_type = manifesti } }
 						}
 						set_pop_flag = can_join_faction_op_3
 					}
@@ -564,7 +563,6 @@ event = {
 							}
 							is_same_species = owner_species
 							NOT = { has_pop_flag = can_join_faction_op_4 }
-							owner = { any_pop_faction = { is_pop_faction_type = supremacist } }
 						}
 						set_pop_flag = can_join_faction_op_4
 					}
@@ -573,12 +571,6 @@ event = {
 							is_shackled_robot = no
 							can_think = yes
 							NOT = { has_pop_flag = can_join_faction_op_5 }
-							owner = { any_pop_faction = { OR = {
-								is_pop_faction_type = xenoist
-								is_pop_faction_type = imperialist
-								is_pop_faction_type = progressive
-								is_pop_faction_type = prosperity
-							} } }
 						}
 						set_pop_flag = can_join_faction_op_5
 					}
@@ -589,7 +581,6 @@ event = {
 							is_being_purged = no
 							can_think = yes
 							NOT = { has_pop_flag = can_join_faction_op_6 }
-							owner = { any_pop_faction = { is_pop_faction_type = traditionalist } }
 						}
 						set_pop_flag = can_join_faction_op_6
 					}
@@ -597,7 +588,6 @@ event = {
 						limit = { 
 							can_think = yes
 							NOT = { has_pop_flag = can_join_faction_op_7 }
-							owner = { any_pop_faction = { is_pop_faction_type = totalitarian } }
 						}
 						set_pop_flag = can_join_faction_op_7
 					}
