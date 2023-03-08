@@ -5,7 +5,7 @@
 #
 ###############################
 namespace = vop_ai_fixed
-
+@noxious_happiness_penalty = -0.01
 event = {
 	id = vop_ai_fixed.5
 	hide_window = yes
@@ -205,15 +205,7 @@ event = {
 				}
 			}
 		}
-		# enclave 2065
-		random_country = {
-			limit = {
-				is_country_type = enclave_mercenary
-				any_owned_fleet = { is_leased = no }
-			}
-			country_event = { id = enclave.2070 }
-		}
-		# tech
+		# country_event tech
 		every_country = {
 			# warcb
 			remove_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
@@ -244,13 +236,198 @@ event = {
 				limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_4 = yes }
 				set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4
 			}
+			# enclave 2065
+			if = {
+				limit = {
+					is_country_type = enclave_mercenary
+					any_owned_fleet = { is_leased = no }
+				}
+				country_event = { id = enclave.2070 }
+			}
+			#SHIP OP
 			if = {
 				limit = {  
-					OR = { is_country_type = default is_country_type = enclave_mercenary }
 					is_ai = yes 
+					OR = {
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+						is_country_type = default
+						is_country_type = enclave_mercenary
+					}
+					OR = {
+						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 20 } }
+						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 20 } }
+						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 15 } }
+						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 10 } }
+						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 10 } }
+					}
+					OR = {
+						has_existing_ship_design = battleship
+						has_existing_ship_design = large_ship_fallen_empire
+					}
 				}
-				country_event = { id = vop_ai_fixed.9 days = 1 }
+				if = {
+					limit = {  
+						any_owned_fleet = { count_owned_ship = {
+							limit = { is_ship_size = small_ship_fallen_empire }
+							count > 10
+						} }
+						has_existing_ship_design = large_ship_fallen_empire
+					}
+					every_owned_fleet = {
+						limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
+						clear_variable = small_ship_fallen_empire_ai_var
+						export_trigger_value_to_variable = {
+							trigger = count_owned_ship
+							parameters = { limit = { is_ship_size = small_ship_fallen_empire } }
+							variable = small_ship_fallen_empire_ai_var
+						}
+						divide_variable = { which = small_ship_fallen_empire_ai_var value = 10 }
+						floor_variable = small_ship_fallen_empire_ai_var
+						if = {
+							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value < 1 } }
+							set_variable = { which = small_ship_fallen_empire_ai_var value = 0 }
+						}
+						else_if = {
+							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value >= 1 } }
+							while = {
+								count = small_ship_fallen_empire_ai_var
+								create_ship = { random_existing_design = large_ship_fallen_empire }
+							}
+							every_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } destroy_ship = this }
+						}
+					}
+				}
+				if = {
+					limit = {  
+						any_owned_fleet = { count_owned_ship = {
+							limit = { is_ship_size = corvette }
+							count > 20
+						} }
+						has_existing_ship_design = battleship
+					}
+					every_owned_fleet = {
+						limit = { any_owned_ship = { is_ship_size = corvette } }
+						clear_variable = corvette_ai_var
+						export_trigger_value_to_variable = {
+							trigger = count_owned_ship
+							parameters = { limit = { is_ship_size = corvette } }
+							variable = corvette_ai_var
+						}
+						divide_variable = { which = corvette_ai_var value = 20 }
+						floor_variable = corvette_ai_var
+						if = {
+							limit = { check_variable = { which = corvette_ai_var value < 1 } }
+							set_variable = { which = corvette_ai_var value = 0 }
+						}
+						else_if = {
+							limit = { check_variable = { which = corvette_ai_var value >= 1 } }
+							while = {
+								count = corvette_ai_var
+								create_ship = { random_existing_design = battleship }
+							}
+							every_owned_ship = { limit = { is_ship_size = corvette } destroy_ship = this }
+						}
+					}
+				}
+				if = {
+					limit = {  
+						any_owned_fleet = { count_owned_ship = {
+							limit = { is_ship_size = frigate }
+							count > 20
+						} }
+						has_existing_ship_design = battleship
+					}
+					every_owned_fleet = {
+						limit = { any_owned_ship = { is_ship_size = frigate } }
+						clear_variable = frigate_ai_var
+						export_trigger_value_to_variable = {
+							trigger = count_owned_ship
+							parameters = { limit = { is_ship_size = frigate } }
+							variable = frigate_ai_var
+						}
+						divide_variable = { which = frigate_ai_var value = 20 }
+						floor_variable = frigate_ai_var
+						if = {
+							limit = { check_variable = { which = frigate_ai_var value < 1 } }
+							set_variable = { which = frigate_ai_var value = 0 }
+						}
+						else_if = {
+							limit = { check_variable = { which = frigate_ai_var value >= 1 } }
+							while = {
+								count = frigate_ai_var
+								create_ship = { random_existing_design = battleship }
+							}
+							every_owned_ship = { limit = { is_ship_size = frigate } destroy_ship = this }
+						}
+					}
+				}
+				if = {
+					limit = {  
+						any_owned_fleet = { count_owned_ship = {
+							limit = { is_ship_size = destroyer }
+							count > 15
+						} }
+						has_existing_ship_design = battleship
+					}
+					every_owned_fleet = {
+						limit = { any_owned_ship = { is_ship_size = destroyer } }
+						clear_variable = destroyer_ai_var
+						export_trigger_value_to_variable = {
+							trigger = count_owned_ship
+							parameters = { limit = { is_ship_size = destroyer } }
+							variable = destroyer_ai_var
+						}
+						divide_variable = { which = destroyer_ai_var value = 15 }
+						floor_variable = destroyer_ai_var
+						if = {
+							limit = { check_variable = { which = destroyer_ai_var value < 1 } }
+							set_variable = { which = destroyer_ai_var value = 0 }
+						}
+						else_if = {
+							limit = { check_variable = { which = destroyer_ai_var value >= 1 } }
+							while = {
+								count = destroyer_ai_var
+								create_ship = { random_existing_design = battleship }
+							}
+							every_owned_ship = { limit = { is_ship_size = destroyer } destroy_ship = this }
+						}
+					}
+				}
+				if = {
+					limit = {  
+						any_owned_fleet = { count_owned_ship = {
+							limit = { is_ship_size = cruiser }
+							count > 10
+						} }
+						has_existing_ship_design = battleship
+					}
+					every_owned_fleet = {
+						limit = { any_owned_ship = { is_ship_size = cruiser } }
+						clear_variable = cruiser_ai_var
+						export_trigger_value_to_variable = {
+							trigger = count_owned_ship
+							parameters = { limit = { is_ship_size = cruiser } }
+							variable = cruiser_ai_var
+						}
+						divide_variable = { which = cruiser_ai_var value = 10 }
+						floor_variable = cruiser_ai_var
+						if = {
+							limit = { check_variable = { which = cruiser_ai_var value < 1 } }
+							set_variable = { which = cruiser_ai_var value = 0 }
+						}
+						else_if = {
+							limit = { check_variable = { which = cruiser_ai_var value >= 1 } }
+							while = {
+								count = cruiser_ai_var
+								create_ship = { random_existing_design = battleship }
+							}
+							every_owned_ship = { limit = { is_ship_size = cruiser } destroy_ship = this }
+						}
+					}
+				}
 			}
+			#TECH OP
 			if = {
 				limit = { OR = { 
 					NOT = { has_ethic = ethic_gestalt_consciousness }
@@ -310,13 +487,6 @@ event = {
 					set_country_flag = is_enslaved_var_more_than_initial
 				}
 			}
-		}
-		# planet events
-		every_galaxy_planet = {
-			limit = { exists = owner }
-			planet_event = { id = crime.41 days = 1 }
-			planet_event = { id = vop_ai_fixed.7 days = 1 }
-			if = { limit = { owner = { is_ai = yes } } planet_event = { id = vop_ai_fixed.10 days = 1 } }
 		}
 		# pop events
 		every_galaxy_pop = {
@@ -1163,393 +1333,157 @@ event = {
 				set_pop_flag = can_enable_can_generate_leader_from_pop
 			}
 		}
-		set_update_modifiers_batch = end
-	}
-}
-
-planet_event = {
-	id = vop_ai_fixed.7
-	hide_window = yes
-	is_triggered_only = yes
-	pre_triggers = { has_owner = yes }
-	trigger = { 
-		num_pops > 0
-		owner = { is_gestalt = no } 
-	}
-	immediate = {
-		set_update_modifiers_batch = begin
-		remove_modifier = str_trade_pop
-		remove_modifier = str_assemble_pop
-		remove_modifier = str_assemble_tiyanki_pop
-		#remove_modifier = str_pop_non_noxious_happiness_pop
-		remove_modifier = str_pop_planet_amenities_add
-		clear_variable = trade_value_add_op_1_var
-		clear_variable = trade_value_add_op_2_var
-		clear_variable = trade_value_add_op_3_var
-		clear_variable = trade_value_add_op_4_var
-		clear_variable = trade_value_add_op_5_var
-		clear_variable = trade_value_add_op_6_var
-		clear_variable = trade_value_add_op_8_var
-		clear_variable = trade_value_add_op_9_var
-		clear_variable = trade_value_add_op_10_var
-		clear_variable = trade_value_add_op_11_var
-		clear_variable = trade_value_add_op_12_var
-		clear_variable = trade_value_add_op_13_var
-		clear_variable = trade_value_add_op_14_var
-		clear_variable = clerk_has_planet_amenities_add_var
-		clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
-		clear_variable = trade_value_add_op_total
-		clear_variable = asseble_value_add_op_total
-		#clear_variable = noxious_happiness_penalty_value_add_op_total
-		clear_variable = planet_amenities_add_total
-		planet_event = { id = vop_ai_fixed.8 days = 1 }
-		set_update_modifiers_batch = end
-	}
-}
-
-@noxious_happiness_penalty = -0.01
-planet_event = {
-	id = vop_ai_fixed.8
-	hide_window = yes
-	is_triggered_only = yes
-	pre_triggers = { has_owner = yes }
-	trigger = { any_owned_pop = { OR = {
-		has_pop_flag = trade_value_add_op_1
-		has_pop_flag = trade_value_add_op_2
-		has_pop_flag = trade_value_add_op_3
-		has_pop_flag = trade_value_add_op_4
-		has_pop_flag = trade_value_add_op_5
-		has_pop_flag = trade_value_add_op_6
-		has_pop_flag = trade_value_add_op_8
-		has_pop_flag = trade_value_add_op_9
-		has_pop_flag = trade_value_add_op_10
-		has_pop_flag = trade_value_add_op_11
-		has_pop_flag = trade_value_add_op_12
-		has_pop_flag = trade_value_add_op_13
-		has_pop_flag = trade_value_add_op_14
-		has_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub
-		has_pop_flag = clerk_has_planet_amenities_add
-	} } }
-	immediate = {
-		set_update_modifiers_batch = begin
-		every_owned_pop = {
-			limit = { OR = {
-				has_pop_flag = trade_value_add_op_1
-				has_pop_flag = trade_value_add_op_2
-				has_pop_flag = trade_value_add_op_3
-				has_pop_flag = trade_value_add_op_4
-				has_pop_flag = trade_value_add_op_5
-				has_pop_flag = trade_value_add_op_6
-				has_pop_flag = trade_value_add_op_8
-				has_pop_flag = trade_value_add_op_9
-				has_pop_flag = trade_value_add_op_10
-				has_pop_flag = trade_value_add_op_11
-				has_pop_flag = trade_value_add_op_12
-				has_pop_flag = trade_value_add_op_13
-				has_pop_flag = trade_value_add_op_14
-				has_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub
-				has_pop_flag = clerk_has_planet_amenities_add
-			} }
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_1 }
-				root = { change_variable = { which = trade_value_add_op_1_var value = @trade_value_prosperity_gospel } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_2 }
-				root = { change_variable = { which = trade_value_add_op_2_var value = @trade_value_shared_burden } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_3 }
-				root = { change_variable = { which = trade_value_add_op_3_var value = @trade_value_very_high } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_4 }
-				root = { change_variable = { which = trade_value_add_op_4_var value = @trade_value_high } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_5 }
-				root = { change_variable = { which = trade_value_add_op_5_var value = @trade_value_normal } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_6 }
-				root = { change_variable = { which = trade_value_add_op_6_var value = @plantoid_budding_rate } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_8 }
-				root = { change_variable = { which = trade_value_add_op_8_var value = @noxious_happiness_penalty } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_9 }
-				root = { change_variable = { which = trade_value_add_op_9_var value = @trade_value_very_high } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_10 }
-				root = { change_variable = { which = trade_value_add_op_10_var value = @trade_value_high } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_11 }
-				root = { change_variable = { which = trade_value_add_op_11_var value = @trade_value_normal } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_12 }
-				root = { change_variable = { which = trade_value_add_op_12_var value = @trade_value_low } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_13 }
-				root = { change_variable = { which = trade_value_add_op_13_var value = @trade_value_very_high } }
-			}
-			if = {
-				limit = { has_pop_flag = trade_value_add_op_14 }
-				root = { change_variable = { which = trade_value_add_op_14_var value = @tiyanki_budding_rate } }
-			}
-			if = {
-				limit = { has_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub }
-				root = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
-			}
-			if = {
-				limit = { has_pop_flag = clerk_has_planet_amenities_add }
-				root = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
-			}
-		}
-		set_variable = { which = trade_value_add_op_total value = 0 }
-		set_variable = { which = asseble_value_add_op_total value = 0 }
-		set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
-		#set_variable = { which = noxious_happiness_penalty_value_add_op_total value = 0 }
-		set_variable = { which = planet_amenities_add_total value = 0 }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
-		change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
-		change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
-		change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
-		#change_variable = { which = noxious_happiness_penalty_value_add_op_total value = trade_value_add_op_8_var }
-		change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
-		change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
-		multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
-		add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
-		add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
-		add_modifier = { modifier = str_assemble_tiyanki_pop multiplier = asseble_tiyanki_value_add_op_total }
-		#add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = noxious_happiness_penalty_value_add_op_total }
-		add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
-		set_update_modifiers_batch = end
-	}
-}
-
-country_event = {
-	id = vop_ai_fixed.9
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { 
-		is_ai = yes 
-		OR = {
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 0 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 0 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 0 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 0 } }
-			any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 0 } }
-		}
-		OR = {
-			has_existing_ship_design = battleship
-			has_existing_ship_design = large_ship_fallen_empire
-		}
-	}
-	immediate = {
-		set_update_modifiers_batch = begin
-		if = {
-			limit = { any_owned_fleet = { count_owned_ship = {
-				limit = { is_ship_size = small_ship_fallen_empire }
-				count > 0
-			} } }
-			every_owned_fleet = {
-				limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
-				clear_variable = small_ship_fallen_empire_ai_var
-				export_trigger_value_to_variable = {
-					trigger = count_owned_ship
-					parameters = { limit = { is_ship_size = small_ship_fallen_empire } }
-					variable = small_ship_fallen_empire_ai_var
-				}
-				divide_variable = { which = small_ship_fallen_empire_ai_var value = 10 }
-				floor_variable = small_ship_fallen_empire_ai_var
+		# planet events
+		every_galaxy_planet = {
+			limit = { exists = owner }
+			planet_event = { id = crime.41 }
+			if = { 
+				limit = { owner = { is_ai = yes } } 
 				if = {
-					limit = { check_variable = { which = small_ship_fallen_empire_ai_var value < 1 } }
-					set_variable = { which = small_ship_fallen_empire_ai_var value = 0 }
-				}
-				else_if = {
-					limit = { check_variable = { which = small_ship_fallen_empire_ai_var value >= 1 } }
-					while = {
-						count = small_ship_fallen_empire_ai_var
-						create_ship = { random_existing_design = large_ship_fallen_empire }
+					limit = { 
+						num_pops > 150 
+						NOT = { has_modifier = planet_population_control } 
 					}
-					every_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } destroy_ship = this }
+					add_modifier = { modifier = planet_population_control }
 				}
-			}
-		}
-		if = {
-			limit = { any_owned_fleet = { count_owned_ship = {
-				limit = { is_ship_size = corvette }
-				count > 0
-			} } }
-			every_owned_fleet = {
-				limit = { any_owned_ship = { is_ship_size = corvette } }
-				clear_variable = corvette_ai_var
-				export_trigger_value_to_variable = {
-					trigger = count_owned_ship
-					parameters = { limit = { is_ship_size = corvette } }
-					variable = corvette_ai_var
-				}
-				divide_variable = { which = corvette_ai_var value = 10 }
-				floor_variable = corvette_ai_var
 				if = {
-					limit = { check_variable = { which = corvette_ai_var value < 1 } }
-					set_variable = { which = corvette_ai_var value = 0 }
-				}
-				else_if = {
-					limit = { check_variable = { which = corvette_ai_var value >= 1 } }
-					while = {
-						count = corvette_ai_var
-						create_ship = { random_existing_design = battleship }
+					limit = { 
+						num_pops > 150 
+						NOT = { has_modifier = planet_population_control_gestalt } 
 					}
-					every_owned_ship = { limit = { is_ship_size = corvette } destroy_ship = this }
+					add_modifier = { modifier = planet_population_control_gestalt }
 				}
-			}
-		}
-		if = {
-			limit = { any_owned_fleet = { count_owned_ship = {
-				limit = { is_ship_size = frigate }
-				count > 0
-			} } }
-			every_owned_fleet = {
-				limit = { any_owned_ship = { is_ship_size = frigate } }
-				clear_variable = frigate_ai_var
-				export_trigger_value_to_variable = {
-					trigger = count_owned_ship
-					parameters = { limit = { is_ship_size = frigate } }
-					variable = frigate_ai_var
-				}
-				divide_variable = { which = frigate_ai_var value = 10 }
-				floor_variable = frigate_ai_var
 				if = {
-					limit = { check_variable = { which = frigate_ai_var value < 1 } }
-					set_variable = { which = frigate_ai_var value = 0 }
-				}
-				else_if = {
-					limit = { check_variable = { which = frigate_ai_var value >= 1 } }
-					while = {
-						count = frigate_ai_var
-						create_ship = { random_existing_design = battleship }
+					limit = { 
+						num_pops > 150 
+						NOT = { has_modifier = planet_robot_assembly_control } 
 					}
-					every_owned_ship = { limit = { is_ship_size = frigate } destroy_ship = this }
+					add_modifier = { modifier = planet_robot_assembly_control }
+				}
+				else_if = { 
+					limit = { 
+						num_pops <= 150 
+						OR = {
+							has_modifier = planet_population_control
+							has_modifier =  planet_population_control_gestalt
+							has_modifier = planet_robot_assembly_control
+						}
+					} 
+					remove_modifier = planet_population_control
+					remove_modifier = planet_population_control_gestalt
+					remove_modifier =  planet_robot_assembly_control
 				}
 			}
-		}
-		if = {
-			limit = { any_owned_fleet = { count_owned_ship = {
-				limit = { is_ship_size = destroyer }
-				count > 0
-			} } }
-			every_owned_fleet = {
-				limit = { any_owned_ship = { is_ship_size = destroyer } }
-				clear_variable = destroyer_ai_var
-				export_trigger_value_to_variable = {
-					trigger = count_owned_ship
-					parameters = { limit = { is_ship_size = destroyer } }
-					variable = destroyer_ai_var
-				}
-				divide_variable = { which = destroyer_ai_var value = 8 }
-				floor_variable = destroyer_ai_var
-				if = {
-					limit = { check_variable = { which = destroyer_ai_var value < 1 } }
-					set_variable = { which = destroyer_ai_var value = 0 }
-				}
-				else_if = {
-					limit = { check_variable = { which = destroyer_ai_var value >= 1 } }
-					while = {
-						count = destroyer_ai_var
-						create_ship = { random_existing_design = battleship }
+			if = {
+				limit = {  num_pops > 0 owner = { is_gestalt = no } }
+				remove_modifier = str_trade_pop
+				remove_modifier = str_assemble_pop
+				remove_modifier = str_assemble_tiyanki_pop
+				remove_modifier = str_pop_planet_amenities_add
+				clear_variable = trade_value_add_op_1_var
+				clear_variable = trade_value_add_op_2_var
+				clear_variable = trade_value_add_op_3_var
+				clear_variable = trade_value_add_op_4_var
+				clear_variable = trade_value_add_op_5_var
+				clear_variable = trade_value_add_op_6_var
+				clear_variable = trade_value_add_op_8_var
+				clear_variable = trade_value_add_op_9_var
+				clear_variable = trade_value_add_op_10_var
+				clear_variable = trade_value_add_op_11_var
+				clear_variable = trade_value_add_op_12_var
+				clear_variable = trade_value_add_op_13_var
+				clear_variable = trade_value_add_op_14_var
+				clear_variable = clerk_has_planet_amenities_add_var
+				clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
+				clear_variable = trade_value_add_op_total
+				clear_variable = asseble_value_add_op_total
+				clear_variable = planet_amenities_add_total
+				every_owned_pop = {
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_1 }
+						prev = { change_variable = { which = trade_value_add_op_1_var value = @trade_value_prosperity_gospel } }
 					}
-					every_owned_ship = { limit = { is_ship_size = destroyer } destroy_ship = this }
-				}
-			}
-		}
-		if = {
-			limit = { any_owned_fleet = { count_owned_ship = {
-				limit = { is_ship_size = cruiser }
-				count > 0
-			} } }
-			every_owned_fleet = {
-				limit = { any_owned_ship = { is_ship_size = cruiser } }
-				clear_variable = cruiser_ai_var
-				export_trigger_value_to_variable = {
-					trigger = count_owned_ship
-					parameters = { limit = { is_ship_size = cruiser } }
-					variable = cruiser_ai_var
-				}
-				divide_variable = { which = cruiser_ai_var value = 5 }
-				floor_variable = cruiser_ai_var
-				if = {
-					limit = { check_variable = { which = cruiser_ai_var value < 1 } }
-					set_variable = { which = cruiser_ai_var value = 0 }
-				}
-				else_if = {
-					limit = { check_variable = { which = cruiser_ai_var value >= 1 } }
-					while = {
-						count = cruiser_ai_var
-						create_ship = { random_existing_design = battleship }
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_2 }
+						prev = { change_variable = { which = trade_value_add_op_2_var value = @trade_value_shared_burden } }
 					}
-					every_owned_ship = { limit = { is_ship_size = cruiser } destroy_ship = this }
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_3 }
+						prev = { change_variable = { which = trade_value_add_op_3_var value = @trade_value_very_high } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_4 }
+						prev = { change_variable = { which = trade_value_add_op_4_var value = @trade_value_high } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_5 }
+						prev = { change_variable = { which = trade_value_add_op_5_var value = @trade_value_normal } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_6 }
+						prev = { change_variable = { which = trade_value_add_op_6_var value = @plantoid_budding_rate } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_8 }
+						prev = { change_variable = { which = trade_value_add_op_8_var value = @noxious_happiness_penalty } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_9 }
+						prev = { change_variable = { which = trade_value_add_op_9_var value = @trade_value_very_high } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_10 }
+						prev = { change_variable = { which = trade_value_add_op_10_var value = @trade_value_high } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_11 }
+						prev = { change_variable = { which = trade_value_add_op_11_var value = @trade_value_normal } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_12 }
+						prev = { change_variable = { which = trade_value_add_op_12_var value = @trade_value_low } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_13 }
+						prev = { change_variable = { which = trade_value_add_op_13_var value = @trade_value_very_high } }
+					}
+					if = {
+						limit = { has_pop_flag = trade_value_add_op_14 }
+						prev = { change_variable = { which = trade_value_add_op_14_var value = @tiyanki_budding_rate } }
+					}
+					if = {
+						limit = { has_pop_flag = clerk_has_planet_amenities_add_ring_trade_hub }
+						prev = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
+					}
+					if = {
+						limit = { has_pop_flag = clerk_has_planet_amenities_add }
+						prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
+					}
 				}
+				set_variable = { which = trade_value_add_op_total value = 0 }
+				set_variable = { which = asseble_value_add_op_total value = 0 }
+				set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
+				set_variable = { which = planet_amenities_add_total value = 0 }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
+				change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
+				change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
+				change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
+				change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
+				change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
+				multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
+				add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
+				add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
+				add_modifier = { modifier = str_assemble_tiyanki_pop multiplier = asseble_tiyanki_value_add_op_total }
+				add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
 			}
-		}
-		set_update_modifiers_batch = end
-	}
-}
-
-planet_event = {
-	id = vop_ai_fixed.10
-	hide_window = yes
-	is_triggered_only = yes
-	pre_triggers = { is_ai = yes }
-	immediate = {
-		set_update_modifiers_batch = begin
-		if = {
-			limit = { 
-				num_pops > 150 
-				NOT = { has_modifier = planet_population_control } 
-			}
-			add_modifier = { modifier = planet_population_control }
-		}
-		if = {
-			limit = { 
-				num_pops > 150 
-				NOT = { has_modifier = planet_population_control_gestalt } 
-			}
-			add_modifier = { modifier = planet_population_control_gestalt }
-		}
-		if = {
-			limit = { 
-				num_pops > 150 
-				NOT = { has_modifier = planet_robot_assembly_control } 
-			}
-			add_modifier = { modifier = planet_robot_assembly_control }
-		}
-		else_if = { 
-			limit = { 
-				num_pops <= 150 
-				OR = {
-					has_modifier = planet_population_control
-					has_modifier =  planet_population_control_gestalt
-					has_modifier = planet_robot_assembly_control
-				}
-			} 
-			remove_modifier = planet_population_control
-			remove_modifier = planet_population_control_gestalt
-			remove_modifier =  planet_robot_assembly_control
 		}
 		set_update_modifiers_batch = end
 	}
