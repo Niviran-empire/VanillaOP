@@ -39,6 +39,11 @@ alloys_expenditure_ships = {
 		}
 
 		modifier = {
+			factor = 0
+			used_naval_capacity_percent >= 1
+		}
+
+		modifier = {
 			factor = 5
 			used_naval_capacity_percent < 1.0
 		}
