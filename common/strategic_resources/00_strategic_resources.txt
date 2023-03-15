@@ -1,9 +1,11 @@
 ### System Resources
 
-#allow_deficit = no #default yes // only implemented for tech resources
+#allow_deficit = no		# default yes // only implemented for tech resources
+#market_amount = 100	# default -1, if non-positive, resource cannot be traded in the Market
+#market_price = 100		# default -1, if non-positive, resource cannot be traded in the Market
 
 time = {
-#	deficit_situation = total_panic		#TODO TODO: avoid at all costs
+	# Must be present here, but really: do not add a Deficit situation for Time.
 }
 
 
@@ -14,8 +16,7 @@ energy = {
 	category = basic
 	max = 50000
 
-	deficit_modifier = energy_deficit
-	#deficit_situation = situation_energy_deficit
+	deficit_situation = situation_energy_deficit
 
 	ai_weight = {
 		weight = 1.5
@@ -33,8 +34,7 @@ minerals = {
 	market_price = 100
 	max = 15000
 
-	deficit_modifier = minerals_deficit
-	#deficit_situation = situation_mineral_deficit
+	deficit_situation = situation_mineral_deficit
 
 	ai_weight = {
 		weight = 1
@@ -70,6 +70,7 @@ physics_research = {
 	ai_weight = {
 		weight = 1
 	}
+	intangible_weight = 0.33
 }
 
 society_research = {
@@ -78,6 +79,7 @@ society_research = {
 	ai_weight = {
 		weight = 1
 	}
+	intangible_weight = 0.33
 }
 
 engineering_research = {
@@ -86,6 +88,7 @@ engineering_research = {
 	ai_weight = {
 		weight = 1
 	}
+	intangible_weight = 0.33
 }
 
 influence = {
@@ -121,8 +124,7 @@ consumer_goods = {
 	market_price = 100
 	max = 15000
 
-	deficit_modifier = consumer_goods_deficit
-	#deficit_situation = situation_consumer_goods_deficit
+	deficit_situation = situation_consumer_goods_deficit
 
 	ai_weight = {
 		weight = 5
@@ -301,13 +303,25 @@ nanites = {
 	}
 }
 
+#############################
+### Exceptional Materials ###
+#############################
+
 # Minor Artifacts
 minor_artifacts = {
-	tradable = no
-	category = other
+	tradable = yes
+	category = rare
+	max = 3000
+	fixed_max_amount = yes
+
+	visibility_prerequisite = { has_ancrel = yes }
 
 	ai_weight = {
-		weight = 1
+		weight = 100
+	}
+
+	ai_wants = {
+		base = 5
 	}
 }
 
