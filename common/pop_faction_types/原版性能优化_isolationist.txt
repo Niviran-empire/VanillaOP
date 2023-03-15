@@ -92,26 +92,16 @@ isolationist = {
 		}
 	}
 
-	demand = {
-		title = "FACTION_OUTRAGED_GC"
-		unfulfilled_title = "FACTION_OUTRAGED_GC"
-		desc = "FACTION_OUTRAGED_GC_DESC"
+	# DEMAND: Faction Outraged (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_outraged
+		FLAG = galcom_resolution_passed_anti_isolationist
+	}
 
-		fulfilled_effect = -20
-		unfulfilled_effect = -0.001
-
-		potential = {
-			exists = owner
-			owner = {
-				has_country_flag = faction_xenophobe_isolationist_outraged_gc
-			}
-		}
-
-		trigger = {
-			owner = {
-				has_country_flag = faction_xenophobe_isolationist_outraged_gc
-			}
-		}
+	# DEMAND: Faction Pleased (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_pleased
+		FLAG = galcom_resolution_passed_pro_isolationist
 	}
 
 	demand = { # "ISOLATIONIST_PHILOSOPHY"
@@ -158,10 +148,7 @@ isolationist = {
 
 		trigger = {
 			owner = {
-				NOR = {
-					any_war = { is_war_participant = { who = prev side = attackers } }
-					has_country_flag = entered_war_as_defender
-				}
+				NOT = { any_war = { is_war_participant = { who = prev side = attackers } } }
 			}
 		}
 	}
@@ -207,18 +194,14 @@ isolationist = {
 			owner = {
 				NOR = {
 					num_migration_pacts > 0 #doesn't check all the stuff below, but early exclude if it is true
+					has_policy_flag = refugees_allowed
 					any_relation = {
 						has_communications = root.owner
 						OR = {
 							has_diplo_migration_treaty = root.owner
-							root = {
-								owner = {
-									has_diplo_migration_treaty = prevprev
-								}
-							}
+							root.owner = { has_diplo_migration_treaty = prevprev }
 						}
 					}
-					has_policy_flag = refugees_allowed
 				}
 			}
 		}

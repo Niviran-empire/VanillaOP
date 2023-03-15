@@ -74,26 +74,16 @@ imperialist = {
 		}
 	}
 
-	demand = {
-		title = "FACTION_OUTRAGED_GC"
-		unfulfilled_title = "FACTION_OUTRAGED_GC"
-		desc = "FACTION_OUTRAGED_GC_DESC"
+	# DEMAND: Faction Outraged (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_outraged
+		FLAG = galcom_resolution_passed_anti_imperialist
+	}
 
-		fulfilled_effect = -20
-		unfulfilled_effect = -0.001
-
-		potential = {
-			exists = owner
-			owner = {
-				has_country_flag = faction_militarist_outraged_gc
-			}
-		}
-
-		trigger = {
-			owner = {
-				has_country_flag = faction_militarist_outraged_gc
-			}
-		}
+	# DEMAND: Faction Pleased (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_pleased
+		FLAG = galcom_resolution_passed_pro_imperialist
 	}
 
 	demand = {
@@ -278,6 +268,68 @@ imperialist = {
 	}
 
 	demand = {
+		title = IMPERIALIST_FEDERATION
+		unfulfilled_title = IMPERIALIST_FEDERATION_NOT_MILITARIST
+		desc = "IMPERIALIST_FEDERATION_DESC"
+
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+
+		potential = {
+			exists = owner.federation
+			has_federations_dlc = yes
+		}
+
+		trigger = {
+			owner.federation = { has_federation_type = military_federation }
+		}
+	}
+
+	demand = {
+		title = IMPERIALIST_FLEET_USAGE_HIGH
+		unfulfilled_title = IMPERIALIST_FLEET_USAGE_NOT_HIGH
+		desc = IMPERIALIST_FLEET_USAGE_HIGH_DESC
+
+		fulfilled_effect = 5
+		unfulfilled_effect = -0.001
+
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					used_naval_capacity_percent > 0.75
+					is_at_war = yes
+				}
+			}
+		}
+
+		trigger = {
+			owner = { used_naval_capacity_percent > 1 }
+		}
+	}
+
+	demand = {
+		title = IMPERIALIST_FLEET_USAGE_LOW
+		unfulfilled_title = IMPERIALIST_FLEET_USAGE_NOT_LOW
+		desc = IMPERIALIST_FLEET_USAGE_LOW_DESC
+
+		fulfilled_effect = 0.001
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = {
+				used_naval_capacity_percent <= 0.75
+				is_at_war = no
+			}
+		}
+
+		trigger = {
+			owner = { used_naval_capacity_percent > 0.75 }
+		}
+	}
+
+	demand = {
 		title = "IMPERIALIST_UNDERLING"
 		unfulfilled_title = "IMPERIALIST_NOT_UNDERLING"
 		desc = "IMPERIALIST_UNDERLING_DESC"
@@ -313,7 +365,6 @@ imperialist = {
 			owner = {
 				has_overlord_dlc = yes
 				is_subject = yes
-				is_specialist_subject_type = { TYPE = bulwark }
 			}
 		}
 
@@ -332,19 +383,15 @@ imperialist = {
 		unfulfilled_title = "IMPRERIALIST_NOT_SLAYER"
 		desc = "IMPERIALIST_SLAYER_DESC"
 
-		fulfilled_effect = 10
+		fulfilled_effect = 5
 		unfulfilled_effect = -0.001
 
 		potential = {
 			exists = owner
 			owner = {
-				host_has_dlc = "Leviathans Story Pack"
 				OR = {
 					has_country_flag = killed_guardian
-					any_country = {
-						is_guardian_country = yes
-						has_communications = prev
-					}
+					any_relation = { is_guardian_country = yes }
 				}
 			}
 		}

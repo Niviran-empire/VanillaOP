@@ -91,26 +91,16 @@ prosperity = {
 		}
 	}
 
-	demand = {
-		title = "FACTION_OUTRAGED_GC"
-		unfulfilled_title = "FACTION_OUTRAGED_GC"
-		desc = "FACTION_OUTRAGED_GC_DESC"
+	# DEMAND: Faction Outraged (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_outraged
+		FLAG = galcom_resolution_passed_anti_prosperity
+	}
 
-		fulfilled_effect = -20
-		unfulfilled_effect = -0.001
-
-		potential = {
-			exists = owner
-			owner = {
-				has_country_flag = faction_pacifist_outraged_gc
-			}
-		}
-
-		trigger = {
-			owner = {
-				has_country_flag = faction_pacifist_outraged_gc
-			}
-		}
+	# DEMAND: Faction Pleased (by a GalCom Resolution)
+	inline_script = {
+		script = pop_faction_types/demand_faction_pleased
+		FLAG = galcom_resolution_passed_pro_prosperity
 	}
 
 	demand = {
@@ -205,7 +195,7 @@ prosperity = {
 
 	demand = {
 		title = "PROSPERITY_PEACEFUL_APPLICATIONS"
-		unfulfilled_title = "PROSPERITY_NO_PEACEFUL_APPLICATIONS_APPLICATIONS"
+		unfulfilled_title = "PROSPERITY_NO_PEACEFUL_APPLICATIONS"
 		desc = "PROSPERITY_PEACEFUL_APPLICATIONS_DESC"
 
 		fulfilled_effect = 5
@@ -289,6 +279,29 @@ prosperity = {
 		trigger = {
 			owner = {
 				has_policy_flag = diplo_stance_mercantile
+			}
+		}
+	}
+
+	demand = {
+		title = PROSPERITY_FEDERATION
+		unfulfilled_title = PROSPERITY_FEDERATION_NOT_MILITARIST
+		desc = PROSPERITY_FEDERATION_DESC
+
+		unfulfilled_effect = -10
+		fulfilled_effect = 0.001
+
+		potential = {
+			exists = owner.federation
+			owner.federation = { has_federation_type = military_federation }
+		}
+
+		trigger = {
+			OR = {
+				NOT = { exists = owner.federation }
+				owner.federation = {
+					NOT = { has_federation_type = military_federation }
+				}
 			}
 		}
 	}
