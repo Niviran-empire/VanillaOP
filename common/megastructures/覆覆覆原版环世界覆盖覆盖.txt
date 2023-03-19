@@ -69,8 +69,8 @@ ring_world_1 = {
 
 		custom_tooltip = {
 			fail_text = "requires_no_existing_megastructure"
-			#NOT = { has_any_megastructure = yes }
-			has_no_non_gate_megastructure = yes
+			NOT = { has_any_megastructure = yes }
+			#has_no_non_gate_megastructure = yes
 		}
 	}
 
@@ -93,12 +93,7 @@ ring_world_1 = {
 
 	ai_weight = {
 		factor = 10
-
-		modifier = {
-			factor = 0
-			solar_system = { exists = owner owner = { is_nirvana_empire = no } }
-		}
-
+		
 		modifier = {
 			factor = 3
 			solar_system = { exists = owner owner = { is_nirvana_empire = yes } }
@@ -117,13 +112,9 @@ ring_world_1 = {
 						is_nirvana_empire_council = yes  
 						event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_council value > 3 } }
 					}
+					is_nirvana_empire = no
 				} }
 			}
-		}
-		
-		modifier = {
-			factor = 0.1
-			any_neighbor_system = { exists = owner NOT = { owner = { is_same_value = from } } }
 		}
 	}
 

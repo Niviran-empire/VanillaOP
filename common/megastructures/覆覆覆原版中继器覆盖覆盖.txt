@@ -81,39 +81,7 @@ hyper_relay = {
 	# root = system
 	# from = country
 	ai_weight = {
-		factor = 5
-		
-		modifier = { factor = 0 from = { is_ai = yes } }
-
-		modifier = { factor = 0 exists = owner }
-
-		modifier = { factor = 3 is_capital_system = yes }
-
-		modifier = {
-			factor = 1.5
-			any_neighbor_system = {
-				OR = {
-					has_megastructure = hyper_relay
-					has_megastructure = hyper_relay_restored
-				}
-			}
-		}
-
-		modifier = {
-			factor = 1.5
-			any_system_planet = { is_colony = yes }
-		}
-
-		# non-gestalt empires will prefer building along trade routes, since those connect colonies to the capital
-		# this may occasionally catch other empire's trade routes that clip our territory, but pirates will eventually appear there so it's fine
-		modifier = {
-			factor = 0.2
-			from = {
-				is_gestalt = no
-			}
-			is_capital_system = no
-			has_trade_route = no
-		}
+		factor = 0
 	}
 
 	bypass_type = relay_bypass
