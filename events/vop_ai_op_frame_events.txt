@@ -1,0 +1,189 @@
+namespace = vop_framework
+
+#VOP_on_monthly_pulse
+event = {
+	id = vop_framework.1
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_monthly_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_yearly_pulse
+event = {
+	id = vop_framework.2
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_yearly_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_bi_yearly_pulse
+event = {
+	id = vop_framework.3
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_bi_yearly_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_five_year_pulse
+event = {
+	id = vop_framework.4
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_five_year_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_decade_pulse
+event = {
+	id = vop_framework.5
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_decade_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_mid_game_pulse
+event = {
+	id = vop_framework.6
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_mid_game_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_late_game_pulse
+event = {
+	id = vop_framework.7
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_late_game_pulse }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_monthly_pulse_country
+country_event = {
+	id = vop_framework.8
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_monthly_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_yearly_pulse_country
+country_event = {
+	id = vop_framework.9
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_yearly_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_bi_yearly_pulse_country
+country_event = {
+	id = vop_framework.10
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_bi_yearly_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_five_year_pulse_country
+country_event = {
+	id = vop_framework.11
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_five_year_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_decade_pulse_country
+country_event = {
+	id = vop_framework.12
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_decade_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_mid_game_pulse_country
+country_event = {
+	id = vop_framework.13
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_mid_game_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_late_game_pulse_country
+country_event = {
+	id = vop_framework.14
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_late_game_pulse_country }
+		set_update_modifiers_batch = end
+	}
+}
+
+#VOP_on_tech_increased
+country_event = {
+	id = vop_framework.15
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = this }
+	immediate = {
+		set_update_modifiers_batch = begin
+		fire_on_action = { on_action = VOP_on_tech_increased }
+		set_update_modifiers_batch = end
+	}
+}
