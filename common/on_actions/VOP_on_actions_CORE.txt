@@ -1,0 +1,27 @@
+on_game_start = {
+	events = {
+		vop_ai_fixed.5
+	}
+}
+
+on_single_player_save_game_load = {
+	events = {
+		vop_ai_fixed.5
+	}
+}
+
+# No scope, like on_game_start
+VOP_on_five_year_pulse = {
+	events = {
+		vop_ai_fixed.5
+	}
+}
+
+# this = country
+VOP_on_five_year_pulse_country = {
+	events = {
+		vop_ai_fixed.23		#_[AP]
+		vop_ai_fixed.21		#_[GE]
+		vop_ai_fixed.22		#_[sop]
+	}
+}

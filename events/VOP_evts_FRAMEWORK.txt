@@ -1,8 +1,16 @@
-namespace = vop_framework
+namespace = VOP_evt_FRAMEWORK
+#	VOP全局
+#	VOP国家
+#	VOP其他
 
-#VOP_on_monthly_pulse
+
+
+
+###	VOP全局		#########################################################################################################
+
+#	VOP_on_monthly_pulse
 event = {
-	id = vop_framework.1
+	id = VOP_evt_FRAMEWORK.1
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -12,9 +20,9 @@ event = {
 	}
 }
 
-#VOP_on_yearly_pulse
+#	VOP_on_yearly_pulse
 event = {
-	id = vop_framework.2
+	id = VOP_evt_FRAMEWORK.2
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -24,9 +32,9 @@ event = {
 	}
 }
 
-#VOP_on_bi_yearly_pulse
+#	VOP_on_bi_yearly_pulse
 event = {
-	id = vop_framework.3
+	id = VOP_evt_FRAMEWORK.3
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -36,9 +44,9 @@ event = {
 	}
 }
 
-#VOP_on_five_year_pulse
+#	VOP_on_five_year_pulse
 event = {
-	id = vop_framework.4
+	id = VOP_evt_FRAMEWORK.4
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -48,9 +56,9 @@ event = {
 	}
 }
 
-#VOP_on_decade_pulse
+#	VOP_on_decade_pulse
 event = {
-	id = vop_framework.5
+	id = VOP_evt_FRAMEWORK.5
 	hide_window = yes
 	is_triggered_only = yes
 	immediate = {
@@ -60,33 +68,38 @@ event = {
 	}
 }
 
-#VOP_on_mid_game_pulse
-event = {
-	id = vop_framework.6
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_update_modifiers_batch = begin
-		fire_on_action = { on_action = VOP_on_mid_game_pulse }
-		set_update_modifiers_batch = end
-	}
-}
+# #	VOP_on_mid_game_pulse
+# event = {
+# 	id = VOP_evt_FRAMEWORK.6
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		set_update_modifiers_batch = begin
+# 		fire_on_action = { on_action = VOP_on_mid_game_pulse }
+# 		set_update_modifiers_batch = end
+# 	}
+# }
 
-#VOP_on_late_game_pulse
-event = {
-	id = vop_framework.7
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = {
-		set_update_modifiers_batch = begin
-		fire_on_action = { on_action = VOP_on_late_game_pulse }
-		set_update_modifiers_batch = end
-	}
-}
+# #	VOP_on_late_game_pulse
+# event = {
+# 	id = VOP_evt_FRAMEWORK.7
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = {
+# 		set_update_modifiers_batch = begin
+# 		fire_on_action = { on_action = VOP_on_late_game_pulse }
+# 		set_update_modifiers_batch = end
+# 	}
+# }
 
-#VOP_on_monthly_pulse_country
+
+
+
+###	VOP国家		#########################################################################################################
+
+#	VOP_on_monthly_pulse_country
 country_event = {
-	id = vop_framework.8
+	id = VOP_evt_FRAMEWORK.8
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
@@ -97,9 +110,9 @@ country_event = {
 	}
 }
 
-#VOP_on_yearly_pulse_country
+#	VOP_on_yearly_pulse_country
 country_event = {
-	id = vop_framework.9
+	id = VOP_evt_FRAMEWORK.9
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
@@ -110,9 +123,9 @@ country_event = {
 	}
 }
 
-#VOP_on_bi_yearly_pulse_country
+#	VOP_on_bi_yearly_pulse_country
 country_event = {
-	id = vop_framework.10
+	id = VOP_evt_FRAMEWORK.10
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
@@ -123,9 +136,9 @@ country_event = {
 	}
 }
 
-#VOP_on_five_year_pulse_country
+#	VOP_on_five_year_pulse_country
 country_event = {
-	id = vop_framework.11
+	id = VOP_evt_FRAMEWORK.11
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
@@ -136,9 +149,9 @@ country_event = {
 	}
 }
 
-#VOP_on_decade_pulse_country
+#	VOP_on_decade_pulse_country
 country_event = {
-	id = vop_framework.12
+	id = VOP_evt_FRAMEWORK.12
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
@@ -149,35 +162,40 @@ country_event = {
 	}
 }
 
-#VOP_on_mid_game_pulse_country
-country_event = {
-	id = vop_framework.13
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { exists = this }
-	immediate = {
-		set_update_modifiers_batch = begin
-		fire_on_action = { on_action = VOP_on_mid_game_pulse_country }
-		set_update_modifiers_batch = end
-	}
-}
+# #	VOP_on_mid_game_pulse_country
+# country_event = {
+# 	id = VOP_evt_FRAMEWORK.13
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = { exists = this }
+# 	immediate = {
+# 		set_update_modifiers_batch = begin
+# 		fire_on_action = { on_action = VOP_on_mid_game_pulse_country }
+# 		set_update_modifiers_batch = end
+# 	}
+# }
 
-#VOP_on_late_game_pulse_country
-country_event = {
-	id = vop_framework.14
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { exists = this }
-	immediate = {
-		set_update_modifiers_batch = begin
-		fire_on_action = { on_action = VOP_on_late_game_pulse_country }
-		set_update_modifiers_batch = end
-	}
-}
+# #	VOP_on_late_game_pulse_country
+# country_event = {
+# 	id = VOP_evt_FRAMEWORK.14
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	trigger = { exists = this }
+# 	immediate = {
+# 		set_update_modifiers_batch = begin
+# 		fire_on_action = { on_action = VOP_on_late_game_pulse_country }
+# 		set_update_modifiers_batch = end
+# 	}
+# }
 
-#VOP_on_tech_increased
+
+
+
+###	VOP其他		#########################################################################################################
+
+#	VOP_on_tech_increased
 country_event = {
-	id = vop_framework.15
+	id = VOP_evt_FRAMEWORK.15
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { exists = this }
