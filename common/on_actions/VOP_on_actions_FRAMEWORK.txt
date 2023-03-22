@@ -1,6 +1,5 @@
 #	VOP全局
 #	VOP国家
-#	VOP其他
 
 
 
@@ -37,19 +36,6 @@ on_decade_pulse = {
 		VOP_evt_FRAMEWORK.5
 	}
 }
-
-# # No scope, like on_game_start
-# on_mid_game_pulse = {
-# 	events = {
-# 		VOP_evt_FRAMEWORK.6
-# 	}
-# }
-# # No scope, like on_game_start
-# on_late_game_pulse = {
-# 	events = {
-# 		VOP_evt_FRAMEWORK.7
-# 	}
-# }
 
 
 
@@ -88,28 +74,3 @@ on_decade_pulse_country = {
 	}
 }
 
-# # this = country
-# on_mid_game_pulse_country = {
-# 	events = {
-# 		VOP_evt_FRAMEWORK.13
-# 	}
-# }
-# # this = country
-# on_late_game_pulse_country = {
-# 	events = {
-# 		VOP_evt_FRAMEWORK.14
-# 	}
-# }
-
-
-
-
-###	VOP其他	#########################################################################################################
-
-# A country has increased the level of a tech, use last_increased_tech trigger to check tech and level.
-# This = Country
-on_tech_increased = {
-	events = {
-		VOP_evt_FRAMEWORK.15
-	}
-}
