@@ -12,10 +12,10 @@ setup_scenario = {
 	marauder_empire_default = 1
 	marauder_empire_max = 2				#1
 	advanced_empire_default = 0
-	colonizable_planet_odds = 1.0
-	primitive_odds = 1.0
-	crisis_strength = 0.5
-	extra_crisis_strength = { 10 25 50 75 100 125 150 200 250 }	  
+	colonizable_planet_odds = 0.25
+	primitive_odds = 0
+	crisis_strength = 250
+	extra_crisis_strength = { 10 25 50 75 100 125 150 200 250 2500 }
 	
 	cluster_count = {
 		method = one_every_x_empire
