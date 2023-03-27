@@ -21,7 +21,12 @@ VOP_on_five_year_pulse = {
 VOP_on_five_year_pulse_country = {
 	events = {
 		vop_ai_fixed.23		#_[AP]
-		vop_ai_fixed.21		#_[GE]
+	}
+}
+
+VOP_on_tech_increased = {
+	events = {
+		vop_ai_fixed.21		#_[sop]
 		vop_ai_fixed.22		#_[sop]
 	}
 }
