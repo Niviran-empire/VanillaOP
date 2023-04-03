@@ -71,7 +71,7 @@ VOP_on_monthly_pulse = {
 		graygoo.183
 		graygoo.510
 		distar.10955
-		action.116		# enable resources for galactic market
+		#action.116		# enable resources for galactic market
 		#pirate.48															#_|VOP|
 		#pirate.4															#_|VOP|
 		crime.1000

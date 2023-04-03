@@ -1,30 +1,19 @@
 #适用于需要限制数量的纯巨构
 AOW_trigger_mega_potential = {
-	if = {#如果是玩家，则对应巨构上限不能为0
-		limit = { is_ai = no }
-		event_target:global_event_country = {
-			NOT = { check_variable = { which = AOW_var_player_mega_cap_$key$ value = 0 } }
-		}
-	}
-	else_if = { limit = { is_ai = yes } always = no }
+	is_ai = no
+	event_target:global_event_country = { NOT = { check_variable = { which = AOW_var_player_mega_cap_$key$ value = 0 } } }
 }
 
 #适用于生成宜居星球的巨构
 AOW_trigger_habitat_potential = {
-	if = {#是玩家，且对应居住站巨构未被禁止
-		limit = { is_ai = no }
-		NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
-	}
-	else_if = { limit = { is_ai = yes } always = no }
+	is_ai = no
+	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
 }
 
 #适用于无需限制数量的巨构
 AOW_trigger_infinite_potential = {
-	if = {#是玩家，
-		limit = { is_ai = no }
-		NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
-	}
-	else_if = { limit = { is_ai = yes } always = no }
+	is_ai = no
+	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
 }
 
 #适用于无需限制数量的、但不能让AI使用的巨构

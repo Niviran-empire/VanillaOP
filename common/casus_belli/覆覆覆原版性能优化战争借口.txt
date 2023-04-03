@@ -1,0 +1,40 @@
+cb_colossus = {
+	show_in_diplomacy = no
+	show_notification = no
+	potential = {
+		is_country_type = default
+		has_technology = "tech_colossus"
+		has_policy_flag = unrestricted_wars
+		NOT = { is_in_federation_with = from }
+	}
+	is_valid = {
+		has_total_war_cb = no
+		NOT = { is_overlord_to = FROM }
+		OR = {
+			is_subject = no
+			overlord = { NOT = { is_same_value = from } }
+		}
+		has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
+	}
+}
+
+cb_stop_colossus = {
+	show_in_diplomacy = no
+	show_notification = no
+	potential = {
+		is_country_type = default
+		NOT = { is_in_federation_with = from }
+		from = { has_technology = "tech_colossus" }
+	}
+	is_valid = {
+		has_total_war_cb = no
+		from = { is_country_type = default }
+		NOT = { is_overlord_to = FROM }
+		OR = {
+			is_subject = no
+			overlord = { NOT = { is_same_value = from } }
+		}
+		from = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
+		NOT = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
+	}
+}
