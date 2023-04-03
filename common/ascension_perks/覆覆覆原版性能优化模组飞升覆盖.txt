@@ -9,7 +9,7 @@ eap_mastery_of_nature = {
 	on_enabled = {
 		custom_tooltip = "eap_mastery_of_nature_unlocks"
 		custom_tooltip = "allow_edict_land_clearance_perfection"
-		# custom_tooltip = "describe_edict_land_clearance_perfection"
+	#	custom_tooltip = "describe_edict_land_clearance_perfection"
 		hidden_effect = {
 			give_technology = { message = no tech = tech_colonization_2 }
 			give_technology = { message = no tech = tech_colonization_3 }
@@ -57,7 +57,7 @@ eap_mastery_of_nature2 = {
 	on_enabled = {
 		custom_tooltip = "eap_mastery_of_nature2_unlocks"
 		custom_tooltip = "allow_edict_land_clearance_perfection2"
-		# custom_tooltip = "describe_edict_land_clearance_perfection"
+	#	custom_tooltip = "describe_edict_land_clearance_perfection"
 		hidden_effect = {
 			give_technology = { message = no tech = tech_mountain_range }
 			give_technology = { message = no tech = tech_volcano }
@@ -653,9 +653,9 @@ eap_technological_ascendancy = {
 
 
 ### AP意志统一
-eap_one_vision = {
+AAR_ap_ETHIC = {
 	on_enabled = {
-		custom_tooltip = "deseap_one_vision_desc"
+		custom_tooltip = "AAR_tips_AP_ethic"
 	}
 	modifier = {	
 		country_unity_produces_mult = 0.15
@@ -679,7 +679,7 @@ eap_one_vision = {
 	potential = {
 		has_country_flag = vop_AAR_installed
 		NOT = {
-			has_ascension_perk = eap_one_vision
+			has_ascension_perk = AAR_ap_ETHIC
 			has_authority = "auth_machine_intelligence"
 		}
 	}
