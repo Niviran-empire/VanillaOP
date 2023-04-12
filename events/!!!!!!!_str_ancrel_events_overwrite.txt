@@ -18,9 +18,9 @@ ship_event = {
 			NOR = {
 				exists = archaeological_site
 				has_planet_flag = suppress_archaeological_sites
-				solar_system = { has_star_flag = suppress_archaeological_sites }
-				solar_system = { kuat_is_kuat_system = no }
 				solar_system = { OR = {
+					has_star_flag = suppress_archaeological_sites
+					kuat_is_kuat_system = yes
 					has_star_flag = myst_system_5
 					has_star_flag = myst_system_4
 					has_star_flag = myst_system_3
@@ -43,29 +43,32 @@ ship_event = {
 
 	immediate = {
 		random_list = {
-			400 = {}
+			400 = {
+				modifier = {
+					factor = 5
+					OR = {
+						owner = { has_country_flag = discovered_site }
+						owner = { has_country_flag = discovered_site_cooldown }
+					}
+				}
+			}
 			1 = {
 				modifier = {
-					factor = 0.2
+					factor = 0.1
 					OR = {
 						owner = { is_ai = yes }
 						owner = { has_country_flag = discovered_site }
+						owner = { has_country_flag = discovered_site_cooldown }
 					}
 				}
 				from = {
 					prevent_anomaly = yes
 					create_archaeological_site = random
 				}
+				owner = { set_timed_country_flag = { flag = discovered_site_cooldown days = 1440 } }
 				if = { #Not all celestial bodies can have arc sites
-					limit = {
-						exists = from.archaeological_site
-					}
-					owner = {
-						set_timed_country_flag = {
-							flag = discovered_site
-							days = 1800
-						}
-					}
+					limit = { exists = from.archaeological_site }
+					owner = { set_timed_country_flag = { flag = discovered_site days = 1440 } }
 				}
 			}
 		}
