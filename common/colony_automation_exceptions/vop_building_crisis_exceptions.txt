@@ -1,0 +1,1327 @@
+automate_emergence_vop_capital_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_capital
+    }
+
+    prio_districts = {
+        district_industrial
+        district_generator
+        district_mining
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_factory_1
+        }
+
+        3 = {
+            building = building_foundry_1
+        }
+
+        4 = {
+            building = building_embassy
+        }
+
+        5 = {
+            building = building_institute
+        }
+
+        6 = {
+            building = building_ministry_production
+        }
+
+        7 = {
+            building = building_galactic_stock_exchange
+        }
+
+        8 = {
+            building = building_research_lab_1
+        }
+    }
+}
+
+automate_emergence_vop_capital_hive_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+    available = {
+        has_designation = col_capital_hive
+    }
+
+    prio_districts = {
+        district_industrial
+        district_generator
+        district_mining
+        district_farming
+    }
+
+    buildings = {
+        1 = {
+            building = building_hive_capital
+        }
+
+        2 = {
+            building = building_foundry_1
+        }
+
+        3 = {
+            building = building_embassy
+        }
+
+        4 = {
+            building = building_supercomputer
+        }
+
+        5 = {
+            building = building_research_lab_1
+        }
+    }
+}
+
+automate_emergence_vop_capital_machine_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+    available = {
+        has_designation = col_capital_machine
+    }
+
+    prio_districts = {
+        district_industrial
+        district_generator
+        district_mining
+    }
+
+    buildings = {
+        1 = {
+            building = building_machine_capital
+        }
+
+        4 = {
+            building = building_foundry_1
+        }
+
+        5 = {
+            building = building_embassy
+        }
+
+        8 = {
+            building = building_energy_grid
+        }
+
+        12 = {
+            building = building_supercomputer
+        }
+
+        10 = {
+            building = building_research_lab_1
+        }
+    }
+}
+
+automate_emergence_vop_capital_machine_servitor_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+    available = {
+        has_designation = col_capital_machine
+        exists = owner
+        owner = { has_valid_civic = civic_machine_servitor }
+    }
+
+    prio_districts = {
+        district_industrial
+        district_generator
+        district_mining
+        district_farming
+    }
+
+
+    buildings = {
+        1 = {
+            building = building_machine_capital
+        }
+
+        2 = {
+            building = building_organic_sanctuary
+            available = {
+                num_buildings = { type = building_organic_sanctuary value = 0 }
+            }
+        }
+
+        3 = {
+            building = building_foundry_1
+        }
+
+        4 = {
+            building = building_embassy
+        }
+
+        5 = {
+            building = building_uplink_node
+            available = {
+                num_buildings = { type = building_uplink_node value = 0 }
+            }
+        }
+
+        6 = {
+            building = building_energy_grid
+        }
+
+        7 = {
+            building = building_organic_sanctuary
+            available = {
+                num_buildings = { type = building_organic_sanctuary value < 2 }
+            }
+        }
+
+        8 = {
+            building = building_supercomputer
+        }
+
+        9 = {
+            building = building_research_lab_1
+        }
+    }
+}
+
+automate_emergence_vop_colony_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_default
+        is_artificial = no
+    }
+
+    prio_districts = {
+        district_generator
+        district_mining
+        district_farming
+        district_industrial
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+    }
+}
+
+automate_emergence_vop_colony_machine_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_default_machine
+    }
+
+    prio_districts = {
+        district_industrial
+        district_generator
+        district_mining
+    }
+
+    buildings = {
+        1 = {
+            building = building_machine_capital
+            available = {
+                always = yes
+            }
+        }
+
+        # Leave space for when you're a real colony.
+    }
+}
+
+automate_emergence_vop_factory_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_factory_designation = yes
+    }
+
+    prio_districts = {
+        district_industrial
+        district_arcology_civilian_industry
+        district_hab_industrial
+        district_rw_industrial
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_factory_1
+        }
+
+        3 = {
+            building = building_ministry_production
+        }
+
+        4 = {
+            building = building_production_center
+        }
+    }
+}
+
+automate_emergence_vop_farming_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_farming_designation = yes
+    }
+
+    prio_districts = {
+        district_farming
+        district_rw_farming
+        district_farming_uncapped
+        district_hab_housing
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_food_processing_facility
+        }
+
+        3 = {
+            building = building_hydroponics_farm
+        }
+    }
+}
+
+automate_emergence_vop_fortress_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_fortress_designation = yes
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_dread_encampment
+            available = { owner = { has_valid_civic = civic_reanimated_armies } }
+        }
+
+        3 = {
+            building = building_military_academy
+            available = { owner = { NOT = { has_valid_civic = civic_reanimated_armies } } }
+        }
+
+        4 = {
+            building = building_planetary_shield_generator
+        }
+
+        5 = {
+            building = building_stronghold
+        }
+    }
+}
+
+automate_emergence_vop_foundry_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_foundry_designation = yes
+    }
+
+    prio_districts = {
+        district_industrial
+        district_hab_industrial
+        district_arcology_arms_industry
+        district_rw_industrial
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_foundry_1
+        }
+
+        3 = {
+            building = building_ministry_production
+        }
+
+        4 = {
+            building = building_production_center
+        }
+    }
+}
+
+automate_emergence_vop_generator_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_generator_designation = yes
+    }
+
+    prio_districts = {
+        district_generator
+        district_hab_energy
+        district_generator_uncapped
+        district_rw_generator
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_energy_grid
+        }
+
+        3 = {
+            building = building_betharian_power_plant
+        }
+    }
+}
+
+automate_emergence_vop_industrial_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_industrial_designation = yes
+    }
+
+    prio_districts = {
+        district_industrial
+        district_hab_industrial
+        district_arcology_arms_industry
+        district_arcology_civilian_industry
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_foundry_1
+        }
+
+        3 = {
+            building = building_factory_1
+        }
+
+        4 = {
+            building = building_ministry_production
+        }
+
+        5 = {
+            building = building_production_center
+        }
+    }
+}
+
+automate_emergence_vop_mining_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_mining_designation = yes
+    }
+
+    prio_districts = {
+        district_mining
+        district_hab_mining
+        district_mining_uncapped
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_mineral_purification_plant
+        }
+    }
+}
+
+automate_emergence_vop_penal_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_penal
+    }
+
+    prio_districts = {
+        district_city
+        district_generator
+        district_mining
+        district_farming
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_psi_corps
+            available = {
+                owner = {
+                    OR = {
+                        has_ascension_perk = ap_mind_over_matter
+                        has_origin = origin_shroudwalker_apprentice
+                    }
+                }
+            }
+        }
+
+        4 = {
+            building = building_precinct_house
+            available = {
+                owner = {
+                    precinct_house_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_precinct_house value < 1 }
+            }
+        }
+
+        5 = {
+            building = building_slave_processing
+            available = {
+                owner = {
+                    has_policy_flag = slavery_allowed
+                    slave_processing_upkeep_affordable = yes
+                }
+            }
+        }
+
+        6 = {
+            building = building_mineral_purification_plant
+            available = {
+                owner = {
+                    mineral_purification_plant_upkeep_affordable = yes
+                }
+            }
+        }
+
+        7 = {
+            building = building_food_processing_facility
+            available = {
+                owner = {
+                    food_processing_facility_upkeep_affordable = yes
+                }
+            }
+        }
+
+        8 = {
+            building = building_energy_grid
+            available = {
+                owner = {
+                    energy_grid_upkeep_affordable = yes
+                }
+            }
+        }
+
+        9 = {
+            building = building_precinct_house
+            available = {
+                owner = {
+                    precinct_house_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_precinct_house value < 2 }
+            }
+        }
+
+        10 = {
+            building = building_sacrificial_temple_1
+            available = {
+                owner = {
+                    is_spiritualist = yes
+                    OR = {
+                        has_valid_civic = civic_death_cult
+                        has_valid_civic = civic_death_cult_corporate
+                    }
+                }
+                num_buildings = { type = building_sacrificial_temple_1 value = 0 }
+            }
+        }
+
+        11 = {
+            building = building_galactic_memorial_1
+            available = {
+                owner = {
+                    is_memorialist_empire = yes
+                }
+                NOR = {
+                    has_building = building_galactic_memorial_1
+                    has_building = building_galactic_memorial_2
+                    has_building = building_galactic_memorial_3
+                }
+            }
+        }
+
+        15 = {
+            building = building_commercial_zone
+            available = {
+                owner = {
+                    commercial_zone_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_commercial_zone value < 3 }
+            }
+        }
+    }
+}
+
+automate_emergence_vop_refinery_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_refinery_designation = yes
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_gas_extractors
+        }
+
+        3 = {
+            building = building_mote_harvesters
+        }
+
+        4 = {
+            building = building_crystal_mines
+        }
+
+        5 = {
+            building = building_chemical_plant
+            available = {
+                num_buildings = { type = building_chemical_plant value = 0 }
+            }
+        }
+
+        6 = {
+            building = building_refinery
+            available = {
+                num_buildings = { type = building_refinery value = 0 }
+            }
+        }
+
+        6 = {
+            building = building_crystal_plant
+            available = {
+                num_buildings = { type = building_crystal_plant value = 0 }
+            }
+        }
+
+        5 = {
+            building = building_chemical_plant
+            available = {
+                num_buildings = { type = building_chemical_plant value = 1 }
+            }
+        }
+
+        6 = {
+            building = building_refinery
+            available = {
+                num_buildings = { type = building_refinery value = 1 }
+            }
+        }
+
+        6 = {
+            building = building_crystal_plant
+            available = {
+                num_buildings = { type = building_crystal_plant value = 1 }
+            }
+        }
+
+        5 = {
+            building = building_chemical_plant
+            available = {
+                num_buildings = { type = building_chemical_plant value = 2 }
+            }
+        }
+
+        6 = {
+            building = building_refinery
+            available = {
+                num_buildings = { type = building_refinery value = 2 }
+            }
+        }
+
+        6 = {
+            building = building_crystal_plant
+            available = {
+                num_buildings = { type = building_crystal_plant value = 2 }
+            }
+        }
+    }
+}
+
+automate_emergence_vop_research_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_research_designation = yes
+    }
+
+    prio_districts = {
+        district_rw_science
+        district_hab_science
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_institute
+            available = {
+                NOR = {
+                    owner = { has_authority = auth_hive_mind }
+                    owner = { has_authority = auth_machine_intelligence }
+                }
+            }
+        }
+
+        2 = {
+            building = building_supercomputer
+            available = {
+                OR = {
+                    owner = { has_authority = auth_hive_mind }
+                    owner = { has_authority = auth_machine_intelligence }
+                }
+            }
+        }
+
+        3 = {
+            building = building_research_lab_1
+        }
+    }
+}
+
+automate_emergence_vop_resort_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_resort
+    }
+
+    prio_districts = {
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_luxury_residence
+            available = {
+                owner = {
+                    luxury_residence_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_luxury_residence value < 2 }
+            }
+        }
+
+        3 = {
+            building = building_commercial_zone
+            available = {
+                owner = {
+                    commercial_zone_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_commercial_zone value < 1 }
+            }
+        }
+
+        4 = {
+            building = building_luxury_residence
+            available = {
+                owner = {
+                    luxury_residence_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_luxury_residence value < 3 }
+            }
+        }
+
+        5 = {
+            building = building_precinct_house
+            available = {
+                owner = {
+                    precinct_house_upkeep_affordable = yes
+                }
+            }
+        }
+
+        6 = {
+            building = building_commercial_zone
+            available = {
+                owner = {
+                    commercial_zone_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_commercial_zone value < 2 }
+            }
+        }
+
+        7 = {
+            building = building_luxury_residence
+            available = {
+                owner = {
+                    luxury_residence_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_luxury_residence value < 5 }
+            }
+        }
+
+        8 = {
+            building = building_commercial_zone
+            available = {
+                owner = {
+                    commercial_zone_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_commercial_zone value < 3 }
+            }
+        }
+
+        9 = {
+            building = building_luxury_residence
+            available = {
+                owner = {
+                    luxury_residence_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_luxury_residence value < 8 }
+            }
+        }
+    }
+}
+
+automate_emergence_vop_ringworld_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        OR = {
+            has_designation = col_ring_mix
+            AND = {
+                has_designation = col_default
+                uses_district_set = ring_world
+            }
+        }
+
+        owner = {
+            NOR = {
+                has_authority = auth_machine_intelligence
+                has_authority = auth_hive_mind
+            }
+        }
+    }
+
+    prio_districts = {
+        district_rw_industrial
+        district_rw_farming
+        district_rw_commercial
+        district_rw_science
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_foundry_1
+        }
+
+        3 = {
+            building = building_ministry_production
+        }
+
+        4 = {
+            building = building_food_processing_facility
+        }
+
+        5 = {
+            building = building_galactic_stock_exchange
+        }
+
+        6 = {
+            building = building_institute
+        }
+
+        7 = {
+            building = building_factory_1
+        }
+    }
+}
+
+
+automate_emergence_vop_ringworld_hive_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_ring_mix
+        owner = {
+            has_authority = auth_hive_mind
+        }
+    }
+
+    prio_districts = {
+        district_rw_farming
+        district_rw_generator
+    }
+
+    buildings = {
+        1 = {
+            building = building_hive_capital
+            available = {
+                always = yes
+            }
+        }
+
+        4 = {
+            building = building_hive_node
+            available = {
+                num_buildings = { type = building_hive_node value = 0 }
+            }
+        }
+
+        5 = {
+            building = building_food_processing_facility
+        }
+
+        6 = {
+            building = building_energy_grid
+        }
+
+        8 = {
+            building = building_hive_node
+            available = {
+                num_buildings = { type = building_hive_node value < 2 }
+            }
+        }
+
+        9 = {
+            building = building_gas_extractors
+        }
+
+        10 = {
+            building = building_crystal_mines
+        }
+
+        11 = {
+            building = building_mote_harvesters
+        }
+
+        12 = {
+            building = building_hive_node
+            available = {
+                num_buildings = { type = building_hive_node value < 4 }
+            }
+        }
+    }
+}
+
+automate_emergence_vop_ringworld_machine_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_ring_mix
+        owner = {
+            has_authority = auth_machine_intelligence
+        }
+    }
+
+    prio_districts = {
+        district_rw_generator
+        district_rw_industrial
+        district_rw_science
+    }
+
+    buildings = {
+        1 = {
+            building = building_machine_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_machine_assembly_plant
+            available = {
+                always = yes
+            }
+        }
+
+        3 = {
+            building = building_supercomputer
+            available = {
+                always = yes
+            }
+        }
+
+        4 = {
+            building = building_foundry_1
+        }
+
+        5 = {
+            building = building_energy_grid
+        }
+
+        7 = {
+            building = building_gas_extractors
+        }
+
+        8 = {
+            building = building_crystal_mines
+        }
+
+        9 = {
+            building = building_mote_harvesters
+        }
+    }
+}
+
+automate_emergence_vop_rural_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_rural_designation = yes
+    }
+
+    prio_districts = {
+        district_generator
+        district_mining
+        district_farming
+        district_mining_uncapped
+        district_generator_uncapped
+        district_farming_uncapped
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_betharian_power_plant
+        }
+
+        3 = {
+            building = building_mineral_purification_plant
+        }
+
+        4 = {
+            building = building_food_processing_facility
+        }
+
+        5 = {
+            building = building_energy_grid
+        }
+    }
+}
+
+automate_emergence_vop_slave_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_designation = col_slave
+    }
+
+    prio_districts = {
+        district_city
+        district_mining
+        district_farming
+        district_generator
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+            available = {
+                always = yes
+            }
+        }
+
+        2 = {
+            building = building_overseer_homes
+            available = {
+                owner = {
+                    overseer_homes_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_overseer_homes value < 1 }
+            }
+        }
+
+        3 = {
+            building = building_slave_huts
+            available = {
+                owner = {
+                    slave_huts_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_slave_huts value < 1 }
+            }
+        }
+
+        4 = {
+            building = building_slave_processing
+            available = {
+                owner = {
+                    slave_processing_upkeep_affordable = yes
+                }
+            }
+        }
+
+        5 = {
+            building = building_psi_corps
+            available = {
+                owner = {
+                    OR = {
+                        has_ascension_perk = ap_mind_over_matter
+                        has_origin = origin_shroudwalker_apprentice
+                    }
+                }
+            }
+        }
+
+        7 = {
+            building = building_slave_huts
+            available = {
+                owner = {
+                    slave_huts_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_slave_huts value < 3 }
+            }
+        }
+
+        8 = {
+            building = building_overseer_homes
+            available = {
+                owner = {
+                    overseer_homes_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_overseer_homes value < 2 }
+            }
+        }
+
+        9 = {
+            building = building_slave_huts
+            available = {
+                owner = {
+                    slave_huts_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_slave_huts value < 6 }
+            }
+        }
+
+        10 = {
+            building = building_overseer_homes
+            available = {
+                owner = {
+                    overseer_homes_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_overseer_homes value < 3 }
+            }
+        }
+
+        11 = {
+            building = building_slave_huts
+            available = {
+                owner = {
+                    slave_huts_upkeep_affordable = yes
+                }
+                num_buildings = { type = building_slave_huts value < 8 }
+            }
+        }
+    }
+}
+
+automate_emergence_vop_trade_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_trade_designation = yes
+    }
+
+    prio_districts = {
+        district_rw_commercial
+        district_hab_commercial
+        district_srw_commercial
+    }
+
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_galactic_stock_exchange
+        }
+
+        3 = {
+            building = building_commercial_zone
+        }
+    }
+}
+
+automate_emergence_vop_bureau_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        has_unity_designation = yes
+    }
+
+    prio_districts = {
+        district_hab_cultural
+        district_arcology_administrative
+        district_arcology_religious
+        district_arcology_organic_housing
+    }
+
+    buildings = {
+        1 = {
+            building = building_capital
+        }
+
+        2 = {
+            building = building_autochthon_monument
+        }
+
+        3 = {
+            building = building_simulation_1
+        }
+
+        4 = {
+            building = building_galactic_memorial_1
+        }
+
+        5 = {
+            building = building_sensorium_1
+        }
+
+        6 = {
+            building = building_autocurating_vault
+        }
+
+        7 = {
+            building = building_corporate_vault
+        }
+
+        8 = {
+            building = building_citadel_of_faith
+        }
+
+        9 = {
+            building = building_alpha_hub
+        }
+
+        10 = {
+            building = building_hive_node
+        }
+
+        11 = {
+            building = building_bureaucratic_1
+        }
+
+        12 = {
+            building = building_uplink_node
+        }
+
+        13 = {
+            building = building_sacrificial_temple_1
+        }
+
+        14 = {
+            building = building_temple
+        }
+        15 = {
+            building = building_organic_sanctuary
+        }
+    }
+}
+
+
+automate_emergence_vop_urban_hive_planet = {
+    category = "planet_automation_designation_construction"
+    emergency = yes
+
+    available = {
+        OR = {
+            has_designation = col_hive
+            has_designation = col_nexus
+        }
+    }
+
+    prio_districts = {
+        district_industrial
+    }
+
+    buildings = {
+        1 = {
+            building = building_foundry_1
+        }
+
+        2 = {
+            building = building_production_center
+        }
+
+        3 = {
+            building = building_supercomputer
+        }
+
+        4 = {
+            building = building_research_lab_1
+        }
+    }
+}
