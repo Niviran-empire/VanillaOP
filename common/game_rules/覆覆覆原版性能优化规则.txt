@@ -50,6 +50,7 @@ species_can_live_on_planet = {
 	OR = {
 		is_robotic = yes
 		has_species_flag = can_enable_species_can_live_on_planet
+		has_species_flag = LSP_flag_original@root
 	}
 }
 

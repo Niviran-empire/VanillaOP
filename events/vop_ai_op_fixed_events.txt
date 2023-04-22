@@ -609,10 +609,7 @@ event = {
 							}
 						}
 						##	LSP
-						if = {
-							limit = { has_trait = LSP_trait_original }
-							has_species_flag = LSP_flag_original@prev.planet
-						}
+						NOT = { has_trait = LSP_trait_original }
 					}
 					set_species_flag = can_enable_species_can_live_on_planet
 				}
