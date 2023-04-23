@@ -47,7 +47,7 @@ alloys_expenditure_ships = {
 			factor = 0
 			OR = {
 				used_naval_capacity_percent >= 1
-				used_naval_capacity_integer >= 3000
+				used_naval_capacity_integer >= 5000
 			}
 		}
 	}
@@ -76,7 +76,7 @@ alloys_expenditure_ship_upgrades = {
 		}
 		modifier = {
 			factor = 2.5
-			used_naval_capacity_integer > 3000
+			used_naval_capacity_integer > 5000
 		}
 	}
 }

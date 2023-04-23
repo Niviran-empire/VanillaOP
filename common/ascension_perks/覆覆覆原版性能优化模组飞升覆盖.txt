@@ -41,7 +41,7 @@ eap_mastery_of_nature = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_mastery_of_nature
 			has_authority = "auth_machine_intelligence"
@@ -93,7 +93,7 @@ eap_mastery_of_nature2 = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_mastery_of_nature2
 			has_authority = auth_hive_mind
@@ -139,7 +139,7 @@ eap_world_shaper = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_world_shaper
 		}
@@ -182,7 +182,7 @@ eap_hive_worlds = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_hive_worlds 
 		}
@@ -224,7 +224,7 @@ AAR_AP_machine_world = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = AAR_AP_machine_world
 		}
@@ -295,7 +295,7 @@ eap_galactic_force_projection = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = eap_galactic_force_projection }
 	}
 	
@@ -336,7 +336,7 @@ AAR_fleet_armor = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_fleet_armor }
 	}
 	
@@ -384,7 +384,7 @@ AAR_fleet_shield = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_fleet_shield }
 	}
 	
@@ -417,7 +417,7 @@ AAR_AP_hostile_territory = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_hostile_territory }
 	}
 	possible = {
@@ -466,7 +466,7 @@ AAR_AP_defence_line = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_defence_line }
 	}
 	possible = {
@@ -518,7 +518,7 @@ eap_master_builders = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_master_builders
 		}
@@ -556,7 +556,7 @@ AAR_AP_dominion_EXPAND = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = AAR_AP_dominion_EXPAND
 		}
@@ -598,7 +598,7 @@ AAR_AP_dominion_FEAR = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = AAR_AP_dominion_FEAR
 		}
@@ -638,7 +638,7 @@ eap_technological_ascendancy = {
 		}
 	}
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_technological_ascendancy
 		}
@@ -677,7 +677,7 @@ AAR_ap_ETHIC = {
 		}
 	}
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = AAR_ap_ETHIC
 			has_authority = "auth_machine_intelligence"
@@ -747,7 +747,7 @@ eap_imperial_prerogative = {
 		}
 	}
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = eap_imperial_prerogative }
 		NOT = { has_authority = auth_corporate }
 	}
@@ -790,7 +790,7 @@ eap_shared_destiny = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
@@ -843,7 +843,7 @@ AAR_AP_ForcedUnion = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOR = {
 			has_valid_civic = civic_fanatic_purifiers
 			has_valid_civic = civic_hive_devouring_swarm
@@ -901,7 +901,7 @@ eap_defender_of_the_galaxy = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = eap_defender_of_the_galaxy }
 	}
 	
@@ -953,7 +953,7 @@ eap_executive_vigor = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = {
 			has_ascension_perk = eap_executive_vigor
 		}
@@ -1008,7 +1008,7 @@ eap_transcendent_learning = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOR = {
 			has_ascension_perk = eap_transcendent_learning
 			has_authority = "auth_machine_intelligence"
@@ -1062,7 +1062,7 @@ AAR_AP_torchlight = {
 	}
 
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_torchlight }
 	}
 	
@@ -1106,7 +1106,7 @@ eap_universal_transactions = {
 	}
 	
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		has_authority = auth_corporate
 		NOT = {
 			has_ascension_perk = eap_universal_transactions 
@@ -1125,7 +1125,7 @@ eap_universal_transactions = {
 ##_note		FTL功能性飞升仅pc,功能事件仅pc触发,通过[fw战斗循环框架]清除
 AAR_AP_navigator = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_navigator }
 	}
 	possible = {
@@ -1165,7 +1165,7 @@ AAR_AP_navigator = {
 ###	AP网道行者	|禁AI|
 AAR_AP_webway = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_webway }
 	}
 	possible = {
@@ -1216,7 +1216,7 @@ AAR_AP_webway = {
 ###	AP神速信仰	|禁AI|
 AAR_AP_jumper = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_jumper }
 	}
 	possible = {
@@ -1261,7 +1261,7 @@ AAR_AP_jumper = {
 ###	AP远行者	|仅AI|
 AAR_AP_traveller = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_traveller }
 		is_ai = yes	# |仅AI|
 	}
@@ -1315,7 +1315,7 @@ AAR_AP_traveller = {
 #	千星之城
 AAR_AP_void_paradise = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_void_paradise }
 	}
 	possible = {
@@ -1362,7 +1362,7 @@ AAR_AP_void_paradise = {
 #	虚空神堡
 AAR_AP_void_fortress = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_void_fortress }
 	}
 	possible = {
@@ -1414,7 +1414,7 @@ AAR_AP_void_fortress = {
 ###	AP铁幕
 AAR_ap_VEIL = {
 	potential = {
-		has_country_flag = vop_AAR_installed
+		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_ap_VEIL }
 	}
 	possible = {

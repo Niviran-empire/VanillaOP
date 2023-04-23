@@ -3,9 +3,9 @@
 ##################
 @vop_corvette_hp = 400
 @vop_destroyer_hp = 1200
-@vop_cruiser_hp = 3600
-@vop_battleship_hp = 6000
-@vop_titan_hp = 30000
+@vop_cruiser_hp = 6000
+@vop_battleship_hp = 30000
+@vop_titan_hp = 180000
 
 corvette = {
 	formation_priority = @corvette_formation_priority

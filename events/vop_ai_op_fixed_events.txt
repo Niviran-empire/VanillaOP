@@ -13,13 +13,6 @@ event = {
 	trigger = { count_playable_country = { count > 0 } }
 	immediate = {
 		set_update_modifiers_batch = begin
-		if = {
-			limit = { has_global_flag = AAR_installed }
-			every_country = {  
-				limit = { is_ai = no }
-				set_country_flag = vop_AAR_installed
-			}
-		}
 		# action.116
 		if = {
 			limit = {
