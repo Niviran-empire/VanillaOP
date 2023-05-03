@@ -7,6 +7,7 @@ Includes = {
 	"tiled_pointlights.fxh"
 	"pdxmesh_samplers.fxh"
 	"pdxmesh_ship.fxh"
+	"aot_shaders.fxh"
 }
 
 VertexShader =
