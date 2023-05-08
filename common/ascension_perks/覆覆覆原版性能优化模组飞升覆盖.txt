@@ -1,10 +1,10 @@
-#	´ıĞŞ/½ûÓÃ
-#	APËÜĞÇ´óÊ¦/º£¾üAP/APĞÇ»ù·ÀÓù/APÔìÎïÖ®Éñ/AP°ÔÈ¨Ö÷Òå/AP¼¼ÊõÆæµã/APÒâÖ¾Í³Ò»/APÈ¨Á¦Ö®áÛ/AP¹²Í¬»Ô»Í/APÌìÔÖÖ®Ö÷/AP¼«Ğ§Õş¸®/APÓÀÎŞÖ¹¾³/AP´óº½º£Íõ/AP¾Ó×¡Õ¾/APÌúÄ»
+#	å¾…ä¿®/ç¦ç”¨
+#	APå¡‘æ˜Ÿå¤§å¸ˆ/æµ·å†›AP/APæ˜ŸåŸºé˜²å¾¡/APé€ ç‰©ä¹‹ç¥/APéœ¸æƒä¸»ä¹‰/APæŠ€æœ¯å¥‡ç‚¹/APæ„å¿—ç»Ÿä¸€/APæƒåŠ›ä¹‹å·…/APå…±åŒè¾‰ç…Œ/APå¤©ç¾ä¹‹ä¸»/APææ•ˆæ”¿åºœ/APæ°¸æ— æ­¢å¢ƒ/APå¤§èˆªæµ·ç‹/APå±…ä½ç«™/APé“å¹•
 
 
 
 
-### ×ÔÈ»ºÍĞ³
+### è‡ªç„¶å’Œè°
 eap_mastery_of_nature = {	
 	on_enabled = {
 		custom_tooltip = "eap_mastery_of_nature_unlocks"
@@ -52,7 +52,7 @@ eap_mastery_of_nature = {
 		factor = 0
 	}
 }
-### Õ÷·ş×ÔÈ»
+### å¾æœè‡ªç„¶
 eap_mastery_of_nature2 = {	
 	on_enabled = {
 		custom_tooltip = "eap_mastery_of_nature2_unlocks"
@@ -109,7 +109,7 @@ eap_mastery_of_nature2 = {
 
 
 
-### APËÜĞÇ´óÊ¦	|½ûAI|
+### APå¡‘æ˜Ÿå¤§å¸ˆ	|ç¦AI|
 eap_world_shaper = {
 	on_enabled = {
 		add_research_option = AAR_tech_WORLD_gaia
@@ -155,7 +155,7 @@ eap_world_shaper = {
 		factor = 0
 	}
 }
-### APÎŞ¾¡·ä³²	|½ûAI|
+### APæ— å°½èœ‚å·¢	|ç¦AI|
 eap_hive_worlds = {
 	on_enabled = {
 		add_research_option = AAR_tech_WORLD_hive
@@ -193,7 +193,7 @@ eap_hive_worlds = {
 		factor = 0
 	}
 }
-### AP¸ÖÌúÇÖÊ´	|½ûAI|
+### APé’¢é“ä¾µèš€	|ç¦AI|
 AAR_AP_machine_world = {
 	on_enabled = {
 		add_research_option = AAR_tech_WORLD_machine
@@ -245,13 +245,13 @@ AAR_AP_machine_world = {
 
 
 
-###_[º£¾üAP]
-## ¾ü±¸¾ºÈü
+###_[æµ·å†›AP]
+## å†›å¤‡ç«èµ›
 eap_galactic_force_projection = {
 	on_enabled = {
 		custom_tooltip = "nnn_galactic_force_projection_desc"
 		hidden_effect = {
-			## AARº£¾ü²ÎÊıDB
+			## AARæµ·å†›å‚æ•°DB
 			AAR_eft_cntr_NAVY_var_DB = yes
 		}
 	}
@@ -284,7 +284,7 @@ eap_galactic_force_projection = {
 		shipsize_battleship_build_speed_mult = 0.25
 		ship_battleship_cost_mult = -0.05
 	#	shipsize_titan_build_speed_mult = 0.25
-	#	ship_titan_cost_mult = -0.05	# ÎŞĞ§,³ı·ÇÔÚ|ec|ÖĞ¼Ó´¬
+	#	ship_titan_cost_mult = -0.05	# æ— æ•ˆ,é™¤éåœ¨|ec|ä¸­åŠ èˆ¹
 	#	shipsize_colossus_build_speed_mult = 0.25
 	#	shipsize_juggernaut_build_speed_mult = 0.25
 		shipsize_crisis_corvette_build_speed_mult = 0.25
@@ -304,12 +304,12 @@ eap_galactic_force_projection = {
 	}
 }
 
-## ¸ÖÌú¾ŞÊŞ
+## é’¢é“å·¨å…½
 AAR_fleet_armor = {
 	on_enabled = {
 		custom_tooltip = "AAR_fleet_armor_tips"
 		hidden_effect = {
-			#	AARº£¾ü²ÎÊıDB
+			#	AARæµ·å†›å‚æ•°DB
 			AAR_eft_cntr_NAVY_var_DB = yes
 		}
 	}
@@ -345,12 +345,12 @@ AAR_fleet_armor = {
 	}
 }
 
-## Î´À´Õ½½¢
+## æœªæ¥æˆ˜èˆ°
 AAR_fleet_shield = {
 	on_enabled = {
 		custom_tooltip = "AAR_fleet_shield_tips"
 		hidden_effect = {
-			#	AARº£¾ü²ÎÊıDB
+			#	AARæµ·å†›å‚æ•°DB
 			AAR_eft_cntr_NAVY_var_DB = yes
 		}
 	}
@@ -396,23 +396,23 @@ AAR_fleet_shield = {
 
 
 
-####_[APĞÇ»ù·ÀÓù]
-##_note		·ÀÓùÀà·ÉÉıPC´¥·¢¹¦ÄÜ,AI»ñµÃ¼Ó³É,AI´¥·¢¶ÔPC¹¦ÄÜĞ§ÄÜÎª25%
-## µĞ¶Ôº£Óò
+####_[APæ˜ŸåŸºé˜²å¾¡]
+##_note		é˜²å¾¡ç±»é£å‡PCè§¦å‘åŠŸèƒ½,AIè·å¾—åŠ æˆ,AIè§¦å‘å¯¹PCåŠŸèƒ½æ•ˆèƒ½ä¸º25%
+## æ•Œå¯¹æµ·åŸŸ
 AAR_AP_hostile_territory = {
 	on_enabled = {
 		custom_tooltip = AAR_tips_hostile_territory
 		hidden_effect = {
-			set_update_modifiers_batch = begin	#_|ĞŞÕı¸üĞÂ|ÔİÍ£
+			set_update_modifiers_batch = begin	#_|ä¿®æ­£æ›´æ–°|æš‚åœ
 			
-			set_country_flag = AAR_flg_cntr_AP_VIGILANCE	# |AAR·ÀÓù·ÉÉıÌí¼Ó|
-			every_system_within_border = { AAR_eft_sstm_VIGILANCE_starbase_mod_DB = yes }	# AAR·ÀÓùĞÇ»ùĞŞÕıDB
+			set_country_flag = AAR_flg_cntr_AP_VIGILANCE	# |AARé˜²å¾¡é£å‡æ·»åŠ |
+			every_system_within_border = { AAR_eft_sstm_VIGILANCE_starbase_mod_DB = yes }	# AARé˜²å¾¡æ˜ŸåŸºä¿®æ­£DB
 			give_technology = { tech = AAR_tech_AP_VIGILANCE message = yes }
 			if = { limit = { is_ai = yes }
-				add_modifier = { modifier = AAR_mod_cntr_HOSTILE_ai days = -1 }	# AARµĞ¶Ôº£ÓòAI¼Ó³É
+				add_modifier = { modifier = AAR_mod_cntr_HOSTILE_ai days = -1 }	# AARæ•Œå¯¹æµ·åŸŸAIåŠ æˆ
 			}
 			
-			set_update_modifiers_batch = end	#_|ĞŞÕı¸üĞÂ|ÖØÆô
+			set_update_modifiers_batch = end	#_|ä¿®æ­£æ›´æ–°|é‡å¯
 		}
 	}
 
@@ -447,21 +447,21 @@ AAR_AP_hostile_territory = {
 	}
 }
 
-## ³¬¼¶·ÀÏß
+## è¶…çº§é˜²çº¿
 AAR_AP_defence_line = {
 	on_enabled = {
 		custom_tooltip = AAR_tips_defence_line
 		hidden_effect = {
-			set_update_modifiers_batch = begin	#_|ĞŞÕı¸üĞÂ|ÔİÍ£
+			set_update_modifiers_batch = begin	#_|ä¿®æ­£æ›´æ–°|æš‚åœ
 			
-			set_country_flag = AAR_flg_cntr_AP_VIGILANCE	# |AAR·ÀÓù·ÉÉıÌí¼Ó|
-			every_system_within_border = { AAR_eft_sstm_VIGILANCE_starbase_mod_DB = yes }	# AAR·ÀÓùĞÇ»ùĞŞÕıDB
+			set_country_flag = AAR_flg_cntr_AP_VIGILANCE	# |AARé˜²å¾¡é£å‡æ·»åŠ |
+			every_system_within_border = { AAR_eft_sstm_VIGILANCE_starbase_mod_DB = yes }	# AARé˜²å¾¡æ˜ŸåŸºä¿®æ­£DB
 			give_technology = { tech = AAR_tech_AP_VIGILANCE message = yes }
 			if = { limit = { is_ai = yes }
-				add_modifier = { modifier = AAR_mod_cntr_LINE_ai days = -1 }	# AAR·ÀÏßAI¼Ó³É
+				add_modifier = { modifier = AAR_mod_cntr_LINE_ai days = -1 }	# AARé˜²çº¿AIåŠ æˆ
 			}
 			
-			set_update_modifiers_batch = end	#_|ĞŞÕı¸üĞÂ|ÖØÆô
+			set_update_modifiers_batch = end	#_|ä¿®æ­£æ›´æ–°|é‡å¯
 		}
 	}
 	
@@ -486,7 +486,7 @@ AAR_AP_defence_line = {
 		shipclass_military_station_damage_mult = 0.25
 		starbase_defense_platform_capacity_add = 10
 		shipsize_military_station_small_build_speed_mult = 0.25
-	#	shipsize_·ÀÓùËş2_build_speed_mult = 0.25
+	#	shipsize_é˜²å¾¡å¡”2_build_speed_mult = 0.25
 		shipsize_ion_cannon_build_speed_mult = 0.25
 		shipclass_military_station_build_cost_mult = -0.10
 	}
@@ -503,7 +503,7 @@ AAR_AP_defence_line = {
 
 
 
-### APÔìÎïÖ®Éñ
+### APé€ ç‰©ä¹‹ç¥
 eap_master_builders = {
 	possible = {
 		custom_tooltip = {
@@ -532,7 +532,7 @@ eap_master_builders = {
 
 
 
-### AP°ÔÈ¨Ö÷Òå
+### APéœ¸æƒä¸»ä¹‰
 AAR_AP_dominion_EXPAND = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_AP_dominion_EXPAND"
@@ -567,7 +567,7 @@ AAR_AP_dominion_EXPAND = {
 	}
 }
 
-# ÍşÑ¹Ö÷Òå	|½ûAI|
+# å¨å‹ä¸»ä¹‰	|ç¦AI|
 AAR_AP_dominion_FEAR = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_dominion_FEAR"
@@ -612,7 +612,7 @@ AAR_AP_dominion_FEAR = {
 
 
 
-### AP¼¼ÊõÆæµã
+### APæŠ€æœ¯å¥‡ç‚¹
 eap_technological_ascendancy = {
 	on_enabled = {
 		custom_tooltip = "deseap_technological_ascendancy_desc"
@@ -652,7 +652,7 @@ eap_technological_ascendancy = {
 
 
 
-### APÒâÖ¾Í³Ò»
+### APæ„å¿—ç»Ÿä¸€
 AAR_ap_ETHIC = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_AP_ethic"
@@ -708,13 +708,13 @@ AAR_ap_ETHIC = {
 
 
 
-### APÈ¨Á¦Ö®áÛ		=Çå³ıĞû³Æ/Ğû´«Õ½
+### APæƒåŠ›ä¹‹å·…		=æ¸…é™¤å®£ç§°/å®£ä¼ æˆ˜
 eap_imperial_prerogative = {
 	on_enabled = { 
 		custom_tooltip = "eip_desc"
 		hidden_effect = {
-			country_event = { id = AAR_evt_PREROGATIVE.1 }	# aarÈ¨áÛ·ÉÉınote
-			# AIÌØÓĞ
+			country_event = { id = AAR_evt_PREROGATIVE.1 }	# aaræƒå·…é£å‡note
+			# AIç‰¹æœ‰
 			run_ai_strategic_data = yes
 			if = { limit = { is_ai = yes }
 				remove_modifier = AAR_PM_prerogative_AI
@@ -760,8 +760,8 @@ eap_imperial_prerogative = {
 
 
 
-### AP¹²Í¬»Ô»Í
-# ÁªºÏÍ³ÖÎ
+### APå…±åŒè¾‰ç…Œ
+# è”åˆç»Ÿæ²»
 eap_shared_destiny = {
 	on_enabled = {
 		custom_tooltip = "deseap_shared_destiny_desc"
@@ -774,7 +774,7 @@ eap_shared_destiny = {
 	#	subject_tribute_mult = 0.50
 	}
 	possible = {
-		custom_tooltip = {#´ıĞŞ
+		custom_tooltip = {#å¾…ä¿®
 			fail_text = "AAR_tips_WIP"
 			always = no
 		}
@@ -808,15 +808,15 @@ eap_shared_destiny = {
 	}
 }
 
-# ÌúÑªÁªÃË
+# é“è¡€è”ç›Ÿ
 AAR_AP_ForcedUnion = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_ForcedUnion"
 		hidden_effect = {
-			# ÉèÖÃpolicy
+			# è®¾ç½®policy
 		#	set_policy = {
 		#		policy = AAR_policy_FU
-		#		option = AAR_policy_FU_no_claim		# Ä¬ÈÏ½ûÖ¹Ğû³Æ
+		#		option = AAR_policy_FU_no_claim		# é»˜è®¤ç¦æ­¢å®£ç§°
 		#		cooldown = no
 		#	}
 		}
@@ -827,7 +827,7 @@ AAR_AP_ForcedUnion = {
 		country_subject_acceptance_add = 25
 	}
 	possible = {
-		custom_tooltip = {#´ıĞŞ
+		custom_tooltip = {#å¾…ä¿®
 			fail_text = "AAR_tips_WIP"
 			always = no
 		}
@@ -864,13 +864,13 @@ AAR_AP_ForcedUnion = {
 
 
 
-### APÌìÔÖÖ®Ö÷	|½ûAI|
+### APå¤©ç¾ä¹‹ä¸»	|ç¦AI|
 eap_defender_of_the_galaxy = {
 	on_enabled = {
 	#	custom_tooltip = "eap_defender_of_the_galaxy_effect_opinion"
 		custom_tooltip = "eap_defender_of_the_galaxy_effect"
 		hidden_effect = {
-			country_event = { id = AAR_evt_CRISIS.2 }	# aarÌìÔÖrelic
+			country_event = { id = AAR_evt_CRISIS.2 }	# aarå¤©ç¾relic
 		}
 	}	
 
@@ -913,7 +913,7 @@ eap_defender_of_the_galaxy = {
 
 
 
-### AP¼«Ğ§Õş¸®
+### APææ•ˆæ”¿åºœ
 eap_executive_vigor = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_AP_executive_vigor"
@@ -967,7 +967,7 @@ eap_executive_vigor = {
 
 
 
-### APÓÀÎŞÖ¹¾³
+### APæ°¸æ— æ­¢å¢ƒ
 eap_transcendent_learning = {
 	on_enabled = {
 		custom_tooltip = "allow_AAR_DEC_nzt48"
@@ -985,7 +985,7 @@ eap_transcendent_learning = {
 		custom_tooltip = {
 			text = "requires_not_ap_synthetic_evolution"
 		}
-		custom_tooltip = {# Ç°ÖÃ
+		custom_tooltip = {# å‰ç½®
 			fail_text = "requires_ap_transcendent_learning"
 			OR = {
 				has_ascension_perk = ap_transcendent_learning
@@ -993,8 +993,8 @@ eap_transcendent_learning = {
 			#	has_ascension_perk = ap_esap_gov_GC_2	# |ESAP|
 			}
 		}
-		NOT = { has_ascension_perk = AAR_AP_torchlight }	# ¶şÑ¡Ò»
-		custom_tooltip = {# ¿Æ¼¼ÓëÕóÓª
+		NOT = { has_ascension_perk = AAR_AP_torchlight }	# äºŒé€‰ä¸€
+		custom_tooltip = {# ç§‘æŠ€ä¸é˜µè¥
 			fail_text = "requires_tech_subdermal_stimulation_or_hive"		
 			OR = {
 				has_technology = tech_subdermal_stimulation
@@ -1012,7 +1012,7 @@ eap_transcendent_learning = {
 		NOR = {
 			has_ascension_perk = eap_transcendent_learning
 			has_authority = "auth_machine_intelligence"
-			has_ascension_perk = ap_synthetic_evolution	# |ºÏ³É½ø»¯|·Ç
+			has_ascension_perk = ap_synthetic_evolution	# |åˆæˆè¿›åŒ–|é
 		}
 	}
 	
@@ -1020,7 +1020,7 @@ eap_transcendent_learning = {
 		factor = 0
 	}
 }
-#	»ğ¾æÖ®¹â
+#	ç«ç‚¬ä¹‹å…‰
 AAR_AP_torchlight = {
 	on_enabled = {
 		custom_tooltip = "AAR_TIPS_torchlight"
@@ -1038,11 +1038,11 @@ AAR_AP_torchlight = {
 	}
 
 	possible = {
-		#	|MODÇ°ÖÃ|
+		#	|MODå‰ç½®|
 		custom_tooltip = { fail_text = "AAR_failtips_FW_required"
 			hidden_trigger = { has_global_flag = FW_installed }
 		}
-		#	|Ç°ÖÃ|
+		#	|å‰ç½®|
 		custom_tooltip = { fail_text = "requires_ap_transcendent_learning"	
 			hidden_trigger = {
 				OR = {
@@ -1052,10 +1052,10 @@ AAR_AP_torchlight = {
 				}
 			}
 		}
-		#	|»ù´¡|
-		is_egalitarian = no	# ·ÇÆ½È¨
-		NOT = { has_ascension_perk = eap_transcendent_learning }	# ¶şÑ¡Ò»
-		#	|·ÉÉıÊı|
+		#	|åŸºç¡€|
+		is_egalitarian = no	# éå¹³æƒ
+		NOT = { has_ascension_perk = eap_transcendent_learning }	# äºŒé€‰ä¸€
+		#	|é£å‡æ•°|
 		custom_tooltip = { fail_text = "requires_ascension_perks_2"
 			num_ascension_perks > 1
 		}
@@ -1074,7 +1074,7 @@ AAR_AP_torchlight = {
 
 
 
-### ×Ê±¾ÉøÍ¸
+### èµ„æœ¬æ¸—é€
 eap_universal_transactions = {
 	on_enabled = {
 		custom_tooltip = "describe_universal_transactions_desc"
@@ -1091,7 +1091,7 @@ eap_universal_transactions = {
 	#	subject_tribute_mult = 0.25
 	}
 	possible = {
-		custom_tooltip = {#´ıĞŞ
+		custom_tooltip = {#å¾…ä¿®
 			fail_text = "AAR_tips_WIP"
 			always = no
 		}
@@ -1121,8 +1121,8 @@ eap_universal_transactions = {
 
 
 
-###	AP´óº½º£Íõ	|½ûAI|
-##_note		FTL¹¦ÄÜĞÔ·ÉÉı½öpc,¹¦ÄÜÊÂ¼ş½öpc´¥·¢,Í¨¹ı[fwÕ½¶·Ñ­»·¿ò¼Ü]Çå³ı
+###	APå¤§èˆªæµ·ç‹	|ç¦AI|
+##_note		FTLåŠŸèƒ½æ€§é£å‡ä»…pc,åŠŸèƒ½äº‹ä»¶ä»…pcè§¦å‘,é€šè¿‡[fwæˆ˜æ–—å¾ªç¯æ¡†æ¶]æ¸…é™¤
 AAR_AP_navigator = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1148,7 +1148,7 @@ AAR_AP_navigator = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_AP_navigator"
 		hidden_effect = {
-			set_country_flag = AAR_flg_cntr_NAVIGATOR	# |BANĞÇ¹ì|
+			set_country_flag = AAR_flg_cntr_NAVIGATOR	# |BANæ˜Ÿè½¨|
 			add_modifier = { modifier = AAR_MOD_cntr_navigator days = -1 }
 		}
 	}
@@ -1162,7 +1162,7 @@ AAR_AP_navigator = {
 		factor = 0
 	}
 }
-###	APÍøµÀĞĞÕß	|½ûAI|
+###	APç½‘é“è¡Œè€…	|ç¦AI|
 AAR_AP_webway = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1190,15 +1190,15 @@ AAR_AP_webway = {
 		give_technology = { tech = AAR_tech_AP_WEBWAY message = yes }
 		add_relic = AAR_R_webway
 		hidden_effect = {
-			#	ÉèÖÃINIT
-			set_country_flag = AAR_flg_cntr_WEBWAY_nexus_complete_NOTE	# |ÍøµÀÊàÅ¦Íê³ÉÍ¨Öª|
-			#	ÉèÖÃpolicy
+			#	è®¾ç½®INIT
+			set_country_flag = AAR_flg_cntr_WEBWAY_nexus_complete_NOTE	# |ç½‘é“æ¢çº½å®Œæˆé€šçŸ¥|
+			#	è®¾ç½®policy
 			set_policy = {
 				policy = AAR_policy_webway
 				option = AAR_policy_webway_set
 				cooldown = no
 			}
-			#_[ÍøµÀcap¹ú¼ÒÑ­»·]¿ªÊ¼
+			#_[ç½‘é“capå›½å®¶å¾ªç¯]å¼€å§‹
 			country_event = { id = AAR_evt_WEBWAY.21 }
 		}
 	}
@@ -1213,7 +1213,7 @@ AAR_AP_webway = {
 		factor = 0
 	}
 }
-###	APÉñËÙĞÅÑö	|½ûAI|
+###	APç¥é€Ÿä¿¡ä»°	|ç¦AI|
 AAR_AP_jumper = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1230,7 +1230,7 @@ AAR_AP_jumper = {
 			fail_text = "AAR_tips_AP_requires_ap_grasp_the_void"
 			has_ascension_perk = ap_grasp_the_void
 		}
-		#	Ô¾Ç¨¿Æ¼¼
+		#	è·ƒè¿ç§‘æŠ€
 		OR = {
 			has_technology = tech_jump_drive_1
 			has_technology = tech_psi_jump_drive_1
@@ -1244,7 +1244,7 @@ AAR_AP_jumper = {
 	on_enabled = {
 		custom_tooltip = "AAR_tips_AP_jumper"
 		hidden_effect = {
-			## ÉñËÙapÍ¨Öª
+			## ç¥é€Ÿapé€šçŸ¥
 			country_event = { id = AAR_evt_JUMPER.0 }
 		}
 	}
@@ -1258,12 +1258,12 @@ AAR_AP_jumper = {
 		factor = 0
 	}
 }
-###	APÔ¶ĞĞÕß	|½öAI|
+###	APè¿œè¡Œè€…	|ä»…AI|
 AAR_AP_traveller = {
 	potential = {
 		has_global_flag = AAR_installed
 		NOT = { has_ascension_perk = AAR_AP_traveller }
-		is_ai = yes	# |½öAI|
+		is_ai = yes	# |ä»…AI|
 	}
 	possible = {
 		NOR = {
@@ -1284,20 +1284,20 @@ AAR_AP_traveller = {
 
 	on_enabled = {
 		hidden_effect = {
-			set_country_flag = AAR_flg_cntr_NAVIGATOR	# |BANĞÇ¹ì|
+			set_country_flag = AAR_flg_cntr_NAVIGATOR	# |BANæ˜Ÿè½¨|
 			add_modifier = { modifier = AAR_MOD_cntr_navigator days = -1 }
 		}
 	}
 
 	modifier = {
-		#	³¬¿Õ¼ä
+		#	è¶…ç©ºé—´
 		ship_interstellar_speed_mult = 6
 		ship_windup_mult = -1
 		ship_winddown_mult = -1
-		#	Ô¾Ç¨
+		#	è·ƒè¿
 		ship_jumpdrive_cooldown_mult = -0.5
 		ship_ftl_jumpdrive_range_mult = 0.5
-		#	ÍøµÀ
+		#	ç½‘é“
 		ship_disengage_chance_mult = 0.25
 		ship_emergency_ftl_min_days_mult = -0.5
 		ship_emergency_ftl_mult = -0.5
@@ -1311,8 +1311,8 @@ AAR_AP_traveller = {
 
 
 
-###	AP¾Ó×¡Õ¾
-#	Ç§ĞÇÖ®³Ç
+###	APå±…ä½ç«™
+#	åƒæ˜Ÿä¹‹åŸ
 AAR_AP_void_paradise = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1336,9 +1336,9 @@ AAR_AP_void_paradise = {
 
 	modifier = {
 		pop_environment_tolerance = -0.1
-		pc_habitat_habitability = 0.2	#ÉÏÒ»½×Îª0.2
+		pc_habitat_habitability = 0.2	#ä¸Šä¸€é˜¶ä¸º0.2
 		megastructures_habitat_cost_mult = -0.15
-	#	megastructure_habitat_build_speed_mult = 0.5	#ÎŞĞ§
+	#	megastructure_habitat_build_speed_mult = 0.5	#æ— æ•ˆ
 	}
 
 	ai_weight = {
@@ -1359,7 +1359,7 @@ AAR_AP_void_paradise = {
 		}
 	}
 }
-#	Ğé¿ÕÉñ±¤
+#	è™šç©ºç¥å ¡
 AAR_AP_void_fortress = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1383,7 +1383,7 @@ AAR_AP_void_fortress = {
 
 	modifier = {
 		pop_environment_tolerance = -0.1
-		pc_habitat_habitability = 0.2	#ÉÏÒ»½×Îª0.2
+		pc_habitat_habitability = 0.2	#ä¸Šä¸€é˜¶ä¸º0.2
 		megastructures_habitat_cost_mult = -0.15
 	}
 
@@ -1411,7 +1411,7 @@ AAR_AP_void_fortress = {
 
 
 
-###	APÌúÄ»
+###	APé“å¹•
 AAR_ap_VEIL = {
 	potential = {
 		has_global_flag = AAR_installed
@@ -1433,12 +1433,12 @@ AAR_ap_VEIL = {
 		hidden_effect = {
 			#	AI
 			if = { limit = { is_ai = yes }
-				country_event = { id = AAR_evt_VEIL.2 days = 500 }	# aarÌúÄ»ai·ÉÉı
+				country_event = { id = AAR_evt_VEIL.2 days = 500 }	# aaré“å¹•aié£å‡
 			}
 			#	PC
 			else = {
-				country_event = { id = AAR_evt_VEIL.3 }	# aarÌúÄ»pc·ÉÉı
-				country_event = { id = AAR_evt_VEIL.4 days = 5400 }	# aarÌúÄ»pc±£µ×	|15Äêºó|
+				country_event = { id = AAR_evt_VEIL.3 }	# aaré“å¹•pcé£å‡
+				country_event = { id = AAR_evt_VEIL.4 days = 5400 }	# aaré“å¹•pcä¿åº•	|15å¹´å|
 			}
 		}
 	}
