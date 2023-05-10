@@ -46,7 +46,7 @@ isolationist = {
 			exists = from
 			from = {
 				exists = leader
-				leader = { leader_class = ruler }
+				leader = { is_ruler = yes }
 			}
 		}
 
