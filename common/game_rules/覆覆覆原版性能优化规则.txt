@@ -67,16 +67,12 @@ can_generate_leader_from_pop = {
 	has_pop_flag = can_enable_can_generate_leader_from_pop
 }
 
+# Root = country
+# This = species
 can_modify_species = {
 	if = {
-		limit = { owner = { is_ai = yes } }
-		owner = { count_exact_species = {
-			count < 3
-			limit = { OR = {
-				is_same_species = root
-				is_subspecies = root
-			} }
-		} }
+		limit = { root = { is_ai = yes } }
+		root = { count_exact_species = { count < 3 limit = { OR = { is_same_species = root is_subspecies = root } } } }
 	}
 	else = { OR = {
 		NOT = { has_trait = trait_self_modified }
