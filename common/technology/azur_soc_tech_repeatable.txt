@@ -211,7 +211,7 @@ tech_azur_society_repeatable_05 = {
 	}
 	
 	modifier = {
-		country_command_limit_add = 20
+		command_limit_add = 20
 	}
 }
 tech_azur_society_repeatable_X = {
