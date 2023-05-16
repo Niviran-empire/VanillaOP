@@ -24,9 +24,9 @@ VOP_on_five_year_pulse_country = {
 	}
 }
 
-VOP_on_tech_increased = {
+VOP_on_monthly_pulse_country = {
 	events = {
-		#vop_ai_fixed.21		#_[sop]
-		#vop_ai_fixed.22		#_[sop]
+		str_game_start.0
+		vop_ai_fixed.24
 	}
 }

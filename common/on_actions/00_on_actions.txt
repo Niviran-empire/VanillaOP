@@ -272,10 +272,6 @@ on_late_game_pulse = {
 # this = country
 VOP_on_monthly_pulse_country = {
 	events = {
-		#	|新增|
-		str_game_start.0
-
-		#vanilla
 		tutorial.1337 #Artifact tutorial
 		tutorial.2110 #Tutorial: Creating a Mercenary Enclave
 		cara.333 #ai checks if it can/wants to play with the caravaneers
