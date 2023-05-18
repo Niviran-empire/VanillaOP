@@ -1,7 +1,8 @@
 #适用于需要限制数量的纯巨构
 AOW_trigger_mega_potential = {
 	is_ai = no
-	event_target:global_event_country = { NOT = { check_variable = { which = AOW_var_player_mega_cap_$key$ value = 0 } } }
+	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value > 0 } }
+	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value < 5 } }
 }
 
 #适用于生成宜居星球的巨构

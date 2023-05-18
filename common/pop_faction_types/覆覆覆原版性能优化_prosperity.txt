@@ -10,7 +10,7 @@ prosperity = {
 	support_multiplier = 1
 
 	is_potential = {
-		is_faction_allowed = yes
+		VOP_is_faction_allowed = yes
 	}
 
 	parameters = {

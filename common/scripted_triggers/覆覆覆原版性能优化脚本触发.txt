@@ -152,6 +152,46 @@ can_have_food_upkeep_species = {
 	}
 }
 
+is_faction_allowed = {
+	always = no
+	# OR = {
+	# 	AND = {
+	# 		years_passed > 10
+	# 		has_encountered_other_species = yes
+	# 	}
+	# 	AND = {
+	# 		days_passed > 30
+	# 		has_valid_civic = civic_parliamentary_system
+	# 	}
+	# 	AND = {
+	# 		days_passed > 350
+	# 		has_origin = origin_broken_shackles
+	# 	}
+	# }
+	# NOT = { has_ethic = ethic_gestalt_consciousness }
+	# NOT = { has_country_flag = suppress_vanilla_factions }
+}
+
+VOP_is_faction_allowed = {
+	always = no
+	# OR = {
+	# 	AND = {
+	# 		years_passed > 10
+	# 		has_encountered_other_species = yes
+	# 	}
+	# 	AND = {
+	# 		days_passed > 30
+	# 		has_valid_civic = civic_parliamentary_system
+	# 	}
+	# 	AND = {
+	# 		days_passed > 350
+	# 		has_origin = origin_broken_shackles
+	# 	}
+	# }
+	# NOT = { has_ethic = ethic_gestalt_consciousness }
+	# NOT = { has_country_flag = suppress_vanilla_factions }
+}
+
 ###_[升级首都]	####################################################################
 #_pltn		[pd/avb/acot/aot/涅槃/kuat/mrpg/azl]
 has_upgraded_capital = {

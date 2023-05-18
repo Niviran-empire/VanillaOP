@@ -675,105 +675,105 @@ event = {
 					set_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
 				}
 				#Pop faction
-				if = {
-					limit = { owner = { count_pop_faction = { count > 0 } } }
-					if = {
-						limit = {
-							OR = {
-								has_ethic = ethic_materialist
-								is_robot_pop = yes
-							}
-							is_shackled_robot = no
-							can_think = yes
-							NOT = { has_ethic = ethic_spiritualist }
-							NOT = { has_pop_flag = can_join_faction_op_1 }
-							owner = { any_pop_faction = { is_pop_faction_type = technologist } }
-						}
-						set_pop_flag = can_join_faction_op_1
-					}
-					if = {
-						limit = { 
-							is_shackled_robot = no
-							can_think = yes
-							OR = {
-								NOT = { is_same_species = owner_species }
-								owner = {
-									OR = {
-										has_ethic = ethic_pacifist
-										has_ethic = ethic_fanatic_pacifist
-									}
-								}
-							}
-							NOT = { has_pop_flag = can_join_faction_op_2 }
-							owner = { any_pop_faction = { is_pop_faction_type = isolationist } }
-						}
-						set_pop_flag = can_join_faction_op_2
-					}
-					if = {
-						limit = { 
-							OR = {
-								has_ethic = ethic_egalitarian
-								has_ethic = ethic_xenophile
-								has_ethic = ethic_pacifist
-							}
-							is_shackled_robot = no
-							can_think = yes
-							NOT = { has_pop_flag = manifesti_bored }
-							NOT = { has_pop_flag = can_join_faction_op_3 }
-							owner = { any_pop_faction = { is_pop_faction_type = manifesti } }
-						}
-						set_pop_flag = can_join_faction_op_3
-					}
-					if = {
-						limit = { 
-							is_shackled_robot = no
-							can_think = yes
-							owner = {
-								NOR = {
-									has_ethic = ethic_pacifist
-									has_ethic = ethic_fanatic_pacifist
-								}
-							}
-							is_same_species = owner_species
-							NOT = { has_pop_flag = can_join_faction_op_4 }
-							owner = { any_pop_faction = { is_pop_faction_type = supremacist } }
-						}
-						set_pop_flag = can_join_faction_op_4
-					}
-					if = {
-						limit = { 
-							is_shackled_robot = no
-							can_think = yes
-							NOT = { has_pop_flag = can_join_faction_op_5 }
-							owner = { any_pop_faction = { OR = {
-								is_pop_faction_type = xenoist
-								is_pop_faction_type = imperialist
-								is_pop_faction_type = progressive
-								is_pop_faction_type = prosperity
-							} } }
-						}
-						set_pop_flag = can_join_faction_op_5
-					}
-					if = {
-						limit = { 
-							is_enslaved = no
-							is_shackled_robot = no
-							is_being_purged = no
-							can_think = yes
-							NOT = { has_pop_flag = can_join_faction_op_6 }
-							owner = { any_pop_faction = { is_pop_faction_type = traditionalist } }
-						}
-						set_pop_flag = can_join_faction_op_6
-					}
-					if = {
-						limit = { 
-							can_think = yes
-							NOT = { has_pop_flag = can_join_faction_op_7 }
-							owner = { any_pop_faction = { is_pop_faction_type = totalitarian } }
-						}
-						set_pop_flag = can_join_faction_op_7
-					}
-				}
+				# if = {
+				# 	limit = { owner = { count_pop_faction = { count > 0 } } }
+				# 	if = {
+				# 		limit = {
+				# 			OR = {
+				# 				has_ethic = ethic_materialist
+				# 				is_robot_pop = yes
+				# 			}
+				# 			is_shackled_robot = no
+				# 			can_think = yes
+				# 			NOT = { has_ethic = ethic_spiritualist }
+				# 			NOT = { has_pop_flag = can_join_faction_op_1 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = technologist } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_1
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			is_shackled_robot = no
+				# 			can_think = yes
+				# 			OR = {
+				# 				NOT = { is_same_species = owner_species }
+				# 				owner = {
+				# 					OR = {
+				# 						has_ethic = ethic_pacifist
+				# 						has_ethic = ethic_fanatic_pacifist
+				# 					}
+				# 				}
+				# 			}
+				# 			NOT = { has_pop_flag = can_join_faction_op_2 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = isolationist } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_2
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			OR = {
+				# 				has_ethic = ethic_egalitarian
+				# 				has_ethic = ethic_xenophile
+				# 				has_ethic = ethic_pacifist
+				# 			}
+				# 			is_shackled_robot = no
+				# 			can_think = yes
+				# 			NOT = { has_pop_flag = manifesti_bored }
+				# 			NOT = { has_pop_flag = can_join_faction_op_3 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = manifesti } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_3
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			is_shackled_robot = no
+				# 			can_think = yes
+				# 			owner = {
+				# 				NOR = {
+				# 					has_ethic = ethic_pacifist
+				# 					has_ethic = ethic_fanatic_pacifist
+				# 				}
+				# 			}
+				# 			is_same_species = owner_species
+				# 			NOT = { has_pop_flag = can_join_faction_op_4 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = supremacist } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_4
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			is_shackled_robot = no
+				# 			can_think = yes
+				# 			NOT = { has_pop_flag = can_join_faction_op_5 }
+				# 			owner = { any_pop_faction = { OR = {
+				# 				is_pop_faction_type = xenoist
+				# 				is_pop_faction_type = imperialist
+				# 				is_pop_faction_type = progressive
+				# 				is_pop_faction_type = prosperity
+				# 			} } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_5
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			is_enslaved = no
+				# 			is_shackled_robot = no
+				# 			is_being_purged = no
+				# 			can_think = yes
+				# 			NOT = { has_pop_flag = can_join_faction_op_6 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = traditionalist } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_6
+				# 	}
+				# 	if = {
+				# 		limit = { 
+				# 			can_think = yes
+				# 			NOT = { has_pop_flag = can_join_faction_op_7 }
+				# 			owner = { any_pop_faction = { is_pop_faction_type = totalitarian } }
+				# 		}
+				# 		set_pop_flag = can_join_faction_op_7
+				# 	}
+				# }
 				#Pop category
 				#resource
 				if = {
@@ -1548,4 +1548,30 @@ country_event = {
 		NOT = { has_global_flag = AAR_installed_stand }
 	}
 	immediate = { set_global_flag = AAR_installed_stand }
+}
+
+planet_event = {
+	id = vop_ai_fixed.25
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { any_country = { NOT = { has_modifier = str_ground_battle } } }
+	immediate = { every_country = { limit = { NOT = { has_modifier = str_ground_battle } } add_modifier = { modifier = str_ground_battle } } }
+}
+
+country_event = {
+	id = vop_ai_fixed.26
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { 
+		is_ai = yes 
+		NOT = { has_country_flag = has_str_ai_modifier } 
+	}
+	immediate = { 
+		add_modifier = { modifier = str_ai_modifier } 
+		if = {
+			limit = { NOT = { is_country_type = default } }
+			add_modifier = { modifier = str_ai_modifier_ship }
+		}
+		set_country_flag = has_str_ai_modifier 
+	}
 }

@@ -17,7 +17,7 @@ traditionalist = {
 	}
 
 	is_potential = {
-		is_faction_allowed = yes
+		VOP_is_faction_allowed = yes
 	}
 
 	parameters = {

@@ -10,6 +10,12 @@ on_single_player_save_game_load = {
 	}
 }
 
+on_ground_combat_started = {
+	events = {
+		vop_ai_fixed.25
+	}
+}
+
 # No scope, like on_game_start
 VOP_on_five_year_pulse = {
 	events = {
@@ -26,7 +32,7 @@ VOP_on_five_year_pulse_country = {
 
 VOP_on_monthly_pulse_country = {
 	events = {
-		str_game_start.0
+		vop_ai_fixed.26
 		vop_ai_fixed.24
 	}
 }
