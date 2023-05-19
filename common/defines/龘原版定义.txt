@@ -53,7 +53,7 @@ NShip = {
 
 	MAX_DAMAGE_SCALING					= 4			# The maximum scaling value a target is allowed to have (ship size)
 	
-	JUMP_DRIVE_WINDUP					= 5	# Jump drive windup in days
+	#JUMP_DRIVE_WINDUP					= 5	# Jump drive windup in days
 }
 
 NGameplay = {
