@@ -1,24 +1,24 @@
-#适用于需要限制数量的纯巨构
-AOW_trigger_mega_potential = {
-	is_ai = no
-	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value > 0 } }
-	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value < 5 } }
-}
+# #适用于需要限制数量的纯巨构
+# AOW_trigger_mega_potential = {
+# 	is_ai = no
+# 	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value > 0 } }
+# 	event_target:global_event_country = { check_variable = { which = AOW_var_player_mega_cap_$key$ value < 5 } }
+# }
 
-#适用于生成宜居星球的巨构
-AOW_trigger_habitat_potential = {
-	is_ai = no
-	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
-}
+# #适用于生成宜居星球的巨构
+# AOW_trigger_habitat_potential = {
+# 	is_ai = no
+# 	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
+# }
 
-#适用于无需限制数量的巨构
-AOW_trigger_infinite_potential = {
-	is_ai = no
-	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
-}
+# #适用于无需限制数量的巨构
+# AOW_trigger_infinite_potential = {
+# 	is_ai = no
+# 	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
+# }
 
-#适用于无需限制数量的、但不能让AI使用的巨构
-AOW_trigger_player_infinite_potential = {
-	is_ai = no
-	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
-}
+# #适用于无需限制数量的、但不能让AI使用的巨构
+# AOW_trigger_player_infinite_potential = {
+# 	is_ai = no
+# 	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
+# }

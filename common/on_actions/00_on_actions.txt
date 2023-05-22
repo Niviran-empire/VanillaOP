@@ -461,6 +461,8 @@ VOP_on_decade_pulse_country = {
 		paragon.998			# Random leader events
 		paragon.41234		# Renowned leader events
 		paragon.40000		# Galactic Paragons related pulses - check possibility to hire an ethic leader
+
+		communications_spread.3
 	}
 	random_events = {
 		50 = 0
