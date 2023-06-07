@@ -42,7 +42,7 @@ tech_azur_society_repeatable_01 = {
 	}
 	
 	modifier = {
-		planet_jobs_food_produces_mult = 0.05
+		country_leader_cap_add = 1
 		leader_age = 5
 	}
 }
@@ -252,7 +252,7 @@ tech_azur_society_repeatable_X = {
 	}
 	
 	modifier = {
-		planet_jobs_food_produces_mult = 0.05
+		country_leader_cap_add = 1
 		leader_age = 5
 		country_unity_produces_mult = 0.05
 		country_naval_cap_add = 20
