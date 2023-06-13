@@ -79,3 +79,19 @@ can_modify_species = {
 		is_same_species = root
 	} }
 }
+
+# Root/this = country
+# From = planet
+# Checks if the country is allowed to build a mining station around this planet/star
+can_build_mining_station_around = {
+	exists = root
+	ROOT = { is_ai = no }
+}
+
+# Root/this = country
+# From = planet
+# Checks if the country is allowed to build a research station around this planet/star
+can_build_research_station_around = {
+	exists = root
+	ROOT = { is_ai = no }
+}

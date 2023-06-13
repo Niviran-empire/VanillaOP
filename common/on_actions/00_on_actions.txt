@@ -340,7 +340,6 @@ VOP_on_five_year_pulse_country = {
 		action.620 # pre-FTL diplo events
 		action.630 # pre-FTL tech events
 		origin.5715	# Imperial Vassal - Dissolution event chain
-		paragon.5203
 		preftl.10050 # In breach of Equal Standing - get a fine.
 		preftl.10150 # In breach of Non-Interference - get a fine.
 		preftl.10250 # In breach of Exploitation - get a fine.
@@ -1719,12 +1718,7 @@ on_pop_bombed_to_death = {
 # This = Heir
 on_new_heir = {
 	events = {
-		action.504
-		paragon.5003
-		paragon_2.2072 # Technocracy Expertise Trait
-		paragon_2.2091 # Heroic Tales Random Trait
-		paragon_2.2056 # Zealot and Crusader from Crusader Spirit
-		paragon_2.2051 # One additional level from Vaults
+		action.504		# New Heir appointed, grant traits and select class.
 	}
 }
 
