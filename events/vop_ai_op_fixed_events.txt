@@ -1504,6 +1504,7 @@ event = {
 		count_playable_country = { count > 0 } 
 	}
 	immediate = {
+		set_global_flag = VOP_MOD_INSTALL
 		set_timed_global_flag = { flag = VOP_CD_vop_ai_fixed days = 1 }
 		set_update_modifiers_batch = begin
 		AOW_eft_GLBL_set_ai_mega_cap_0 = yes

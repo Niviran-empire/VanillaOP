@@ -430,7 +430,7 @@ event = {
 								has_active_tradition = tr_synthetics_adopt_machine
 							}
 						}
-						# Deliberately do nothing here, see assimilation_effect
+						no_events = yes
 					}
 					else_if = { # assimilator empire or cyborg empire
 						limit = {
@@ -610,3 +610,6 @@ event = {
 		}
 	}
 }
+
+namespace = vop_ai_fixed
+event = { inline_script = { script = pop_categories/str_checksum_upkeep ID = vop_ai_fixed.999 TARGET = 0 FLAG = 0 } }

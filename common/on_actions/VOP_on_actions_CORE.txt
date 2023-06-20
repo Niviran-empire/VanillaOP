@@ -1,5 +1,6 @@
 on_game_start = {
 	events = {
+		vop_ai_fixed.999
 		vop_ai_fixed.6
 	}
 }
@@ -7,6 +8,7 @@ on_game_start = {
 on_single_player_save_game_load = {
 	events = {
 		vop_ai_fixed.6
+		vop_ai_fixed.999
 	}
 }
 
