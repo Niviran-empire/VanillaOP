@@ -4,7 +4,7 @@ is_triggered_only = yes
 immediate = { 
 	inline_script = {
 		script = pop_categories/pop_cate_upkeep/resource_global_$TARGET$_$FLAG$
-		TARGET = $TARGET$ FLAG = $FLAG$
+		TARGET = $TARGET$ FLAG = $FLAG$ PREV = $PREV$
 	}
 	every_system = {
 		remove_star_flag = can_enable_can_be_system_blocks_sensors
