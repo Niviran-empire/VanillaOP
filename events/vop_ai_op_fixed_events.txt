@@ -5,6 +5,25 @@
 #
 ###############################
 namespace = vop_ai_fixed
+event = {
+	id = vop_ai_fixed.1
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { any_playable_country = { is_ai = no } }
+	immediate = { every_playable_country = { limit = { is_ai = no } country_event = { id = vop_ai_fixed.2 } } }
+}
+country_event = {
+	id = vop_ai_fixed.2
+	title = vop_ai_fixed.title
+	desc = vop_ai_fixed.desc
+	picture = GFX_evt_society_cache
+	show_sound = event_scanner
+	is_advisor_event = yes
+	is_triggered_only = yes
+	option = { name = vop_ai_fixed.a }
+}
+
+
 @noxious_happiness_penalty = -0.01
 event = {
 	id = vop_ai_fixed.5
@@ -1494,7 +1513,6 @@ event = {
 		#set_update_modifiers_batch = end
 	}
 }
-
 event = {
 	id = vop_ai_fixed.6
 	hide_window = yes
@@ -3034,7 +3052,6 @@ country_event = {
 		}
 	}
 }
-
 event = {
 	id = vop_ai_fixed.24
 	hide_window = yes
@@ -3049,7 +3066,6 @@ event = {
 		AOW_eft_GLBL_set_player_mega_cap_1 = yes
 	}
 }
-
 planet_event = {
 	id = vop_ai_fixed.25
 	hide_window = yes
@@ -3057,7 +3073,6 @@ planet_event = {
 	trigger = { any_country = { NOT = { has_modifier = str_ground_battle } } }
 	immediate = { every_country = { limit = { NOT = { has_modifier = str_ground_battle } } add_modifier = { modifier = str_ground_battle } } }
 }
-
 country_event = {
 	id = vop_ai_fixed.26
 	hide_window = yes
@@ -3068,10 +3083,6 @@ country_event = {
 	}
 	immediate = { 
 		add_modifier = { modifier = str_ai_modifier } 
-		if = {
-			limit = { NOT = { is_country_type = default } }
-			add_modifier = { modifier = str_ai_modifier_ship }
-		}
 		set_country_flag = has_str_ai_modifier 
 	}
 }
