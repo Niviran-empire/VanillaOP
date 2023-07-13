@@ -62,6 +62,12 @@ corvette = {
 		alloys = 1
 	}
 
+	potential_country = {
+		NOT = {
+			has_country_flag = HNC_disable_vanilla_ship
+		}
+	}
+
 	ai_ship_data = {
 		fraction = {
 			base = 0
@@ -161,6 +167,11 @@ frigate = {
 
 	min_upgrade_cost = {
 		alloys = 1
+	}
+	potential_country = {
+		NOT = {
+			has_country_flag = HNC_disable_vanilla_ship
+		}
 	}
 
 	ai_ship_data = {
@@ -279,8 +290,9 @@ destroyer = {
 		}
 	}
 	potential_country = {
-		NOT = {
+		NOR = {
 			has_country_flag = azur_shipclass_only
+			has_country_flag = HNC_disable_vanilla_ship
 		}
 	}
 }
@@ -387,8 +399,9 @@ cruiser = {
 		}
 	}
 	potential_country = {
-		NOT = {
+		NOR = {
 			has_country_flag = azur_shipclass_only
+			has_country_flag = HNC_disable_vanilla_ship
 		}
 	}
 }
@@ -478,8 +491,9 @@ battleship = {
 		}
 	}
 	potential_country = {
-		NOT = {
+		NOR = {
 			has_country_flag = azur_shipclass_only
+			has_country_flag = HNC_disable_vanilla_ship
 		}
 	}
 }
@@ -589,5 +603,10 @@ titan = {
 		min = 1
 		max = 3
 		planet_mult = 0.1
+	}
+	potential_country = {
+		NOT = {
+			has_country_flag = HNC_disable_vanilla_ship
+		}
 	}
 }
