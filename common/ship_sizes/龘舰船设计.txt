@@ -62,12 +62,6 @@ corvette = {
 		alloys = 1
 	}
 
-	potential_country = {
-		NOT = {
-			has_country_flag = HNC_disable_vanilla_ship
-		}
-	}
-
 	ai_ship_data = {
 		fraction = {
 			base = 0
@@ -167,11 +161,6 @@ frigate = {
 
 	min_upgrade_cost = {
 		alloys = 1
-	}
-	potential_country = {
-		NOT = {
-			has_country_flag = HNC_disable_vanilla_ship
-		}
 	}
 
 	ai_ship_data = {
