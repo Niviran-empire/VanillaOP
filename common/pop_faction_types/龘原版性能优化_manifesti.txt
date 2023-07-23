@@ -7,29 +7,20 @@ manifesti = {
 	guiding_ethic = ethic_egalitarian
 	use_guiding_ethic_as_pop_filter = no #this means that the faction will let pops that aren't egalitarian in too
 
+	visual_ethic = "manifesti_visual_ethic"
+
 	unique = yes
 	support_multiplier = 1
 
 	resources = {
 		category = pop_factions
 		produces = {
-			unity = 0.5
+			unity = @faction_base_unity
 		}
 	}
 
 	is_potential = {
-		years_passed > 10
-		is_ai = no
-		has_country_flag = manifesti_faction
-		is_regular_empire = yes
-		has_encountered_other_species = yes
-		is_at_war = no
-		NOR = {
-			is_homicidal = yes
-			is_fanatic = yes
-			has_valid_civic = civic_warrior_culture
-			has_country_flag = manifesti_decline #Applied if/when the faction is suppressed
-		}
+		VOP_is_faction_allowed = yes
 	}
 
 	parameters = {
@@ -198,6 +189,8 @@ manifesti = {
 					OR = {
 						has_trait = leader_trait_roamer
 						has_trait = leader_trait_carefree
+						has_trait = leader_trait_roamer_2
+						has_trait = leader_trait_carefree_2
 					}
 				}
 				any_owned_leader = {
@@ -205,6 +198,8 @@ manifesti = {
 					OR = {
 						has_trait = leader_trait_roamer
 						has_trait = leader_trait_carefree
+						has_trait = leader_trait_roamer_2
+						has_trait = leader_trait_carefree_2
 					}
 				}
 				any_owned_leader = {
@@ -212,6 +207,8 @@ manifesti = {
 					OR = {
 						has_trait = leader_trait_roamer
 						has_trait = leader_trait_carefree
+						has_trait = leader_trait_roamer_2
+						has_trait = leader_trait_carefree_2
 					}
 				}
 			}
@@ -283,6 +280,14 @@ manifesti = {
 			}
 		}
 	}
+
+	# Faction Demands for Ruler and Council positions.
+	inline_script = {
+		script = "paragon/global_faction_demands"
+		ETHIC = ethic_egalitarian
+		ETHIC_FANATIC = ethic_fanatic_egalitarian
+		ETHIC_OPPOSED = ethic_authoritarian
+	} 
 
 	on_create = {
 		pop_faction_event = { id = factions.1 }
@@ -381,17 +386,6 @@ manifesti = {
 				modifier = {
 					factor = 0
 					owner = { has_valid_civic = civic_fanatic_purifiers }
-				}
-				modifier = {
-					factor = 0
-					NOT = {
-						owner = {
-							exists = ruler
-							ruler = {
-								leader_of_faction = progressive
-							}
-						}
-					}
 				}
 				modifier = {
 					factor = 0

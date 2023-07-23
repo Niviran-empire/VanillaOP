@@ -164,7 +164,8 @@ bio_trophy = {
 	change_job_threshold = 1.25
 
 	assign_to_pop = {
-		has_citizenship_type = { type = citizenship_organic_trophy }
+		exists = owner
+		has_citizenship_type = { type = citizenship_organic_trophy country = owner }
 	}
 	weight = {
 		weight = 5
@@ -568,68 +569,167 @@ precursor = {
 	resources = {
 		category = pop_category_precursor
 
-		# Organic Upkeep
+		# Consumer Goods Upkeep
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			consumer_goods = 2.0
+		}
+
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
+			consumer_goods = 1.0
+		}
+		
+		# Food Upkeep
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = no
 				exists = owner
 				owner = {
 					is_spiritualist = no
 				}
 			}
 			food = 2.0
-			consumer_goods = 2.0
 		}
-
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
+				has_food_upkeep = yes
+				is_phototrophic = no
 				exists = owner
 				owner = {
 					is_spiritualist = yes
 				}
 			}
 			food = 1.0
-			consumer_goods = 1.0
 		}
-
-		# Lithoid Upkeep
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
+				has_food_upkeep = yes
+				is_phototrophic = yes
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			food = 1.0
+		}
+		upkeep = {
+			trigger = {
+				has_food_upkeep = yes
+				is_phototrophic = yes
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
+			food = 0.5
+		}
+
+		# Mineral Upkeep
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
 				is_phototrophic = no
-				is_lithoid = yes
 				exists = owner
 				owner = {
 					is_spiritualist = no
 				}
 			}
 			minerals = 2.0
-			consumer_goods = 2.0
 		}
-
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
+				has_mineral_upkeep = yes
 				is_phototrophic = no
-				is_lithoid = yes
 				exists = owner
 				owner = {
 					is_spiritualist = yes
 				}
 			}
 			minerals = 1.0
-			consumer_goods = 1.0
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			minerals = 1.0
+		}
+		upkeep = {
+			trigger = {
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
+			minerals = 0.5
 		}
 
-		# Robotic Upkeep
+		# Energy Upkeep
+		upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			energy = 1.0
+		}
+				upkeep = {
+			trigger = {
+				has_phototrophic_energy_upkeep = yes
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
+			energy = 0.5
+		}
 		upkeep = {
 			trigger = {
 				is_robotic_species = yes
 			}
 			energy = @living_standard_energy_normal
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_energy_upkeep = yes
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
+			energy = 1.0
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_energy_upkeep = yes
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			energy = 2.0
 		}
 	}
 }

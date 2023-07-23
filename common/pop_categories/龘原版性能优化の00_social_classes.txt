@@ -11,7 +11,7 @@ ruler = {
 		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
-		pop_happiness = -0.40
+		pop_happiness = -0.60
 	}
 	unemployment_resources = {
 		category = unemployment_resources
@@ -145,7 +145,6 @@ ruler = {
 		# Lithoid Trait Output
 		inline_script = "pop_categories/str_trait_production"
 
-		# Resource Production
 		produces = {
 			trigger = {
 				is_organic_species = yes
@@ -176,7 +175,7 @@ specialist = {
 		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
-		pop_happiness = -0.30
+		pop_happiness = -0.60
 	}
 	unemployment_resources = {
 		category = unemployment_resources
@@ -408,7 +407,7 @@ worker = {
 		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
 	unemployment_penalties = {
-		pop_happiness = -0.20
+		pop_happiness = -0.40
 	}
 	unemployment_resources = {
 		category = unemployment_resources
