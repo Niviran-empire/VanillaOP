@@ -43,32 +43,22 @@ ship_event = {
 
 	immediate = {
 		random_list = {
-			400 = {
+			400 = {}
+			5 = {
 				modifier = {
-					factor = 5
-					OR = {
-						owner = { has_country_flag = discovered_site }
-						owner = { has_country_flag = discovered_site_cooldown }
-					}
-				}
-			}
-			1 = {
-				modifier = {
-					factor = 0.1
+					factor = 0.2
 					OR = {
 						owner = { is_ai = yes }
 						owner = { has_country_flag = discovered_site }
-						owner = { has_country_flag = discovered_site_cooldown }
 					}
 				}
 				from = {
 					prevent_anomaly = yes
 					create_archaeological_site = random
 				}
-				owner = { set_timed_country_flag = { flag = discovered_site_cooldown days = 1440 } }
 				if = { #Not all celestial bodies can have arc sites
 					limit = { exists = from.archaeological_site }
-					owner = { set_timed_country_flag = { flag = discovered_site days = 1440 } }
+					owner = { set_timed_country_flag = { flag = discovered_site days = 1800 } }
 				}
 			}
 		}
