@@ -1,5 +1,14 @@
-###_[传感阻碍]	####################################
-#_mod	LCTR/RS/Sexp/S_tnatc/WS/wsg/古代帝国/SMCO/莉莉
+# This = pop
+pop_generates_crime = {
+	always = no
+}
+
+#Root = planet
+#This = species
+species_can_live_on_planet = {
+	always = yes
+}
+
 # this = system
 # root = country
 system_blocks_sensors = {
@@ -7,13 +16,8 @@ system_blocks_sensors = {
 }
 
 # This = pop
-pop_generates_crime = {
-	always = no
-}
-
-# This = pop
 can_vote_in_democratic_election = {
-	has_pop_flag = enable_pop_election_vote
+	has_pop_flag = can_enable_pop_election_vote
 }
 
 # Root = Pop
@@ -21,7 +25,7 @@ can_vote_in_democratic_election = {
 # This = Pop
 # NOTE: species_has_happiness is also checked for this
 pop_has_random_ethics = {
-	has_pop_flag = enable_pop_has_random_ethics
+	has_pop_flag = can_enable_pop_has_random_ethics
 }
 
 # Root = Species
@@ -41,16 +45,6 @@ should_force_decline_species = {
 	custom_tooltip = {
 		success_text = CLONE_ARMY_FORCE_DECLINE
 		has_species_flag = can_enable_should_force_decline_species
-	}
-}
-
-#Root = planet
-#This = species
-species_can_live_on_planet = {
-	OR = {
-		is_robotic = yes
-		has_species_flag = can_enable_species_can_live_on_planet
-		has_species_flag = LSP_flag_original@root
 	}
 }
 

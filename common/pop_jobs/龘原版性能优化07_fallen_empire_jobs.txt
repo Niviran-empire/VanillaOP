@@ -9,7 +9,7 @@ fe_xeno_ward = {
 	}
 
 	possible = {
-		has_pop_flag = enable_canbe_fe_xeno_ward_jobs_pop
+		has_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
 	}
 
 	resources = {
@@ -50,7 +50,7 @@ fe_hedonist = {
 	}
 
 	possible = {
-		has_pop_flag = enable_canbe_fe_hedonist_jobs_pop
+		has_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
 	}
 
 	resources = {

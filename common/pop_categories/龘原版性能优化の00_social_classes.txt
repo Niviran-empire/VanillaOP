@@ -15,27 +15,6 @@ ruler = {
 	}
 	unemployment_resources = {
 		category = unemployment_resources
-
-		# Unemployment Benefits Crime event
-		upkeep = {
-			trigger = {
-				planet = {
-					has_modifier = unemployment_benefits
-				}
-			}
-			consumer_goods = 2
-		}
-	}
-	triggered_pop_modifier = {
-		potential = {
-			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-			is_unemployed = yes
-			has_pop_flag = enable_should_apply_unemployment_penalties_op
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		pop_happiness = 0.10
 	}
 
 	weight = {
@@ -64,64 +43,6 @@ ruler = {
 		}
 		unity = 50
 	}
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-	# 	}
-	# 	trade_value_add = @trade_value_prosperity_gospel
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-	# 	}
-	# 	trade_value_add = @trade_value_shared_burden
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_13
-	# 	}
-	# 	trade_value_add = @trade_value_very_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-	# 	}
-	# 	trade_value_add = @trade_value_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-	# 	}
-	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
-	# }
-
-
-	# triggered_pop_modifier = {
-	# 	potential = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_7 }
-	# 	pop_happiness = 1
-	# 	mult = modifier:pop_non_noxious_happiness
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		can_assemble_tiyanki_pop = yes
-	# 	}
-	# 	planet_pop_assembly_organic_add = @tiyanki_budding_rate
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-	# 	}
-	# 	custom_tooltip = noxious_bastards
-	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
-	# }
 
 	resources = {
 		category = pop_category_rulers
@@ -179,27 +100,6 @@ specialist = {
 	}
 	unemployment_resources = {
 		category = unemployment_resources
-
-		# Unemployment Benefits Crime event
-		upkeep = {
-			trigger = {
-				planet = {
-					has_modifier = unemployment_benefits
-				}
-			}
-			consumer_goods = 2
-		}
-	}
-	triggered_pop_modifier = {
-		potential = {
-			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-			is_unemployed = yes
-			has_pop_flag = enable_should_apply_unemployment_penalties_op
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		pop_happiness = 0.10
 	}
 
 	weight = {
@@ -228,70 +128,6 @@ specialist = {
 		}
 		unity = 25
 	}
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-	# 	}
-	# 	trade_value_add = @trade_value_prosperity_gospel
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-	# 	}
-	# 	trade_value_add = @trade_value_shared_burden
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_3
-	# 	}
-	# 	trade_value_add = @trade_value_very_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_4
-	# 	}
-	# 	trade_value_add = @trade_value_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-	# 	}
-	# 	trade_value_add = @trade_value_normal
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-	# 	}
-	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
-	# }
-	
-	# triggered_pop_modifier = {
-	# 	potential = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_7 }
-	# 	pop_happiness = 1
-	# 	mult = modifier:pop_non_noxious_happiness
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		can_assemble_tiyanki_pop = yes
-	# 	}
-	# 	planet_pop_assembly_organic_add = @tiyanki_budding_rate
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-	# 	}
-	# 	custom_tooltip = noxious_bastards
-	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
-	# }
 
 	resources = {
 		category = pop_category_specialists
@@ -339,70 +175,6 @@ worker = {
 
 	change_job_threshold = 1.15
 
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-	# 	}
-	# 	trade_value_add = @trade_value_prosperity_gospel
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-	# 	}
-	# 	trade_value_add = @trade_value_shared_burden
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_9
-	# 	}
-	# 	trade_value_add = @trade_value_very_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_10
-	# 	}
-	# 	trade_value_add = @trade_value_high
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_11
-	# 	}
-	# 	trade_value_add = @trade_value_normal
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_12
-	# 	}
-	# 	trade_value_add = @trade_value_low
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-	# 	}
-	# 	trade_value_add = @trade_value_very_low
-	# 	#mult = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_mult|
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-	# 	}
-	# 	planet_pop_assembly_organic_add = @plantoid_budding_rate
-	# }
-	
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		can_assemble_tiyanki_pop = yes
-	# 	}
-	# 	planet_pop_assembly_organic_add = @tiyanki_budding_rate
-	# }
-
 	should_apply_unemployment_penalties = {
 		has_pop_flag = enable_should_apply_unemployment_penalties_op
 	}
@@ -411,26 +183,6 @@ worker = {
 	}
 	unemployment_resources = {
 		category = unemployment_resources
-
-		# Unemployment Benefits Crime event
-		upkeep = {
-			trigger = {
-				planet = {
-					has_modifier = unemployment_benefits
-				}
-			}
-			consumer_goods = 2
-		}
-	}
-	triggered_pop_modifier = {
-		potential = {
-			has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-			is_unemployed = yes
-			has_pop_flag = enable_should_apply_unemployment_penalties_op
-			owner = { is_galactic_community_member = yes }
-		}
-
-		pop_happiness = 0.10
 	}
 
 	# This is called whenever a Pop is created, moved to a different planet, or gets a new owner
@@ -464,20 +216,6 @@ worker = {
 		}
 		unity = 10
 	}
-
-	# triggered_pop_modifier = {
-	# 	potential = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_7 }
-	# 	pop_happiness = 1
-	# 	mult = modifier:pop_non_noxious_happiness
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		has_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-	# 	}
-	# 	custom_tooltip = noxious_bastards
-	# 	pop_non_noxious_happiness = @noxious_happiness_penalty
-	# }
 
 	resources = {
 		category = pop_category_workers
