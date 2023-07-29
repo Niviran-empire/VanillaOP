@@ -23,6 +23,55 @@ country_event = {
 	option = { name = vop_ai_fixed.a }
 }
 
+country_event = {
+	id = vop_ai_fixed.3
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { exists = event_target:FW_tgt_NPC0 }
+	immediate = {
+		event_target:FW_tgt_NPC0 = {
+			add_modifier = { modifier = Kuat_order_check_1 }
+			add_modifier = { modifier = Kuat_order_check_2 }
+			add_modifier = { modifier = Kuat_order_check_3 }
+			add_modifier = { modifier = NOVERA_order_check_1 }
+			add_modifier = { modifier = NOVERA_order_check_2 }
+			add_modifier = { modifier = NOVERA_order_check_3 }
+			add_modifier = { modifier = NOVERA_order_check_4 }
+			add_modifier = { modifier = NOVERA_order_check_5 }
+			add_modifier = { modifier = NOVERA_order_check_6 }
+			add_modifier = { modifier = NOVERA_order_check_7 }
+			add_modifier = { modifier = NOVERA_order_check_8 }
+			add_modifier = { modifier = NOVERA_order_check_9 }
+			add_modifier = { modifier = NOVERA_order_check_10 }
+			add_modifier = { modifier = NOVERA_order_check_11 }
+			add_modifier = { modifier = NOVERA_order_check_12 }
+			add_modifier = { modifier = NOVERA_order_check_13 }
+			add_modifier = { modifier = NOVERA_order_check_14 }
+			add_modifier = { modifier = NOVERA_order_check_15 }
+			add_modifier = { modifier = NOVERA_order_check_16 }
+			add_modifier = { modifier = NOVERA_order_check_17 }
+		}
+	}
+}
+
+country_event = {
+	id = vop_ai_fixed.4
+	title = vop_ai_fixed.4.title
+	desc = vop_ai_fixed.4.desc
+	picture = GFX_evt_society_cache
+	show_sound = event_scanner
+	is_advisor_event = yes
+	is_triggered_only = yes
+	trigger = {
+		exists = event_target:FW_tgt_NPC0
+		event_target:FW_tgt_NPC0 = { OR = {
+			check_modifier_value = { modifier = nova_mod_order_check value > 0 }
+			AND = { has_global_flag = EOF_NOVA_SINGULARY_enable check_modifier_value = { modifier = kuat_mod_order_check value > 0 } }
+		} }
+	}
+	option = { name = vop_ai_fixed.4.a }
+}
+
 
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
