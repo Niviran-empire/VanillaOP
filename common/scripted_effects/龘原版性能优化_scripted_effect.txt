@@ -1,0 +1,1 @@
+vop_debug_system_modifier = { if = { limit = { NOT = { has_modifier = $TYPE$_order_check_$ORDER$ } } add_modifier = { modifier = $TYPE$_order_check_$ORDER$ } } }

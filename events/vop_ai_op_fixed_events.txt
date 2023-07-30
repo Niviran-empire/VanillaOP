@@ -10,7 +10,13 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { any_playable_country = { is_ai = no } }
-	immediate = { every_playable_country = { limit = { is_ai = no } country_event = { id = vop_ai_fixed.2 } } }
+	immediate = { 
+		every_playable_country = { 
+			limit = { is_ai = no } 
+			country_event = { id = vop_ai_fixed.2 } 
+			country_event = { id = vop_ai_fixed.3 } 
+		} 
+	}
 }
 country_event = {
 	id = vop_ai_fixed.2
@@ -30,26 +36,26 @@ country_event = {
 	trigger = { exists = event_target:FW_tgt_NPC0 }
 	immediate = {
 		event_target:FW_tgt_NPC0 = {
-			add_modifier = { modifier = Kuat_order_check_1 }
-			add_modifier = { modifier = Kuat_order_check_2 }
-			add_modifier = { modifier = Kuat_order_check_3 }
-			add_modifier = { modifier = NOVERA_order_check_1 }
-			add_modifier = { modifier = NOVERA_order_check_2 }
-			add_modifier = { modifier = NOVERA_order_check_3 }
-			add_modifier = { modifier = NOVERA_order_check_4 }
-			add_modifier = { modifier = NOVERA_order_check_5 }
-			add_modifier = { modifier = NOVERA_order_check_6 }
-			add_modifier = { modifier = NOVERA_order_check_7 }
-			add_modifier = { modifier = NOVERA_order_check_8 }
-			add_modifier = { modifier = NOVERA_order_check_9 }
-			add_modifier = { modifier = NOVERA_order_check_10 }
-			add_modifier = { modifier = NOVERA_order_check_11 }
-			add_modifier = { modifier = NOVERA_order_check_12 }
-			add_modifier = { modifier = NOVERA_order_check_13 }
-			add_modifier = { modifier = NOVERA_order_check_14 }
-			add_modifier = { modifier = NOVERA_order_check_15 }
-			add_modifier = { modifier = NOVERA_order_check_16 }
-			add_modifier = { modifier = NOVERA_order_check_17 }
+			vop_debug_system_modifier = { TYPE = Kuat ORDER = 1 }
+			vop_debug_system_modifier = { TYPE = Kuat ORDER = 2 }
+			vop_debug_system_modifier = { TYPE = Kuat ORDER = 3 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 1 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 2 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 3 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 4 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 5 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 6 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 7 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 8 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 9 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 10 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 11 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 12 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 13 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 14 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 15 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 16 }
+			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 17 }
 		}
 	}
 }
