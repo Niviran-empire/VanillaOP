@@ -1655,7 +1655,10 @@ event = {
 			}
 			#[GAMERULE PLANET FLAG]
 			if = {
-				limit = { is_colony = yes colony_age < 180 num_pops < 10 }
+				limit = { 
+					is_colony = yes colony_age < 180 num_pops < 10 
+					NOT = { has_planet_flag = has_building_kuat_command_center_auto } 
+				}
 				set_planet_flag = can_enable_is_new_colony
 			}
 			#[POP SECTION CALCULATION]
@@ -3359,7 +3362,10 @@ event = {
 			}
 			#[GAMERULE PLANET FLAG]
 			if = {
-				limit = { is_colony = yes colony_age < 180 num_pops < 10 }
+				limit = { 
+					is_colony = yes colony_age < 180 num_pops < 10 
+					NOT = { has_planet_flag = has_building_kuat_command_center_auto } 
+				}
 				set_planet_flag = can_enable_is_new_colony
 			}
 			#[POP SECTION CALCULATION]
