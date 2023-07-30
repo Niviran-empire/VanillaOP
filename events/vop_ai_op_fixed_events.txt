@@ -1615,6 +1615,7 @@ event = {
 		every_galaxy_planet = {
 			limit = { exists = owner }
 			planet_event = { id = crime.41 }
+			remove_planet_flag = can_enable_is_new_colony
 			if = { 
 				limit = { owner = { is_ai = yes } } 
 				if = {
@@ -1651,6 +1652,11 @@ event = {
 					remove_modifier = planet_population_control_gestalt
 					remove_modifier =  planet_robot_assembly_control
 				}
+			}
+			#[GAMERULE PLANET FLAG]
+			if = {
+				limit = { is_colony = yes colony_age < 180 num_pops < 10 }
+				set_planet_flag = can_enable_is_new_colony
 			}
 			#[POP SECTION CALCULATION]
 			if = {
@@ -3313,6 +3319,7 @@ event = {
 		every_galaxy_planet = {
 			limit = { exists = owner }
 			planet_event = { id = crime.41 }
+			remove_planet_flag = can_enable_is_new_colony
 			if = { 
 				limit = { owner = { is_ai = yes } } 
 				if = {
@@ -3349,6 +3356,11 @@ event = {
 					remove_modifier = planet_population_control_gestalt
 					remove_modifier =  planet_robot_assembly_control
 				}
+			}
+			#[GAMERULE PLANET FLAG]
+			if = {
+				limit = { is_colony = yes colony_age < 180 num_pops < 10 }
+				set_planet_flag = can_enable_is_new_colony
 			}
 			#[POP SECTION CALCULATION]
 			if = {

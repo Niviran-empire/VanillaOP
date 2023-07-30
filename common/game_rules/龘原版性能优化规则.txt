@@ -89,3 +89,8 @@ can_build_research_station_around = {
 	exists = root
 	ROOT = { is_ai = no }
 }
+
+# This = Planet
+is_new_colony = {
+	has_planet_flag = can_enable_is_new_colony
+}

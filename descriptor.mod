@@ -12,5 +12,5 @@ tags={
 	"Galaxy Generation"
 }
 name="========基础运行环境========"
-supported_version="3.7.*"
+supported_version="3.*.*"
 remote_file_id="2857660469"
