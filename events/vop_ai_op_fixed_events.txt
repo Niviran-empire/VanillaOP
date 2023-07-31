@@ -3544,12 +3544,9 @@ event = {
 	id = vop_ai_fixed.24
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { 
-		has_global_flag = AAR_installed 
-		NOT = { has_global_flag = AAR_installed_stand }
-	}
+	trigger = { NOT = { has_global_flag = VOP_flg_glbl_AP_no_ai } }
 	immediate = { 
-		set_global_flag = AAR_installed_stand 
+		set_global_flag = VOP_flg_glbl_AP_no_ai
 		AOW_eft_GLBL_set_ai_mega_cap_0 = yes
 		AOW_eft_GLBL_set_player_mega_cap_1 = yes
 	}
