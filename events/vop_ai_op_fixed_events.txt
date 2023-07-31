@@ -33,9 +33,9 @@ country_event = {
 	id = vop_ai_fixed.3
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { exists = event_target:FW_tgt_NPC0 }
+	trigger = { exists = event_target:global_event_country }
 	immediate = {
-		event_target:FW_tgt_NPC0 = {
+		event_target:global_event_country = {
 			vop_debug_system_modifier = { TYPE = Kuat ORDER = 1 }
 			vop_debug_system_modifier = { TYPE = Kuat ORDER = 2 }
 			vop_debug_system_modifier = { TYPE = Kuat ORDER = 3 }
@@ -69,8 +69,8 @@ country_event = {
 	is_advisor_event = yes
 	is_triggered_only = yes
 	trigger = {
-		exists = event_target:FW_tgt_NPC0
-		event_target:FW_tgt_NPC0 = { OR = {
+		exists = event_target:global_event_country
+		event_target:global_event_country = { OR = {
 			check_modifier_value = { modifier = nova_mod_order_check value > 0 }
 			AND = { has_global_flag = EOF_NOVA_SINGULARY_enable check_modifier_value = { modifier = kuat_mod_order_check value > 0 } }
 		} }
