@@ -10,7 +10,11 @@ event = {
 				exists = starbase
 				starbase = { owner = { NOR = { is_same_value = prevprevprev is_at_war_with = prevprevprev } } }
 			}
-			OR = { is_country_type = default is_fallen_empire = yes }
+			OR = {
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
 		}
 	}
 
@@ -21,7 +25,8 @@ event = {
 				owner = {
 					OR = {
 						is_country_type = default
-						is_fallen_empire = yes
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
 					}
 				}
 				exists = starbase
@@ -30,7 +35,8 @@ event = {
 					owner = {
 						OR = {
 							is_country_type = default
-							is_fallen_empire = yes
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
 						}
 						NOR = {
 							is_same_value = prevprev.owner
