@@ -1,5 +1,5 @@
 #_|优化	/转出/转入	/新增|
-#_|VOP_|
+#_|VOP|
 
 
 # Triggers when the game starts
@@ -88,13 +88,13 @@ VOP_on_monthly_pulse = {
 		#pirate.48	|优化|
 		#pirate.4	|优化|
 		crime.1000
-		origin.50
-		origin.30
+		origin.50		# "Scion": FE lends a fleet
+		origin.30		# "Scion": FE reclaims fleet
 		galcom.105
 		galcom.108
 		galactic_features.365 # Tiyanki Respawning
 		enclave.2055	# if Khan dead, merc fleets break contract
-		#enclave.2065	#Unemployed mercs return to merc station	|优化|
+		#enclave.2065	# unemployed mercs return to merc station	|优化|
 		fircon.10		# adds pre-FTL insights
 	}
 }
@@ -309,9 +309,14 @@ VOP_on_monthly_pulse_country = {
 		ancrel.9902			# Archaoetech - Zro deficit ends - enable storm casters
 		ancrel.9906			# Archaoetech - Zro deficit starts - disable storm casters
 		paragon.6030		# Checks if your leader has enough zro to eat
-		#action.720			# |转出|
-		#megastructures.50	# |转出|
+		#action.720			#Void Hive Build Station	|转出|
+		#megastructures.50	# Habitat Orbital Restored	|转出|
 	}
+	#	|转出|
+	#random_events = {
+	#	75 = 0
+	#	25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations
+	#}
 }
 
 # this = country
@@ -328,15 +333,18 @@ VOP_on_yearly_pulse_country = {
 		origin.5041 # Broken Shackles - Factions Founded
 		origin.5011 # Broken Shackles - Homesick Alternate
 		#paragon_2.1020 # Galactic Paragons negative leader trait event.	|转出|
+		paragon.5955 #Luminary Age Check
+		paragon.5960 #Utility event for players continuing their old save
 		
-		# |转入|
+		#	|转入|
 		paragon.5034
 		paragon.5037
-		action.720			
-		megastructures.50	
+		action.720
+		megastructures.50
 	}
+	#	|转入|
 	random_events = {
-		75 = 0
+		25 = 0	# 75|优化	从月度改为年度应增加事件触发概率,从|0.25|到|0.5|
 		25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations
 	}
 }
@@ -3043,7 +3051,7 @@ on_system_gained = {
 		galactic_features.298 # Shielded World (Fallen Empire)
 		action.200	# recalc strategic war data
 		communications_spread.5 # Establish comms with any other countries in the system
-		specialist.200
+		specialist.200 # Add Bulwark Arrays to Bulwark subjects' starbases
 	}
 }
 
