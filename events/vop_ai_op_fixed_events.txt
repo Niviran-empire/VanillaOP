@@ -76,6 +76,7 @@ country_event = {
 			check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
 		} }
 	}
+	immediate = { change_variable = { which = alert_system_amount value = 1 } }
 	option = { name = vop_ai_fixed.4.a }
 }
 

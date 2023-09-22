@@ -24,11 +24,10 @@ on_ground_combat_started = {
 	}
 }
 
-VOP_on_yearly_pulse_country = {
-	events = {
-		vop_ai_fixed.4
-	}
-}
+# VOP_on_yearly_pulse_country = {
+# 	events = {
+# 	}
+# }
 
 # No scope, like on_game_start
 VOP_on_five_year_pulse = {
@@ -46,6 +45,7 @@ VOP_on_five_year_pulse_country = {
 
 VOP_on_monthly_pulse_country = {
 	events = {
+		vop_ai_fixed.4
 		vop_ai_fixed.26
 	}
 }
