@@ -1616,34 +1616,33 @@ event = {
 		# planet events
 		every_galaxy_planet = {
 			limit = { exists = owner }
-			planet_event = { id = crime.41 }
 			remove_planet_flag = can_enable_is_new_colony
 			if = { 
 				limit = { owner = { is_ai = yes } } 
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_population_control } 
 					}
 					add_modifier = { modifier = planet_population_control }
 				}
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_population_control_gestalt } 
 					}
 					add_modifier = { modifier = planet_population_control_gestalt }
 				}
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_robot_assembly_control } 
 					}
 					add_modifier = { modifier = planet_robot_assembly_control }
 				}
 				else_if = { 
 					limit = { 
-						num_pops <= 150 
+						num_pops <= 100 
 						OR = {
 							has_modifier = planet_population_control
 							has_modifier =  planet_population_control_gestalt
@@ -3323,34 +3322,33 @@ event = {
 		# planet events
 		every_galaxy_planet = {
 			limit = { exists = owner }
-			planet_event = { id = crime.41 }
 			remove_planet_flag = can_enable_is_new_colony
 			if = { 
 				limit = { owner = { is_ai = yes } } 
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_population_control } 
 					}
 					add_modifier = { modifier = planet_population_control }
 				}
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_population_control_gestalt } 
 					}
 					add_modifier = { modifier = planet_population_control_gestalt }
 				}
 				if = {
 					limit = { 
-						num_pops > 150 
+						num_pops > 100 
 						NOT = { has_modifier = planet_robot_assembly_control } 
 					}
 					add_modifier = { modifier = planet_robot_assembly_control }
 				}
 				else_if = { 
 					limit = { 
-						num_pops <= 150 
+						num_pops <= 100 
 						OR = {
 							has_modifier = planet_population_control
 							has_modifier =  planet_population_control_gestalt
