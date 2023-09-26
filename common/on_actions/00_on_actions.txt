@@ -2870,7 +2870,7 @@ on_colony_yearly_pulse = {
 		#25 = crime.1 # Criminal Underworld Appears (Unemployment)	# |转出|
 		#25 = crime.40 # Criminal Underworld Appears (High Crime)	# |转出|
 		#25 = crime.41 # Criminal Underworld Disappears (Low Crime)	# |转出|
-		22 = 0
+		97 = 0	# |优化|	22+75,其他事件转出,其概率应该更小
 	}
 }
 
