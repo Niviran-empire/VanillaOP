@@ -60,27 +60,6 @@ country_event = {
 	}
 }
 
-country_event = {
-	id = vop_ai_fixed.4
-	title = vop_ai_fixed.4.title
-	desc = vop_ai_fixed.4.desc
-	picture = GFX_evt_society_cache
-	show_sound = event_scanner
-	is_advisor_event = yes
-	is_triggered_only = yes
-	trigger = {
-		has_global_flag = EOF_NOVA_SINGULARY_enable
-		exists = event_target:global_event_country
-		event_target:global_event_country = { OR = {
-			check_modifier_value = { modifier = nova_mod_order_check value > 0 }
-			check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
-		} }
-	}
-	immediate = { change_variable = { which = alert_system_amount value = 1 } }
-	option = { name = vop_ai_fixed.4.a }
-}
-
-
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
 event = {
@@ -3571,3 +3550,7 @@ country_event = {
 		set_country_flag = has_str_ai_modifier 
 	}
 }
+
+country_event = { inline_script = { script = pop_categories_version/pcv_notification_event_script ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 } }
+ship_event = { inline_script = { script = pop_categories_version/pcv_effect_event_script ID = vop_ai_fixed.7 } }
+# country_event = { inline_script = { script = pop_cate_upkeep/str_checksum_upkeep ID = vop_ai_fixed.999 TARGET = 0 PREV = 0 FLAG = 1 } }

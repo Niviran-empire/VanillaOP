@@ -1,0 +1,4 @@
+id = $ID$
+hide_window = yes
+is_triggered_only = yes
+immediate = { ship_event = { id = $ID$ } }

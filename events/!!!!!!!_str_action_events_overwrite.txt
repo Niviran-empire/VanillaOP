@@ -616,6 +616,3 @@ event = {
 		}
 	}
 }
-
-# namespace = vop_ai_fixed
-# event = { inline_script = { script = pop_categories/str_checksum_upkeep ID = vop_ai_fixed.999 TARGET = 0 PREV = 0 FLAG = 1 } }

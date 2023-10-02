@@ -1,0 +1,9 @@
+id = $ID$
+hide_window = yes
+is_triggered_only = yes
+immediate = { 
+	inline_script = {
+		script = pop_cate_upkeep/resource_global_$TARGET$_$FLAG$
+		TARGET = $TARGET$ FLAG = $FLAG$ PREV = $PREV$
+	}
+}
