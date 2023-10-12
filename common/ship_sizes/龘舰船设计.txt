@@ -530,7 +530,10 @@ titan = {
 				}
 				AND = {
 					is_scope_type = starbase
-					has_starbase_size >= starbase_citadel
+					OR = {
+						has_starbase_size >= starbase_citadel
+						AND = { exists = controller controller = { is_ai = yes } }
+					}
 				}
 				# is_ship_size = enclave_mercenary_station
 			}
@@ -547,7 +550,10 @@ titan = {
 				}
 				AND = {
 					is_scope_type = starbase
-					has_starbase_building = titan_yards
+					OR = {
+						has_starbase_building = titan_yards
+						AND = { exists = controller controller = { is_ai = yes } }
+					}
 				}
 				# is_ship_size = enclave_mercenary_station
 			}
