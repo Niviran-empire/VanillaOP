@@ -22,3 +22,25 @@
 # 	is_ai = no
 # 	NOT = { has_global_flag = AOW_flag_GLBL_no_player_$key$ }
 # }
+
+vop_azur_tech_trigger = {
+	has_global_flag = azurlane_repeatable_tech
+	[[TYPE_NOT] if = {
+		limit = { always = $TYPE_NOT$ }
+		OR = {
+			is_country_type = azur_crisis_2
+			AND = { is_ai = no NOT = { has_country_flag = azur_repeatable_integration } }
+		}
+	}]
+	[[TYPE_TRUE] if = {
+		limit = { always = $TYPE_TRUE$ }
+		OR = {
+			is_country_type = azur_crisis_2
+			AND = { is_ai = no has_country_flag = azur_repeatable_integration }
+		}
+	}]
+	[[TYPE_NONE] if = {
+		limit = { always = $TYPE_NONE$ }
+		OR = { is_country_type = azur_crisis_2 is_ai = no }
+	}
+}

@@ -1,0 +1,186 @@
+
+@AZURrepeatableTechBaseCost = 100000
+@AZURrepeatableTechLevelCost = 10000
+
+tech_azur_physics_repeatable_01 = {
+	area = physics
+	cost = @AZURrepeatableTechBaseCost
+	cost_per_level = @AZURrepeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { field_manipulation }
+	levels = 100
+	prerequisites = {"tech_power_plant_3" "tech_shields_4"}
+	weight = @repeatableTechWeight
+	
+	potential = {
+		has_global_flag = azurlane_repeatable_tech
+		vop_azur_tech_trigger = { TYPE_NOT = yes }
+	}
+
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		ship_evasion_mult = 0.01
+	}
+}
+tech_azur_physics_repeatable_02 = {
+	area = physics
+	cost = @AZURrepeatableTechBaseCost
+	cost_per_level = @AZURrepeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { particles }
+	levels = -1
+	prerequisites = {"tech_lasers_4" "tech_lasers_2"}
+	weight = @repeatableTechWeight
+	
+	potential = {
+		has_global_flag = azurlane_repeatable_tech
+		vop_azur_tech_trigger = { TYPE_NOT = yes }
+	}
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		weapon_type_energy_weapon_fire_rate_mult = 0.05
+		weapon_type_energy_weapon_damage_mult = 0.05
+	}
+}
+tech_azur_physics_repeatable_03 = {
+	area = physics
+	cost = @AZURrepeatableTechBaseCost
+	cost_per_level = @AZURrepeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { computing }
+	levels = -1
+	prerequisites = {"tech_defense_platform_hull_1" "tech_strike_craft_3"}
+	weight = @repeatableTechWeight
+	
+	potential = {
+		has_global_flag = azurlane_repeatable_tech
+		vop_azur_tech_trigger = { TYPE_NOT = yes }
+	}
+
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		weapon_type_strike_craft_speed_mult = 0.05
+		weapon_type_strike_craft_weapon_damage_mult = 0.05
+		weapon_type_strike_craft_weapon_fire_rate_mult = 0.05
+	}
+}
+tech_azur_physics_repeatable_04 = {
+	area = physics
+	cost = @AZURrepeatableTechBaseCost
+	cost_per_level = @AZURrepeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { computing }
+	levels = 5
+	prerequisites = {"tech_construction_templates" "tech_physics_2"}
+	weight = @repeatableTechWeight
+	
+	potential = {
+		has_global_flag = azurlane_repeatable_tech
+		vop_azur_tech_trigger = { TYPE_NONE = yes }
+	}
+
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		planet_building_build_speed_mult = 0.10
+		planet_buildings_cost_mult = -0.05
+	}
+}
+tech_azur_physics_repeatable_X = {
+	area = physics
+	cost = 300000
+	cost_per_level = 30000
+	tier = @repeatableTechTier
+	category = { computing }
+	levels = -1
+	prerequisites = { "tech_defense_platform_hull_1" "tech_strike_craft_3" "tech_power_plant_3" "tech_shields_4" "tech_lasers_4" "tech_lasers_2"}
+	weight = @repeatableTechWeight
+	
+	potential = {
+		has_global_flag = azurlane_repeatable_tech
+		vop_azur_tech_trigger = { TYPE_TRUE = yes }
+	}
+
+
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		weapon_type_energy_weapon_fire_rate_mult = 0.05
+		weapon_type_energy_weapon_damage_mult = 0.05
+		weapon_type_strike_craft_speed_mult = 0.05
+		weapon_type_strike_craft_weapon_damage_mult = 0.05
+		weapon_type_strike_craft_weapon_fire_rate_mult = 0.05
+	}
+}
