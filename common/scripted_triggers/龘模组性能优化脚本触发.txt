@@ -42,5 +42,5 @@ vop_azur_tech_trigger = {
 	[[TYPE_NONE] if = {
 		limit = { always = $TYPE_NONE$ }
 		OR = { is_country_type = azur_crisis_2 is_ai = no }
-	}
+	}]
 }
