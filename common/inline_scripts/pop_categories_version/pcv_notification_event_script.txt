@@ -4,8 +4,9 @@ desc = $ID$.desc
 picture = GFX_evt_society_cache
 show_sound = event_scanner
 is_advisor_event = yes
-is_triggered_only = yes
+mean_time_to_happen = { days = 30 }
 trigger = {
+	days_passed > 20
 	has_global_flag = EOF_NOVA_SINGULARY_enable
 	exists = event_target:global_event_country
 	event_target:global_event_country = { OR = {
@@ -18,10 +19,7 @@ immediate = {
 	if = {
 		limit = { check_variable = { which = alert_system_amount value > 3 } }
 		random_list = {
-			3 = { random_list = {
-				5 = { random_owned_ship = { ship_event = { id = $TARGET$ } } }
-				5 = { }
-			} }
+			3 = { random_owned_ship = { ship_event = { id = $TARGET$ } } }
 			9 = {  }
 		}
 		reroll_random = yes

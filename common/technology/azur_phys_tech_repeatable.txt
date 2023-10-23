@@ -14,7 +14,7 @@ tech_azur_physics_repeatable_01 = {
 	
 	potential = {
 		has_global_flag = azurlane_repeatable_tech
-		vop_azur_tech_trigger = { TYPE_NOT = yes }
+		vop_azur_tech_trigger = { TYPE_FAIL = azur_crisis_2 }
 	}
 
 
@@ -49,7 +49,7 @@ tech_azur_physics_repeatable_02 = {
 	
 	potential = {
 		has_global_flag = azurlane_repeatable_tech
-		vop_azur_tech_trigger = { TYPE_NOT = yes }
+		vop_azur_tech_trigger = { TYPE_FAIL = azur_crisis_2 }
 	}
 
 	weight_modifier = {
@@ -84,7 +84,7 @@ tech_azur_physics_repeatable_03 = {
 	
 	potential = {
 		has_global_flag = azurlane_repeatable_tech
-		vop_azur_tech_trigger = { TYPE_NOT = yes }
+		vop_azur_tech_trigger = { TYPE_FAIL = azur_crisis_2 }
 	}
 
 
@@ -121,7 +121,7 @@ tech_azur_physics_repeatable_04 = {
 	
 	potential = {
 		has_global_flag = azurlane_repeatable_tech
-		vop_azur_tech_trigger = { TYPE_NONE = yes }
+		vop_azur_tech_trigger = { TYPE_NONE = azur_crisis_2 }
 	}
 
 
@@ -157,7 +157,7 @@ tech_azur_physics_repeatable_X = {
 	
 	potential = {
 		has_global_flag = azurlane_repeatable_tech
-		vop_azur_tech_trigger = { TYPE_TRUE = yes }
+		vop_azur_tech_trigger = { TYPE_TRUE = azur_crisis_2 }
 	}
 
 
