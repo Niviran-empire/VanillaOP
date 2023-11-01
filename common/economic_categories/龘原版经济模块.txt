@@ -344,17 +344,17 @@ planet_jobs = {
 			has_job_category = worker
 		}
 	}
-	# triggered_upkeep_modifier = {
-	# 	key = planet_jobs_slave
-	# 	modifier_types = {
-	# 		mult add
-	# 	}
-	# 	trigger = {
-	# 		is_scope_type = pop	#_|FW|
-	# 		is_pop_category = slave
-	# 		has_job_category = worker
-	# 	}
-	# }
+
+	triggered_produces_modifier = {
+		key = planet_jobs_psionic
+		modifier_types = { 
+			mult add
+		}
+		trigger = {
+			is_scope_type = pop
+			has_trait = trait_psionic
+		}
+	}
 
 	triggered_produces_modifier = {
 		key = planet_worker_ownership_jobs
