@@ -546,15 +546,6 @@ planet_jobs = {
 	}
 
 	# # mage ##################################
-	# triggered_produces_modifier = {
-	# 	key = planet_jobs_psionic
-	# 	modifier_types = { 
-	# 		mult add
-	# 	}
-	# 	trigger = {
-	# 		str_is_mage = yes
-	# 	}
-	# }
 
 	# triggered_produces_modifier = {
 	# 	key = planet_jobs_non_psionic
