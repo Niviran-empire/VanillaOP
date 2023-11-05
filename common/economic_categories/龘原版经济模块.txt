@@ -346,7 +346,7 @@ planet_jobs = {
 	}
 
 	triggered_produces_modifier = {
-		key = planet_jobs_psionic
+		key = planet_psionic_jobs
 		modifier_types = { 
 			mult add
 		}
