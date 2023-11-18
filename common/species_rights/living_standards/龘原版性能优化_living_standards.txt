@@ -34,8 +34,9 @@ living_standard_normal = {
 		pop_category_specialists_consumer_goods_upkeep_add = @living_standard_luxuries_high
 		pop_category_workers_consumer_goods_upkeep_add = @living_standard_luxuries_normal
 		pop_category_slave_consumer_goods_upkeep_add = @living_standard_luxuries_very_low
-		pop_cat_ruler_political_power = 7
-		pop_cat_specialist_political_power = 1
+		pop_cat_ruler_political_power = 5.0
+		pop_cat_specialist_political_power = 2.5
+		pop_cat_worker_political_power = 1.5
 	}
 
 	potential = {

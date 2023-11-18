@@ -3,6 +3,8 @@ fe_xeno_ward = {
 	is_capped_by_modifier = no
 	clothes_texture_index = 2
 
+	possible_precalc = can_fill_precursor_job
+
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes
@@ -44,6 +46,8 @@ fe_hedonist = {
 	building_icon = building_hyper_entertainment_forum
 	clothes_texture_index = 2
 
+	possible_precalc = can_fill_precursor_job
+	
 	possible_pre_triggers = {
 		has_owner = yes
 		is_sapient = yes

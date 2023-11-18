@@ -6,6 +6,7 @@ Includes = {
 	"shadow.fxh"
 	"tiled_pointlights.fxh"
 	"pdxmesh_samplers.fxh"
+	"pdxmesh_astral_rift.fxh"
 	"pdxmesh_ship.fxh"
 	"aot_shaders.fxh"
 }
@@ -1755,7 +1756,7 @@ Effect PdxMeshAlphaAdditive
 	PixelShader = "PixelPdxMeshAdditive"
 	BlendState = "BlendStateAdditiveBlend"
 	DepthStencilState = "DepthStencilNoZWrite"
-	Defines = { "DISSOLVE" "ANIMATE_UV" }
+	Defines = { "DISSOLVE" }
 }
 
 Effect PdxMeshAlphaAdditiveSkinned
@@ -1764,7 +1765,7 @@ Effect PdxMeshAlphaAdditiveSkinned
 	PixelShader = "PixelPdxMeshAdditive"
 	BlendState = "BlendStateAdditiveBlend"
 	DepthStencilState = "DepthStencilNoZWrite"
-	Defines = { "DISSOLVE" "ANIMATE_UV" }
+	Defines = { "DISSOLVE" }
 }
 
 
@@ -2078,7 +2079,7 @@ Effect PdxMeshColorAlphaAdditive
 	PixelShader = "PixelPdxMeshAdditive"
 	BlendState = "BlendStateAdditiveBlend"
 	DepthStencilState = "DepthStencilNoZWrite"
-	Defines = { "ADD_COLOR" "DISSOLVE" "ANIMATE_UV" }
+	Defines = { "ADD_COLOR" "DISSOLVE" }
 }
 
 Effect PdxMeshColorAlphaAdditiveSkinned
@@ -2087,7 +2088,7 @@ Effect PdxMeshColorAlphaAdditiveSkinned
 	PixelShader = "PixelPdxMeshAdditive"
 	BlendState = "BlendStateAdditiveBlend"
 	DepthStencilState = "DepthStencilNoZWrite"
-	Defines = { "ADD_COLOR" "DISSOLVE" "ANIMATE_UV" }
+	Defines = { "ADD_COLOR" "DISSOLVE" }
 }
 
 Effect PdxMeshColorAlphaAdditiveStandardShadow
@@ -2551,14 +2552,14 @@ Effect PdxMeshTerraAlphaTest
 {
 	VertexShader = "VertexPdxMeshStandard"
 	PixelShader = "PixelPdxMeshStandard"
-	Defines = { "ADD_COLOR" "EMISSIVE"  "ALPHA_TEST" "RECOLOR_EMISSIVE" }
+	Defines = { "ADD_COLOR" "EMISSIVE"  "ALPHA_TEST" }
 }
 
 Effect PdxMeshTerraAlphaTestSkinned
 {
 	VertexShader = "VertexPdxMeshStandardSkinned"
 	PixelShader = "PixelPdxMeshStandard"
-	Defines = { "ADD_COLOR" "EMISSIVE"  "ALPHA_TEST" "RECOLOR_EMISSIVE"  }
+	Defines = { "ADD_COLOR" "EMISSIVE"  "ALPHA_TEST" }
 }
 
 Effect PdxMeshPlanet
@@ -2761,6 +2762,20 @@ Effect PdxMeshRingsSkinned
 	PixelShader = "PixelPdxMeshStandard"
 	BlendState = "BlendStateAlphaBlend";
 	Defines = { "IS_PLANET" "IS_RING"  }
+}
+
+Effect PdxMeshAstralRift
+{
+	VertexShader = "VertexPdxMeshStandard"
+	PixelShader = "PixelPdxMeshAstralRift"
+	BlendState = "BlendStateAlphaBlend";
+}
+
+Effect PdxMeshAstralRiftSkinned
+{
+	VertexShader = "VertexPdxMeshStandardSkinned"
+	PixelShader = "PixelPdxMeshAstralRift"
+	BlendState = "BlendStateAlphaBlend";
 }
 
 Effect PdxMeshAlphaBlendPlanet
@@ -3131,6 +3146,20 @@ Effect PdxMeshRingsSkinnedShadow
 	VertexShader = "VertexPdxMeshStandardShadow"
 	PixelShader = "PixelPdxMeshStandardShadow"
 	Defines = { "IS_SHADOW" "IS_PLANET" "IS_RING" }
+}
+
+Effect PdxMeshAstralRiftShadow
+{
+	VertexShader = "VertexPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "IS_SHADOW" }
+}
+
+Effect PdxMeshAstralRiftSkinnedShadow
+{
+	VertexShader = "VertexPdxMeshStandardSkinnedShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "IS_SHADOW" }
 }
 
 Effect PdxMeshAlphaBlendPlanetShadow
