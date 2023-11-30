@@ -7,7 +7,7 @@ TT_btn_ascension_breakthrough_start = {
 	}
 }
 TT_btn_ascension_breakthrough = {
-	potential = { from = { is_variable_set = TT_var_ascension_breakthrough_times } }
+	potential = { always = yes }
 	allow = {
 		from = { has_technology = tech_ascension_theory }
 		from = {
@@ -24,6 +24,10 @@ TT_btn_ascension_breakthrough = {
 	}
 	effect = {
 		from = {
+			if = {
+				limit = { NOT = { is_variable_set = TT_var_ascension_breakthrough_times } }
+				set_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
+			}
 			add_resource = { unity = -5000 mult = TT_var_ascension_breakthrough_times }
 			add_resource = { influence = -1000 }
 			hidden_effect = {
