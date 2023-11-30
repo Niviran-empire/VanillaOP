@@ -1,5 +1,5 @@
-#_|优化	/转出/转入	/新增|
-#_|VOP|
+#_|VOP优化	/VOP转出/VOP转入	/VOP新增|
+#_|VOP_|
 
 
 # Triggers when the game starts
@@ -88,12 +88,10 @@ VOP_on_monthly_pulse = {
 		graygoo.183
 		graygoo.510
 		distar.10955
-		#action.116		# enable resources for galactic market	|优化|
-		#paragon_2.1115	# Repair Crew trait effect	|转出|
-		#paragon_2.1135	# Knowledge for the Masses trait effect	|转出|
-		#paragon_2.1145	# Aptitude - Champions of the Empire Tradition effect	|转出|
-		#pirate.48	|优化|
-		#pirate.4	|优化|
+		#action.116		# enable resources for galactic market	|VOP优化|
+	#	paragon_2.1145	# Aptitude - Champions of the Empire Tradition effect
+		#pirate.48	|VOP优化|
+		#pirate.4	|VOP优化|
 		crime.1000
 		origin.50		# "Scion": FE lends a fleet
 		origin.30		# "Scion": FE reclaims fleet
@@ -101,7 +99,7 @@ VOP_on_monthly_pulse = {
 		galcom.108
 		galactic_features.365 # Tiyanki Respawning
 		enclave.2055	# if Khan dead, merc fleets break contract
-		#enclave.2065	# unemployed mercs return to merc station	|优化|
+		#enclave.2065	# unemployed mercs return to merc station	|VOP优化|
 		fircon.10		# adds pre-FTL insights
 	}
 }
@@ -218,14 +216,8 @@ VOP_on_yearly_pulse = {
 		origin.6245		# "Fear of the Dark": Haven Progress
 		awareness.110	# Uncloaked observation outpost awareness gain
 		awareness.175	# Branch office on pre-ftl planet awareness gain
-
 		astral_planes.2 # Progressive Astral Rifts spawn
 		astral_planes.10	# Crystal Sphere - Formless event chain
-
-		#	|转入|
-		paragon_2.1115 # Repair Crew trait effect
-		paragon_2.1135 # Knowledge for the Masses trait effect
-		paragon_2.1145 # Aptitude - Champions of the Empire Tradition effect
 	}
 }
 
@@ -309,8 +301,8 @@ VOP_on_monthly_pulse_country = {
 		origin.5104			# Broken Shackles - Resolution Proposed
 		origin.5114			# Broken Shackles - Resolution Proposed
 		origin.5124			# Broken Shackles - Resolution Proposed
-		#paragon.5034	# |转出|
-		#paragon.5037	# |转出|
+		#paragon.5034	# |VOP转出|
+		#paragon.5037	# |VOP转出|
 		utopia.2665			# Monthly covenant progress
 		utopia.2670			# Covenant Rank 1 check
 		utopia.2675			# Covenant Rank 2 check
@@ -320,14 +312,14 @@ VOP_on_monthly_pulse_country = {
 		ancrel.9902			# Archaoetech - Zro deficit ends - enable storm casters
 		ancrel.9906			# Archaoetech - Zro deficit starts - disable storm casters
 		paragon.6030		# Checks if your leader has enough zro to eat
-		#action.720			#Void Hive Build Station	|转出|
-		#megastructures.50	# Habitat Orbital Restored	|转出|
-		#astral_planes.1690  # Mirrored Empire setup		|转出|
-		#leader.300			# Favor Maker Councilor Trait	|转出|
+		#action.720			#Void Hive Build Station	|VOP转出|
+		#megastructures.50	# Habitat Orbital Restored	|VOP转出|
+		#astral_planes.1690  # Mirrored Empire setup		|VOP转出|
+		#leader.300			# Favor Maker Councilor Trait	|VOP转出|
 	}
 	random_events = {
 	#	75 = 0
-	#	25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations	|转出|
+	#	25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations	|VOP转出|
 	}
 }
 
@@ -344,25 +336,23 @@ VOP_on_yearly_pulse_country = {
 		origin.5047 # Broken Shackles - Complimentary Thinking
 		origin.5041 # Broken Shackles - Factions Founded
 		origin.5011 # Broken Shackles - Homesick Alternate
-		#paragon_2.1020 # Galactic Paragons negative leader trait event.	|转出|
+		#paragon_2.1020 # Galactic Paragons negative leader trait event.	|VOP转出|
 		paragon.5955 #Luminary Age Check
 		paragon.5960 #Utility event for players continuing their old save
-		#action.2000	# Caravaneers random events gatekeeper	|优化|禁用下面一个on_action
+		#action.2000	# Caravaneers random events gatekeeper	|VOP优化|禁用下面一个on_action
 		fallen_empires_tasks.10 # Fallen Empire task Failure - timer ran out (previously: MTTH 12 months)
 		
-		#	|转入|	来自<月度国家>
+		#	|VOP转入|	来自<月度国家>
 		paragon.5034
 		paragon.5037
 		action.720			#Void Hive Build Station
 		megastructures.50	# Habitat Orbital Restored
-		#	|转入|	来自<月度国家random>	从|每月25%|改为|每年100%|
+		astral_planes.1690  # Mirrored Empire setup
+		leader.300			# Favor Maker Councilor Trait
+		#	|VOP转入|	来自<月度国家random>	从|每月25%|改为|每年100%|
 		origin.7300			# Fruitful origin - luring space fauna to feeding stations
-
-		#	|转入|	来自<月度国家>
-		astral_planes.1690  # Mirrored Empire setup		|转入|  来自<月度国家>
-		leader.300			# Favor Maker Councilor Trait	|转入|	来自<月度国家>
 	}
-	#	|转入|	来自<on_yearly_random_pulse_country_caravaneers_list>
+	#	|VOP转入|	来自<on_yearly_random_pulse_country_caravaneers_list>
 	random_events = {
 		1 = cara.4000 # Pops join Caravan (previously: MTTH 2 years)
 		1 = cara.4010 # Caravan pops join colony (previously: MTTH 2 years)
@@ -373,7 +363,7 @@ VOP_on_yearly_pulse_country = {
 	}
 }
 
-###	|转出|触发事件已禁用
+###	|VOP转出|触发事件已禁用
 # this = country, fired via action.2001 from on_yearly_pulse_country
 on_yearly_random_pulse_country_caravaneers_list = {
 	random_events = {
@@ -411,7 +401,7 @@ VOP_on_five_year_pulse_country = {
 		paragon.200	# Astrocreator Azaryn encounter chance
 		action.2213		# on_five_year_random_pulse_country_fe_list
 		
-		#	|转入|
+		#	|VOP转入|
 		paragon_2.1020 # Galactic Paragons negative leader trait event.
 	}
 	# See also: on_five_year_random_pulse_country = {}
