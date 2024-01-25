@@ -1,3 +1,14 @@
+# #Check if it is possible to build orbital stations on this planet
+# #this: planet
+# #root: country
+# can_planet_support_orbital_station = {
+# 	custom_tooltip = {
+# 		fail_text = "ORBITAL_STATION_ALREADY_EXISTS"
+# 		has_any_megastructure = no
+# 		NOT = { has_planet_flag = has_megastructure }
+# 	}
+# }
+
 # This = pop
 pop_generates_crime = {
 	always = no
