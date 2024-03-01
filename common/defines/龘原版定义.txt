@@ -2,7 +2,7 @@ NAI = {
 	AI_FREE_JOBS_DISTRICT_BUILD_CAP = 6						# AI will not build new districts on a planet with more than this many free jobs
 	AI_FREE_JOBS_BUILDING_BUILD_CAP = 6						# AI will not build new buildings on a planet with more than this many free jobs
 
-	AI_NO_RETREAT_LIMIT = 10
+	AI_NO_RETREAT_LIMIT = 3
 	
 	AI_JUMP_DRIVE_BRAVERY = 5								# AI will not want to jump into systems unless enemy is this much weaker than them, relatively
 
