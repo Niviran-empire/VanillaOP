@@ -1509,7 +1509,7 @@ vop_optimaze_event_pop_caculation = {
 					owner = {
 						is_fallen_empire = yes
 						is_fallen_empire_spiritualist = no
-						is_fallen_machine_empire = no
+						is_fallen_empire_machine = no
 					}
 					is_same_species = owner
 					NOR = {

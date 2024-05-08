@@ -6,6 +6,7 @@
 # fixed_max_amount = yes/no		# default no, if yes maximum storage capacity of the resource is fixed to the amount specified in max = INT
 # special_max_amount = yes/no	# default no, if yes maximum storage capacity of the resource is fixed to the amount specified in max = INT + country_resource_max_RESOURCE_NAME_add modifiers + dynamic_capacity
 #								This explicitly ignores MOD_COUNTRY_RESOURCE_MAX_ADD modifiers.
+# tradable_in_market = {}		# default yes, trigger for blocking a resource from the market but still leaving it open for trade agreements								
 
 time = {
 	# Must be present here, but really: do not add a Deficit situation for Time.
@@ -60,10 +61,18 @@ food = {
 
 	ai_weight = {
 		weight = 1
+		modifier = {
+			factor = 0.1
+			country_uses_food = no
+		}
 	}
 
 	ai_wants = {
 		base = 500
+		modifier = {
+			factor = 0.1
+			country_uses_food = no
+		}
 	}
 }
 
@@ -96,7 +105,7 @@ engineering_research = {
 
 influence = {
 	category = other
-	max = 3000
+	max = 1000
 	tooltip_decimals = 1
 	fixed_max_amount = yes
 
@@ -131,10 +140,24 @@ consumer_goods = {
 
 	ai_weight = {
 		weight = 5
+		modifier = {
+			factor = 0.1
+			country_uses_consumer_goods = no
+		}
 	}
 
 	ai_wants = {
 		base = 500
+		modifier = {
+			factor = 0.1
+			country_uses_consumer_goods = no
+		}
+	}
+
+	tradable_in_market = {
+		NOT = {
+			has_valid_civic = civic_machine_obsessional_directive
+		}
 	}
 }
 
@@ -296,7 +319,6 @@ sr_dark_matter = {
 nanites = {
 	tradable = no
 	category = rare
-	max = 15000
 
 	visibility_prerequisite = { always = yes }
 	deficit_modifier = nanites_deficit #found in static modifiers
@@ -330,7 +352,7 @@ minor_artifacts = {
 
 # Astral Thread
 astral_threads = {
-	tradable = yes
+	tradable = no
 	category = rare
 	max = 500
 	special_max_amount = yes
@@ -339,7 +361,7 @@ astral_threads = {
 		complex_trigger_modifier = {
 			trigger = astral_rifts_completed
 			mode = mult
-		}		
+		}
 	}
 
 	prerequisites = { "tech_astral_harvesting" }
@@ -354,11 +376,20 @@ astral_threads = {
 	}
 }
 
-###############
-###	Nemesis	###
-###############
+########################
+###	Crisis Resources ###
+########################
 
 menace = {
+	tradable = no
+	category = other
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+advanced_logic = {
 	tradable = no
 	category = other
 

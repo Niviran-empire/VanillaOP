@@ -57,26 +57,14 @@ default = {
 	resources = {
 		category = country_base
 		produces = {
-			trigger = { is_ai = no }
-			energy = 50
-			minerals = 50
-			physics_research = 40
-			society_research = 40
-			engineering_research = 40
-			influence = 5
-			unity = 10
-			alloys = 10
-		}
-		produces = {
-			trigger = { is_ai = yes }
-			energy = 75
-			minerals = 75
-			physics_research = 75
-			society_research = 75
-			engineering_research = 75
-			influence = 10
-			unity = 50
-			alloys = 50
+			energy = 20
+			minerals = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+			influence = 3
+			unity = 5
+			alloys = 5
 		}
 		produces = {
 			trigger = {
@@ -89,21 +77,61 @@ default = {
 		}
 		produces = {
 			trigger = {
-				OR = {
-					is_regular_empire = yes
-					is_hive_empire = yes
+				OR = { #Either
+					# You're a non-lithoid non-individual machine, regular empire or hive mind
+					AND = {
+						is_individual_machine = no
+						is_lithoid_empire = no
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# You are a lithoid empire with a non-lithoid subspecies
+					AND = {
+						is_lithoid_empire = yes
+						has_country_flag = non_lithoid_subspecies
+					}
+					# Or a machine empire with a non-lithoid secondary species
+					AND = {
+						has_country_flag = non_lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or an individual machine with a non-lithoid species
+					AND = {
+						is_individual_machine = yes
+						has_country_flag = non_lithoid_subspecies
+					}
 				}
-				is_lithoid_empire = no
 			}
 			food = 10
 		}
 		produces = {
 			trigger = {
+				# Either
 				OR = {
-					is_regular_empire = yes
-					is_hive_empire = yes
+					# You're a lithoid regular empire or hive mind
+					AND = {
+						is_lithoid_empire = yes
+						OR = {
+							is_regular_empire = yes
+							is_hive_empire = yes
+						}
+					}
+					# Or a machine empire with a lithoid secondary species
+					AND = {
+						has_country_flag = lithoid_subspecies
+						is_machine_empire = yes
+					}
+					# Or a machine empire with no secondary species
+					AND = {
+						is_machine_empire = yes
+						NOR = {
+							has_country_flag = lithoid_subspecies
+							has_country_flag = non_lithoid_subspecies
+						}
+					}
 				}
-				is_lithoid_empire = yes
 			}
 			minerals = 10
 		}
@@ -112,7 +140,6 @@ default = {
 				is_machine_empire = yes
 			}
 			energy = 10
-			minerals = 10
 		}
 		produces = {
 			trigger = {

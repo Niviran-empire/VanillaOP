@@ -10,7 +10,6 @@ ethic_fanatic_authoritarian = {
 	country_modifier = {
 		country_ethic_influence_produces_add = 1
 		planet_jobs_worker_produces_mult = 0.1
-		country_leader_pool_size = -1
 	}
 
 	tags = {
@@ -119,6 +118,7 @@ ethic_authoritarian = {
 					has_living_standard = { type = living_standard_utopian country = root }
 					has_living_standard = { type = living_standard_good country = root }
 					has_living_standard = { type = living_standard_shared_burden country = root }
+					has_living_standard = { type = living_standard_worker_ownership country = root }
 				}
 			}
 		}
@@ -127,7 +127,10 @@ ethic_authoritarian = {
 		desc = POP_ATTRACTION_STRATIFIED_POS
 		trigger = {
 			any_owned_species = {
-				has_living_standard = { type = living_standard_stratified country = root }
+				OR = {
+					has_living_standard = { type = living_standard_stratified country = root }
+					has_living_standard = { type = living_standard_dystopian_society country = root }
+				}
 			}
 		}
 	}
@@ -160,7 +163,10 @@ ethic_authoritarian = {
 		desc = POP_ATTRACTION_DECADENT_POS
 		trigger = {
 			any_owned_species = {
-				has_trait = "trait_decadent"
+				OR = {
+					has_trait = "trait_decadent"
+					has_trait = "trait_robot_decadent"
+				}
 			}
 		}
 	}
@@ -210,6 +216,27 @@ ethic_authoritarian = {
 					}
 					has_ethic = ethic_authoritarian
 				}
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_authoritarian }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_authoritarian
+				is_faction_extorted = yes
 			}
 		}
 	}
@@ -297,7 +324,7 @@ ethic_authoritarian = {
 
 		# Check for any leader on the Council with Faction's Ethic.
 		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|egalitarian|
+			factor = value:count_councilors_with_ethic|ETHIC|authoritarian|
 		}
 	}
 
@@ -305,13 +332,27 @@ ethic_authoritarian = {
 	pop_attraction = {
 		base = 1
 
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = authoritarian
+			ETHIC_OPPOSED = egalitarian
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = authoritarian
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
 		}
 		modifier = {
 			factor = 1.25
-			has_trait = "trait_decadent"
+			OR = {
+				has_trait = "trait_decadent"
+				has_trait = "trait_robot_decadent"
+			}
 		}
 		modifier = {
 			factor = 1.5
@@ -356,7 +397,16 @@ ethic_authoritarian = {
 			factor = 1.25
 			is_enslaved = no
 			NOT = { is_pop_category = worker }
-			has_living_standard = { type = living_standard_stratified }
+			OR = {
+				AND = {
+					NOT = { is_pop_category = worker }
+					has_living_standard = { type = living_standard_stratified }
+				}
+				AND = {
+					is_pop_category = ruler
+					has_living_standard = { type = living_standard_dystopian_society }
+				}
+			}
 		}
 		modifier = {
 			factor = 0.75
@@ -365,6 +415,7 @@ ethic_authoritarian = {
 				has_living_standard = { type = living_standard_utopian }
 				has_living_standard = { type = living_standard_good }
 				has_living_standard = { type = living_standard_shared_burden }
+				has_living_standard = { type = living_standard_worker_ownership }
 			}
 		}
 		modifier = {
@@ -393,7 +444,6 @@ ethic_fanatic_egalitarian = {
 	country_modifier = {
 		pop_factions_produces_mult = 0.5
 		planet_jobs_specialist_produces_mult = 0.1
-		country_leader_pool_size = 1
 	}
 
 	random_weight = {
@@ -472,6 +522,7 @@ ethic_egalitarian = {
 					has_living_standard = { type = living_standard_utopian country = root }
 					has_living_standard = { type = living_standard_good country = root }
 					has_living_standard = { type = living_standard_shared_burden country = root }
+					has_living_standard = { type = living_standard_worker_ownership country = root }
 				}
 			}
 		}
@@ -554,7 +605,10 @@ ethic_egalitarian = {
 		desc = POP_ATTRACTION_DECADENT_NEG
 		trigger = {
 			any_owned_species = {
-				has_trait = "trait_decadent"
+				OR = {
+					has_trait = "trait_decadent"
+					has_trait = "trait_robot_decadent"
+				}
 			}
 		}
 	}
@@ -581,6 +635,27 @@ ethic_egalitarian = {
 					}
 					has_ethic = ethic_egalitarian
 				}
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_egalitarian }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_egalitarian
+				is_faction_extorted = yes
 			}
 		}
 	}
@@ -689,13 +764,27 @@ ethic_egalitarian = {
 	pop_attraction = {
 		base = 1
 
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = egalitarian
+			ETHIC_OPPOSED = authoritarian
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = egalitarian
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
 		}
 		modifier = {
 			factor = 0.5
-			has_trait = "trait_decadent"
+			OR = {
+				has_trait = "trait_decadent"
+				has_trait = "trait_robot_decadent"
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -713,6 +802,7 @@ ethic_egalitarian = {
 				has_living_standard = { type = living_standard_utopian }
 				has_living_standard = { type = living_standard_good }
 				has_living_standard = { type = living_standard_shared_burden }
+				has_living_standard = { type = living_standard_worker_ownership }
 			}
 		}
 		modifier = {
@@ -745,11 +835,14 @@ ethic_fanatic_xenophobe = {
 	country_modifier = {
 		country_starbase_influence_cost_mult = -0.4
 		pop_growth_speed = 0.20
-		external_leader_pool_add = -2
 	}
 
 	random_weight = {
 		base = 150
+		modifier = {
+			factor = 0.2
+			blocks_disruptive_gameplay = yes
+		}
 	}
 }
 
@@ -774,7 +867,6 @@ ethic_xenophobe = {
 	country_modifier = {
 		country_starbase_influence_cost_mult = -0.2
 		pop_growth_speed = 0.10
-		external_leader_pool_add = -1
 	}
 
 	random_weight = {
@@ -979,6 +1071,27 @@ ethic_xenophobe = {
 		}
 	}
 
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_xenophobe }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_xenophobe
+				is_faction_extorted = yes
+			}
+		}
+	}
+
 	country_attraction = {
 		base = 1
 		modifier = {
@@ -1111,6 +1224,17 @@ ethic_xenophobe = {
 	pop_attraction = {
 		base = 1
 
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = xenophobe
+			ETHIC_OPPOSED = xenophile
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = xenophobe
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
@@ -1185,7 +1309,6 @@ ethic_fanatic_xenophile = {
 	country_modifier = {
 		trade_value_mult = 0.20
 		envoys_add = 2
-		external_leader_pool_add = 2
 		show_only_custom_tooltip = no
 		custom_tooltip = fan_xenophile_insight_gain
 	}
@@ -1220,7 +1343,6 @@ ethic_xenophile = {
 	country_modifier = {
 		trade_value_mult = 0.10
 		envoys_add = 1
-		external_leader_pool_add = 1
 		show_only_custom_tooltip = no
 		custom_tooltip = xenophile_insight_gain
 	}
@@ -1412,6 +1534,27 @@ ethic_xenophile = {
 		}
 	}
 
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_xenophile }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_xenophile
+				is_faction_extorted = yes
+			}
+		}
+	}
+
 	country_attraction = {
 		base = 1
 		modifier = {
@@ -1529,6 +1672,17 @@ ethic_xenophile = {
 	# from = planet
 	pop_attraction = {
 		base = 1
+
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = xenophile
+			ETHIC_OPPOSED = xenophobe
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = xenophile
+		}
 
 		modifier = {
 			factor = 0
@@ -1830,6 +1984,37 @@ ethic_militarist = {
 		}
 	}
 
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_militarist }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_militarist
+				is_faction_extorted = yes
+			}
+		}
+	}
+
+	#Cybercreed War
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_CYBER_CREED_WAR
+		trigger = {
+			owner = {
+				has_country_flag = cybernetic_creed_war
+			}
+		}
+	}
+
 	# from = planet
 	country_attraction = {
 		base = 1
@@ -1994,14 +2179,14 @@ ethic_militarist = {
 				observation_outpost_owner = { has_ethic = ethic_militarist }
 			}
 		}
-		# modifier = {
-		# 	factor = 2 #If the empire is losing planets, militarism should increase
-		# 	any_relation = {
-		# 		any_owned_planet = {
-		# 			is_original_owner = root
-		# 		}
-		# 	}
-		# }
+		modifier = {
+			factor = 2 #If the empire is losing planets, militarism should increase
+			any_relation = {
+				any_owned_planet = {
+					is_original_owner = root
+				}
+			}
+		}
 		modifier = {
 			factor = 0.75
 			has_policy_flag = no_wars
@@ -2011,11 +2196,29 @@ ethic_militarist = {
 		modifier = {
 			factor = value:count_councilors_with_ethic|ETHIC|militarist|
 		}
+
+		#Cyber Creed War
+		modifier = {
+			factor = 1
+			is_country_type = default
+			has_country_flag = cybernetic_creed_war
+		}
 	}
 
 	# from = planet
 	pop_attraction = {
 		base = 1
+
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = militarist
+			ETHIC_OPPOSED = pacifist
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = militarist
+		}
 
 		modifier = {
 			factor = 0
@@ -2224,6 +2427,27 @@ ethic_pacifist = {
 		}
 	}
 
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_pacifist }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_pacifist
+				is_faction_extorted = yes
+			}
+		}
+	}
+
 	country_attraction = {
 		base = 1
 		modifier = {
@@ -2352,6 +2576,17 @@ ethic_pacifist = {
 	pop_attraction = {
 		base = 1
 
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = pacifist
+			ETHIC_OPPOSED = militarist
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = pacifist
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
@@ -2432,6 +2667,8 @@ ethic_spiritualist = {
 		necro_apprentice = 25
 		preacher = 25
 		mortal_initiate = 25
+		haruspex = 25
+		technophant = 25
 	}
 
 	country_modifier = {
@@ -2469,7 +2706,10 @@ ethic_spiritualist = {
 		desc = POP_ATTRACTION_PSIONICS_POS
 		trigger = {
 			OR = {
-				has_technology = "tech_psionic_theory"
+				AND = {
+					has_technology = "tech_psionic_theory"
+					is_individual_machine = no
+				}
 				has_ascension_perk = ap_mind_over_matter
 				has_origin = origin_shroudwalker_apprentice
 				has_tradition = tr_psionics_psionic_assimilation
@@ -2519,6 +2759,7 @@ ethic_spiritualist = {
 			any_owned_species = {
 				is_robotic = yes
 			}
+			is_individual_machine = no
 		}
 	}
 
@@ -2526,6 +2767,7 @@ ethic_spiritualist = {
 		desc = POP_ATTRACTION_ROBOT_RIGHTS_NEG
 		trigger = {
 			has_policy_flag = ai_full_rights
+			is_individual_machine = no
 		}
 	}
 
@@ -2571,8 +2813,8 @@ ethic_spiritualist = {
 				has_federation_type = spiritualist_federation
 				has_federation_perk = spiritualist_envoys_1
 			}
-			any_envoy = {
-				has_envoy_task = { task = federation }
+			any_owned_leader = {
+				is_assigned_to_federation = yes
 			}
 		}
 	}
@@ -2589,6 +2831,27 @@ ethic_spiritualist = {
 					}
 					has_ethic = ethic_spiritualist
 				}
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_spiritualist }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_spiritualist
+				is_faction_extorted = yes
 			}
 		}
 	}
@@ -2652,11 +2915,14 @@ ethic_spiritualist = {
 			}
 		}
 		modifier = {
-			factor = value:ethics_from_federation_envoys
+			factor = 1.2
 			has_federation = yes
 			federation = {
 				has_federation_type = spiritualist_federation
 				has_federation_perk = spiritualist_envoys_1
+			}
+			any_owned_leader = {
+				is_assigned_to_federation = yes
 			}
 		}
 		modifier = {
@@ -2703,6 +2969,17 @@ ethic_spiritualist = {
 	pop_attraction = {
 		base = 1
 
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = spiritualist
+			ETHIC_OPPOSED = materialist
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = spiritualist
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
@@ -2727,6 +3004,9 @@ ethic_spiritualist = {
 				has_job = death_priest
 				has_job = mortal_initiate
 				has_job = preacher
+				has_job = haruspex
+				has_job = technophant
+				has_cybernetic_creed_trait = yes
 			}
 		}
 	}
@@ -2829,6 +3109,9 @@ ethic_materialist = {
 	pop_attraction_tag = {
 		desc = POP_ATTRACTION_CYBORGS_POS
 		trigger = {
+			NOT = {
+				has_origin = origin_cybernetic_creed
+			}
 			any_owned_species = {
 				has_trait = trait_cybernetic
 			}
@@ -2841,6 +3124,7 @@ ethic_materialist = {
 			any_owned_species = {
 				is_robotic = yes
 			}
+			is_individual_machine = no
 		}
 	}
 
@@ -2848,6 +3132,7 @@ ethic_materialist = {
 		desc = POP_ATTRACTION_ROBOT_RIGHTS_POS
 		trigger = {
 			has_policy_flag = ai_full_rights
+			is_individual_machine = no
 		}
 	}
 
@@ -2954,6 +3239,37 @@ ethic_materialist = {
 		}
 	}
 
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_GOVERNOR_POS
+		trigger = {
+			any_owned_planet = {
+				exists = leader
+				leader = { has_ethic = ethic_materialist }
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_STATELY_ACCLIAM
+		trigger = {
+			has_edict = stately_acclaim
+			any_pop_faction = {
+				has_ethic = ethic_materialist
+				is_faction_extorted = yes
+			}
+		}
+	}
+
+	#Cybercreed Research
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_CYBER_CREED_RESEARCH
+		trigger = {
+			owner = {
+				has_country_flag = cybernetic_creed_research
+			}
+		}
+	}
+
 	country_attraction = {
 		base = 1
 		modifier = {
@@ -3029,6 +3345,7 @@ ethic_materialist = {
 			factor = 1.25
 			is_country_type = default
 			has_policy_flag = ai_full_rights
+			is_individual_machine = no
 		}
 		modifier = {
 			exists = overlord
@@ -3038,12 +3355,31 @@ ethic_materialist = {
 		modifier = {
 			factor = value:count_councilors_with_ethic|ETHIC|materialist|
 		}
+
+		#Cyber Creed Research
+		modifier = {
+			factor = 1
+			is_country_type = default
+			has_country_flag = cybernetic_creed_research
+		}
 		mult = value:materialist_ethics_from_relations
 	}
 
 	# from = planet
 	pop_attraction = {
 		base = 1
+
+		inline_script = {
+			script = "ethics/governor_pop_attraction"
+			ETHIC = materialist
+			ETHIC_OPPOSED = spiritualist
+		}
+
+		inline_script = {
+			script = "ethics/stately_acclaim_pop_attraction"
+			ETHIC = materialist
+		}
+
 		modifier = {
 			factor = 0
 			has_trait = trait_hive_mind
@@ -3061,6 +3397,7 @@ ethic_materialist = {
 		modifier = {
 			factor = 2.0
 			is_robot_pop = yes
+			owner = { is_individual_machine = no }
 		}
 		modifier = {
 			factor = 1.5
@@ -3074,6 +3411,7 @@ ethic_materialist = {
 					is_robotic = yes
 				}
 			}
+			owner = { is_individual_machine = no }
 		}
 		modifier = {
 			factor = 1.25
@@ -3093,8 +3431,9 @@ ethic_materialist = {
 ethic_gestalt_consciousness = {
 	playable = {
 		OR = {
-			host_has_dlc = "Utopia"
-			host_has_dlc = "Synthetic Dawn Story Pack"
+			has_utopia = yes
+			has_synthetic_dawn = yes
+			has_machine_age_dlc = yes
 		}
 	}
 
@@ -3120,22 +3459,11 @@ ethic_gestalt_consciousness = {
 	}
 
 	random_weight = {
-		base = 100
+		base = 300 #higher weight since if it's not the first ethic chosen it will never be chosen.
 		modifier = {
 			factor = 0
-			OR = {
-				NOR = {
-					host_has_dlc = "Utopia"
-					host_has_dlc = "Synthetic Dawn Story Pack"
-				}
-				has_global_flag = game_started # additional traits (trait_hive_mind, trait_machine_unit) are only assigned and verified for empire designs, no effect after game start
-			}
-		}
-		modifier = {
-			factor = 2
-			host_has_dlc = "Synthetic Dawn Story Pack"
-			host_has_dlc = "Utopia"
-			NOT = { has_global_flag = game_started }
+			has_global_flag = game_started # additional traits (trait_hive_mind, trait_machine_unit) are only assigned and verified for empire designs, no effect after game start
+			NOT = { is_country_type = rebel }
 		}
 	}
 }
