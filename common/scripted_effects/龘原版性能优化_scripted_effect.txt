@@ -523,25 +523,35 @@ vop_optimaze_event_pop_caculation = {
 			# should_force_decline_species
 			if = {
 				limit = {
+					exists = this
 					OR = {
-						has_trait = trait_clone_soldier_infertile
-						has_trait = trait_clone_soldier_infertile_full_potential
-					}
-					prev.planet = {
-						OR = {
-							# Check if country is unable to build Vats for this species.
-							AND = {
-								exists = owner
-								owner = {
-									OR = {
-										NOT = { has_origin = origin_clone_army }					# Can't have Vats.
-										has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-										NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
+						custom_tooltip = {
+							success_text = CLONE_ARMY_FORCE_DECLINE
+							OR = {
+								has_trait = trait_clone_soldier_infertile
+								has_trait = trait_clone_soldier_infertile_full_potential
+							}
+							prev.planet = {
+								OR = {
+									# Check if country is unable to build Vats for this species.
+									AND = {
+										exists = owner
+										owner = {
+											OR = {
+												NOT = { has_origin = origin_clone_army }					# Can't have Vats.
+												has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
+												NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
+											}
+										}
 									}
+									# Vats check out, but are there more pops than Vats support?
+									check_variable = { which = clone_pops_missing value < 0 }
 								}
 							}
-							# Vats check out, but are there more pops than Vats support?
-							check_variable = { which = clone_pops_missing value < 0 }
+						}
+						custom_tooltip = {
+							success_text = PATHOGENIC_GENES_FORCE_DECLINE
+							has_trait = trait_pathogenic_genes
 						}
 					}
 				}
@@ -566,22 +576,22 @@ vop_optimaze_event_pop_caculation = {
 		#can_generate_military_leader_from_pop [GAME RULE]
 		if = {
 			limit = {  
-				can_be_military_leader = yes
+				has_citizenship_rights = yes
+				NOT = { has_trait = trait_syncretic_proles }
+				can_think = yes
 				OR = {
 					is_robot_pop = no
-					AND = {
-						exists = owner
-						owner = {
-							OR = {
-								has_technology = tech_synthetic_leaders
-								has_authority = auth_machine_intelligence
-								is_mechanical_empire = yes
-							}
+					owner = {
+						OR = {
+							has_technology = tech_synthetic_leaders
+							has_authority = auth_machine_intelligence
+							is_mechanical_empire = yes
+							is_individual_machine = yes
 						}
 					}
 				}
 				OR = {
-					is_same_species = owner
+					is_same_species = root
 					owner = {
 						NAND = {
 							has_origin = origin_necrophage
@@ -589,6 +599,7 @@ vop_optimaze_event_pop_caculation = {
 						}
 					}
 				}
+				can_be_military_leader = yes
 			}
 			set_pop_flag = can_enable_can_generate_military_leader_from_pop
 		}
@@ -605,11 +616,12 @@ vop_optimaze_event_pop_caculation = {
 							has_technology = tech_synthetic_leaders
 							has_authority = auth_machine_intelligence
 							is_mechanical_empire = yes
+							is_individual_machine = yes
 						}
 					}
 				}
 				OR = {
-					is_same_species = owner
+					is_same_species = root
 					owner = {
 						NAND = {
 							has_origin = origin_necrophage
