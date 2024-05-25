@@ -297,7 +297,7 @@ ethic_authoritarian = {
 			has_loyalty > 0
 			mult = value:ethics_from_overlord|ETHIC|authoritarian|
 		}
-		mult = value:authoritarian_ethics_from_relations
+		mult = 1
 		modifier = {
 			factor = 1.5
 			has_federation = yes
@@ -313,19 +313,19 @@ ethic_authoritarian = {
 			factor = 3
 			has_ethic = ethic_fanatic_authoritarian
 		}
-		modifier = {
-			factor = 1.25
-			has_election_type = none
-		}
-		modifier = {
-			factor = 0.75
-			has_election_type = democratic
-		}
+		# modifier = {
+		# 	factor = 1.25
+		# 	has_election_type = none
+		# }
+		# modifier = {
+		# 	factor = 0.75
+		# 	has_election_type = democratic
+		# }
 
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|authoritarian|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|authoritarian|
+		# }
 	}
 
 	# from = planet
@@ -753,11 +753,11 @@ ethic_egalitarian = {
 		}
 
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|egalitarian|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|egalitarian|
+		# }
 
-		mult = value:egalitarian_ethics_from_relations
+		mult = 1
 	}
 
 	# from = planet
@@ -1215,9 +1215,9 @@ ethic_xenophobe = {
 		}
 
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|xenophobe|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|xenophobe|
+		# }
 	}
 
 	#from = planet
@@ -1250,20 +1250,20 @@ ethic_xenophobe = {
 				}
 			}
 		}
-		modifier = {
-			factor = 0.5
-			is_enslaved = no
-			is_being_purged = no
-			from = {
-				any_owned_pop = {
-					not = { is_same_species = root }
-					is_enslaved = no
-					is_being_purged = no
-					is_sapient = yes
-					is_robot_pop = no
-				}
-			}
-		}
+		# modifier = {
+		# 	factor = 0.5
+		# 	is_enslaved = no
+		# 	is_being_purged = no
+		# 	from = {
+		# 		any_owned_pop = {
+		# 			not = { is_same_species = root }
+		# 			is_enslaved = no
+		# 			is_being_purged = no
+		# 			is_sapient = yes
+		# 			is_robot_pop = no
+		# 		}
+		# 	}
+		# }
 		modifier = {
 			factor = 1.5
 			from = {
@@ -1664,9 +1664,9 @@ ethic_xenophile = {
 			}
 		}
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|xenophile|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|xenophile|
+		# }
 	}
 
 	# from = planet
@@ -1694,20 +1694,20 @@ ethic_xenophile = {
 			has_citizenship_rights = no
 			is_enslaved = no
 		}
-		modifier = {
-			factor = 2.0
-			is_enslaved = no
-			fromfrom = {
-				any_owned_pop = {
-					not = { is_same_species = root }
-					is_enslaved = no
-					is_being_purged = no
-					is_sapient = yes
-					is_robot_pop = no
-					NOT = { has_trait = trait_syncretic_proles }
-				}
-			}
-		}
+		# modifier = {
+		# 	factor = 2.0
+		# 	is_enslaved = no
+		# 	fromfrom = {
+		# 		any_owned_pop = {
+		# 			not = { is_same_species = root }
+		# 			is_enslaved = no
+		# 			is_being_purged = no
+		# 			is_sapient = yes
+		# 			is_robot_pop = no
+		# 			NOT = { has_trait = trait_syncretic_proles }
+		# 		}
+		# 	}
+		# }
 		modifier = {
 			factor = 1.5
 			from = {
@@ -2179,23 +2179,23 @@ ethic_militarist = {
 				observation_outpost_owner = { has_ethic = ethic_militarist }
 			}
 		}
-		modifier = {
-			factor = 2 #If the empire is losing planets, militarism should increase
-			any_relation = {
-				any_owned_planet = {
-					is_original_owner = root
-				}
-			}
-		}
+		# modifier = {
+		# 	factor = 2 #If the empire is losing planets, militarism should increase
+		# 	any_relation = {
+		# 		any_owned_planet = {
+		# 			is_original_owner = root
+		# 		}
+		# 	}
+		# }
 		modifier = {
 			factor = 0.75
 			has_policy_flag = no_wars
 		}
 
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|militarist|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|militarist|
+		# }
 
 		#Cyber Creed War
 		modifier = {
@@ -2566,9 +2566,9 @@ ethic_pacifist = {
 			has_policy_flag = unrestricted_wars
 		}
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|pacifist|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|pacifist|
+		# }
 		mult = value:pacifist_ethics_from_pacts
 	}
 
@@ -2959,9 +2959,9 @@ ethic_spiritualist = {
 			mult = value:ethics_from_overlord|ETHIC|spiritualist|
 		}
 		# Check for any leader on the Council with Faction's Ethic.
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|spiritualist|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|spiritualist|
+		# }
 		mult = value:spiritualist_ethics_from_relations
 	}
 
@@ -3352,9 +3352,9 @@ ethic_materialist = {
 			has_loyalty > 0
 			mult = value:ethics_from_overlord|ETHIC|materialist|
 		}
-		modifier = {
-			factor = value:count_councilors_with_ethic|ETHIC|materialist|
-		}
+		# modifier = {
+		# 	factor = value:count_councilors_with_ethic|ETHIC|materialist|
+		# }
 
 		#Cyber Creed Research
 		modifier = {
