@@ -146,18 +146,18 @@ ethic_authoritarian = {
 			}
 		}
 	}
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_AUTOCRATIC_GOV_POS
-		trigger = {
-			has_election_type = none
-		}
-	}
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_DEMOCRATIC_GOV_NEG
-		trigger = {
-			has_election_type = democratic
-		}
-	}
+	# pop_attraction_tag = {
+	# 	desc = POP_ATTRACTION_AUTOCRATIC_GOV_POS
+	# 	trigger = {
+	# 		has_election_type = none
+	# 	}
+	# }
+	# pop_attraction_tag = {
+	# 	desc = POP_ATTRACTION_DEMOCRATIC_GOV_NEG
+	# 	trigger = {
+	# 		has_election_type = democratic
+	# 	}
+	# }
 
 	pop_attraction_tag = {
 		desc = POP_ATTRACTION_DECADENT_POS
@@ -578,19 +578,19 @@ ethic_egalitarian = {
 		}
 	}
 
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_DEMOCRATIC_GOV_POS
-		trigger = {
-			has_election_type = democratic
-		}
-	}
+	# pop_attraction_tag = {
+	# 	desc = POP_ATTRACTION_DEMOCRATIC_GOV_POS
+	# 	trigger = {
+	# 		has_election_type = democratic
+	# 	}
+	# }
 
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_AUTOCRATIC_GOV_NEG
-		trigger = {
-			has_election_type = none
-		}
-	}
+	# pop_attraction_tag = {
+	# 	desc = POP_ATTRACTION_AUTOCRATIC_GOV_NEG
+	# 	trigger = {
+	# 		has_election_type = none
+	# 	}
+	# }
 
 	pop_attraction_tag = {
 		desc = POP_ATTRACTION_OVERLORD_POS
@@ -724,16 +724,16 @@ ethic_egalitarian = {
 			has_loyalty > 0
 			mult = value:ethics_from_overlord|ETHIC|egalitarian|
 		}
-		modifier = {
-			factor = 0.75
-			is_country_type = default
-			has_election_type = none
-		}
-		modifier = {
-			factor = 1.25
-			is_country_type = default
-			has_election_type = democratic
-		}
+		# modifier = {
+		# 	factor = 0.75
+		# 	is_country_type = default
+		# 	has_election_type = none
+		# }
+		# modifier = {
+		# 	factor = 1.25
+		# 	is_country_type = default
+		# 	has_election_type = democratic
+		# }
 		modifier = {
 			factor = 1.25
 			any_owned_species = {
