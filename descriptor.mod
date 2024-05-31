@@ -12,5 +12,5 @@ tags={
 	"Galaxy Generation"
 }
 name="【幻梦奇点】========基础运行环境========"
-supported_version="3.*.*"
+supported_version="v3.*.*"
 remote_file_id="2857660469"
