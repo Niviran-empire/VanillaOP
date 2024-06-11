@@ -9,7 +9,7 @@ alloys_expenditure_ships = {
 	type = expenditure
 	category = ships
 
-	potential = { is_nirvana_empire = no }
+	potential = { is_country_type = default }
 
 	weight = {
 		weight = 0.6
@@ -45,10 +45,7 @@ alloys_expenditure_ships = {
 
 		modifier = {
 			factor = 0
-			OR = {
-				used_naval_capacity_percent >= 1
-				used_naval_capacity_integer >= 3000
-			}
+			used_naval_capacity_percent >= 1
 		}
 	}
 }
@@ -72,11 +69,7 @@ alloys_expenditure_ship_upgrades = {
 		# spend more on ship upgrades if at capacity
 		modifier = {
 			factor = 2.5
-			used_naval_capacity_percent >= 1.0
-		}
-		modifier = {
-			factor = 2.5
-			used_naval_capacity_integer > 3000
+			used_naval_capacity_percent >= 0.5
 		}
 	}
 }
@@ -103,7 +96,7 @@ alloys_expenditure_starbases = {
 
 		modifier = {
 			factor = 2
-			used_naval_capacity_integer > 3000
+			used_naval_capacity_percent >= 0.5
 		}
 
 		# Reduce spending on claiming new systems if we have unclaimed planets
@@ -144,7 +137,7 @@ alloys_expenditure_megastructures = {
 	potential = {
 		is_nirvana_empire = no
 		is_country_type = default
-		used_naval_capacity_integer > 3000
+		used_naval_capacity_percent >= 0.5
 		can_build_megastructures = yes
 	}
 
@@ -159,7 +152,6 @@ alloys_expenditure_megastructures = {
 		# increase budget if megastructures are unfinished
 		modifier = {
 			factor = 3
-			used_naval_capacity_integer > 3000
 			any_owned_megastructure = { can_be_upgraded = yes }
 		}
 	}

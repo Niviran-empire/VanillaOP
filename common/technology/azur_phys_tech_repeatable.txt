@@ -116,7 +116,7 @@ tech_azur_physics_repeatable_04 = {
 	tier = @repeatableTechTier
 	category = { computing }
 	levels = 5
-	prerequisites = {"tech_construction_templates" "tech_physics_2"}
+	prerequisites = {"tech_construction_templates" }
 	weight = @repeatableTechWeight
 	
 	potential = {
