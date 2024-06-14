@@ -5,6 +5,7 @@ country_event = {
 	id = paragon_2.1005
 	hide_window = yes
 	is_triggered_only = yes
+
 	trigger = {
 		exists = fromfrom
 		fromfrom = { exists = fleet.leader }
@@ -14,24 +15,6 @@ country_event = {
 			if = {
 				limit = { exists = fleet.leader }
 				fleet.leader = {
-
-					# Scholar of War / Scholar of War II
-					if = {
-						limit = {
-							OR = {
-								has_trait = leader_trait_scholar_of_war
-								has_trait = leader_trait_scholar_of_war_2
-								has_trait = leader_trait_scholar_of_war_3
-							}
-						}
-						if = {
-							limit = { has_trait = leader_trait_scholar_of_war }
-							add_experience = @trait_scholar_of_war_amt
-						}
-						else = {
-							add_experience = @trait_scholar_of_war_2_amt
-						}
-					}
 
 					# Corsair / Corsair II
 					if = {
@@ -64,34 +47,29 @@ country_event = {
 						}
 					}
 
-					# Zealot / Zealot II
+					# Crusader / Crusader II
 					if = {
 						limit = {
-							OR = {
-								has_trait = leader_trait_par_zealot
-								has_trait = leader_trait_par_zealot_2
-								has_trait = leader_trait_par_zealot_3
+							has_trait_tier1or2or3 = {
+								TRAIT = leader_trait_crusader
 							}
 							ROOT.FROM = { # Owner of losing ship.
 								is_default_or_fallen = yes
 							}
 						}
-						
+
 						ROOT = {
 							if = {
-								limit = { PREV = { has_trait = leader_trait_par_zealot } }
+								limit = { PREV = { has_trait = leader_trait_crusader } }
 								add_resource = {
-									unity = @trait_zealot_amt
-									mult = value:calculate_ethics_divergence
+									unity = @trait_crusader_fleet_amt
 								}
 							}
 							else = {
 								add_resource = {
-									unity = @trait_zealot_2_amt
-									mult = value:calculate_ethics_divergence
+									unity = @trait_crusader_2_fleet_amt
 								}
 							}
-							clear_variable = ethics_divergence_mult
 						}
 					}
 
@@ -110,7 +88,7 @@ country_event = {
 						if = {
 							limit = { has_trait = leader_trait_shipbreaker }
 							ROOT = {
-								add_resource = { 
+								add_resource = {
 									alloys = @trait_shipbreaker_amt
 									mult = value:hells_heart_effect
 								}
@@ -118,7 +96,7 @@ country_event = {
 						}
 						else = {
 							ROOT = {
-								add_resource = { 
+								add_resource = {
 									alloys = @trait_shipbreaker_2_amt
 									mult = value:hells_heart_effect
 								}
@@ -156,36 +134,15 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { OR = {
-		str_paragon_2_1005_trigger_1 = yes
-		str_paragon_2_1005_trigger_2 = yes
-		str_paragon_2_1005_trigger_3 = yes
-	} }
+	trigger = { str_paragon_2_1005_trigger_1 = yes }
 
 	immediate = {
 		# We wait a day in order to check if any anomalies or dig sites have spawned.
 		# Midas Touch trait
-		ship_event = {
-			id = paragon_2.2003
-			scopes = {
-				from = from
-			}
-			days = 1
-		}
-		# Observant traits
-		ship_event = {
-			id = paragon_2.2002
-			scopes = {
-				from = from
-			}
-			days = 1
-		}
 		# Prospector traits
 		ship_event = {
 			id = paragon_2.2001
-			scopes = {
-				from = from
-			}
+			scopes = { from = from }
 			days = 1
 		}
 	}

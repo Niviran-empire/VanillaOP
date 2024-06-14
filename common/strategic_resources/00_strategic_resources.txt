@@ -136,7 +136,7 @@ consumer_goods = {
 	market_price = 100
 	max = 15000
 
-	deficit_situation = situation_consumer_goods_deficit
+	deficit_modifier = consumer_goods_deficit
 
 	ai_weight = {
 		weight = 5

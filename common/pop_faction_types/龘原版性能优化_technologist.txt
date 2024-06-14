@@ -11,6 +11,13 @@ technologist = {
 	unique = yes
 	support_multiplier = 1
 
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
 	is_potential = {
 		always = no
 	}
