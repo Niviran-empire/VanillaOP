@@ -102,7 +102,7 @@ VOP_on_monthly_pulse = {
 		galcom.108
 		galactic_features.365	# Tiyanki Respawning
 		enclave.2055 			# If Khan dead, merc fleets break contract
-		#enclave.2065 			# Unemployed mercs return to merc station
+		#enclave.2065 			# Unemployed mercs return to merc station |VOP优化|
 		fircon.10				# Adds pre-FTL insights
 		crisis.7017 			# Cosmogenesis Neural Chip Objective
 		crisis.24000			# Synth Queen rebuilds her capital if possible
