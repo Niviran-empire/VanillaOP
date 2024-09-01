@@ -11,11 +11,11 @@ swgs_building_imperial_macc = { can_build = no potential = { always = no } }
 swgs_building_empireAntiquities = { can_build = no potential = { always = no } }
 swgs_building_empiresenate = { can_build = no potential = { always = no } }
 
-building_dm_ancient_palace = { can_build = no potential = { always = no } }
-building_dm_ancient_control_center = { can_build = no potential = { always = no } }
-building_ae_ancient_palace = { can_build = no potential = { always = no } }
-building_dm_ancient_hive_cluster = { can_build = no potential = { always = no } }
-building_ae_ancient_hive_cluster = { can_build = no potential = { always = no } }
+building_acot_dm_ancient_palace = { can_build = no potential = { always = no } }
+building_acot_dm_ancient_control_center = { can_build = no potential = { always = no } }
+building_acot_ae_ancient_palace = { can_build = no potential = { always = no } }
+building_acot_dm_ancient_hive_cluster = { can_build = no potential = { always = no } }
+building_acot_ruined_giga_fortress = { can_build = no potential = { always = no } }
 building_heaven_sanctuary = { can_build = no potential = { always = no } }
 building_phanon_tower = { can_build = no potential = { always = no } }
 building_stellarite_palace = { can_build = no potential = { always = no } }

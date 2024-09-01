@@ -559,6 +559,12 @@ country_event = {
 	}
 }
 
-country_event = { inline_script = { script = pop_categories_version/pcv_notification_event_script ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 } }
-ship_event = { inline_script = { script = pop_categories_version/pcv_effect_event_script ID = vop_ai_fixed.7 } }
+country_event = { inline_script = { 
+	script = pop_categories_version/pcv_notification_event_script 
+	ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 
+} }
+ship_event = { inline_script = { 
+	script = pop_categories_version/pcv_effect_event_script 
+	ID = vop_ai_fixed.7 
+} }
 # country_event = { inline_script = { script = pop_cate_upkeep/str_checksum_upkeep ID = vop_ai_fixed.999 TARGET = 0 PREV = 0 FLAG = 1 } }

@@ -5,15 +5,7 @@ picture = GFX_evt_society_cache
 show_sound = event_scanner
 is_advisor_event = yes
 mean_time_to_happen = { days = 30 }
-trigger = {
-	days_passed > 20
-	has_global_flag = EOF_NOVA_SINGULARY_enable
-	exists = event_target:global_event_country
-	event_target:global_event_country = { OR = {
-		check_modifier_value = { modifier = nova_mod_order_check value > 0 }
-		check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
-	} }
-}
+trigger = { str_debug_check_trigger = yes }
 immediate = { 
 	change_variable = { which = alert_system_amount value = 1 } 
 	if = {
