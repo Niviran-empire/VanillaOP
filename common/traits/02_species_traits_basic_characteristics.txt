@@ -63,7 +63,7 @@ trait_machine_unit = {
 	immortal_leaders = no
 
 	modifier = {
-		pc_machine_habitability = 2
+		pc_machine_habitability = 1
 		leader_lifespan_add = 20
 		habitability_floor_add = 0.5
 	}
@@ -110,7 +110,7 @@ trait_mechanical = {
 	custom_tooltip_with_modifiers = TRAIT_MECHANICAL_UNIT_EFFECT
 
 	modifier = {
-		pc_machine_habitability = 2
+		pc_machine_habitability = 1
 		habitability_floor_add = 0.5
 	}
 }

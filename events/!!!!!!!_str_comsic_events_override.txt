@@ -1,0 +1,198 @@
+namespace = cstorms
+# Monthly unity gain from systems/planets affected by storms (see on_monthly_pulse)
+event = {
+	id = cstorms.1000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_cosmic_storms_dlc = yes
+		has_global_flag = cosmic_storm_has_occurred
+	}
+
+	immediate = {
+		every_playable_country = {
+			# Unity per system
+			if = {
+				limit = {
+					is_galactic_community_member = yes
+					is_active_resolution = "resolution_cosmic_storms_shared_knowledge"
+				}
+
+				# Reset counters
+				set_variable = { which = storm_affected_system_count value = 0 }
+				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_system_count VALUE_IF_CREATED = 0 }
+
+				# Count
+				every_system_within_border = {
+					limit = {
+						has_star_flag = storm_system
+					}
+
+					PREV = { change_variable = { which = storm_affected_system_count value = 60 } }
+				}
+
+				# Update/remove modifier as needed
+				update_modifier_amount_if_needed = {
+					MODIFIER = storm_unity_gain_modifier
+					MULT_VAR = storm_affected_system_count
+					PREV_MULT_VAR = prev_storm_affected_system_count
+				}
+			}
+			# Unity per planet
+			else_if = {
+				limit = {
+					is_galactic_community_member = yes
+					OR = {
+						is_active_resolution = "resolution_cosmic_storms_protection_initiative"
+						is_active_resolution = "resolution_cosmic_storms_galactic_management"
+						is_active_resolution = "resolution_cosmic_storms_utilization_protocols"
+						is_active_resolution = "resolution_cosmic_storms_manipulation_mandate"
+					}
+				}
+
+				# Reset counters
+				set_variable = { which = storm_affected_planet_count value = 0 }
+				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_planet_count VALUE_IF_CREATED = 0 }
+
+				# Count
+				every_planet_within_border = {
+					limit = {
+						has_owner = yes
+						solar_system = {
+							has_star_flag = storm_system
+						}
+					}
+
+					PREV = { change_variable = { which = storm_affected_planet_count value = 60 } }
+				}
+
+				# Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
+				if = {
+					limit = {
+						OR = {
+							is_active_resolution = "resolution_cosmic_storms_galactic_management"
+							is_active_resolution = "resolution_cosmic_storms_utilization_protocols"
+						}
+					}
+					multiply_variable = { which = storm_affected_planet_count value = 2 }
+				}
+				else_if = {
+					limit = {
+						is_active_resolution = "resolution_cosmic_storms_manipulation_mandate"
+					}
+					multiply_variable = { which = storm_affected_planet_count value = 3 }
+				}
+
+				# Update/remove modifier as needed
+				update_modifier_amount_if_needed = {
+					MODIFIER = storm_unity_gain_modifier
+					MULT_VAR = storm_affected_planet_count
+					PREV_MULT_VAR = prev_storm_affected_planet_count
+				}
+			}
+			# Remove modifier or it might linger after repealing/switching resolutions.
+			else = {
+				remove_modifier = storm_unity_gain_modifier
+			}
+		}
+	}
+}
+
+# Monthly unity gain from low health ships affected by Particle Storm (see on_monthly_pulse)
+event = {
+	id = cstorms.1050
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_cosmic_storms_dlc = yes
+		has_global_flag = cosmic_storm_has_occurred
+	}
+
+	immediate = {
+		every_playable_country = {
+			# Reset counters
+			set_variable = { which = storm_affected_ship_count value = 0 }
+			create_variable_if_not_exists = { VARIABLE = prev_storm_affected_ship_count VALUE_IF_CREATED = 0 }
+
+			# Count
+			every_owned_ship = {
+				limit = {
+					has_hp_percentage <= @storm_hp_perc_limit
+					exists = solar_system
+					solar_system = { is_inside_storm = particle_storm }
+				}
+
+				PREV = { change_variable = { which = storm_affected_ship_count value = 60 } }
+			}
+
+			# Update/remove modifier as needed
+			update_modifier_amount_if_needed = {
+				MODIFIER = particle_storm_ship_unity_gain_modifier
+				MULT_VAR = storm_affected_ship_count
+				PREV_MULT_VAR = prev_storm_affected_ship_count
+			}
+		}
+	}
+}
+
+# Cosmic Storms monthly affects
+event = {
+	id = cstorms.1100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_cosmic_storms_dlc = yes
+		has_global_flag = cosmic_storm_has_occurred
+		any_cosmic_storm = {
+			OR = {
+				is_storm_type = electric_storm
+				is_storm_type = particle_storm
+				is_storm_type = nexus_storm
+			}
+		}
+	}
+
+	immediate = {
+		every_cosmic_storm = {
+			if = {
+				limit = { is_storm_type = electric_storm }
+				every_system_within_storm = {
+					every_ship_in_system = {
+						limit = { 
+							has_shield_hp > 0 
+							owner = { is_invisable_faction = no }
+						}
+						reduce_shield = value:storm_ship_damage_received|DMG|@storm_monthly_dmg_low|
+					}
+				}
+			}
+			else_if = {
+				limit = { is_storm_type = particle_storm }
+				every_system_within_storm = {
+					every_ship_in_system = {
+						limit = { 
+							has_hp_percentage > @storm_hp_perc_limit 
+							owner = { is_invisable_faction = no }
+						}
+						damage_ship = value:storm_ship_damage_received|DMG|@storm_monthly_dmg_low|
+					}
+				}
+			}
+			else_if = {
+				limit = { is_storm_type = nexus_storm }
+				every_system_within_storm = {
+					every_ship_in_system = {
+						limit = { 
+							has_hp_percentage > @storm_hp_perc_limit 
+							owner = { is_invisable_faction = no }
+						}
+						damage_ship = value:storm_ship_damage_received|DMG|@storm_monthly_dmg_high|
+					}
+				}
+			}
+		}
+	}
+}

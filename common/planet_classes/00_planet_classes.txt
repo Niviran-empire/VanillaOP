@@ -639,8 +639,6 @@ pc_hive = {
 		planet_max_buildings_add = 12
 		job_spawning_drone_add = 1
 		planet_resettlement_unemployed_destination_mult = 0.5
-		#	|VOP定制|配合rule_can_live_on_planet
-		pop_environment_tolerance = -3.0
 	}
 
 	spawn_odds = 0
@@ -660,6 +658,8 @@ pc_hive = {
 	show_city = no
 
 	carry_cap_per_free_district = @carry_cap_high
+
+	planet_custom_label_offset = 0.3
 }
 
 pc_machine = {
@@ -1496,6 +1496,7 @@ pc_cosmogenesis_world = {
 	}
 
 	carry_cap_per_free_district = @carry_cap_low
+	can_be_invaded = no
 }
 
 ##########################
@@ -1587,7 +1588,7 @@ pc_toxoid_star = {
 
 	colonizable = no
 
-	planet_custom_label_offset = 100
+	planet_custom_label_offset = 0.03
 }
 
 ###############
