@@ -108,6 +108,18 @@ vop_optimaze_game_rule_system_sensor = {
 }
 
 vop_optimaze_action_90 = {
+	event_target:global_event_country = {
+		set_variable = { which = AOW_var_ai_mega_cost value = 0 }
+		set_variable = { which = AOW_var_ai_mega_upkp value = 0 }
+		set_variable = { which = AOW_var_ai_mega_prdc value = 0 }
+		set_variable = { which = AOW_var_ai_mega_build_speed value = 0 }
+		set_variable = { which = AOW_var_ai_mega_build_cap value = 0 }
+		set_variable = { which = AOW_var_player_mega_cost value = 0 }
+		set_variable = { which = AOW_var_player_mega_upkp value = 0 }
+		set_variable = { which = AOW_var_player_mega_prdc value = 0 }
+		set_variable = { which = AOW_var_player_mega_build_speed value = 0 }
+		set_variable = { which = AOW_var_player_mega_build_cap value = 0 }
+	}
 	if = {
 		limit = { 
 			any_playable_country = { any_owned_planet = {

@@ -1,0 +1,14 @@
+###	巨构materials
+#	建造选择
+
+
+spriteTypes = {
+
+	#	建造选择
+	spriteType = {
+		name = "GFX_MUI_megastructure_selection_entry_BG"
+		texturefile = "gfx/interface_MUI/megastructures/MUI_megastructure_selection_entry_BG.dds"
+		effectFile = "gfx/FX/buttonstate.shader"
+	}
+	
+}
