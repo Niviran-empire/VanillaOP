@@ -50,6 +50,13 @@ NShip = {
 	MAX_DAMAGE_SCALING					= 4			# The maximum scaling value a target is allowed to have (ship size)
 	
 	#JUMP_DRIVE_WINDUP					= 5	# Jump drive windup in days
+	
+	MILITARY_POWER_HEALTH_WEIGHT		= 0.01										#0.5
+	MILITARY_POWER_ARMOR_WEIGHT			= 0.01					# compared to health	#1
+	MILITARY_POWER_SHIELD_WEIGHT		= 0.01					# compared to health	#1
+	MILITARY_POWER_DAMAGE_WEIGHT		= 0.01									#0.5
+	MILITARY_POWER_SCALE				= 75 									#0.25
+	MILITARY_POWER_EXPONENT				= 0.65	# math: power = ( ( effective_health * damage_per_day ) ^ exponent ) * scale 	#0.65
 }
 
 NGameplay = {
