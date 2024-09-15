@@ -841,7 +841,7 @@ str_debug_check_trigger = {
 		} }
 		any_playable_country = { has_modifier = crisis_countermeasure_ascension_perk }
 		AND = {
-			has_global_flag = acot_live_version_v312
+			has_global_flag = acot_live_version_v313
 			has_global_flag = acot_live_version_v666
 		}
 	}
