@@ -834,10 +834,17 @@ str_debug_check_trigger = {
 	days_passed > 20
 	exists = event_target:global_event_country
 	has_global_flag = EOF_NOVA_SINGULARY_enable
-	event_target:global_event_country = { OR = {
-		check_modifier_value = { modifier = nova_mod_order_check value > 0 }
-		check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
-	} }
+	OR = {
+		event_target:global_event_country = { OR = {
+			check_modifier_value = { modifier = nova_mod_order_check value > 0 }
+			check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
+		} }
+		any_playable_country = { has_modifier = crisis_countermeasure_ascension_perk }
+		AND = {
+			has_global_flag = acot_live_version_v312
+			has_global_flag = acot_live_version_v666
+		}
+	}
 }
 
 str_paragon_2_1005_trigger_1 = {
