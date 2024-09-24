@@ -9,8 +9,10 @@ event = {
 	id = vop_ai_fixed.1
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { any_playable_country = { is_ai = no } }
 	immediate = { 
+		set_global_flag = VOP_MOD_INSTALL
+		set_global_flag = force_disable_aow_megastructure
+		set_global_flag = force_adjust_aow_megastructure_cap
 		every_playable_country = { 
 			limit = { is_ai = no } 
 			country_event = { id = vop_ai_fixed.2 } 
@@ -26,6 +28,7 @@ country_event = {
 	show_sound = event_scanner
 	is_advisor_event = yes
 	is_triggered_only = yes
+	trigger = { is_ai = no }
 	option = { name = vop_ai_fixed.a }
 }
 
@@ -79,9 +82,8 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
-			#SHIP OP
 			if = {
-				limit = {  
+				limit = { 
 					is_ai = yes 
 					OR = {
 						is_country_type = fallen_empire
@@ -90,181 +92,20 @@ event = {
 						is_country_type = enclave_mercenary
 					}
 					OR = {
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 20 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 20 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 15 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 10 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 10 } }
-					}
-					OR = {
 						has_existing_ship_design = battleship
 						has_existing_ship_design = large_ship_fallen_empire
 					}
 				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = small_ship_fallen_empire }
-							count > 10
-						} }
-						has_existing_ship_design = large_ship_fallen_empire
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
-						clear_variable = small_ship_fallen_empire_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = small_ship_fallen_empire } }
-							variable = small_ship_fallen_empire_ai_var
-						}
-						divide_variable = { which = small_ship_fallen_empire_ai_var value = 10 }
-						floor_variable = small_ship_fallen_empire_ai_var
-						if = {
-							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value < 1 } }
-							set_variable = { which = small_ship_fallen_empire_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value >= 1 } }
-							while = {
-								count = small_ship_fallen_empire_ai_var
-								create_ship = { random_existing_design = large_ship_fallen_empire }
-							}
-							every_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = corvette }
-							count > 20
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = corvette } }
-						clear_variable = corvette_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = corvette } }
-							variable = corvette_ai_var
-						}
-						divide_variable = { which = corvette_ai_var value = 20 }
-						floor_variable = corvette_ai_var
-						if = {
-							limit = { check_variable = { which = corvette_ai_var value < 1 } }
-							set_variable = { which = corvette_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = corvette_ai_var value >= 1 } }
-							while = {
-								count = corvette_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = corvette } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = frigate }
-							count > 20
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = frigate } }
-						clear_variable = frigate_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = frigate } }
-							variable = frigate_ai_var
-						}
-						divide_variable = { which = frigate_ai_var value = 20 }
-						floor_variable = frigate_ai_var
-						if = {
-							limit = { check_variable = { which = frigate_ai_var value < 1 } }
-							set_variable = { which = frigate_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = frigate_ai_var value >= 1 } }
-							while = {
-								count = frigate_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = frigate } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = destroyer }
-							count > 15
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = destroyer } }
-						clear_variable = destroyer_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = destroyer } }
-							variable = destroyer_ai_var
-						}
-						divide_variable = { which = destroyer_ai_var value = 15 }
-						floor_variable = destroyer_ai_var
-						if = {
-							limit = { check_variable = { which = destroyer_ai_var value < 1 } }
-							set_variable = { which = destroyer_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = destroyer_ai_var value >= 1 } }
-							while = {
-								count = destroyer_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = destroyer } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = cruiser }
-							count > 10
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = cruiser } }
-						clear_variable = cruiser_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = cruiser } }
-							variable = cruiser_ai_var
-						}
-						divide_variable = { which = cruiser_ai_var value = 10 }
-						floor_variable = cruiser_ai_var
-						if = {
-							limit = { check_variable = { which = cruiser_ai_var value < 1 } }
-							set_variable = { which = cruiser_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = cruiser_ai_var value >= 1 } }
-							while = {
-								count = cruiser_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = cruiser } destroy_ship = this }
-						}
-					}
-				}
+				vop_optimaze_event_country_ships = { Ship_Size = frigate Count = 20 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = corvette Count = 20 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = destroyer Count = 15 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = cruiser Count = 10 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
 			vop_optimaze_tech_caculation = yes #TECH OP
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
+		vop_optimaze_event_species_caculation = yes #spciese event
 		vop_optimaze_event_planet_caculation = yes # planet events
 	}
 }
@@ -277,11 +118,8 @@ event = {
 		count_playable_country = { count > 0 } 
 	}
 	immediate = {
-		set_global_flag = VOP_MOD_INSTALL
 		set_timed_global_flag = { flag = VOP_CD_vop_ai_fixed days = 1 }
 		set_update_modifiers_batch = begin
-		AOW_eft_GLBL_set_ai_mega_cap_0 = yes
-		AOW_eft_GLBL_set_player_mega_cap_1 = yes
 		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		vop_optimaze_action_90 = yes # action 90
@@ -289,192 +127,33 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
-			#SHIP OP
 			if = {
-				limit = {  
+				limit = { 
 					is_ai = yes 
 					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-						is_country_type = default
-						is_country_type = enclave_mercenary
-					}
-					OR = {
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = frigate } count > 20 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = corvette } count > 20 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = destroyer } count > 15 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = cruiser } count > 10 } }
-						any_owned_fleet = { count_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } count > 10 } }
-					}
-					OR = {
-						has_existing_ship_design = battleship
-						has_existing_ship_design = large_ship_fallen_empire
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = small_ship_fallen_empire }
-							count > 10
-						} }
-						has_existing_ship_design = large_ship_fallen_empire
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = small_ship_fallen_empire } }
-						clear_variable = small_ship_fallen_empire_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = small_ship_fallen_empire } }
-							variable = small_ship_fallen_empire_ai_var
-						}
-						divide_variable = { which = small_ship_fallen_empire_ai_var value = 10 }
-						floor_variable = small_ship_fallen_empire_ai_var
-						if = {
-							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value < 1 } }
-							set_variable = { which = small_ship_fallen_empire_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = small_ship_fallen_empire_ai_var value >= 1 } }
-							while = {
-								count = small_ship_fallen_empire_ai_var
-								create_ship = { random_existing_design = large_ship_fallen_empire }
+						AND = {
+							has_technology = tech_battleships
+							OR = {
+								is_country_type = default
+								is_country_type = enclave_mercenary
 							}
-							every_owned_ship = { limit = { is_ship_size = small_ship_fallen_empire } destroy_ship = this }
+						}
+						AND = {
+							has_existing_ship_design = large_ship_fallen_empire
+							is_fallen_empire = yes
 						}
 					}
 				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = corvette }
-							count > 20
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = corvette } }
-						clear_variable = corvette_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = corvette } }
-							variable = corvette_ai_var
-						}
-						divide_variable = { which = corvette_ai_var value = 20 }
-						floor_variable = corvette_ai_var
-						if = {
-							limit = { check_variable = { which = corvette_ai_var value < 1 } }
-							set_variable = { which = corvette_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = corvette_ai_var value >= 1 } }
-							while = {
-								count = corvette_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = corvette } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = frigate }
-							count > 20
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = frigate } }
-						clear_variable = frigate_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = frigate } }
-							variable = frigate_ai_var
-						}
-						divide_variable = { which = frigate_ai_var value = 20 }
-						floor_variable = frigate_ai_var
-						if = {
-							limit = { check_variable = { which = frigate_ai_var value < 1 } }
-							set_variable = { which = frigate_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = frigate_ai_var value >= 1 } }
-							while = {
-								count = frigate_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = frigate } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = destroyer }
-							count > 15
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = destroyer } }
-						clear_variable = destroyer_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = destroyer } }
-							variable = destroyer_ai_var
-						}
-						divide_variable = { which = destroyer_ai_var value = 15 }
-						floor_variable = destroyer_ai_var
-						if = {
-							limit = { check_variable = { which = destroyer_ai_var value < 1 } }
-							set_variable = { which = destroyer_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = destroyer_ai_var value >= 1 } }
-							while = {
-								count = destroyer_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = destroyer } destroy_ship = this }
-						}
-					}
-				}
-				if = {
-					limit = {  
-						any_owned_fleet = { count_owned_ship = {
-							limit = { is_ship_size = cruiser }
-							count > 10
-						} }
-						has_existing_ship_design = battleship
-					}
-					every_owned_fleet = {
-						limit = { any_owned_ship = { is_ship_size = cruiser } }
-						clear_variable = cruiser_ai_var
-						export_trigger_value_to_variable = {
-							trigger = count_owned_ship
-							parameters = { limit = { is_ship_size = cruiser } }
-							variable = cruiser_ai_var
-						}
-						divide_variable = { which = cruiser_ai_var value = 10 }
-						floor_variable = cruiser_ai_var
-						if = {
-							limit = { check_variable = { which = cruiser_ai_var value < 1 } }
-							set_variable = { which = cruiser_ai_var value = 0 }
-						}
-						else_if = {
-							limit = { check_variable = { which = cruiser_ai_var value >= 1 } }
-							while = {
-								count = cruiser_ai_var
-								create_ship = { random_existing_design = battleship }
-							}
-							every_owned_ship = { limit = { is_ship_size = cruiser } destroy_ship = this }
-						}
-					}
-				}
+				vop_optimaze_event_country_ships = { Ship_Size = frigate Count = 20 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = corvette Count = 20 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = destroyer Count = 15 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = cruiser Count = 10 } #ship op
+				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
 			vop_optimaze_tech_caculation = yes #TECH OP
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
+		vop_optimaze_event_species_caculation = yes #spciese event
 		vop_optimaze_event_planet_caculation = yes # planet events
 		set_update_modifiers_batch = end
 	}
@@ -527,23 +206,17 @@ country_event = {
 		}
 	}
 }
-event = {
-	id = vop_ai_fixed.24
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { NOT = { has_global_flag = VOP_flg_glbl_AP_no_ai } }
-	immediate = { 
-		set_global_flag = VOP_flg_glbl_AP_no_ai
-		AOW_eft_GLBL_set_ai_mega_cap_0 = yes
-		AOW_eft_GLBL_set_player_mega_cap_1 = yes
-	}
-}
 planet_event = {
 	id = vop_ai_fixed.25
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { any_country = { NOT = { has_modifier = str_ground_battle } } }
-	immediate = { every_country = { limit = { NOT = { has_modifier = str_ground_battle } } add_modifier = { modifier = str_ground_battle } } }
+	trigger = { any_country = { 
+		NOT = { has_modifier = str_ground_battle } 
+	} }
+	immediate = { every_country = { 
+		limit = { NOT = { has_modifier = str_ground_battle } } 
+		add_modifier = { modifier = str_ground_battle } 
+	} }
 }
 country_event = {
 	id = vop_ai_fixed.26

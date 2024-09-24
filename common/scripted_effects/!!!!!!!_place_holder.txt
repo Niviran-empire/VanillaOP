@@ -1,2 +1,2 @@
 AOW_eft_GLBL_set_ai_mega_cap_0 = { optimize_memory }
-AOW_eft_GLBL_set_player_mega_cap_1 = { optimize_memory }
+AOW_eft_GLBL_set_player_mega_cap_5 = { optimize_memory }

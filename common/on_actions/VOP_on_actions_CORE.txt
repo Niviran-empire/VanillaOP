@@ -48,9 +48,3 @@ VOP_on_monthly_pulse_country = {
 		vop_ai_fixed.26
 	}
 }
-
-VOP_on_monthly_pulse = {
-	events = {
-		vop_ai_fixed.24
-	}
-}

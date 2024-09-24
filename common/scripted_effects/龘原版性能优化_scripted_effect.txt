@@ -1,6 +1,192 @@
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
+######rule################################
+#system
+vop_optimaze_game_rule_system_sensor = {
+	every_system = {
+		remove_star_flag = can_enable_can_be_system_blocks_sensors
+		if = {
+			limit = { OR = {
+				##_|星云|	+RS/Sexp
+				is_inside_nebula = yes
+				has_modifier = space_storm
+				##_|封印星系|	+Sexp
+				has_star_flag = lcluster
+				has_star_flag = sealed_system
+			} }
+			set_star_flag = can_enable_can_be_system_blocks_sensors
+		}
+	}
+}
+#pop
+vop_optimaze_game_rule_can_vote_in_democratic_election = {
+	remove_pop_flag = can_enable_pop_election_vote
+	if = {
+		limit = { 
+			has_citizenship_rights = yes
+			is_sapient = yes
+			is_enslaved = no
+			is_being_purged = no
+		}
+		set_pop_flag = can_enable_pop_election_vote
+	}
+}
+vop_optimaze_game_rule_pop_has_random_ethics = {
+	remove_pop_flag = can_enable_pop_has_random_ethics
+	if = {
+		limit = { NOT = { has_citizenship_type = { country = owner type = citizenship_organic_trophy } } }
+		set_pop_flag = can_enable_pop_has_random_ethics
+	}
+}
+vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
+	remove_pop_flag = can_enable_can_generate_military_leader_from_pop
+	if = {
+		limit = {  
+			has_citizenship_rights = yes
+			NOT = { has_trait = trait_syncretic_proles }
+			can_think = yes
+			OR = {
+				is_robot_pop = no
+				owner = {
+					OR = {
+						has_technology = tech_synthetic_leaders
+						has_authority = auth_machine_intelligence
+						is_mechanical_empire = yes
+						is_individual_machine = yes
+					}
+				}
+			}
+			OR = {
+				is_same_species = root
+				owner = {
+					NAND = {
+						has_origin = origin_necrophage
+						has_trait = trait_necrophage
+					}
+				}
+			}
+			can_be_military_leader = yes
+		}
+		set_pop_flag = can_enable_can_generate_military_leader_from_pop
+	}
+}
+vop_optimaze_game_rule_can_generate_leader_from_pop = {
+	remove_pop_flag = can_enable_can_generate_leader_from_pop
+	if = {
+		limit = { 
+			has_citizenship_rights = yes
+			NOT = { has_trait = trait_syncretic_proles }
+			can_think = yes
+			OR = {
+				is_robot_pop = no
+				owner = {
+					OR = {
+						has_technology = tech_synthetic_leaders
+						has_authority = auth_machine_intelligence
+						is_mechanical_empire = yes
+						is_individual_machine = yes
+					}
+				}
+			}
+			OR = {
+				is_same_species = root
+				owner = {
+					NAND = {
+						has_origin = origin_necrophage
+						has_trait = trait_necrophage
+					}
+				}
+			}
+		}
+		set_pop_flag = can_enable_can_generate_leader_from_pop
+	}
+}
+#species
+vop_optimaze_game_rule_species_has_happiness = {
+	remove_species_flag = can_enable_species_has_happiness
+	if = {
+		limit = { NOR = {
+			has_trait = trait_machine_unit
+			has_trait = trait_hive_mind
+			can_think = no
+			AND = {
+				has_trait = trait_mechanical
+				OR = {
+					NOT = { exists = owner }
+					owner = { has_authority = auth_machine_intelligence }
+					owner = { NOT = { has_technology = tech_synthetic_workers } }
+					owner = { has_policy_flag = ai_outlawed }
+				}
+			}
+			AND = {
+				has_trait = trait_cybernetic
+				exists = owner
+				owner = {
+					has_authority = auth_machine_intelligence
+					has_civic = civic_machine_assimilator # Assimilator empire
+				}
+			}
+		} }
+		set_species_flag = can_enable_species_has_happiness
+	}
+}
+vop_optimaze_game_rule_should_force_decline_species = {
+	remove_species_flag = can_enable_should_force_decline_species
+	# should_force_decline_species
+	if = {
+		limit = {
+			exists = this
+			OR = {
+				AND = {
+					OR = {
+						has_trait = trait_clone_soldier_infertile
+						has_trait = trait_clone_soldier_infertile_full_potential
+					}
+					prev.planet = {
+						OR = {
+							# Check if country is unable to build Vats for this species.
+							AND = {
+								exists = owner
+								owner = {
+									OR = {
+										NOT = { has_origin = origin_clone_army }					# Can't have Vats.
+										has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
+										NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
+									}
+								}
+							}
+							# Vats check out, but are there more pops than Vats support?
+							check_variable = { which = clone_pops_missing value < 0 }
+						}
+					}
+				}
+				has_trait = trait_pathogenic_genes
+			}
+		}
+		set_species_flag = can_enable_should_force_decline_species
+	}
+}
+vop_optimaze_game_rule_can_has_food_upkeep = {
+	remove_species_flag = can_has_food_upkeep
+	if = {
+		limit = { can_have_food_upkeep_species = yes }
+		set_species_flag = can_has_food_upkeep
+	} 
+}
+#planet
+vop_optimaze_game_rule_is_new_colony = {
+	remove_planet_flag = can_enable_is_new_colony
+	if = {
+		limit = { 
+			is_colony = yes colony_age < 180 num_pops < 10 
+			NOT = { has_planet_flag = has_building_kuat_command_center_auto } 
+		}
+		set_planet_flag = can_enable_is_new_colony
+	}
+}
+######rule################################
 
+######other###############################
 vop_debug_system_modifier = { if = { limit = { NOT = { has_modifier = $TYPE$_order_check_$ORDER$ } } add_modifier = { modifier = $TYPE$_order_check_$ORDER$ } } }
 
 vop_optimaze_action_116 = {
@@ -87,23 +273,6 @@ vop_optimaze_enclave_2065 = {
 			any_owned_fleet = { is_leased = no }
 		}
 		country_event = { id = enclave.2070 }
-	}
-}
-
-vop_optimaze_game_rule_system_sensor = {
-	every_system = {
-		remove_star_flag = can_enable_can_be_system_blocks_sensors
-		if = {
-			limit = { OR = {
-				##_|星云|	+RS/Sexp
-				is_inside_nebula = yes
-				has_modifier = space_storm
-				##_|封印星系|	+Sexp
-				has_star_flag = lcluster
-				has_star_flag = sealed_system
-			} }
-			set_star_flag = can_enable_can_be_system_blocks_sensors
-		}
 	}
 }
 
@@ -224,178 +393,6 @@ vop_optimaze_action_90 = {
 	}
 }
 
-vop_optimaze_event_planet_caculation = {
-	every_galaxy_planet = {
-		limit = { exists = owner }
-		remove_planet_flag = can_enable_is_new_colony
-		if = { 
-			limit = { owner = { is_ai = yes } } 
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_population_control } 
-				}
-				add_modifier = { modifier = planet_population_control }
-			}
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_population_control_gestalt } 
-				}
-				add_modifier = { modifier = planet_population_control_gestalt }
-			}
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_robot_assembly_control } 
-				}
-				add_modifier = { modifier = planet_robot_assembly_control }
-			}
-			else_if = { 
-				limit = { 
-					num_pops <= 100 
-					OR = {
-						has_modifier = planet_population_control
-						has_modifier =  planet_population_control_gestalt
-						has_modifier = planet_robot_assembly_control
-					}
-				} 
-				remove_modifier = planet_population_control
-				remove_modifier = planet_population_control_gestalt
-				remove_modifier =  planet_robot_assembly_control
-			}
-		}
-		#[GAMERULE PLANET FLAG]
-		if = {
-			limit = { 
-				is_colony = yes colony_age < 180 num_pops < 10 
-				NOT = { has_planet_flag = has_building_kuat_command_center_auto } 
-			}
-			set_planet_flag = can_enable_is_new_colony
-		}
-		#[POP SECTION CALCULATION]
-		if = {
-			limit = { 
-				num_pops > 0 
-				NOT = { has_global_flag = VOP_settings_POP_cate_disable_trigger_modifier }
-			}
-			remove_modifier = str_trade_pop
-			remove_modifier = str_assemble_pop
-			remove_modifier = str_assemble_tiyanki_pop
-			remove_modifier = str_pop_planet_amenities_add
-			remove_modifier = str_pop_non_noxious_happiness_pop
-			clear_variable = trade_value_add_op_1_var
-			clear_variable = trade_value_add_op_2_var
-			clear_variable = trade_value_add_op_3_var
-			clear_variable = trade_value_add_op_4_var
-			clear_variable = trade_value_add_op_5_var
-			clear_variable = trade_value_add_op_6_var
-			clear_variable = trade_value_add_op_8_var
-			clear_variable = trade_value_add_op_9_var
-			clear_variable = trade_value_add_op_10_var
-			clear_variable = trade_value_add_op_11_var
-			clear_variable = trade_value_add_op_12_var
-			clear_variable = trade_value_add_op_13_var
-			clear_variable = trade_value_add_op_14_var
-			clear_variable = trade_value_add_op_15_var
-			clear_variable = clerk_has_planet_amenities_add_var
-			clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
-			every_owned_pop = {
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_1 }
-					prev = { change_variable = { which = trade_value_add_op_1_var value = @trade_value_prosperity_gospel } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_2 }
-					prev = { change_variable = { which = trade_value_add_op_2_var value = @trade_value_shared_burden } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_3 }
-					prev = { change_variable = { which = trade_value_add_op_3_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_4 }
-					prev = { change_variable = { which = trade_value_add_op_4_var value = @trade_value_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_5 }
-					prev = { change_variable = { which = trade_value_add_op_5_var value = @trade_value_normal } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_6 }
-					prev = { change_variable = { which = trade_value_add_op_6_var value = @plantoid_budding_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_8 }
-					prev = { change_variable = { which = trade_value_add_op_8_var value = @noxious_happiness_penalty } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_9 }
-					prev = { change_variable = { which = trade_value_add_op_9_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_10 }
-					prev = { change_variable = { which = trade_value_add_op_10_var value = @trade_value_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_11 }
-					prev = { change_variable = { which = trade_value_add_op_11_var value = @trade_value_normal } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_12 }
-					prev = { change_variable = { which = trade_value_add_op_12_var value = @trade_value_low } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_13 }
-					prev = { change_variable = { which = trade_value_add_op_13_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_14 }
-					prev = { change_variable = { which = trade_value_add_op_14_var value = @tiyanki_budding_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_15 }
-					prev = { change_variable = { which = trade_value_add_op_15_var value = @pop_happiness_unemply_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
-				}
-			}
-			set_variable = { which = trade_value_add_op_total value = 0 }
-			set_variable = { which = asseble_value_add_op_total value = 0 }
-			set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
-			set_variable = { which = planet_amenities_add_total value = 0 }
-			set_variable = { which = pop_happiness_unemply_op_total value = 0 }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
-			change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
-			change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
-			change_variable = { which = pop_happiness_unemply_op_total value = trade_value_add_op_15_var }
-			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
-			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
-			multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
-			add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
-			add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
-			add_modifier = { modifier = str_assemble_tiyanki_pop multiplier = asseble_tiyanki_value_add_op_total }
-			add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
-			add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = pop_happiness_unemply_op_total }
-		}
-	}
-}
-
 vop_optimaze_war_goals = {
 	remove_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
 	remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
@@ -491,159 +488,10 @@ vop_optimaze_tech_caculation = {
 
 vop_optimaze_event_pop_caculation = {
 	every_galaxy_pop = {
-		species = {
-			remove_species_flag = can_enable_species_has_happiness
-			remove_species_flag = can_enable_should_force_decline_species
-			remove_species_flag = can_has_food_upkeep
-		}
-		remove_pop_flag = can_enable_pop_election_vote
-		remove_pop_flag = can_enable_pop_has_random_ethics
-		remove_pop_flag = can_enable_can_generate_military_leader_from_pop
-		remove_pop_flag = can_enable_can_generate_leader_from_pop
-		#speces [GAME RULE]
-		species = { 
-			if = {
-				limit = { can_have_food_upkeep_species = yes }
-				set_species_flag = can_has_food_upkeep
-			} 
-			#happiniess species
-			if = {
-				limit = { NOR = {
-					has_trait = trait_machine_unit
-					has_trait = trait_hive_mind
-					can_think = no
-					AND = {
-						has_trait = trait_mechanical
-						OR = {
-							NOT = { exists = owner }
-							owner = { has_authority = auth_machine_intelligence }
-							owner = { NOT = { has_technology = tech_synthetic_workers } }
-							owner = { has_policy_flag = ai_outlawed }
-						}
-					}
-					AND = {
-						has_trait = trait_cybernetic
-						exists = owner
-						owner = {
-							has_authority = auth_machine_intelligence
-							has_civic = civic_machine_assimilator # Assimilator empire
-						}
-					}
-				} }
-				set_species_flag = can_enable_species_has_happiness
-			}
-			# should_force_decline_species
-			if = {
-				limit = {
-					exists = this
-					OR = {
-						custom_tooltip = {
-							success_text = CLONE_ARMY_FORCE_DECLINE
-							OR = {
-								has_trait = trait_clone_soldier_infertile
-								has_trait = trait_clone_soldier_infertile_full_potential
-							}
-							prev.planet = {
-								OR = {
-									# Check if country is unable to build Vats for this species.
-									AND = {
-										exists = owner
-										owner = {
-											OR = {
-												NOT = { has_origin = origin_clone_army }					# Can't have Vats.
-												has_country_flag = clone_army_fertility_unlocked			# Can't have Vats anymore.
-												NOT = { owner_main_species = { is_same_species = prevprevprev } }	# Our Vats can't build this species.
-											}
-										}
-									}
-									# Vats check out, but are there more pops than Vats support?
-									check_variable = { which = clone_pops_missing value < 0 }
-								}
-							}
-						}
-						custom_tooltip = {
-							success_text = PATHOGENIC_GENES_FORCE_DECLINE
-							has_trait = trait_pathogenic_genes
-						}
-					}
-				}
-				set_species_flag = can_enable_should_force_decline_species
-			}
-		}
-		#canpopvote [GAME RULE]
-		if = {
-			limit = { 
-				has_citizenship_rights = yes
-				is_sapient = yes
-				is_enslaved = no
-				is_being_purged = no
-			}
-			set_pop_flag = can_enable_pop_election_vote
-		}
-		#pop_has_random_ethics [GAME RULE]
-		if = {
-			limit = { NOT = { has_citizenship_type = { country = owner type = citizenship_organic_trophy } } }
-			set_pop_flag = can_enable_pop_has_random_ethics
-		}
-		#can_generate_military_leader_from_pop [GAME RULE]
-		if = {
-			limit = {  
-				has_citizenship_rights = yes
-				NOT = { has_trait = trait_syncretic_proles }
-				can_think = yes
-				OR = {
-					is_robot_pop = no
-					owner = {
-						OR = {
-							has_technology = tech_synthetic_leaders
-							has_authority = auth_machine_intelligence
-							is_mechanical_empire = yes
-							is_individual_machine = yes
-						}
-					}
-				}
-				OR = {
-					is_same_species = root
-					owner = {
-						NAND = {
-							has_origin = origin_necrophage
-							has_trait = trait_necrophage
-						}
-					}
-				}
-				can_be_military_leader = yes
-			}
-			set_pop_flag = can_enable_can_generate_military_leader_from_pop
-		}
-		#can_generate_leader_from_pop [GAME RULE]
-		if = {
-			limit = { 
-				has_citizenship_rights = yes
-				NOT = { has_trait = trait_syncretic_proles }
-				can_think = yes
-				OR = {
-					is_robot_pop = no
-					owner = {
-						OR = {
-							has_technology = tech_synthetic_leaders
-							has_authority = auth_machine_intelligence
-							is_mechanical_empire = yes
-							is_individual_machine = yes
-						}
-					}
-				}
-				OR = {
-					is_same_species = root
-					owner = {
-						NAND = {
-							has_origin = origin_necrophage
-							has_trait = trait_necrophage
-						}
-					}
-				}
-			}
-			set_pop_flag = can_enable_can_generate_leader_from_pop
-		}
+		vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+		vop_optimaze_game_rule_pop_has_random_ethics = yes
+		vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
+		vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 		#[POP SECTION]
 		if = {
 			limit = { exists = owner }
@@ -1542,6 +1390,217 @@ vop_optimaze_event_pop_caculation = {
 					}
 				}
 				set_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
+			}
+		}
+	}
+}
+
+vop_optimaze_event_species_caculation = {
+	every_galaxy_species = {
+		#happiniess species
+		vop_optimaze_game_rule_species_has_happiness = yes
+		vop_optimaze_game_rule_should_force_decline_species = yes
+		vop_optimaze_game_rule_can_has_food_upkeep = yes
+	}
+}
+
+vop_optimaze_event_planet_caculation = {
+	every_galaxy_planet = {
+		limit = { exists = owner }
+		if = { 
+			limit = { owner = { is_ai = yes } } 
+			if = {
+				limit = { 
+					num_pops > 100 
+					NOT = { has_modifier = planet_population_control } 
+				}
+				add_modifier = { modifier = planet_population_control }
+			}
+			if = {
+				limit = { 
+					num_pops > 100 
+					NOT = { has_modifier = planet_population_control_gestalt } 
+				}
+				add_modifier = { modifier = planet_population_control_gestalt }
+			}
+			if = {
+				limit = { 
+					num_pops > 100 
+					NOT = { has_modifier = planet_robot_assembly_control } 
+				}
+				add_modifier = { modifier = planet_robot_assembly_control }
+			}
+			else_if = { 
+				limit = { 
+					num_pops <= 100 
+					OR = {
+						has_modifier = planet_population_control
+						has_modifier =  planet_population_control_gestalt
+						has_modifier = planet_robot_assembly_control
+					}
+				} 
+				remove_modifier = planet_population_control
+				remove_modifier = planet_population_control_gestalt
+				remove_modifier =  planet_robot_assembly_control
+			}
+		}
+		vop_optimaze_game_rule_is_new_colony = yes
+		#[POP SECTION CALCULATION]
+		if = {
+			limit = { 
+				num_pops > 0 
+				NOT = { has_global_flag = VOP_settings_POP_cate_disable_trigger_modifier }
+			}
+			remove_modifier = str_trade_pop
+			remove_modifier = str_assemble_pop
+			remove_modifier = str_assemble_tiyanki_pop
+			remove_modifier = str_pop_planet_amenities_add
+			remove_modifier = str_pop_non_noxious_happiness_pop
+			clear_variable = trade_value_add_op_1_var
+			clear_variable = trade_value_add_op_2_var
+			clear_variable = trade_value_add_op_3_var
+			clear_variable = trade_value_add_op_4_var
+			clear_variable = trade_value_add_op_5_var
+			clear_variable = trade_value_add_op_6_var
+			clear_variable = trade_value_add_op_8_var
+			clear_variable = trade_value_add_op_9_var
+			clear_variable = trade_value_add_op_10_var
+			clear_variable = trade_value_add_op_11_var
+			clear_variable = trade_value_add_op_12_var
+			clear_variable = trade_value_add_op_13_var
+			clear_variable = trade_value_add_op_14_var
+			clear_variable = trade_value_add_op_15_var
+			clear_variable = clerk_has_planet_amenities_add_var
+			clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
+			every_owned_pop = {
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_1 }
+					prev = { change_variable = { which = trade_value_add_op_1_var value = @trade_value_prosperity_gospel } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_2 }
+					prev = { change_variable = { which = trade_value_add_op_2_var value = @trade_value_shared_burden } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_3 }
+					prev = { change_variable = { which = trade_value_add_op_3_var value = @trade_value_very_high } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_4 }
+					prev = { change_variable = { which = trade_value_add_op_4_var value = @trade_value_high } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_5 }
+					prev = { change_variable = { which = trade_value_add_op_5_var value = @trade_value_normal } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_6 }
+					prev = { change_variable = { which = trade_value_add_op_6_var value = @plantoid_budding_rate } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_8 }
+					prev = { change_variable = { which = trade_value_add_op_8_var value = @noxious_happiness_penalty } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_9 }
+					prev = { change_variable = { which = trade_value_add_op_9_var value = @trade_value_very_high } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_10 }
+					prev = { change_variable = { which = trade_value_add_op_10_var value = @trade_value_high } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_11 }
+					prev = { change_variable = { which = trade_value_add_op_11_var value = @trade_value_normal } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_12 }
+					prev = { change_variable = { which = trade_value_add_op_12_var value = @trade_value_low } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_13 }
+					prev = { change_variable = { which = trade_value_add_op_13_var value = @trade_value_very_high } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_14 }
+					prev = { change_variable = { which = trade_value_add_op_14_var value = @tiyanki_budding_rate } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_15 }
+					prev = { change_variable = { which = trade_value_add_op_15_var value = @pop_happiness_unemply_rate } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub }
+					prev = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add }
+					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
+				}
+			}
+			set_variable = { which = trade_value_add_op_total value = 0 }
+			set_variable = { which = asseble_value_add_op_total value = 0 }
+			set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
+			set_variable = { which = planet_amenities_add_total value = 0 }
+			set_variable = { which = pop_happiness_unemply_op_total value = 0 }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
+			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
+			change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
+			change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
+			change_variable = { which = pop_happiness_unemply_op_total value = trade_value_add_op_15_var }
+			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
+			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
+			multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
+			add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
+			add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
+			add_modifier = { modifier = str_assemble_tiyanki_pop multiplier = asseble_tiyanki_value_add_op_total }
+			add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
+			add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = pop_happiness_unemply_op_total }
+		}
+	}
+}
+
+vop_optimaze_event_country_ships = {
+	if = {
+		limit = {  any_owned_fleet = { count_owned_ship = { 
+			limit = { is_ship_size = $Ship_Size$ } count > $Count$ 
+		} } }
+		every_owned_fleet = {
+			limit = { any_owned_ship = { is_ship_size = $Ship_Size$ } }
+			clear_variable = $Ship_Size$_ai_var
+			export_trigger_value_to_variable = {
+				trigger = count_owned_ship
+				parameters = { limit = { is_ship_size = $Ship_Size$ } }
+				variable = $Ship_Size$_ai_var
+			}
+			divide_variable = { which = $Ship_Size$_ai_var value = $Count$ }
+			floor_variable = $Ship_Size$_ai_var
+			if = {
+				limit = { check_variable = { which = $Ship_Size$_ai_var value < 1 } }
+				set_variable = { which = $Ship_Size$_ai_var value = 0 }
+			}
+			else_if = {
+				limit = { check_variable = { which = $Ship_Size$_ai_var value >= 1 } }
+				if = {
+					limit = { PREV = { has_existing_ship_design = large_ship_fallen_empire } }
+					while = {
+						count = $Ship_Size$_ai_var
+						create_ship = { random_existing_design = large_ship_fallen_empire }
+					}
+				}
+				else = { while = {
+					count = $Ship_Size$_ai_var
+					create_ship = { random_existing_design = battleship }
+				} }
+				every_owned_ship = { limit = { is_ship_size = $Ship_Size$ } destroy_ship = this }
 			}
 		}
 	}
