@@ -277,20 +277,6 @@ vop_optimaze_enclave_2065 = {
 }
 
 vop_optimaze_action_90 = {
-	event_target:global_event_country = {
-		set_variable = { which = AOW_var_ai_mega_cost value = 0 }
-		set_variable = { which = AOW_var_ai_mega_upkp value = 0 }
-		set_variable = { which = AOW_var_ai_mega_prdc value = 0 }
-		set_variable = { which = AOW_var_ai_mega_build_speed value = 0 }
-		set_variable = { which = AOW_var_ai_mega_build_cap value = 0 }
-		set_variable = { which = AOW_var_player_mega_cost value = 0 }
-		set_variable = { which = AOW_var_player_mega_upkp value = 0 }
-		set_variable = { which = AOW_var_player_mega_prdc value = 0 }
-		set_variable = { which = AOW_var_player_mega_build_speed value = 0 }
-		set_variable = { which = AOW_var_player_mega_build_cap value = 0 }
-	}
-	AOW_eft_GLBL_set_ai_mega_cap_0 = yes
-	AOW_eft_GLBL_set_player_mega_cap_1 = yes
 	if = {
 		limit = { 
 			any_playable_country = { any_owned_planet = {
