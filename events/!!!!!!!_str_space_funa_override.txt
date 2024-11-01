@@ -1,0 +1,13 @@
+namespace = grand_archive
+country_event = {
+	id = grand_archive.10090
+	hide_window = yes
+
+	is_triggered_only = yes
+	trigger = {
+		always = no
+	}
+	immediate = {
+
+	}
+}

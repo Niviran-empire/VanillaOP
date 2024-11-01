@@ -17,6 +17,7 @@ default = {
 	can_use_invalid_technology = no
 	can_receive_envoys = yes
 	ownership_limits = default
+	do_critters_age = yes
 
 	ai = {
 		enabled = yes
@@ -37,10 +38,13 @@ default = {
 			foreign_minister_module
 			interior_minister_module
 			mercenary_buyer_minister_module
+			enclave_founder_minister_module
 		}
 	}
 
-	trade_routes_available = { always = no }
+	trade_routes_available = {
+		is_gestalt = no
+	}
 
 	modules = {
 		standard_event_module = {}
@@ -52,6 +56,7 @@ default = {
 		standard_pop_factions_module = {}
 		standard_expansion_module = {}
 		standard_species_rights_module = {}
+		standard_grand_archive_module = {}
 	}
 
 	resources = {
@@ -190,7 +195,7 @@ primitive = {
 		needs_colony = yes
 		intel_effects_surveyed = no
 	}
-	
+
 	hide_names_if_no_communication = no
 	show_in_contacts_list = yes
 	#custom_diplomacy = yes # This makes primitives show up in the galaxy empire view.
@@ -220,6 +225,7 @@ primitive = {
 	}
 }
 
+
 fallen_empire = {
 	scaled_difficulty_bonuses = 1.0	# scales to setting
 	counts_for_victory = yes
@@ -246,7 +252,6 @@ fallen_empire = {
 		min_navy_for_wars = 0.0
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = no
-		ascension_perks = no
 		internal_policies = no
 		modification = no
 		construction = no
@@ -275,6 +280,7 @@ fallen_empire = {
 				action_offer_trade_deal
 				action_cancel_trade_deal
 				action_insult
+				action_make_claims_diplomacy_view
 			}
 			can_send = {
 				action_declare_war
@@ -337,10 +343,8 @@ awakened_fallen_empire = {
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = yes
 		internal_policies = yes
-		starbase_upgrade = no
 		modification = no
 		government = no
-		ascension_perks = no
 		construction = yes
 		tech = yes
 		traditions = yes #but no ascension perks!

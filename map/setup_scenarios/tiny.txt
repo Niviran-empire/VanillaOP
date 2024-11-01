@@ -64,12 +64,4 @@ setup_scenario = {
 	#supports_shape = spiral_4
 	supports_shape = ring
 	supports_shape = bar
-	supports_shape = galaxi_exp_1
-	supports_shape = galaxi_exp_2
-	supports_shape = galaxi_exp_3
-	supports_shape = galaxi_exp_4
-	supports_shape = galaxi_exp_5
-	supports_shape = galaxi_exp_6
-	supports_shape = galaxi_exp_7
-	supports_shape = galaxi_exp_8
 }
