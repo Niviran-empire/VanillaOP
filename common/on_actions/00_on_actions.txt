@@ -111,16 +111,14 @@ VOP_on_monthly_pulse = {
 		galcom.108
 		galactic_features.365	# Tiyanki Respawning
 		enclave.2055 			# If Khan dead, merc fleets break contract
-		#enclave.2065 			# Unemployed mercs return to merc station |VOP优化|
+		#enclave.2065 			# Unemployed mercs return to merc station	|VOP优化|
 		fircon.10				# Adds pre-FTL insights
 		crisis.7017 			# Cosmogenesis Neural Chip Objective
 		crisis.24000			# Synth Queen rebuilds her capital if possible
-		crisis.8049				# Synth Queen - spawns convoys and history site
-
-		# cstorms.1000			# Cosmic Storms unity per system/planet |VOP优化转出|
-		# cstorms.1050			# Particle Storms unity per ships|VOP优化转出|
-		cstorms.1100			# Cosmic Storms monthly affects|VOP优化转入|
-		
+		crisis.8049				# Synth Queen - spawns convoys and history sites
+		#cstorms.1000			# Cosmic Storms unity per system/planet	|VOP转出|5年
+		#cstorms.1050			# Particle Storms unity per ships		|VOP转出|5年
+		cstorms.1100			# Cosmic Storms monthly affects
         grand_archive.2104      # Voidworms Inside Borders - Monthly Clean Up
 		grand_archive.2106      # Voidworms Inside Borders - Monthly Check
 		grand_archive.3104      # Cutholoids Inside Borders - Monthly Clean Up
@@ -244,7 +242,7 @@ VOP_on_yearly_pulse = {
 		crisis.7010 	# Cosmogenesis Scholarium Subjects Objective
 		crisis.7015 	# Cosmogenesis Galcom Research Resolutions Objective
 		crisis.7020		# Cosmogenesis Science Nexuses Objective
-		crisis.8135		# Synth Queen Convoy Spawner
+		crisis.8135 	# Synth Queen Convoy Spawner
 		crisis.8043		# Synth Queen Speech 2 setup
 		grand_archive.3001	# Cutholoid Respawn
 	}
@@ -269,8 +267,9 @@ VOP_on_five_year_pulse = {
 		origin.1334
 		cybernetics.5053 #Nanite ascension - orbital deposit handler
 
-		cstorms.1000			# Cosmic Storms unity per system/planet |VOP优化转入|
-		cstorms.1050			# Particle Storms unity per ships|VOP优化转入|
+		#	|VOP转入|
+		cstorms.1000			# Cosmic Storms unity per system/planet
+		cstorms.1050			# Particle Storms unity per ships
 	}
 	random_events = {
 		150 = 0
@@ -317,7 +316,7 @@ on_late_game_pulse = {
 VOP_on_monthly_pulse_country = {
 	events = {
 		tutorial.1337		# Artifact tutorial
-		tutorial.1340		#Astral Threads tutorial
+		tutorial.1340       #Astral Threads tutorial
 		tutorial.2110		# Tutorial: Creating a Mercenary Enclave
 		cara.333			# ai checks if it can/wants to play with the caravaneers
 		clones.3			# Clone Army Origin pop creation
@@ -444,7 +443,7 @@ VOP_on_five_year_pulse_country = {
 		grand_archive.1005	# Primal Calling Space Fauna spawn for communication
 		grand_archive.4110	# Curators contact related to specimens
 		grand_archive.6000	# Treasure Troves - Treasure Hunter Origin
-		
+
 		#	|VOP转入|
 		paragon_2.1020 # Galactic Paragons negative leader trait event.
 	}
@@ -1336,7 +1335,7 @@ on_ship_destroyed_perp = {
 # From = attacker ship
 on_damage_taken = {
 	events = {
-		#grand_archive.10095 # Berserker Glands unique mutation #_|VOP优化
+		#grand_archive.10095 # Berserker Glands unique mutation	|VOP优化|禁止此action
 	}
 }
 
