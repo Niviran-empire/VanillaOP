@@ -116,9 +116,9 @@ VOP_on_monthly_pulse = {
 		crisis.7017 			# Cosmogenesis Neural Chip Objective
 		crisis.24000			# Synth Queen rebuilds her capital if possible
 		crisis.8049				# Synth Queen - spawns convoys and history sites
-		#cstorms.1000			# Cosmic Storms unity per system/planet	|VOP转出|5年
-		#cstorms.1050			# Particle Storms unity per ships		|VOP转出|5年
-		cstorms.1100			# Cosmic Storms monthly affects
+		#cstorms.1000			# Cosmic Storms unity per system/planet	|VOP转出|1年
+		#cstorms.1050			# Particle Storms unity per ships		|VOP优化|
+		#cstorms.1100			# Cosmic Storms monthly affects			|VOP优化|
         grand_archive.2104      # Voidworms Inside Borders - Monthly Clean Up
 		grand_archive.2106      # Voidworms Inside Borders - Monthly Check
 		grand_archive.3104      # Cutholoids Inside Borders - Monthly Clean Up
@@ -245,6 +245,9 @@ VOP_on_yearly_pulse = {
 		crisis.8135 	# Synth Queen Convoy Spawner
 		crisis.8043		# Synth Queen Speech 2 setup
 		grand_archive.3001	# Cutholoid Respawn
+
+		#	|VOP转入|
+		cstorms.1000			# Cosmic Storms unity per system/planet
 	}
 }
 
@@ -266,10 +269,6 @@ VOP_on_five_year_pulse = {
 		colony.3029 #Mirror portal followup event gatekeeper
 		origin.1334
 		cybernetics.5053 #Nanite ascension - orbital deposit handler
-
-		#	|VOP转入|
-		cstorms.1000			# Cosmic Storms unity per system/planet
-		cstorms.1050			# Particle Storms unity per ships
 	}
 	random_events = {
 		150 = 0

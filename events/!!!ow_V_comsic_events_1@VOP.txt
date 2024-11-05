@@ -1,5 +1,9 @@
+#	同步追踪|3.14.15	cstorms.1000/cstorms.1050/cstorms.1100
 namespace = cstorms
-# Monthly unity gain from systems/planets affected by storms (see on_monthly_pulse)
+
+
+#	每月从被风暴影响的星球/星系收取资源		改为年检+变量调整
+#_note	var|PF_var_cntr_V_country_storms_PRODUCES_unity|配合国家容器产生资源,无需不断设置修正
 event = {
 	id = cstorms.1000
 	hide_window = yes
@@ -12,34 +16,21 @@ event = {
 
 	immediate = {
 		every_playable_country = {
-			# Unity per system
+			##	按星系产出
 			if = {
 				limit = {
 					is_galactic_community_member = yes
 					is_active_resolution = "resolution_cosmic_storms_shared_knowledge"
 				}
-
-				# Reset counters
-				set_variable = { which = storm_affected_system_count value = 0 }
-				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_system_count VALUE_IF_CREATED = 0 }
-
-				# Count
+				
+				set_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 0 }
+				#	Count
 				every_system_within_border = {
-					limit = {
-						has_star_flag = storm_system
-					}
-
-					PREV = { change_variable = { which = storm_affected_system_count value = 60 } }
-				}
-
-				# Update/remove modifier as needed
-				update_modifier_amount_if_needed = {
-					MODIFIER = storm_unity_gain_modifier
-					MULT_VAR = storm_affected_system_count
-					PREV_MULT_VAR = prev_storm_affected_system_count
+					limit = { has_star_flag = storm_system }
+					prev = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
 				}
 			}
-			# Unity per planet
+			##	按星球产出
 			else_if = {
 				limit = {
 					is_galactic_community_member = yes
@@ -51,23 +42,16 @@ event = {
 					}
 				}
 
-				# Reset counters
-				set_variable = { which = storm_affected_planet_count value = 0 }
-				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_planet_count VALUE_IF_CREATED = 0 }
-
-				# Count
+				set_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 0 }
+				#	Count
 				every_planet_within_border = {
 					limit = {
 						has_owner = yes
-						solar_system = {
-							has_star_flag = storm_system
-						}
+						solar_system = { has_star_flag = storm_system }
 					}
-
-					PREV = { change_variable = { which = storm_affected_planet_count value = 60 } }
+					prev = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
 				}
-
-				# Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
+				#	Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
 				if = {
 					limit = {
 						OR = {
@@ -75,25 +59,17 @@ event = {
 							is_active_resolution = "resolution_cosmic_storms_utilization_protocols"
 						}
 					}
-					multiply_variable = { which = storm_affected_planet_count value = 2 }
+					multiply_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 2 }
 				}
 				else_if = {
-					limit = {
-						is_active_resolution = "resolution_cosmic_storms_manipulation_mandate"
-					}
-					multiply_variable = { which = storm_affected_planet_count value = 3 }
-				}
-
-				# Update/remove modifier as needed
-				update_modifier_amount_if_needed = {
-					MODIFIER = storm_unity_gain_modifier
-					MULT_VAR = storm_affected_planet_count
-					PREV_MULT_VAR = prev_storm_affected_planet_count
+					limit = { is_active_resolution = "resolution_cosmic_storms_manipulation_mandate" }
+					multiply_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 3 }
 				}
 			}
-			# Remove modifier or it might linger after repealing/switching resolutions.
-			else = {
-				remove_modifier = storm_unity_gain_modifier
+			#	CLEAR
+			else_if = {
+				limit = { is_variable_set = PF_var_cntr_V_country_storms_PRODUCES_unity }
+				clear_variable = PF_var_cntr_V_country_storms_PRODUCES_unity
 			}
 		}
 	}
@@ -106,8 +82,9 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_cosmic_storms_dlc = yes
-		has_global_flag = cosmic_storm_has_occurred
+		always = no	#_|VOP优化|	禁用,直接覆盖风暴属性实现
+		#has_cosmic_storms_dlc = yes
+		#has_global_flag = cosmic_storm_has_occurred
 	}
 
 	immediate = {
@@ -144,15 +121,16 @@ event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_cosmic_storms_dlc = yes
-		has_global_flag = cosmic_storm_has_occurred
-		any_cosmic_storm = {
-			OR = {
-				is_storm_type = electric_storm
-				is_storm_type = particle_storm
-				is_storm_type = nexus_storm
-			}
-		}
+		always = no	#_|VOP优化|	禁用,直接覆盖风暴属性实现
+		#has_cosmic_storms_dlc = yes
+		#has_global_flag = cosmic_storm_has_occurred
+		#any_cosmic_storm = {
+		#	OR = {
+		#		is_storm_type = electric_storm
+		#		is_storm_type = particle_storm
+		#		is_storm_type = nexus_storm
+		#	}
+		#}
 	}
 
 	immediate = {
