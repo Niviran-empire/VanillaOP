@@ -65,6 +65,12 @@ corvette = {
 		alloys = 1
 	}
 
+	potential_country = {
+		NOT = {
+			has_valid_civic = civic_swg_unite_construction
+		}
+	}
+
 	ai_ship_data = {
 		fraction = {
 			base = 0
@@ -191,6 +197,12 @@ frigate = {
 			}
 		}
 	}
+
+	potential_country = {
+		NOT = {
+			has_valid_civic = civic_swg_unite_construction
+		}
+	}
 }
 
 destroyer = {
@@ -283,6 +295,7 @@ destroyer = {
 	}
 	potential_country = {
 		NOR = {
+			has_valid_civic = civic_swg_unite_construction
 			has_country_flag = azur_shipclass_only
 			has_country_flag = HNC_disable_vanilla_ship
 		}
@@ -392,6 +405,7 @@ cruiser = {
 	}
 	potential_country = {
 		NOR = {
+			has_valid_civic = civic_swg_unite_construction
 			has_country_flag = azur_shipclass_only
 			has_country_flag = HNC_disable_vanilla_ship
 		}
@@ -462,6 +476,7 @@ battleship = {
 	}
 	potential_country = {
 		NOR = {
+			has_valid_civic = civic_swg_unite_construction
 			has_country_flag = azur_shipclass_only
 			has_country_flag = HNC_disable_vanilla_ship
 		}
@@ -585,7 +600,8 @@ titan = {
 		}
 	}
 	potential_country = {
-		NOT = {
+		NOR = {
+			has_valid_civic = civic_swg_unite_construction
 			has_country_flag = HNC_disable_vanilla_ship
 		}
 	}
