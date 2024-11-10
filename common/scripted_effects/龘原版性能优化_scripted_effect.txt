@@ -1593,3 +1593,13 @@ vop_optimaze_event_country_ships = {
 		}
 	}
 }
+
+VOP_ai_REROURCE_opt = {
+	export_resource_stockpile_to_variable = { 
+		resource = $TYPE$
+		variable = Vop_resource_stockpile_compare_$TYPE$
+	}
+	multiply_variable = { which = Vop_resource_stockpile_compare_$TYPE$ value = $MULT$ }
+	add_resource = { $TYPE$ = 1 mult = Vop_resource_stockpile_compare_$TYPE$ }
+	clear_variable = Vop_resource_stockpile_compare_$TYPE$
+}

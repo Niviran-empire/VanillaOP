@@ -38,6 +38,10 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = event_target:global_event_country }
 	immediate = {
+		if = {
+			limit = { is_ai = yes NOT = { has_country_flag = has_str_ai_modifier } }
+			add_modifier = { modifier = str_ai_modifier } set_country_flag = has_str_ai_modifier 
+		}
 		event_target:global_event_country = {
 			vop_debug_system_modifier = { TYPE = Kuat ORDER = 1 }
 			vop_debug_system_modifier = { TYPE = Kuat ORDER = 2 }
@@ -224,11 +228,20 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { 
 		is_ai = yes 
-		NOT = { has_country_flag = has_str_ai_modifier } 
+		OR = {
+			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
+		}
 	}
 	immediate = { 
-		add_modifier = { modifier = str_ai_modifier } 
-		set_country_flag = has_str_ai_modifier 
+		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
+		VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
 	}
 }
 
