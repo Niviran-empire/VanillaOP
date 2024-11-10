@@ -155,6 +155,23 @@ event = {
 				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
 			vop_optimaze_tech_caculation = yes #TECH OP
+			if = {
+				limit = { 
+					is_ai = yes 
+					OR = {
+						resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+						resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+						resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+						resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
+						resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
+					}
+				}
+				VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
+				VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
+				VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
+				VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
+				VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
+			}
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
 		vop_optimaze_event_species_caculation = yes #spciese event
@@ -227,21 +244,35 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { 
-		is_ai = yes 
-		OR = {
-			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
+		any_country = {
+			is_ai = yes 
+			OR = {
+				resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+				resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+				resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+				resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
+				resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
+			}
 		}
 	}
 	immediate = { 
-		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
-		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
-		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-		VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
-		VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
+		every_country = {
+			limit = { 
+				is_ai = yes 
+				OR = {
+					resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+					resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+					resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+					resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
+					resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
+				}
+			}
+			VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
+			VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
+			VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
+			VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
+			VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
+		}
 	}
 }
 
