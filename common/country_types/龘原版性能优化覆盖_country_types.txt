@@ -38,7 +38,6 @@ default = {
 			foreign_minister_module
 			interior_minister_module
 			mercenary_buyer_minister_module
-			enclave_founder_minister_module
 		}
 	}
 
