@@ -244,35 +244,22 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	trigger = { 
-		any_country = {
-			is_ai = yes 
-			OR = {
-				resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-				resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-				resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-				resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
-				resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
-			}
+		is_ai = yes 
+		check_variable_arithmetic = { which = modifier:country_resource_max_add value >= 100000 }
+		OR = {
+			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
 		}
 	}
 	immediate = { 
-		every_country = {
-			limit = { 
-				is_ai = yes 
-				OR = {
-					resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-					resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-					resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-					resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
-					resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
-				}
-			}
-			VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
-			VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
-			VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-			VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
-			VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
-		}
+		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
+		VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
 	}
 }
 
