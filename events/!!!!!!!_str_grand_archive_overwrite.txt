@@ -1,0 +1,76 @@
+namespace = grand_archive
+country_event = {
+	id = grand_archive.7400
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { always = no } #_note VOP禁用修改
+
+	immediate = {
+		if = {
+			limit = {
+				last_increased_tech = tech_controlled_mutations
+			}
+			if = {
+				limit = {
+					has_technology = tech_thrusters_2
+					NOT = { has_technology = tech_thrusters_bio_integration }
+				}
+				add_research_option = tech_thrusters_bio_integration
+			}
+			if = {
+				limit = {
+					has_technology = tech_hyper_drive_2
+					NOT = { has_technology = tech_hyper_drive_bio_integration }
+				}
+				add_research_option = tech_hyper_drive_bio_integration
+			}
+			if = {
+				limit = {
+					has_technology = tech_sensors_2
+					NOT = { has_technology = tech_sensors_bio_integration }
+				}
+				add_research_option = tech_sensors_bio_integration
+			}
+			if = {
+				limit = {
+					has_technology = tech_combat_computers_2
+					NOT = { has_technology = tech_combat_computers_bio_integration }
+				}
+				add_research_option = tech_combat_computers_bio_integration
+			}
+		}
+		else_if = {
+			limit = {
+				last_increased_tech = tech_thrusters_2
+				has_technology = tech_controlled_mutations
+				NOT = { has_technology = tech_thrusters_bio_integration }
+			}
+			add_research_option = tech_thrusters_bio_integration
+		}
+		else_if = {
+			limit = {
+				last_increased_tech = tech_hyper_drive_2
+				has_technology = tech_controlled_mutations
+				NOT = { has_technology = tech_hyper_drive_bio_integration }
+			}
+			add_research_option = tech_hyper_drive_bio_integration
+		}
+		else_if = {
+			limit = {
+				last_increased_tech = tech_sensors_2
+				has_technology = tech_controlled_mutations
+				NOT = { has_technology = tech_sensors_bio_integration }
+			}
+			add_research_option = tech_sensors_bio_integration
+		}
+		else_if = {
+			limit = {
+				last_increased_tech = tech_combat_computers_2
+				has_technology = tech_controlled_mutations
+				NOT = { has_technology = tech_combat_computers_bio_integration }
+			}
+			add_research_option = tech_combat_computers_bio_integration
+		}
+	}
+}

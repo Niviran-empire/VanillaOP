@@ -271,4 +271,101 @@ ship_event = { inline_script = {
 	script = pop_categories_version/pcv_effect_event_script 
 	ID = vop_ai_fixed.7 
 } }
-# country_event = { inline_script = { script = pop_cate_upkeep/str_checksum_upkeep ID = vop_ai_fixed.999 TARGET = 0 PREV = 0 FLAG = 1 } }
+
+country_event = {
+	id = vop_ai_fixed.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		last_increased_tech = tech_controlled_mutations
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_technology = tech_thrusters_2
+				NOT = { has_technology = tech_thrusters_bio_integration }
+			}
+			add_research_option = tech_thrusters_bio_integration
+		}
+		if = {
+			limit = {
+				has_technology = tech_hyper_drive_2
+				NOT = { has_technology = tech_hyper_drive_bio_integration }
+			}
+			add_research_option = tech_hyper_drive_bio_integration
+		}
+		if = {
+			limit = {
+				has_technology = tech_sensors_2
+				NOT = { has_technology = tech_sensors_bio_integration }
+			}
+			add_research_option = tech_sensors_bio_integration
+		}
+		if = {
+			limit = {
+				has_technology = tech_combat_computers_2
+				NOT = { has_technology = tech_combat_computers_bio_integration }
+			}
+			add_research_option = tech_combat_computers_bio_integration
+		}
+	}
+}
+
+country_event = {
+	id = vop_ai_fixed.11
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_technology = tech_controlled_mutations
+		OR = {
+			AND = {
+				last_increased_tech = tech_thrusters_2
+				NOT = { has_technology = tech_thrusters_bio_integration }
+			}
+			AND = {
+				last_increased_tech = tech_hyper_drive_2
+				NOT = { has_technology = tech_hyper_drive_bio_integration }
+			}
+			AND = {
+				last_increased_tech = tech_sensors_2
+				NOT = { has_technology = tech_sensors_bio_integration }
+			}
+			AND = {
+				last_increased_tech = tech_combat_computers_2
+				NOT = { has_technology = tech_combat_computers_bio_integration }
+			}
+		}
+	}
+	immediate = {
+		if = {
+			limit = {
+				last_increased_tech = tech_thrusters_2
+				NOT = { has_technology = tech_thrusters_bio_integration }
+			}
+			add_research_option = tech_thrusters_bio_integration
+		}
+		if = {
+			limit = {
+				last_increased_tech = tech_hyper_drive_2
+				NOT = { has_technology = tech_hyper_drive_bio_integration }
+			}
+			add_research_option = tech_hyper_drive_bio_integration
+		}
+		if = {
+			limit = {
+				last_increased_tech = tech_sensors_2
+				NOT = { has_technology = tech_sensors_bio_integration }
+			}
+			add_research_option = tech_sensors_bio_integration
+		}
+		if = {
+			limit = {
+				last_increased_tech = tech_combat_computers_2
+				NOT = { has_technology = tech_combat_computers_bio_integration }
+			}
+			add_research_option = tech_combat_computers_bio_integration
+		}
+	}
+}

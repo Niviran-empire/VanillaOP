@@ -844,10 +844,7 @@ str_debug_check_trigger = {
 			check_modifier_value = { modifier = kuat_mod_order_check value > 0 }
 		} }
 		any_playable_country = { has_modifier = crisis_countermeasure_ascension_perk }
-		AND = {
-			has_global_flag = acot_live_version_v313
-			has_global_flag = acot_live_version_v666
-		}
+		AND = { has_global_flag = acot_live_version_v314 has_global_flag = acot_live_version_v666 }
 	}
 }
 
