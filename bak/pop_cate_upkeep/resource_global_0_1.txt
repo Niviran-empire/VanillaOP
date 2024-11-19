@@ -1,5 +1,0 @@
-inline_script = {
-	script = pop_cate_upkeep/pop_cate_upkeep_catelog/resource_global_$TARGET$_$PREV$
-	TARGET = $TARGET$ PREV = $PREV$
-}
-set_global_flag = VOP_$TARGET$_$FLAG$

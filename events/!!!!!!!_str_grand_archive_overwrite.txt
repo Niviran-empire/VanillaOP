@@ -7,7 +7,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {#_|VOP优化|	添加优化条件
+	trigger = {  #|VOP优化|trigger修正
 		OR = {
 			last_increased_tech = tech_controlled_mutations
 			last_increased_tech = tech_thrusters_2

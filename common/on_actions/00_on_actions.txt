@@ -1,5 +1,4 @@
 #_|VOP优化	/VOP转出/VOP转入	/VOP新增|
-#_|VOP_|
 
 
 # Triggers when the game starts
@@ -86,12 +85,12 @@ VOP_on_monthly_pulse = {
 		crisis.123				# Feral Prethoryn infighting
 		marauder.113
 		leviathans.170			# no more energy; Trader Enclave deal canceled
-		action.85				# flip planets to starbase owner
+		action.85				# flip planets to starbase owner   #|VOP优化|修正trigger
 		marauder.150			# AI hires Marauder raids
 		marauder.151			# AI hires Marauder mercs
 		action.92				# make sure the swarm infests
 		action.93				# make sure extradimensionals have no planets
-		action.90				# rebuild outpost for orphaned colonies
+		action.90				# rebuild outpost for orphaned colonies #|VOP优化|修正trigger
 		apoc.301
 		distar.1082
 		distar.5014
@@ -100,10 +99,10 @@ VOP_on_monthly_pulse = {
 		graygoo.183
 		graygoo.510
 		distar.10955
-		#action.116				# enable resources for galactic market	|VOP优化|
+	#	action.116				# enable resources for galactic market	|VOP优化|禁用
 	#	paragon_2.1145			# Aptitude - Champions of the Empire Tradition effect
-		#pirate.48	|VOP优化|
-		#pirate.4	|VOP优化|
+	#	pirate.48	|VOP优化|禁用
+	#	pirate.4	|VOP优化|禁用
 		crime.1000
 		origin.50				# "Scion": FE lends a fleet
 		origin.30				# "Scion": FE reclaims fleet
@@ -111,14 +110,14 @@ VOP_on_monthly_pulse = {
 		galcom.108
 		galactic_features.365	# Tiyanki Respawning
 		enclave.2055 			# If Khan dead, merc fleets break contract
-		#enclave.2065 			# Unemployed mercs return to merc station	|VOP优化|
+	#	enclave.2065 			# Unemployed mercs return to merc station	|VOP优化|禁用
 		fircon.10				# Adds pre-FTL insights
 		crisis.7017 			# Cosmogenesis Neural Chip Objective
 		crisis.24000			# Synth Queen rebuilds her capital if possible
 		crisis.8049				# Synth Queen - spawns convoys and history sites
-		#cstorms.1000			# Cosmic Storms unity per system/planet	|VOP转出|1年
-		#cstorms.1050			# Particle Storms unity per ships		|VOP优化|
-		#cstorms.1100			# Cosmic Storms monthly affects			|VOP优化|
+	#	cstorms.1000			# Cosmic Storms unity per system/planet	|VOP转出|1年
+	#	cstorms.1050			# Particle Storms unity per ships		|VOP优化|禁用
+	#	cstorms.1100			# Cosmic Storms monthly affects			|VOP优化|禁用
         grand_archive.2104      # Voidworms Inside Borders - Monthly Clean Up
 		grand_archive.2106      # Voidworms Inside Borders - Monthly Check
 		grand_archive.3104      # Cutholoids Inside Borders - Monthly Clean Up
@@ -219,7 +218,7 @@ VOP_on_yearly_pulse = {
 		crisis.1254
 		crisis.2080
 		crisis.2310
-		action.64		# species assimilation
+		action.64		# species assimilation #|VOP优化|移除批处理
 		crisis.122
 		marauder.85		# Marauder mercenary Fleet available for hire (mid-game)
 		marauder.100	# Marauder raid
@@ -246,7 +245,7 @@ VOP_on_yearly_pulse = {
 		crisis.8043		# Synth Queen Speech 2 setup
 		grand_archive.3001	# Cutholoid Respawn
 
-		#	|VOP转入|
+		#|VOP转入|
 		cstorms.1000			# Cosmic Storms unity per system/planet
 	}
 }
@@ -281,7 +280,7 @@ VOP_on_decade_pulse = {
 	events = {
 		galactic_features.362 # Space fauna respawn
 		utopia.50		# Science Nexus (Think Tank) events
-#		syndaw.10		# machine leader malfunction chance
+#		syndaw.10		# machine leader malfunction chance #|原版禁用|
 		syndaw.400		# machine uprising + warning events
 		galcom.14		# check if anyone's missing an invite to the Galactic Community
 		drones.100		# Ancient Mining Drone Expansion Fleet setup (unclaimed systems)
@@ -333,8 +332,8 @@ VOP_on_monthly_pulse_country = {
 		origin.5104			# Broken Shackles - Resolution Proposed
 		origin.5114			# Broken Shackles - Resolution Proposed
 		origin.5124			# Broken Shackles - Resolution Proposed
-		#paragon.5034	# |VOP转出|
-		#paragon.5037	# |VOP转出|
+	#	paragon.5034		# |VOP转出|1年
+	#	paragon.5037		# |VOP转出|1年
 		utopia.2665			# Monthly covenant progress
 		utopia.2670			# Covenant Rank 1 check
 		utopia.2675			# Covenant Rank 2 check
@@ -344,10 +343,10 @@ VOP_on_monthly_pulse_country = {
 		ancrel.9902			# Archaoetech - Zro deficit ends - enable storm casters
 		ancrel.9906			# Archaoetech - Zro deficit starts - disable storm casters
 		paragon.6030		# Checks if your leader has enough zro to eat
-		#action.720			#Void Hive Build Station	|VOP转出|
-		#megastructures.50	# Habitat Orbital Restored	|VOP转出|
-		#astral_planes.1690	# Mirrored Empire setup		|VOP转出|
-		#leader.300			# Favor Maker Councilor Trait	|VOP转出|
+	#	action.720			#Void Hive Build Station		|VOP转出|1年
+	#	megastructures.50	# Habitat Orbital Restored		|VOP转出|1年
+	#	astral_planes.1690	# Mirrored Empire setup			|VOP转出|1年
+	#	leader.300			# Favor Maker Councilor Trait	|VOP转出|1年
 		paragon.605			# Spawn Gestalt Nodes if any are missing
 		cyber.1570			# Remove Clear Thought Clinic modifiers
 		machine_age.2105	# Monthly Pulse to ensure that no spiritualist cybercreed pops have fallen between the cracks
@@ -357,7 +356,7 @@ VOP_on_monthly_pulse_country = {
 	}
 	random_events = {
 	#	75 = 0
-	#	25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations	|VOP转出|
+	#	25 = origin.7300			# Fruitful origin - luring space fauna to feeding stations	|VOP转出|1年
 	}
 }
 
@@ -366,7 +365,7 @@ VOP_on_yearly_pulse_country = {
 	events = {
 		cara.4101 #Caravan neighbor gatekeeper
 		anomaly.6793 #Ghost Ship follow-up event for psionic ascension
-		#tutorial.44
+		#tutorial.44 #|原版禁用|
 		specialist.500 # Scholarium Planetary Sensor
 		specialist.1100 # Prospectorium Resource Discovery
 		leviathans.121 # Trader Enclave Opinion gain for resource deals
@@ -374,21 +373,21 @@ VOP_on_yearly_pulse_country = {
 		origin.5047 # Broken Shackles - Complimentary Thinking
 		origin.5041 # Broken Shackles - Factions Founded
 		origin.5011 # Broken Shackles - Homesick Alternate
-		#paragon_2.1020 # Galactic Paragons negative leader trait event.	|VOP转出|
+	#	paragon_2.1020 # Galactic Paragons negative leader trait event.	|VOP转出|5年
 		paragon.5955 #Luminary Age Check
 		paragon.5960 #Utility event for players continuing their old save
-		#action.2000	# Caravaneers random events gatekeeper	|VOP优化|禁用下面一个on_action
+	#	action.2000	# Caravaneers random events gatekeeper	|VOP优化|禁用全触发器
 		fallen_empires_tasks.10 # Fallen Empire task Failure - timer ran out (previously: MTTH 12 months)
 		grand_archive.1100 # Primal Calling origin - Revealing the Voidworm Nests
 		
-		#	|VOP转入|	来自<月度国家>
+		#|VOP转入|1月	来自<月度国家>
 		paragon.5034
 		paragon.5037
 		action.720			#Void Hive Build Station
 		megastructures.50	# Habitat Orbital Restored
 		astral_planes.1690  # Mirrored Empire setup
 		leader.300			# Favor Maker Councilor Trait
-		#	|VOP转入|	来自<月度国家random>	从|每月25%|改为|每年100%|
+		#|VOP转入|	来自<月度国家random>	从|每月25%|改为|每年100%|
 		origin.7300			# Fruitful origin - luring space fauna to feeding stations
 	}
 	#	|VOP转入|	来自<on_yearly_random_pulse_country_caravaneers_list>
@@ -443,7 +442,7 @@ VOP_on_five_year_pulse_country = {
 		grand_archive.4110	# Curators contact related to specimens
 		grand_archive.6000	# Treasure Troves - Treasure Hunter Origin
 
-		#	|VOP转入|
+		#|VOP转入|1年
 		paragon_2.1020 # Galactic Paragons negative leader trait event.
 	}
 	# See also: on_five_year_random_pulse_country = {}
@@ -1046,7 +1045,7 @@ on_survey_planet = {
 		galactic_features.386 # Tiyanki Graveyard System
 		origin.6160		# Fear of the Dark: "The Hunters"
 		uplift.6000		# "Upliftable/Pre-Sapient Species Found"
-		paragon_2.2000	# Prospector trait effects
+		paragon_2.2000	# Prospector trait effects #|VOP优化|trigger修正
 		awareness.115	# Uncloaked science ship surveys pre-ftl planet
 		fircon.5020		# "Habinte Unified Worlds Encountered" (Solarpunk)
 		origin.5000		# Broken Shackles: Encountering Main Pop Homeworld
@@ -1286,7 +1285,7 @@ on_ship_destroyed_victim = {
 		grand_archive.3014	# Spotted Cutholoid killed
 		grand_archive.3025	# Spawn special debris for Cutholoids
 		grand_archive.10065	# Restorative Enzymes unique mutation healing
-		grand_archive.10090 # Catalytic Bladder unique mutation
+	#	grand_archive.10090 # Catalytic Bladder unique mutation #|VOP优化|禁用
 		crisis.7525		# Cosmogenesis Needle Destroyed
 		grand_archive.1160	# Frenzied Voidworms starbase destroyed
 		grand_archive.10100	# Fissile Cores Unique Mutation
@@ -1317,7 +1316,7 @@ on_ship_destroyed_perp = {
 		necroids.300 # Cordyceptic Drones killing space fauna
 		necroids.310 # Cordyceptic Drones killing Prethoryn
 		toxoids.7315 # Fate of the Toxic Entity
-		paragon_2.1005 # On ship destroyed leader traits.
+		paragon_2.1005 # On ship destroyed leader traits. #|VOP优化|trigger修正
 		crisis.23015	# Synth Queen Titan Down
 		grand_archive.1050 # Primal Calling effects when killing space fauna
 		grand_archive.2230 # Buccaneer Council position effect
@@ -2338,7 +2337,7 @@ on_tech_increased = {
 		grand_archive.8085	# Treasure Hunters researching Galactic Archivism
 		grand_archive.8320	# Treasure Hunters researching Gateway Activation
 		grand_archive.4199	# Archivism handle edge case
-		grand_archive.7400	# Fauna Core Ship Component Insights
+		grand_archive.7400	# Fauna Core Ship Component Insights #|VOP优化|trigger修正
 	}
 }
 
@@ -2755,7 +2754,7 @@ on_rebels_take_planet_owner_switched = {
 #This = Planet scope
 on_planet_ownerless = {
 	events = {
-		action.85
+		action.85  #|VOP优化|修正trigger
 		action.89
 		clones.30 #Clone Army cleanup
 		terra.110 #Removes second home modifier
@@ -3209,9 +3208,9 @@ on_colony_yearly_pulse = {
 	}
 	random_events = {
 		3 = manifesti.1
-		25 = crime.1 # Criminal Underworld Appears (Unemployment)
-		25 = crime.40 # Criminal Underworld Appears (High Crime)
-		25 = crime.41 # Criminal Underworld Disappears (Low Crime)
+	#	25 = crime.1 # Criminal Underworld Appears (Unemployment) #|VOP优化|禁用犯罪
+	#	25 = crime.40 # Criminal Underworld Appears (High Crime) #|VOP优化|禁用犯罪
+	#	25 = crime.41 # Criminal Underworld Disappears (Low Crime) #|VOP优化|禁用犯罪
 		22 = 0
 	}
 }
@@ -3219,7 +3218,7 @@ on_colony_yearly_pulse = {
 # Fires for each planet every 5 years (counting up from colonisation date, includes home planet)
 on_colony_5_year_pulse = {
 	events = {
-		action.222 #Help for AI with Doomsday
+		action.222 #Help for AI with Doomsday ##|VOP优化|修正trigger
 		necroids.275 #Permanent Employment holding
 	}
 }
@@ -3228,21 +3227,21 @@ on_colony_10_year_pulse = {
 	events = {
 		necroids.1 #Apotheosis for non-necrophage pops to necrophage
 		astral_planes.3080 #Formless Haven reward
-		action.2020	# Pops random events gatekeeper
+	#	action.2020	# Pops random events gatekeeper #|VOP优化|禁用
 	}
 }
 
-# this = pop, fired via action.2021
+# this = pop, fired via action.2021 #|VOP优化|禁用
 on_colony_10_year_pulse_random_pop_events_list = {
 	random_events = {
 		50 = 0
-		50 = pop.1 # (previously: MTTH 200 months)
-		50 = pop.2 # (previously: MTTH 220 months)
-		50 = pop.5 # (previously: MTTH 220 months)
-		50 = pop.7 # (previously: MTTH 220 months)
-		50 = pop.9 # (previously: MTTH 220 months)
-		50 = pop.11 # (previously: MTTH 220 months)
-		50 = pop.13 # (previously: MTTH 220 months)
+	#	50 = pop.1 # (previously: MTTH 200 months) #|VOP优化|禁用
+	#	50 = pop.2 # (previously: MTTH 220 months) #|VOP优化|禁用
+	#	50 = pop.5 # (previously: MTTH 220 months) #|VOP优化|禁用
+	#	50 = pop.7 # (previously: MTTH 220 months) #|VOP优化|禁用
+	#	50 = pop.9 # (previously: MTTH 220 months) #|VOP优化|禁用
+	#	50 = pop.11 # (previously: MTTH 220 months) #|VOP优化|禁用
+	#	50 = pop.13 # (previously: MTTH 220 months) #|VOP优化|禁用
 	}
 }
 
@@ -3257,7 +3256,7 @@ on_leader_spawned = {
 		cybernetics.5047	# New Leaders Get Virtual Trait
 		distar.173 			# New Leaders Get Brainslug Trait
 		clones.24 			# New Leaders gain Clone Army Admiral traits
-		specialist.400
+		specialist.400		# #|VOP优化|trigger修正
 		paragon_2.2065 		# Change admiral/general background class.
 		origin.6265 		# Fear of the Dark Leader Spawned after Merge
 		paragon_2.2200 		# Randomize "leader_pending_negative_traits" for new Leader.
@@ -3453,7 +3452,7 @@ on_system_lost = {
 		action.102 # Move Market Station
 		action.200	# recalc strategic war data
 		action.226 # remove mining/science/observation
-		specialist.300
+		specialist.300 #|VOP优化|trigger修正
 		origin.6280 # Seperatist Planet destroy themselves
 		astral_planes.20 # Crystal Sphere Lost
 		astral_planes.5050 # Remove Celestial Tear Modifier Event
@@ -3470,7 +3469,7 @@ on_system_gained = {
 		action.200	# recalc strategic war data
 		communications_spread.5 # Establish comms with any other countries in the system
 		leviathans.662  # Dragon Hoard system - eggs and bones (previously: MTTH 50 years)
-		specialist.200 # Add Bulwark Arrays to Bulwark subjects' starbases
+		specialist.200 # Add Bulwark Arrays to Bulwark subjects' starbases #|VOP优化|trigger修正
 		astral_planes.25 # Crystal Sphere Gained from another country
 		astral_planes.5040 # Celestial Tear Modifier Event
 		astral_planes.117 # A Rift in Space situation trigger backup
@@ -3771,7 +3770,7 @@ on_system_occupied = {
 # FROMFROM = Country: Old controller of the system
 on_system_controller_changed = {
 	events = {
-		action.300
+		action.300 #|VOP优化|修正trigger
 		megastructures.110	# Flip control of Orbitals on system controller change
 		astral_planes.5035	# Add/Remove Celestial Tear Modifier Event
 		grand_archive.4550	# Grand Archive Dismantled from giving system
@@ -3784,7 +3783,7 @@ on_system_controller_changed = {
 # FROMFROM = Country: Occupier of the system
 on_system_returned = {
 	events = {
-		action.301
+		action.301 #|VOP优化|修正trigger
 	}
 }
 
@@ -3853,8 +3852,8 @@ on_custodian_term_ends = {
 # THIS = country
 on_tradition_picked = {
 	events = {
-		specialist.800
-		paragon.405
+		specialist.800 #|VOP优化|trigger修正
+		paragon.405 #|VOP优化|trigger修正
 	}
 }
 

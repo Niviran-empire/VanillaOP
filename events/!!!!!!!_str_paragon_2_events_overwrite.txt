@@ -1,7 +1,7 @@
 namespace = paragon_2
 
 # On destroying enemy ship.
-country_event = {
+country_event = { #|VOP优化|trigger修正
 	id = paragon_2.1005
 	hide_window = yes
 	is_triggered_only = yes
@@ -129,7 +129,7 @@ country_event = {
 	}
 }
 
-ship_event = {
+ship_event = { #|VOP优化|trigger修正
 	id = paragon_2.2000
 	hide_window = yes
 	is_triggered_only = yes

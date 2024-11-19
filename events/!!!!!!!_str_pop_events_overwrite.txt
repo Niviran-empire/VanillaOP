@@ -1,6 +1,6 @@
 namespace = pop
 ### Pop Self Modification
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.1
 	title = "pop.1.name"
 	desc = "pop.1.desc"
@@ -18,7 +18,7 @@ pop_event = {
 }
 
 # Rising Tensions (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.2
 	hide_window = yes
 
@@ -32,7 +32,7 @@ pop_event = {
 }
 
 # Increased Fertility (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.5
 	hide_window = yes
 
@@ -46,7 +46,7 @@ pop_event = {
 }
 
 # Pureblood attack against Mutants (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.7
 	hide_window = yes
 
@@ -60,7 +60,7 @@ pop_event = {
 }
 
 # Mutant attack against Purebloods (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.9
 	hide_window = yes
 
@@ -74,7 +74,7 @@ pop_event = {
 }
 
 # Mutant representative (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.11
 	hide_window = yes
 
@@ -88,7 +88,7 @@ pop_event = {
 }
 
 # Increased Strength (HIDDEN)
-pop_event = {
+pop_event = { #|VOP优化|禁用
 	id = pop.13
 	hide_window = yes
 

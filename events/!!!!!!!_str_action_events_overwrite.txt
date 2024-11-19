@@ -4,7 +4,7 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	trigger = {  #|VOP优化|修正trigger
 		any_country = {
 			any_owned_planet = {
 				exists = starbase
@@ -55,7 +55,7 @@ event = {
 	}
 }
 
-event = {
+event = {  #|VOP优化|修正trigger
 	id = action.90
 	hide_window = yes
 	is_triggered_only = yes
@@ -164,7 +164,7 @@ event = {
 }
 
 # on_colony_5_year_pulse
-planet_event = {
+planet_event = { #|VOP优化|修正trigger
 	id = action.222
 	hide_window = yes
 
@@ -227,95 +227,11 @@ planet_event = {
 	}
 }
 
-# Enable resources for Galactic Market
-event = {
-	id = action.116
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		years_passed < 50
-		has_global_flag = galactic_market_founded
-
-		OR = {
-			NOT = { is_on_market = volatile_motes }
-			NOT = { is_on_market = exotic_gases }
-			NOT = { is_on_market = rare_crystals }
-			NOT = { is_on_market = sr_living_metal }
-			NOT = { is_on_market = sr_zro }
-			NOT = { is_on_market = sr_dark_matter }
-		}
-	}
-
-	immediate = {
-		if = {
-			limit = {
-				NOT = { is_on_market = volatile_motes }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = volatile_motes value >= 1 }
-				}
-			}
-			enable_on_market = volatile_motes
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = exotic_gases }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = exotic_gases value >= 1 }
-				}
-			}
-			enable_on_market = exotic_gases
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = rare_crystals }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = rare_crystals value >= 1 }
-				}
-			}
-			enable_on_market = rare_crystals
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_living_metal }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_living_metal value >= 1 }
-				}
-			}
-			enable_on_market = sr_living_metal
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_zro }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_zro value >= 1 }
-				}
-			}
-			enable_on_market = sr_zro
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_dark_matter }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_dark_matter value >= 1 }
-				}
-			}
-			enable_on_market = sr_dark_matter
-		}
-	}
-}
-
 system_event = {
 	id = action.301
 	is_triggered_only = yes
 	hide_window = yes
-	trigger = {
+	trigger = { #|VOP优化|修正trigger
 		any_system_megastructure = {
 			OR = {
 				is_megastructure_type = gateway_ruined
@@ -350,7 +266,7 @@ system_event = {
 	id = action.300
 	is_triggered_only = yes
 	hide_window = yes
-	trigger = {
+	trigger = { #|VOP优化|修正trigger
 		any_system_megastructure = {
 			OR = {
 				is_megastructure_type = gateway_ruined
@@ -381,9 +297,8 @@ system_event = {
 	}
 }
 
-#移除批处理
 # Assimilate Pops on Yearly Pulse
-event = {
+event = { #|VOP优化|移除批处理
 	id = action.64
 	hide_window = yes
 	is_triggered_only = yes
@@ -613,162 +528,6 @@ event = {
 			every_owned_planet = {
 				planet_event = { id = action.65 }
 			}
-		}
-	}
-}
-
-namespace = crisis
-country_event = { # Thesis effect randomizer
-	id = crisis.7200
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		is_country_type = default
-		last_increased_tech = tech_cosmogenesis_thesis
-	}
-
-	immediate = {
-		random_list = {
-			2 = { #Blackout
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_blackout
-				}
-				set_country_flag = cosmogenesis_thesis_blackout_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7205 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_blackout
-				set_theses_flags = yes
-			}
-			2 = { #Constant Rounding
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_constant
-				}
-				set_country_flag = cosmogenesis_thesis_constant_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7210 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_constant
-				set_theses_flags = yes
-			}
-			1 = { #Superlight
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_superlight
-				}
-				set_country_flag = cosmogenesis_thesis_superlight_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7215 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_superlight
-				set_theses_flags = yes
-			}
-			1 = { #Alloy Ductility - Good
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_alloy_ductility
-				}
-				set_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7235 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_alloy_ductility
-				set_theses_flags = yes
-			}
-			1 = { #Alloy Ductility - Bad
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_alloy_ductility
-				}
-				set_country_flag = cosmogenesis_thesis_alloy_ductility_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7240 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_alloy_ductility
-				set_theses_flags = yes
-			}
-			1 = { #Altered Nutrition - Good
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_altered_nutrition
-				}
-				set_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7245 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_altered_nutrition
-				set_theses_flags = yes
-			}
-			1 = { #Altered Nutrition - Bad
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_altered_nutrition
-				}
-				set_country_flag = cosmogenesis_thesis_altered_nutrition_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7250 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_altered_nutrition
-				set_theses_flags = yes
-			}
-			2 = { #Mass Shift
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_mass_shift
-				}
-				set_country_flag = cosmogenesis_thesis_mass_shift_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7255 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_mass_shift
-				set_theses_flags = yes
-			}
-			2 = { #Shroud Tears
-				modifier = {
-					factor = 0
-					has_global_flag = cosmogenesis_thesis_shroud_tear
-				}
-				set_country_flag = cosmogenesis_thesis_shroud_tear_initiator
-				every_playable_country = {
-					country_event = { id = crisis.7260 days = 1 }
-				}
-				set_global_flag = cosmogenesis_thesis_shroud_tear
-				set_theses_flags = yes
-			}
-			4 = { #Filler - Good
-				country_event = { id = crisis.7265 days = 1 }
-			}
-			8 = { # Filler - Bad
-				modifier = { #Reduce the likelihood of bad outcome if you know more about what you're doing
-					add = -2
-					resource_stockpile_compare = {
-						resource = advanced_logic
-						value >= 17000
-					}
-				}
-				modifier = {
-					add = -2
-					resource_stockpile_compare = {
-						resource = advanced_logic
-						value >= 21000
-					}
-				}
-				modifier = {
-					add = -2
-					resource_stockpile_compare = {
-						resource = advanced_logic
-						value >= 26000
-					}
-				}
-				country_event = { id = crisis.7270 days = 1 }
-			}
-		}
-		change_variable = {
-			which = applied_infinity_thesis
-			value = +1
 		}
 	}
 }

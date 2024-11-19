@@ -4,8 +4,7 @@ country_event = {
 	id = specialist.800
 	hide_window = yes
 	is_triggered_only = yes
-	#change
-	trigger = { 
+	trigger = {  #|VOP优化|trigger修正
 		NOT = { has_country_flag = finished_unyielding_tree_temple }
 		is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
 		NOT = { has_country_flag = finished_unyielding_tree }
@@ -13,14 +12,12 @@ country_event = {
 	}
 	immediate = {
 		set_timed_country_flag = { flag = finished_unyielding_tree_temple days = 1 }
-		set_update_modifiers_batch = begin
 		set_country_flag = finished_unyielding_tree
 		every_owned_starbase = {
 			limit = { is_orbital_ring = no }
 			remove_disintegrator_field = yes
 			add_disintegrator_field = yes
 		}
-		set_update_modifiers_batch = end
 	}
 }
 
@@ -29,7 +26,7 @@ country_event = {
 	id = specialist.200
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { #|VOP优化|trigger修正
 		is_specialist_subject_type = { TYPE = bulwark }
 	}
 
@@ -55,7 +52,7 @@ country_event = {
 	id = specialist.300
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = {
+	trigger = { #|VOP优化|trigger修正
 		exists = fromfrom
 		OR = {
 			AND = {
@@ -138,7 +135,7 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	trigger = { #|VOP优化|trigger修正
 		is_specialist_subject = yes
 		OR = {
 			is_specialist_subject_tier = {
