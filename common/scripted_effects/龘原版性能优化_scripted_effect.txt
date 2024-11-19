@@ -192,7 +192,6 @@ vop_debug_system_modifier = { if = { limit = { NOT = { has_modifier = $TYPE$_ord
 vop_optimaze_action_116 = {
 	if = {
 		limit = {
-			years_passed > 50
 			has_global_flag = galactic_market_founded
 			OR = {
 				NOT = { is_on_market = volatile_motes }
