@@ -272,7 +272,7 @@ ship_event = { inline_script = {
 	ID = vop_ai_fixed.7 
 } }
 
-country_event = {
+country_event = {#禁用,待清除
 	id = vop_ai_fixed.10
 	hide_window = yes
 	is_triggered_only = yes
@@ -312,7 +312,7 @@ country_event = {
 	}
 }
 
-country_event = {
+country_event = {#禁用,待清除
 	id = vop_ai_fixed.11
 	hide_window = yes
 	is_triggered_only = yes

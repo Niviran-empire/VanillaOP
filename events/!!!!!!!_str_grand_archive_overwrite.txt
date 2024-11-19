@@ -1,10 +1,21 @@
+#	VOP优化|events\grand_archive_events.txt
 namespace = grand_archive
+
+
 country_event = {
 	id = grand_archive.7400
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { always = no } #_note VOP禁用修改
+	trigger = {#_|VOP优化|	添加优化条件
+		OR = {
+			last_increased_tech = tech_controlled_mutations
+			last_increased_tech = tech_thrusters_2
+			last_increased_tech = tech_hyper_drive_2
+			last_increased_tech = tech_sensors_2
+			last_increased_tech = tech_combat_computers_2
+		}
+	}
 
 	immediate = {
 		if = {
