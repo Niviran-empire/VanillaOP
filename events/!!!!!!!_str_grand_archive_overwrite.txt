@@ -1,13 +1,13 @@
-#	VOP优化|events\grand_archive_events.txt
+#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\grand_archive_events.txt		grand_archive.7400
 namespace = grand_archive
 
 
-country_event = {
+country_event = {#_|VOP新增|添加trigger
 	id = grand_archive.7400
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {  #|VOP优化|trigger修正
+	trigger = {#_|VOP新增|
 		OR = {
 			last_increased_tech = tech_controlled_mutations
 			last_increased_tech = tech_thrusters_2

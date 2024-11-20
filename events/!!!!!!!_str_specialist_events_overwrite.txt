@@ -1,32 +1,14 @@
+#	|VOP新增/VOP优化|		同步追踪|3.14.159	\events\overlord_specialist_events.txt
+#_evts	specialist.200/specialist.300/specialist.400/specialist.800
 namespace = specialist
-# On acquiring tradition finisher.
-country_event = {
-	id = specialist.800
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = {  #|VOP优化|trigger修正
-		NOT = { has_country_flag = finished_unyielding_tree_temple }
-		is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
-		NOT = { has_country_flag = finished_unyielding_tree }
-		has_tradition = tr_unyielding_finish
-	}
-	immediate = {
-		set_timed_country_flag = { flag = finished_unyielding_tree_temple days = 1 }
-		set_country_flag = finished_unyielding_tree
-		every_owned_starbase = {
-			limit = { is_orbital_ring = no }
-			remove_disintegrator_field = yes
-			add_disintegrator_field = yes
-		}
-	}
-}
+
 
 # On system gained.
-country_event = {
+country_event = {#_|VOP新增|添加trigger
 	id = specialist.200
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { #|VOP优化|trigger修正
+	trigger = {# |VOP新增|
 		is_specialist_subject_type = { TYPE = bulwark }
 	}
 
@@ -48,11 +30,11 @@ country_event = {
 }
 
 # On system lost.
-country_event = {
+country_event = {#_|VOP新增|添加trigger
 	id = specialist.300
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { #|VOP优化|trigger修正
+	trigger = {#_|VOP新增|
 		exists = fromfrom
 		OR = {
 			AND = {
@@ -80,7 +62,7 @@ country_event = {
 	}
 
 	immediate = {
-		if = { # checks if a new owner exists 
+		if = { # checks if a new owner exists
 			limit = { exists = FROMFROM }
 			if = {
 				limit = {
@@ -130,12 +112,12 @@ country_event = {
 }
 
 # On leader spawned.
-country_event = {
+country_event = {#_|VOP新增|添加trigger
 	id = specialist.400
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { #|VOP优化|trigger修正
+	trigger = {#_|VOP新增|
 		is_specialist_subject = yes
 		OR = {
 			is_specialist_subject_tier = {
@@ -166,7 +148,7 @@ country_event = {
 				FROM = {
 					add_specialist_trait_to_leader_in_pool = {
 						TYPE = bulwark
-						CLASS = admiral
+						CLASS = commander
 					}
 				}
 			}
@@ -194,10 +176,32 @@ country_event = {
 				FROM = {
 					add_specialist_trait_to_leader_in_pool = {
 						TYPE = prospectorium
-						CLASS = governor
+						CLASS = official
 					}
 				}
 			}
+		}
+	}
+}
+
+# On acquiring tradition finisher.
+country_event = {#_|VOP优化|添加trigger修改effect
+	id = specialist.800
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {# |VOP优化|trigger转入
+		NOT = { has_country_flag = TEMP_flg_finished_unyielding_tree }	#多重禁止
+		is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
+		NOT = { has_country_flag = finished_unyielding_tree }
+		has_tradition = tr_unyielding_finish
+	}
+	immediate = {# |VOP优化|trigger转出
+		set_timed_country_flag = { flag = TEMP_flg_finished_unyielding_tree days = 1 }	#多重禁止
+		set_country_flag = finished_unyielding_tree
+		every_owned_starbase = {
+			limit = { is_orbital_ring = no }	#_|VOP优化|原版只检测normal_starbase, VOP包含星环外所有星基
+			remove_disintegrator_field = yes
+			add_disintegrator_field = yes
 		}
 	}
 }

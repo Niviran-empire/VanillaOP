@@ -1,12 +1,13 @@
+#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\paragon_events_2.txt	paragon_2.1005/paragon_2.2000
 namespace = paragon_2
 
 # On destroying enemy ship.
-country_event = { #|VOP优化|trigger修正
+country_event = {#_|VOP新增|添加trigger
 	id = paragon_2.1005
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
+	trigger = {#_|VOP新增|
 		exists = fromfrom
 		fromfrom = { exists = fleet.leader }
 	}
@@ -129,12 +130,12 @@ country_event = { #|VOP优化|trigger修正
 	}
 }
 
-ship_event = { #|VOP优化|trigger修正
+ship_event = {#_|VOP新增|添加trigger
 	id = paragon_2.2000
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { str_paragon_2_1005_trigger_1 = yes }
+	trigger = { str_paragon_2_1005_trigger_1 = yes }	#_|VOP新增|
 
 	immediate = {
 		# We wait a day in order to check if any anomalies or dig sites have spawned.

@@ -1,16 +1,19 @@
+#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\paragon_events_1.txt	paragon.405
 namespace = paragon
+
+
 # on_tradition_picked "tr_statecraft_inspiring_agendas", show a notification that they're available.
-country_event = {
+country_event = {#_|VOP优化|添加trigger修改effect
 	id = paragon.405
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { #|VOP优化|trigger修正
-		NOT = { has_country_flag = has_picked_tr_statecraft_inspiring_agendas }
+	trigger = {# |VOP优化|trigger转入
 		has_tradition = tr_statecraft_inspiring_agendas
+		NOT = { has_country_flag = has_picked_tr_statecraft_inspiring_agendas }
 	}
 
-	immediate = {
+	immediate = {# |VOP优化|trigger转出
 		# Makes sure this is only triggered ONCE and only when tr_statecraft_inspiring_agendas was unlocked.
 		set_country_flag = has_picked_tr_statecraft_inspiring_agendas
 
