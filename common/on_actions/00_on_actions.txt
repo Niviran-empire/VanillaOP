@@ -1045,7 +1045,7 @@ on_survey_planet = {
 		galactic_features.386 # Tiyanki Graveyard System
 		origin.6160		# Fear of the Dark: "The Hunters"
 		uplift.6000		# "Upliftable/Pre-Sapient Species Found"
-		paragon_2.2000	# Prospector trait effects	#_|VOP新增|添加trigger
+		paragon_2.2000	# Prospector trait effects	#_|VOP优化|添加trigger
 		awareness.115	# Uncloaked science ship surveys pre-ftl planet
 		fircon.5020		# "Habinte Unified Worlds Encountered" (Solarpunk)
 		origin.5000		# Broken Shackles: Encountering Main Pop Homeworld
@@ -1316,7 +1316,7 @@ on_ship_destroyed_perp = {
 		necroids.300 # Cordyceptic Drones killing space fauna
 		necroids.310 # Cordyceptic Drones killing Prethoryn
 		toxoids.7315 # Fate of the Toxic Entity
-		paragon_2.1005 # On ship destroyed leader traits.	#_|VOP新增|添加trigger
+		paragon_2.1005 # On ship destroyed leader traits.	#_|VOP优化|添加trigger
 		crisis.23015	# Synth Queen Titan Down
 		grand_archive.1050 # Primal Calling effects when killing space fauna
 		grand_archive.2230 # Buccaneer Council position effect
@@ -2337,7 +2337,7 @@ on_tech_increased = {
 		grand_archive.8085	# Treasure Hunters researching Galactic Archivism
 		grand_archive.8320	# Treasure Hunters researching Gateway Activation
 		grand_archive.4199	# Archivism handle edge case
-		grand_archive.7400	# Fauna Core Ship Component Insights	#_|VOP新增|添加trigger
+		grand_archive.7400	# Fauna Core Ship Component Insights	#_|VOP优化|添加trigger
 	}
 }
 
@@ -3218,7 +3218,7 @@ on_colony_yearly_pulse = {
 # Fires for each planet every 5 years (counting up from colonisation date, includes home planet)
 on_colony_5_year_pulse = {
 	events = {
-		action.222 #Help for AI with Doomsday	#_|VOP新增|添加trigger
+		action.222 #Help for AI with Doomsday	#_|VOP优化|添加trigger
 		necroids.275 #Permanent Employment holding
 	}
 }
@@ -3256,7 +3256,7 @@ on_leader_spawned = {
 		cybernetics.5047	# New Leaders Get Virtual Trait
 		distar.173 			# New Leaders Get Brainslug Trait
 		clones.24 			# New Leaders gain Clone Army Admiral traits
-		specialist.400		#_|VOP新增|添加trigger
+		specialist.400		#_|VOP优化|添加trigger
 		paragon_2.2065 		# Change admiral/general background class.
 		origin.6265 		# Fear of the Dark Leader Spawned after Merge
 		paragon_2.2200 		# Randomize "leader_pending_negative_traits" for new Leader.
@@ -3452,7 +3452,7 @@ on_system_lost = {
 		action.102 # Move Market Station
 		action.200	# recalc strategic war data
 		action.226 # remove mining/science/observation
-		specialist.300	#_|VOP新增|添加trigger
+		specialist.300	#_|VOP优化|添加trigger
 		origin.6280 # Seperatist Planet destroy themselves
 		astral_planes.20 # Crystal Sphere Lost
 		astral_planes.5050 # Remove Celestial Tear Modifier Event
@@ -3469,7 +3469,7 @@ on_system_gained = {
 		action.200	# recalc strategic war data
 		communications_spread.5 # Establish comms with any other countries in the system
 		leviathans.662  # Dragon Hoard system - eggs and bones (previously: MTTH 50 years)
-		specialist.200 # Add Bulwark Arrays to Bulwark subjects' starbases	#_|VOP新增|添加trigger
+		specialist.200 # Add Bulwark Arrays to Bulwark subjects' starbases	#_|VOP优化|添加trigger
 		astral_planes.25 # Crystal Sphere Gained from another country
 		astral_planes.5040 # Celestial Tear Modifier Event
 		astral_planes.117 # A Rift in Space situation trigger backup
@@ -3770,7 +3770,7 @@ on_system_occupied = {
 # FROMFROM = Country: Old controller of the system
 on_system_controller_changed = {
 	events = {
-		action.300	#_|VOP新增|添加trigger
+		action.300	#_|VOP优化|添加trigger
 		megastructures.110	# Flip control of Orbitals on system controller change
 		astral_planes.5035	# Add/Remove Celestial Tear Modifier Event
 		grand_archive.4550	# Grand Archive Dismantled from giving system
@@ -3783,7 +3783,7 @@ on_system_controller_changed = {
 # FROMFROM = Country: Occupier of the system
 on_system_returned = {
 	events = {
-		action.301	#_|VOP新增|添加trigger
+		action.301	#_|VOP优化|添加trigger
 	}
 }
 
