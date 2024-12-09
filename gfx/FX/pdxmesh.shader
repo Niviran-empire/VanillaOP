@@ -891,6 +891,26 @@ PixelShader =
 		}
 	]]
 
+	MainCode PixelPdxMeshWhiteHole
+		ConstantBuffers = { Common, FourthKind, Shadow }
+	[[
+		float4 main( VS_OUTPUT_PDXMESHSTANDARD In ) : PDX_COLOR
+		{
+			float3 p = vCamRightDir * dot( In.vNormal, vCamRightDir );
+			float3 vInvertedNormal = In.vNormal + ( p - In.vNormal ) * 2.f;
+			float3 vEyeDir = normalize( In.vPos.xyz - vCamPos.xyz );
+			float3 reflection = reflect( vEyeDir, vInvertedNormal );
+
+			float3 Color = texCUBElod( EnvironmentMap, float4(reflection, 0) ).rgb;
+
+			float vDot = dot( -vEyeDir, In.vNormal );
+			Color = saturate( Color * pow( abs(1.05f - vDot), 7.f ) );
+			Color += StarAtmosphereColor.rgb * smoothstep( 0.01f, 0.65f, vDot ) * 0.55f * StarAtmosphereColor.a;
+
+			return float4( Color * vBloomFactor, 1.0f );
+		}
+	]]
+
 	MainCode PixelPdxMeshDimensionalPortal
 		ConstantBuffers = { Common, ShipConstants, Shadow, TiledPointLight }
 	[[
@@ -1144,6 +1164,10 @@ PixelShader =
 
 			#ifdef BLACK_HOLE
 				vDiffuse.rgb *= pow( abs(1.f - abs( dot( vCamLookAtDir, float3( 0.f, 1.f, 0.f ) ) ) ), 1.5f );
+			#endif
+
+			#ifdef WHITE_HOLE
+				vDiffuse.rgb *= 1 - pow( abs(1.f - abs( dot( vCamLookAtDir, float3( 0.f, 1.f, 0.f ) ) ) ), 1.5f );
 			#endif
 
 			#ifdef DISSOLVE
@@ -3867,6 +3891,8 @@ Effect AotPlanetShieldPESkinnedShadow
 	Defines = { "IS_SHADOW" }
 }
 
+// 
+
 Effect PdxMeshStandardConstruction
 {
 	VertexShader = "VertexPdxMeshStandard"
@@ -4112,6 +4138,69 @@ Effect PdxMeshBlackHoleBillboardSkinnedShadow
 	PixelShader = "PixelPdxMeshStandardShadow"
 	Defines = { "BLACK_HOLE" }
 }
+
+Effect PdxMeshWhitehole
+{
+	VertexShader = "VertexPdxMeshStandard"
+	PixelShader = "PixelPdxMeshWhitehole"
+	#BlendState = "BlendStateAlphaBlend"
+	#DepthStencilState = "DepthStencilNoZWrite"
+	Defines = { "WHITE_HOLE" }
+}
+
+Effect PdxMeshWhiteholeSkinned
+{
+	VertexShader = "VertexPdxMeshStandardSkinned"
+	PixelShader = "PixelPdxMeshWhitehole"
+	#BlendState = "BlendStateAlphaBlend"
+	#DepthStencilState = "DepthStencilNoZWrite"
+	Defines = { "WHITE_HOLE" }
+}
+Effect PdxMeshWhiteholeShadow
+{
+	VertexShader = "VertexPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "ADD_COLOR" }
+}
+
+Effect PdxMeshWhiteholeSkinnedShadow
+{
+	VertexShader = "VertexPdxMeshStandardSkinnedShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "ADD_COLOR" "EMISSIVE" }
+}
+Effect PdxMeshWhiteholeBillboard
+{
+	VertexShader = "VertexPdxMeshBillboard"
+	PixelShader = "PixelPdxMeshAdditive"
+	BlendState = "BlendStateAdditiveBlend"
+	RasterizerState = "RasterizerStateNoCulling"
+	DepthStencilState = "DepthStencilNoZWrite"
+	Defines = { "WHITE_HOLE" "ANIMATE_UV" }
+}
+
+Effect PdxMeshWhiteholeBillboardSkinned
+{
+	VertexShader = "VertexPdxMeshStandardSkinned"
+	PixelShader = "PixelPdxMeshStandard"
+	RasterizerState = "RasterizerStateNoCulling"
+	DepthStencilState = "DepthStencilNoZWrite"
+	Defines = { "WHITE_HOLE" "ANIMATE_UV" }
+}
+Effect PdxMeshWhiteholeBillboardShadow
+{
+	VertexShader = "VertexPdxMeshStandardShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "WHITE_HOLE" }
+}
+
+Effect PdxMeshWhiteholeBillboardSkinnedShadow
+{
+	VertexShader = "VertexPdxMeshStandardSkinnedShadow"
+	PixelShader = "PixelPdxMeshStandardShadow"
+	Defines = { "WHITE_HOLE" }
+}
+#change
 
 Effect PdxMeshDimensionalPortal
 {
