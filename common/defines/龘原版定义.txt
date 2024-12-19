@@ -41,16 +41,6 @@ NAI = {
 }
 
 NShip = {
-	OUT_OF_COMBAT_SHIELD_REGEN_MULT		= 1.0		# Shields recharge this much faster outside combat
-
-	OUT_OF_COMBAT_ARMOR_REGEN_MULT		= 1.0		# Armor recharge this much faster outside combat
-
-	OUT_OF_COMBAT_HULL_REGEN_MULT		= 1.0		# Hull recharge this much faster outside combat
-
-	MAX_DAMAGE_SCALING					= 4			# The maximum scaling value a target is allowed to have (ship size)
-	
-	#JUMP_DRIVE_WINDUP					= 5	# Jump drive windup in days
-	
 	MILITARY_POWER_HEALTH_WEIGHT		= 0.01										#0.5
 	MILITARY_POWER_ARMOR_WEIGHT			= 0.01					# compared to health	#1
 	MILITARY_POWER_SHIELD_WEIGHT		= 0.01					# compared to health	#1
@@ -60,35 +50,5 @@ NShip = {
 }
 
 NGameplay = {
-	# DIPLOMACY_WEIGHT_BASE					= 0.0		# Base diplomacy weight for all empires
-	# DIPLOMACY_WEIGHT_STANCE_FACTOR			= 0			# Factors weight from Diplo Stance before it is added to diplo weight
-	# DIPLOMACY_WEIGHT_SPRAWL_FACTOR			= 0			# Factors Empire Sprawl before it is added to diplo weight
-	# DIPLOMACY_WEIGHT_NAVAL_FACTOR			= 0.001		# Factors Naval Power before it is added to diplo weight
-	# DIPLOMACY_WEIGHT_GESTALT_WEIGHT			= 1.0		# Gestalts gets a flat base value
-	# DIPLOMACY_WEIGHT_POP_BASE				= 1.0		# Base diplomacy weight for each pop
-	# DIPLOMACY_WEIGHT_POP_HAPPINESS			= 2.0		# as in formula: DIPLOMACY_WEIGHT_POP_BASE + (DIPLOMACY_WEIGHT_POP_HAPPINESS * Happiness)
-	# DIPLOMACY_WEIGHT_ECONOMY_FACTOR			= 0.1		# Factors Economic Power before it is added to diplo weight
-	# DIPLOMACY_WEIGHT_TECHNOLOGY_FACTOR		= 0.1		# Factors Technology Level before it is added to diplo weight
-	# DIPLOMACY_WEIGHT_NO_LEADER_PENALTY		= -0.25		# Penalty to diplomatic weight for not having the relevant council position
-
-	# Planetary Ascension Tier cap formula:
-	#     Max( ( Unlocked Ascension Perks Slots - 2 ), PLANET_ASCENSION_MIN ) +
-	#     ( ( Unlocked Ascension Perks Slots == ASCENSION_PERKS_SLOTS ? ) PLANET_ASCENSION_COMPLETION_BONUS : 0 )
-	PLANET_ASCENSION_STARTING_POINT		= 0 # Number of ascension perks unlocked slots required for Planetary Ascension
-	PLANET_ASCENSION_MIN				= 0 # Minimum Planetary Ascension tier
-	PLANET_ASCENSION_COMPLETION_BONUS	= 0 # Flat bonus on Planetary Ascension Tier cap when all the slots are unlocked
-
-	# Planetary Ascension cost formula: ( Empire Sprawl * PLANET_ASCENSION_SPRAWL_SCALE) * ( 1 + ( Empire Wide Sum of Ascension Tiers * PLANET_ASCENSION_SUM_SCALE )
-	PLANET_ASCENSION_SPRAWL_SCALE		= 10.0 # Scaling factor for Planetary Ascension cost based on the empire Sprawl
-	PLANET_ASCENSION_SUM_SCALE			= 0.25 # Scaling factor for Planetary Ascension cost based on the empire-wide sum of Ascension Tiers
-	PLANET_ASCENSION_SPRAWL_MODIFIER   = -0.10 # Reduction of planet sprawl per level of ascension
-
-	# Designation modifier formula: MOD * ( 1 + ( Ascension Tier * PLANET_ASCENSION_MODIFIER_SCALE )
-	PLANET_ASCENSION_MODIFIER_SCALE		= 0.50 # Scaling factor of the designation benefits, multiple instances will sum (first will be 1.25, then 1.50...)
-	AGREEMENT_CHANGE_COOLDOWN_MONTHS 	= 3		# How often an agreement can be changed in months
-	ASCENSION_PERKS_SLOTS 				= 128
-	TRADITION_CATEGORIES_MAX			= 128	
-	MAX_PLANET_BUILDING_SLOTS 			= 36	
-
 	TRIGGERED_MODIFIER_UPDATE_DELAY 	= 30
 }

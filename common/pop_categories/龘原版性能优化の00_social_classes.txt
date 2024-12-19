@@ -256,5 +256,16 @@ worker = {
 			}
 			alloys = @drake_scaled_trait_resource_production
 		}
+		
+		produces = {
+			trigger = {
+				has_trait = trait_cybernetic
+				owner = {
+					is_democratic_authority = yes
+					has_country_flag = cyber_collectivist
+				}
+			}
+			unity = 1
+		}
 	}
 }
