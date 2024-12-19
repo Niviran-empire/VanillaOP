@@ -18,12 +18,6 @@ on_single_player_save_game_load = {
 	}
 }
 
-on_ground_combat_started = {
-	events = {
-		vop_ai_fixed.25
-	}
-}
-
 #	on_tech_increased = {
 #		events = {
 #		}

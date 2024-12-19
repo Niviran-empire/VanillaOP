@@ -62,10 +62,6 @@ matter_decompressor_0 = {
 			fail_text = "requires_no_existing_matter_decompressor_two"
 			from = { NOT = { has_country_flag = built_matter_decompressor_site_contingency } }
 		}
-		custom_tooltip = {
-			fail_text = "requires_no_existing_megastructure"
-			NOT = { has_any_megastructure = yes }
-		}
 	}
 
 	placement_rules = {
@@ -79,6 +75,11 @@ matter_decompressor_0 = {
 				NOT = { has_anomaly = yes }
 			}
 			is_star_class = sc_black_hole
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#NOT = { has_any_megastructure = yes }
+				NOT = { has_any_megastructure = yes }
+			}
 		}
 	}
 

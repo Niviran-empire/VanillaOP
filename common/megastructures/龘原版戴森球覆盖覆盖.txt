@@ -79,11 +79,6 @@ dyson_sphere_0 = {
 				is_star_class = sc_trinary_4
 			}
 		}
-		custom_tooltip = {
-			fail_text = "requires_no_existing_megastructure"
-			#NOT = { has_any_megastructure = yes }
-			NOT = { has_any_megastructure = yes }
-		}
 	}
 
 	placement_rules = {
@@ -95,6 +90,11 @@ dyson_sphere_0 = {
 			custom_tooltip = {
 				fail_text = "requires_no_anomaly"
 				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				#NOT = { has_any_megastructure = yes }
+				NOT = { has_any_megastructure = yes }
 			}
 		}
 	}

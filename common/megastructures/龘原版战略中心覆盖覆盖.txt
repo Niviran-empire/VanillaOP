@@ -27,10 +27,6 @@ strategic_coordination_center_0 = {
 			is_inside_border = from
 		}
 		custom_tooltip = {
-			fail_text = "requires_no_existing_megastructure"
-			NOT = { has_any_megastructure = yes }
-		}
-		custom_tooltip = {
 			fail_text = "requires_surveyed_system"
 			NOT = {
 				any_system_planet = {
@@ -84,6 +80,10 @@ strategic_coordination_center_0 = {
 			custom_tooltip = {
 				fail_text = "requires_not_ring_world"
 				is_ringworld = no
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				NOT = { has_any_megastructure = yes }
 			}
 		}
 	}

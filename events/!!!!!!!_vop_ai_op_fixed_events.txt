@@ -107,6 +107,10 @@ event = {
 				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
 			vop_optimaze_tech_caculation = yes #TECH OP
+			if = { 
+				limit = { NOT = { has_modifier = str_ground_battle } } 
+				add_modifier = { modifier = str_ground_battle } 
+			}
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
 		vop_optimaze_event_species_caculation = yes #spciese event
@@ -155,22 +159,9 @@ event = {
 				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
 			vop_optimaze_tech_caculation = yes #TECH OP
-			if = {
-				limit = { 
-					is_ai = yes 
-					OR = {
-						resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-						resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-						resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-						resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
-						resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
-					}
-				}
-				VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
-				VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
-				VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-				VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.25 }
-				VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
+			if = { 
+				limit = { NOT = { has_modifier = str_ground_battle } } 
+				add_modifier = { modifier = str_ground_battle } 
 			}
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
@@ -227,18 +218,6 @@ country_event = {
 		}
 	}
 }
-planet_event = {
-	id = vop_ai_fixed.25
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { any_country = { 
-		NOT = { has_modifier = str_ground_battle } 
-	} }
-	immediate = { every_country = { 
-		limit = { NOT = { has_modifier = str_ground_battle } } 
-		add_modifier = { modifier = str_ground_battle } 
-	} }
-}
 country_event = {
 	id = vop_ai_fixed.26
 	hide_window = yes
@@ -265,7 +244,6 @@ country_event = {
 		}
 	}
 }
-
 country_event = { inline_script = { 
 	script = pop_categories_version/pcv_notification_event_script 
 	ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 
