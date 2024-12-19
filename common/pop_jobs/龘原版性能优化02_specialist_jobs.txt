@@ -165,11 +165,39 @@ entertainer = {
 
 	triggered_planet_modifier = {
 		potential = {
+			has_councilor = { COUNCILOR = "councilor_corporate_hedonism" }
+		}
+
+		trade_value_add = @councilor_corporate_hedonism_entertainer_trade_value
+		mult = value:scripted_modifier_councilor_level_mult|MODIFIER|pop_job_trade_mult|TYPE|councilor_corporate_hedonism|
+	}
+
+	triggered_planet_modifier = {
+		potential = {
 			exists = owner
-			owner = { is_pleasure_seeker = yes }
+			owner = { 
+				is_pleasure_seeker = yes 
+				is_individual_machine = no
+			}
 		}
 		modifier = {
 			pop_growth_speed = 0.01
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_pleasure_seeker = yes
+				OR = {
+					is_individual_machine = yes
+					is_synthetic_empire = yes
+				}
+			}
+		}
+		modifier = {
+			planet_pop_assembly_mult = 0.01
 		}
 	}
 
@@ -215,5 +243,13 @@ entertainer = {
 				has_available_jobs = entertainer
 			}
 		}
+		modifier = {
+			add = 500
+			exists = planet
+			planet = {
+				has_modifier = artistic_boom
+			}
+		}
 	}
+	inline_script = "jobs/automodding_priority_amenities"
 }

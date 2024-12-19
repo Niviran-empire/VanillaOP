@@ -1,0 +1,24 @@
+TT_mod_ascension_breakthrough = { ascension_perks_add = 1 hide_from_country_list = yes }
+TT_mod_ascension_breakthrough_EACI = { ascension_perks_add = 1 hide_from_country_list = yes }
+
+
+Kuat_order_check_1 = { }
+Kuat_order_check_2 = { }
+Kuat_order_check_3 = { }
+NOVERA_order_check_1 = { }
+NOVERA_order_check_2 = { }
+NOVERA_order_check_3 = { }
+NOVERA_order_check_4 = { }
+NOVERA_order_check_5 = { }
+NOVERA_order_check_6 = { }
+NOVERA_order_check_7 = { }
+NOVERA_order_check_8 = { }
+NOVERA_order_check_9 = { }
+NOVERA_order_check_10 = { }
+NOVERA_order_check_11 = { }
+NOVERA_order_check_12 = { }
+NOVERA_order_check_13 = { }
+NOVERA_order_check_14 = { }
+NOVERA_order_check_15 = { }
+NOVERA_order_check_16 = { }
+NOVERA_order_check_17 = { }

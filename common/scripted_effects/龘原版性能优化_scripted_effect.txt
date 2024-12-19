@@ -489,6 +489,7 @@ vop_optimaze_event_pop_caculation = {
 			remove_pop_flag = enable_simple_drone_assign_to_pop
 			remove_pop_flag = enable_bio_trophy_pop_assign_to_pop
 			remove_pop_flag = enable_should_apply_unemployment_penalties_op
+
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_1
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_2
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_3
@@ -504,12 +505,22 @@ vop_optimaze_event_pop_caculation = {
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_13
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_14
 			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+
+			remove_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1
+			remove_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
+
 			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add
 			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub
+			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_production
+			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_stability
+			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_research
+			remove_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5
+
 			remove_pop_flag = VOP_job_POP_enable_canbe_enforcer_jobs_pop
 			remove_pop_flag = VOP_job_POP_enable_canbe_entertainer_jobs_pop
 			remove_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
 			remove_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
+
 			remove_pop_flag = VOP_livestanderd_POP_exotic_metabolism_op_1
 			remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_1
 			remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_2
@@ -867,6 +878,16 @@ vop_optimaze_event_pop_caculation = {
 							}
 							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
 						}
+						if = {
+							limit = { 
+								exists = owner
+								owner = {
+									is_oligarchic_authority = yes
+									has_country_flag = cyber_individualist
+								} 
+							}
+							set_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1
+						}
 					}
 					specialist = {
 						if = {
@@ -947,6 +968,17 @@ vop_optimaze_event_pop_caculation = {
 								owner = { is_galactic_community_member = yes }
 							}
 							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+						}
+
+						if = {
+							limit = { 
+								exists = owner
+								owner = {
+									is_democratic_authority = yes
+									has_country_flag = synth_physical
+								}
+							}
+							set_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
 						}
 					}
 					worker = {
@@ -1342,6 +1374,34 @@ vop_optimaze_event_pop_caculation = {
 					} }
 					set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub
 				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = { has_policy_flag = computation_core_production }
+					}
+					set_pop_flag = VOP_job_POP_clerk_has_computation_core_production
+				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = { has_policy_flag = computation_core_stability }
+					}
+					set_pop_flag = VOP_job_POP_clerk_has_computation_core_stability
+				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = { has_policy_flag = computation_core_research }
+					}
+					set_pop_flag = VOP_job_POP_clerk_has_computation_core_research
+				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = { has_active_tradition = tr_virtuality_5 }
+					}
+					set_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5
+				}
 			}
 			if = {
 				limit = { battle_thrall_job_check_trigger = yes }
@@ -1443,6 +1503,12 @@ vop_optimaze_event_planet_caculation = {
 			remove_modifier = str_assemble_tiyanki_pop
 			remove_modifier = str_pop_planet_amenities_add
 			remove_modifier = str_pop_non_noxious_happiness_pop
+			remove_modifier = str_computation_core_production
+			remove_modifier = str_computation_core_stability
+			remove_modifier = str_computation_core_research
+			remove_modifier = str_tr_virtuality_5
+			remove_modifier = str_planet_jobs_ruler_produces_mult
+
 			clear_variable = trade_value_add_op_1_var
 			clear_variable = trade_value_add_op_2_var
 			clear_variable = trade_value_add_op_3_var
@@ -1459,6 +1525,13 @@ vop_optimaze_event_planet_caculation = {
 			clear_variable = trade_value_add_op_15_var
 			clear_variable = clerk_has_planet_amenities_add_var
 			clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
+			clear_variable = clerk_has_computation_core_production_add_var
+			clear_variable = clerk_has_computation_core_stability_add_var
+			clear_variable = clerk_has_computation_core_research_add_var
+			clear_variable = clerk_has_tr_virtuality_5_add_var
+			clear_variable = planet_cate_ruler_produces_mult_op_1_var
+			clear_variable = planet_jobs_specialist_produces_mult_op_1_var
+
 			every_owned_pop = {
 				if = {
 					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_1 }
@@ -1517,6 +1590,14 @@ vop_optimaze_event_planet_caculation = {
 					prev = { change_variable = { which = trade_value_add_op_15_var value = @pop_happiness_unemply_rate } }
 				}
 				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1 }
+					prev = { change_variable = { which = planet_cate_ruler_produces_mult_op_1_var value = 0.01 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1 }
+					prev = { change_variable = { which = planet_jobs_specialist_produces_mult_op_1_var value = 0.01 } }
+				}
+				if = {
 					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub }
 					prev = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
 				}
@@ -1524,12 +1605,38 @@ vop_optimaze_event_planet_caculation = {
 					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add }
 					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
 				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_production }
+					prev = { change_variable = { which = clerk_has_computation_core_production_add_var value = 0.005 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_stability }
+					prev = { change_variable = { which = clerk_has_computation_core_stability_add_var value = 0.005 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_research }
+					prev = { change_variable = { which = clerk_has_computation_core_research_add_var value = 0.005 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5 }
+					prev = { change_variable = { which = clerk_has_tr_virtuality_5_add_var value = 0.01 } }
+				}
 			}
 			set_variable = { which = trade_value_add_op_total value = 0 }
 			set_variable = { which = asseble_value_add_op_total value = 0 }
 			set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
 			set_variable = { which = planet_amenities_add_total value = 0 }
 			set_variable = { which = pop_happiness_unemply_op_total value = 0 }
+
+			set_variable = { which = computation_core_production_add_total value = 0 }
+			set_variable = { which = computation_core_stability_add_total value = 0 }
+			set_variable = { which = computation_core_research_add_total value = 0 }
+			set_variable = { which = paragon_origin_strengthened_government_iii_add_total value = 0 }
+			set_variable = { which = tr_virtuality_5_add_total value = 0 }
+
+			set_variable = { which = planet_jobs_ruler_produces_mult_total value = 0 }
+			set_variable = { which = planet_jobs_specialist_produces_mult_total value = 0 }
+
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
@@ -1540,17 +1647,39 @@ vop_optimaze_event_planet_caculation = {
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
+
 			change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
 			change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
 			change_variable = { which = pop_happiness_unemply_op_total value = trade_value_add_op_15_var }
+
 			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
 			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
 			multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
+
+			change_variable = { which = computation_core_production_add_total value = clerk_has_computation_core_production_add_var }
+			change_variable = { which = computation_core_stability_add_total value = clerk_has_computation_core_stability_add_var }
+			change_variable = { which = computation_core_research_add_total value = clerk_has_computation_core_research_add_var }
+			change_variable = { which = tr_virtuality_5_add_total value = clerk_has_tr_virtuality_5_add_var }
+
+			change_variable = { which = planet_jobs_ruler_produces_mult_total value = planet_cate_ruler_produces_mult_op_1_var }
+			multiply_variable = { which = planet_jobs_ruler_produces_mult_total value = value:count_specialists }
+
+			change_variable = { which = planet_jobs_specialist_produces_mult_total value = planet_jobs_specialist_produces_mult_op_1_var }
+			multiply_variable = { which = planet_jobs_specialist_produces_mult_total value = value:count_any_districts }
+			
 			add_modifier = { modifier = str_trade_pop multiplier = trade_value_add_op_total }
 			add_modifier = { modifier = str_assemble_pop multiplier = asseble_value_add_op_total }
 			add_modifier = { modifier = str_assemble_tiyanki_pop multiplier = asseble_tiyanki_value_add_op_total }
 			add_modifier = { modifier = str_pop_planet_amenities_add multiplier = planet_amenities_add_total }
 			add_modifier = { modifier = str_pop_non_noxious_happiness_pop multiplier = pop_happiness_unemply_op_total }
+
+			add_modifier = { modifier = str_computation_core_production multiplier = clerk_has_computation_core_production_add_var }
+			add_modifier = { modifier = str_computation_core_stability multiplier = clerk_has_computation_core_stability_add_var }
+			add_modifier = { modifier = str_computation_core_research multiplier = clerk_has_computation_core_research_add_var }
+			add_modifier = { modifier = str_tr_virtuality_5 multiplier = clerk_has_tr_virtuality_5_add_var }
+
+			add_modifier = { modifier = str_planet_jobs_ruler_produces_mult multiplier = planet_jobs_ruler_produces_mult_total }
+			add_modifier = { modifier = str_planet_jobs_specialist_produces_mult multiplier = planet_jobs_specialist_produces_mult_total }
 		}
 	}
 }
