@@ -229,19 +229,12 @@ country_event = {
 			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
 			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
 			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = alloys value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = consumer_goods value > modifier:country_resource_max_add }
 		}
 	}
 	immediate = { 
 		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
 		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
 		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-		if = {
-			limit = { is_nirvana_empire = no }
-			VOP_ai_REROURCE_opt = { TYPE = alloys MULT = 0.5 }
-			VOP_ai_REROURCE_opt = { TYPE = consumer_goods MULT = 0.5 }
-		}
 	}
 }
 country_event = { inline_script = { 

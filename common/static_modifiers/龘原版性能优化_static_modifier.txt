@@ -106,3 +106,7 @@ str_planet_jobs_specialist_produces_mult = {
 	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
 	planet_jobs_specialist_produces_mult = 0.01
 }
+str_planet_jobs_worker_produces_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
+	planet_jobs_worker_produces_mult = 1
+}
