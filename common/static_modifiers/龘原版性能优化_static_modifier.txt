@@ -73,6 +73,7 @@ str_pop_planet_amenities_add = {
 str_ground_battle = {
 	hide_from_country_list = yes
 	army_collateral_damage_mult = -10
+	pop_happiness = 25
 }
 
 str_computation_core_production = {
