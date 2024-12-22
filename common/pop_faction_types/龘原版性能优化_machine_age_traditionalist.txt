@@ -1,0 +1,251 @@
+##############################
+# Cybernetic Creed Factions
+##############################
+
+cyber_creed_labor = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	use_guiding_ethic_as_pop_filter = no
+
+	persistent_faction = yes
+	can_rename = no
+	unique = yes
+	support_multiplier = 0.33
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_war = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	use_guiding_ethic_as_pop_filter = no
+
+	persistent_faction = yes
+	can_rename = no
+	unique = yes
+	support_multiplier = 0.33
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_construction = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	use_guiding_ethic_as_pop_filter = no
+
+	persistent_faction = yes
+	can_rename = no
+	unique = yes
+	support_multiplier = 0.33
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_research = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	use_guiding_ethic_as_pop_filter = no
+
+	persistent_faction = yes
+	can_rename = no
+	unique = yes
+	support_multiplier = 0.33
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_general = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+
+	persistent_faction = yes
+	can_rename = no
+	unique = yes
+	support_multiplier = 1
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_labor_2 = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	can_rename = no
+	unique = yes
+	support_multiplier = 1
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_war_2 = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	can_rename = no
+	unique = yes
+	support_multiplier = 1
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_construction_2 = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	can_rename = no
+	unique = yes
+	support_multiplier = 1
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}
+
+cyber_creed_research_2 = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	visual_ethic = "traditionalist_visual_ethic"
+	can_rename = no
+	unique = yes
+	support_multiplier = 1
+
+	extortion_resource = {
+		category = pop_factions
+		produces = {
+			minerals = @faction_base_output
+			mult = @faction_extortion_minerals_ratio
+		}
+	}
+	is_potential = {
+		always = no
+	}
+	can_join_faction = {
+		always = no
+	}
+	resources = {
+		category = pop_factions
+	}
+}

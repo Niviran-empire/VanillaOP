@@ -1,9 +1,3 @@
-str_planet_building = {
-	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
-	icon_frame = 3
-	planet_max_buildings_add = 5
-}
-
 @primary = 0.25
 str_ai_modifier = {
 	hide_from_country_list = yes
@@ -25,20 +19,13 @@ str_ai_modifier = {
 	pop_happiness = 1000
 }
 
-str_ai_modifier_ship = {
+str_ground_battle = {
 	hide_from_country_list = yes
-	# ships_upkeep_mult = -1
+	army_collateral_damage_mult = -10
+	pop_happiness = 25
 }
 
-str_pop_static = {
-	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
-	icon_frame = 3
-	pop_growth_speed = -10
-	planet_pop_assembly_organic_mult = -10
-	planet_pop_assembly_mult = -10
-	pop_growth_speed_reduction = 1
-}
-
+#next updated remove
 str_trade_pop = {
 	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
 	icon_frame = 3
@@ -68,12 +55,6 @@ str_pop_planet_amenities_add = {
 	icon = "gfx/interface/icons/planet_modifiers/capital.dds"
 	icon_frame = 3
 	planet_amenities_add = 1
-}
-
-str_ground_battle = {
-	hide_from_country_list = yes
-	army_collateral_damage_mult = -10
-	pop_happiness = 25
 }
 
 str_computation_core_production = {
