@@ -511,6 +511,7 @@ vop_optimaze_event_pop_caculation = {
 			remove_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
 
 			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add
+			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics
 			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub
 			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_production
 			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_stability
@@ -1392,6 +1393,13 @@ vop_optimaze_event_pop_caculation = {
 				limit = { has_job = clerk }
 				set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add
 				if = {
+					limit = { 
+						exists = owner
+						owner = { has_tradition = tr_mercantile_trickle_up_economics }
+					}
+					set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics
+				}
+				if = {
 					limit = { planet = {
 						exists = orbital_defence
 						orbital_defence = {
@@ -1544,6 +1552,7 @@ vop_optimaze_event_planet_caculation = {
 			clear_variable = trade_value_add_op_15_var
 			clear_variable = clerk_has_planet_amenities_add_var
 			clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
+			clear_variable = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var
 			clear_variable = clerk_has_computation_core_production_add_var
 			clear_variable = clerk_has_computation_core_stability_add_var
 			clear_variable = clerk_has_computation_core_research_add_var
@@ -1627,7 +1636,11 @@ vop_optimaze_event_planet_caculation = {
 				}
 				if = {
 					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 2 } }
+					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 3 } }
+				}
+				if = {
+					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics }
+					prev = { change_variable = { which = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var value = 1 } }
 				}
 				if = {
 					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_production }
@@ -1670,6 +1683,8 @@ vop_optimaze_event_planet_caculation = {
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
 			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
+			change_variable = { which = trade_value_add_op_total value = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var }
+			multiply_variable = { which = trade_value_add_op_total value = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult| }
 
 			change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
 			multiply_variable = { which = asseble_value_add_op_total value = value:budding_multiplier }
@@ -1683,6 +1698,7 @@ vop_optimaze_event_planet_caculation = {
 
 			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
 			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
+			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var }
 			multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
 
 			change_variable = { which = computation_core_production_add_total value = clerk_has_computation_core_production_add_var }
