@@ -22,7 +22,6 @@ str_ai_modifier = {
 str_ground_battle = {
 	hide_from_country_list = yes
 	army_collateral_damage_mult = -10
-	pop_happiness = 25
 }
 
 #next updated remove
