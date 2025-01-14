@@ -14,7 +14,7 @@ setup_scenario = {
 	advanced_empire_default = 12
 	colonizable_planet_odds = 0.25
 	primitive_odds = 0
-	crisis_strength = 100
+	crisis_strength = 1.5
 	extra_crisis_strength = { 10 25 50 75 100 }
 	
 	cluster_count = {
@@ -51,13 +51,13 @@ setup_scenario = {
 	num_nebulas	= 10
 	nebula_size = 60
 	nebula_min_dist = 200
-	
+
 	num_wormhole_pairs = { min = 0 max = 5 }
-	num_wormhole_pairs_default = 0
+	num_wormhole_pairs_default = 1
 	num_gateways = { min = 0 max = 5 }
-	num_gateways_default = 0
-	num_hyperlanes = { min=0.5 max= 2 }	#3
-	num_hyperlanes_default = 0.5
+	num_gateways_default = 1
+	num_hyperlanes = { min=0.5 max= 3 }
+	num_hyperlanes_default = 1
 	
 	supports_shape = elliptical
 	supports_shape = spiral_2
