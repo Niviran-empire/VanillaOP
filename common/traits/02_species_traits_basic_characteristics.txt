@@ -28,7 +28,7 @@ trait_hive_mind = {
 
 	modifier = {
 		#	|VOP定制|配合rule_can_live_on_planet
-		pc_hive_habitability = 4.0
+		pc_hive_habitability = 5.0
 	}
 
 	leader_age_min = 10
@@ -63,7 +63,8 @@ trait_machine_unit = {
 	immortal_leaders = no
 
 	modifier = {
-		pc_machine_habitability = 1
+		#	|VOP定制|配合rule_can_live_on_planet
+		pc_machine_habitability = 5.0
 		leader_lifespan_add = 20
 		habitability_floor_add = 0.5
 	}
@@ -110,7 +111,8 @@ trait_mechanical = {
 	custom_tooltip_with_modifiers = TRAIT_MECHANICAL_UNIT_EFFECT
 
 	modifier = {
-		pc_machine_habitability = 1
+		#	|VOP定制|配合rule_can_live_on_planet
+		pc_machine_habitability = 5.0
 		habitability_floor_add = 0.5
 	}
 }

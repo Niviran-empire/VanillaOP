@@ -473,6 +473,1222 @@ vop_optimaze_tech_caculation = {
 	}
 }
 
+#初始化之前移除标识（每次增加都需要在这里移除）（第一步）
+vop_optimaze_event_pop_caculation_clear_initial_flag = {
+	remove_pop_flag = enable_purge_pop_assign_to_pop
+	remove_pop_flag = enable_robot_servant_pop_assign_to_pop
+	remove_pop_flag = enable_precursor_pop_assign_to_pop
+	remove_pop_flag = enable_work_pop_assign_to_pop
+	remove_pop_flag = enable_simple_drone_assign_to_pop
+	remove_pop_flag = enable_bio_trophy_pop_assign_to_pop
+	remove_pop_flag = enable_should_apply_unemployment_penalties_op
+
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_1
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_3
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_4
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_9
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_10
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_11
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_12
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_13
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_16
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_23
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_24
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_17
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_18
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_19
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_20
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_21
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_22
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_25
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_26
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_27
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_28
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_29
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_30
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_31
+	remove_pop_flag = VOP_catgory_POP_trade_value_add_op_32
+
+	remove_pop_flag = VOP_job_POP_enable_canbe_enforcer_jobs_pop
+	remove_pop_flag = VOP_job_POP_enable_canbe_entertainer_jobs_pop
+	remove_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
+	remove_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
+
+	remove_pop_flag = VOP_livestanderd_POP_exotic_metabolism_op_1
+	remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_1
+	remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_2
+	remove_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_1
+	remove_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_2
+	remove_pop_flag = VOP_livestanderd_POP_has_phototrophic_energy_upkeep_op
+	remove_pop_flag = VOP_livestanderd_POP_has_energy_upkeep_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_efficient_processors_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_logic_engines_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_loyalty_circuits_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_double_jointed_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_enhanced_memory_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_durable_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_learning_algorithms_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_trading_algorithms_op
+	remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_streamlined_protocols_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_consumer_goods_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_alloys_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_unity_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_gas_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_crystal_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_motes_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_zro_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_dark_matter_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_living_metal_op
+	remove_pop_flag = VOP_livestanderd_POP_instrument_craving_nanites_op
+	remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_1
+	remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_2
+	remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_3
+	remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_4
+	remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
+	remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
+	owner = { remove_country_flag = enable_allows_alien_leaders }
+}
+#人口地位权利
+vop_optimaze_event_pop_caculation_speceis_right = {
+	if = {
+		limit = { 
+			NAND = {
+				exists = owner
+				owner = { has_deficit = consumer_goods }
+			}
+		}
+		set_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
+	}
+	if = {
+		limit = { 
+			is_unemployed = yes
+		}
+		set_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
+	}
+}
+#人口阶层维护
+vop_optimaze_event_pop_caculation_pop_category_resource = {
+	if = {
+		limit = { NOT = { has_global_flag = VOP_settings_POP_cate_disable_resource } }
+		if = {
+			limit = { 
+				is_organic_species = yes
+				has_trait = trait_exotic_metabolism
+			}
+			set_pop_flag = VOP_livestanderd_POP_exotic_metabolism_op_1
+		}
+		if = {
+			limit = { 
+				has_food_upkeep = yes
+				is_phototrophic = no
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_1
+		}
+		if = {
+			limit = { 
+				has_food_upkeep = yes
+				is_phototrophic = yes
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_2
+		}
+		if = {
+			limit = { 
+				has_mineral_upkeep = yes
+				is_phototrophic = no
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_1
+		}
+		if = {
+			limit = { 
+				has_mineral_upkeep = yes
+				is_phototrophic = yes
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_2
+		}
+		if = {
+			limit = { 
+				has_phototrophic_energy_upkeep = yes
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_phototrophic_energy_upkeep_op
+		}
+		if = {
+			limit = { 
+				has_energy_upkeep = yes
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_energy_upkeep_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_efficient_processors
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_efficient_processors_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_logic_engines
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_logic_engines_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_loyalty_circuits
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_loyalty_circuits_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_double_jointed
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_double_jointed_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_enhanced_memory
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_enhanced_memory_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_durable
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_durable_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_learning_algorithms
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_learning_algorithms_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_trading_algorithms
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_trading_algorithms_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_cyborg_streamlined_protocols
+			}
+			set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_streamlined_protocols_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_consumer_goods
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_consumer_goods_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_alloys
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_alloys_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_unity
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_unity_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_gas
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_gas_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_crystal
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_crystal_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_motes
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_motes_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_zro
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_zro_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_dark_matter
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_dark_matter_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_living_metal
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_living_metal_op
+		}
+		if = {
+			limit = { 
+				has_trait = trait_psionic
+				owner = {
+					has_country_flag = instrument_craving_nanites
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_instrument_craving_nanites_op
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_lithoid_scintillating
+					has_trait = trait_advanced_scintillating
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_1
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_lithoid_gaseous_byproducts
+					has_trait = trait_advanced_gaseous_byproducts
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_2
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_lithoid_volatile_excretions
+					has_trait = trait_advanced_volatile_excretions
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_3
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_trait = trait_notofthisworld
+					has_trait = trait_robot_notofthisworld
+				}
+			}
+			set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_4
+		}
+	}
+}
+#形成leader的条件
+vop_optimaze_event_pop_caculation_enable_allows_alien_leaders = {
+	if = {
+		limit = {
+			NOT = { is_same_species = owner }
+			has_citizenship_rights = yes
+		}
+		owner = { set_country_flag = enable_allows_alien_leaders }
+	}
+}
+#人口阶层修正（第二步）
+vop_optimaze_event_pop_caculation_jobs_pop_trigger_modifier = {
+	if = {
+		limit = { NOT = { has_global_flag = VOP_settings_POP_cate_disable_trigger_modifier } }
+		switch = {
+			trigger = has_job_category
+			ruler = {
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_shared_burden_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_academic_living_standard_type = yes
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_normal_living_standard_type = yes
+							has_stratified_living_standard_type = yes
+							has_decadent_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_13
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						prosperity_gospel_check_trigger = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_shared_burden_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_low_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+				}
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+				if = {
+					limit = {
+						has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+						is_unemployed = yes
+						has_pop_flag = enable_should_apply_unemployment_penalties_op
+						exists = owner
+						owner = { is_galactic_community_member = yes }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+				}
+				if = {
+					limit = { 
+						OR = {
+							has_trait = trait_psionic
+							has_trait = trait_latent_psionic
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
+				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = {
+							is_oligarchic_authority = yes
+							has_country_flag = cyber_individualist
+						} 
+					}
+					set_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species = root }
+								is_same_species_class = root
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_25
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species_class = root }
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_26
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_27
+				}
+				if = {
+					limit = { 
+						NOT = { has_trait = trait_cybernetic }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_28
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+						owner = { NOT = { has_country_flag = cyber_event_worklife } }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_29
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_30
+				}
+				if = {
+					limit = { 
+						NOR = { 
+							has_trait = trait_psionic 
+							has_trait = trait_latent_psionic 
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_31
+				}
+				if = {
+					limit = { 
+						has_trait = trait_auto_mod_cyborg
+						exists = owner
+						owner = {
+							has_modifier = worse_parts
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_32
+				}
+			}
+			specialist = {
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_shared_burden_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_academic_living_standard_type = yes
+							has_very_high_living_standard_type = yes
+							has_decadent_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_3
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_high_living_standard_type = yes
+							has_normal_living_standard_type = yes
+							has_stratified_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_4
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						prosperity_gospel_check_trigger = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_shared_burden_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_low_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+				}
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+				if = {
+					limit = {
+						has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+						is_unemployed = yes
+						has_pop_flag = enable_should_apply_unemployment_penalties_op
+						exists = owner
+						owner = { is_galactic_community_member = yes }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+				}
+				if = {
+					limit = { 
+						OR = {
+							has_trait = trait_psionic
+							has_trait = trait_latent_psionic
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
+				}
+				if = {
+					limit = { 
+						exists = owner
+						owner = {
+							is_democratic_authority = yes
+							has_country_flag = synth_physical
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species = root }
+								is_same_species_class = root
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_25
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species_class = root }
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_26
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_27
+				}
+				if = {
+					limit = { 
+						NOT = { has_trait = trait_cybernetic }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_28
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+						owner = { NOT = { has_country_flag = cyber_event_worklife } }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_29
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_30
+				}
+				if = {
+					limit = { 
+						NOR = { 
+							has_trait = trait_psionic 
+							has_trait = trait_latent_psionic 
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_31
+				}
+				if = {
+					limit = { 
+						has_trait = trait_auto_mod_cyborg
+						exists = owner
+						owner = {
+							has_modifier = worse_parts
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_32
+				}
+			}
+			worker = {
+				if = {
+					limit = { 
+						exists = owner
+						owner = { is_gestalt = no }
+					}
+					set_pop_flag = enable_work_pop_assign_to_pop
+				}
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+							has_shared_burden_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_decadent_living_standard_type = yes
+							has_very_high_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_9
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_high_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_normal_living_standard_type = yes
+							has_academic_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_stratified_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_12
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						prosperity_gospel_check_trigger = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_shared_burden_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_low_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+				}
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+				if = {
+					limit = {
+						has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+						is_unemployed = yes
+						has_pop_flag = enable_should_apply_unemployment_penalties_op
+						exists = owner
+						owner = { is_galactic_community_member = yes }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+				}
+				if = {
+					limit = { 
+						OR = {
+							has_trait = trait_psionic
+							has_trait = trait_latent_psionic
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species = root }
+								is_same_species_class = root
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_25
+				}
+				if = {
+					limit = { 
+						exists = owner
+						is_same_species_class = owner
+						planet = {
+							any_owned_species = {
+								NOT = { is_same_species_class = root }
+							}
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_26
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_27
+				}
+				if = {
+					limit = { 
+						NOT = { has_trait = trait_cybernetic }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_28
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+						owner = { NOT = { has_country_flag = cyber_event_worklife } }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_29
+				}
+				if = {
+					limit = { 
+						has_trait = trait_cybernetic
+						is_pop_category = worker
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_30
+				}
+				if = {
+					limit = { 
+						NOR = { 
+							has_trait = trait_psionic 
+							has_trait = trait_latent_psionic 
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_31
+				}
+				if = {
+					limit = { 
+						has_trait = trait_auto_mod_cyborg
+						exists = owner
+						owner = {
+							has_modifier = worse_parts
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_32
+				}
+			}
+			complex_drone = {
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+			}
+			simple_drone = {
+				if = {
+					limit = { 
+						exists = owner
+						owner = { is_gestalt = yes }
+					}
+					set_pop_flag = enable_simple_drone_assign_to_pop
+				}
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+			}
+			deviant_drone = {
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+			}
+			corrupt_drone = {
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_low_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_shared_burden_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_normal_living_standard_type = yes
+							has_academic_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_high_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
+				}
+			}
+			slave = {
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+			}
+			bio_trophy = {
+				if = {
+					limit = { 
+						exists = owner
+						has_citizenship_type = { type = citizenship_organic_trophy country = owner }
+					}
+					set_pop_flag = enable_bio_trophy_pop_assign_to_pop
+				}
+				if = {
+					limit = { can_assemble_budding_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
+				}
+				if = {
+					limit = { can_assemble_tiyanki_pop = yes }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+				if = {
+					limit = {
+						has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
+						is_unemployed = yes
+						has_pop_flag = enable_should_apply_unemployment_penalties_op
+						exists = owner
+						owner = { is_galactic_community_member = yes }
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
+				}
+			}
+			pre_sapients = {
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+			}
+			xeno_ward = {
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+			}
+			criminal = {
+				if = {
+					limit = { 
+						NOR = {
+							has_very_high_living_standard_type = yes
+							has_high_living_standard_type = yes
+						}
+					}
+					set_pop_flag = enable_should_apply_unemployment_penalties_op
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_low_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_shared_burden_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						OR = {
+							has_normal_living_standard_type = yes
+							has_academic_living_standard_type = yes
+						}
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
+				}
+				if = {
+					limit = { 
+						can_generate_trade_value = yes
+						has_high_living_standard_type = yes
+					}
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
+				}
+				if = {
+					limit = { NOT = { has_trait = trait_noxious } }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
+				}
+				if = {
+					limit = { has_trait = trait_noxious }
+					set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
+				}
+			}
+			purge = {
+				if = {
+					limit = { OR = {
+						is_being_purged = yes
+						has_pop_flag = event_purge
+						AND = { # controlled by crisis
+							exists = planet
+							planet = {
+								exists = controller
+								controller = {
+									OR = {
+										is_country_type = ai_empire
+										is_country_type = swarm
+									}
+								}
+							}
+							OR = { # contingency won't purge itself
+								NOT = { exists = event_target:custodian_bot }
+								AND = {
+									exists = event_target:custodian_bot
+									NOT = { species = { is_same_value = event_target:custodian_bot } }
+								}
+							}
+						}
+					} }
+					set_pop_flag = enable_purge_pop_assign_to_pop
+				}
+			}
+			precursor = {
+				if = {
+					limit = { 
+						exists = owner
+						owner = {
+							OR = {
+								is_country_type = fallen_empire
+								is_country_type = awakened_fallen_empire
+							}
+						}
+						OR = {
+							is_same_species = owner
+							owner = {
+								is_fallen_empire_spiritualist = yes
+							}
+						}
+					}
+					set_pop_flag = enable_precursor_pop_assign_to_pop
+				}
+			}
+			robot_servant = {
+				if = {
+					limit = { 
+						NAND = {
+							exists = planet
+							planet = {
+								exists = owner
+								owner = { is_gestalt = yes }
+							}
+						}
+						OR = {
+							is_shackled_robot = yes
+							is_non_sapient_robot = yes
+						}
+					}
+					set_pop_flag = enable_robot_servant_pop_assign_to_pop
+				}
+			}
+		}
+	}
+}
+#岗位修正
+vop_optimaze_event_pop_caculation_jobs = {
+	if = {
+		limit = { has_job = clerk }
+		set_pop_flag = VOP_catgory_POP_trade_value_add_op_17
+		if = {
+			limit = { planet = {
+				exists = orbital_defence
+				orbital_defence = {
+					exists = starbase
+					starbase = { has_starbase_building = ring_trade_hub }
+				}
+			} }
+			set_pop_flag = VOP_catgory_POP_trade_value_add_op_18
+		}
+		if = {
+			limit = { 
+				exists = owner
+				owner = { has_policy_flag = computation_core_production }
+			}
+			set_pop_flag = VOP_catgory_POP_trade_value_add_op_19
+		}
+		if = {
+			limit = { 
+				exists = owner
+				owner = { has_policy_flag = computation_core_stability }
+			}
+			set_pop_flag = VOP_catgory_POP_trade_value_add_op_20
+		}
+		if = {
+			limit = { 
+				exists = owner
+				owner = { has_policy_flag = computation_core_research }
+			}
+			set_pop_flag = VOP_catgory_POP_trade_value_add_op_21
+		}
+		if = {
+			limit = { 
+				exists = owner
+				owner = { has_active_tradition = tr_virtuality_5 }
+			}
+			set_pop_flag = VOP_catgory_POP_trade_value_add_op_22
+		}
+	}
+	if = {
+		limit = { battle_thrall_job_check_trigger = yes }
+		set_pop_flag = VOP_job_POP_enable_canbe_enforcer_jobs_pop
+	}
+	if = {
+		limit = { entertainer_job_check_trigger = yes }
+		set_pop_flag = VOP_job_POP_enable_canbe_entertainer_jobs_pop
+	}
+	if = {
+		limit = { 
+			owner = {
+				is_fallen_empire = yes
+				is_xenophile = yes
+			}
+			NOT = { is_same_species = owner }
+			is_robot_pop = no
+			planet = { has_building = building_fe_xeno_zoo }
+		}
+		set_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
+	}
+	if = {
+		limit = { 
+			owner = {
+				is_fallen_empire = yes
+				is_fallen_empire_spiritualist = no
+				is_fallen_empire_machine = no
+			}
+			is_same_species = owner
+			NOR = {
+				has_trait = trait_mechanical
+				has_trait = trait_machine_unit
+			}
+		}
+		set_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
+	}
+}
+#人口总控
 vop_optimaze_event_pop_caculation = {
 	every_galaxy_pop = {
 		vop_optimaze_game_rule_can_vote_in_democratic_election = yes
@@ -482,1001 +1698,22 @@ vop_optimaze_event_pop_caculation = {
 		#[POP SECTION]
 		if = {
 			limit = { exists = owner }
-			remove_pop_flag = enable_purge_pop_assign_to_pop
-			remove_pop_flag = enable_robot_servant_pop_assign_to_pop
-			remove_pop_flag = enable_precursor_pop_assign_to_pop
-			remove_pop_flag = enable_work_pop_assign_to_pop
-			remove_pop_flag = enable_simple_drone_assign_to_pop
-			remove_pop_flag = enable_bio_trophy_pop_assign_to_pop
-			remove_pop_flag = enable_should_apply_unemployment_penalties_op
-
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_3
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_4
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_9
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_10
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_11
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_12
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_13
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_15
-			remove_pop_flag = VOP_catgory_POP_trade_value_add_op_16
-
-			remove_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1
-			remove_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
-
-			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add
-			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics
-			remove_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub
-			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_production
-			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_stability
-			remove_pop_flag = VOP_job_POP_clerk_has_computation_core_research
-			remove_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5
-
-			remove_pop_flag = VOP_job_POP_enable_canbe_enforcer_jobs_pop
-			remove_pop_flag = VOP_job_POP_enable_canbe_entertainer_jobs_pop
-			remove_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
-			remove_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
-
-			remove_pop_flag = VOP_livestanderd_POP_exotic_metabolism_op_1
-			remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_1
-			remove_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_2
-			remove_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_1
-			remove_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_2
-			remove_pop_flag = VOP_livestanderd_POP_has_phototrophic_energy_upkeep_op
-			remove_pop_flag = VOP_livestanderd_POP_has_energy_upkeep_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_efficient_processors_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_logic_engines_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_loyalty_circuits_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_double_jointed_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_enhanced_memory_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_durable_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_learning_algorithms_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_trading_algorithms_op
-			remove_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_streamlined_protocols_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_consumer_goods_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_alloys_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_unity_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_gas_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_crystal_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_motes_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_zro_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_dark_matter_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_living_metal_op
-			remove_pop_flag = VOP_livestanderd_POP_instrument_craving_nanites_op
-			remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_1
-			remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_2
-			remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_3
-			remove_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_4
-			remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
-			remove_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
-			owner = { remove_country_flag = enable_allows_alien_leaders }
+			vop_optimaze_event_pop_caculation_clear_initial_flag = yes
 			#speceis_right
-			if = {
-				limit = { 
-					NAND = {
-						exists = owner
-						owner = { has_deficit = consumer_goods }
-					}
-				}
-				set_pop_flag = VOP_livestanderd_POP_living_standard_normal_1
-			}
-			if = {
-				limit = { 
-					is_unemployed = yes
-				}
-				set_pop_flag = VOP_livestanderd_POP_living_standard_normal_2
-			}
-			#resource [Pop category]
-			if = {
-				limit = { NOT = { has_global_flag = VOP_settings_POP_cate_disable_resource } }
-				if = {
-					limit = { 
-						is_organic_species = yes
-						has_trait = trait_exotic_metabolism
-					}
-					set_pop_flag = VOP_livestanderd_POP_exotic_metabolism_op_1
-				}
-				if = {
-					limit = { 
-						has_food_upkeep = yes
-						is_phototrophic = no
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_1
-				}
-				if = {
-					limit = { 
-						has_food_upkeep = yes
-						is_phototrophic = yes
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_food_upkeep_op_2
-				}
-				if = {
-					limit = { 
-						has_mineral_upkeep = yes
-						is_phototrophic = no
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_1
-				}
-				if = {
-					limit = { 
-						has_mineral_upkeep = yes
-						is_phototrophic = yes
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_minerals_upkeep_op_2
-				}
-				if = {
-					limit = { 
-						has_phototrophic_energy_upkeep = yes
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_phototrophic_energy_upkeep_op
-				}
-				if = {
-					limit = { 
-						has_energy_upkeep = yes
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_energy_upkeep_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_efficient_processors
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_efficient_processors_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_logic_engines
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_logic_engines_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_loyalty_circuits
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_loyalty_circuits_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_double_jointed
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_double_jointed_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_enhanced_memory
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_enhanced_memory_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_durable
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_durable_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_learning_algorithms
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_learning_algorithms_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_trading_algorithms
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_trading_algorithms_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_cyborg_streamlined_protocols
-					}
-					set_pop_flag = VOP_livestanderd_POP_has_trait_cyborg_streamlined_protocols_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_consumer_goods
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_consumer_goods_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_alloys
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_alloys_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_unity
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_unity_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_gas
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_gas_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_crystal
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_crystal_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_motes
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_motes_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_zro
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_zro_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_dark_matter
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_dark_matter_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_living_metal
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_living_metal_op
-				}
-				if = {
-					limit = { 
-						has_trait = trait_psionic
-						owner = {
-							has_country_flag = instrument_craving_nanites
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_instrument_craving_nanites_op
-				}
-				if = {
-					limit = { 
-						OR = {
-							has_trait = trait_lithoid_scintillating
-							has_trait = trait_advanced_scintillating
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_1
-				}
-				if = {
-					limit = { 
-						OR = {
-							has_trait = trait_lithoid_gaseous_byproducts
-							has_trait = trait_advanced_gaseous_byproducts
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_2
-				}
-				if = {
-					limit = { 
-						OR = {
-							has_trait = trait_lithoid_volatile_excretions
-							has_trait = trait_advanced_volatile_excretions
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_3
-				}
-				if = {
-					limit = { 
-						OR = {
-							has_trait = trait_notofthisworld
-							has_trait = trait_robot_notofthisworld
-						}
-					}
-					set_pop_flag = VOP_livestanderd_POP_lithoid_trait_resource_production_4
-				}
-			}
-			#trigger_modifier [Pop_category]
-			if = {
-				limit = { NOT = { has_global_flag = VOP_settings_POP_cate_disable_trigger_modifier } }
-				switch = {
-					trigger = has_job_category
-					ruler = {
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-									has_shared_burden_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_academic_living_standard_type = yes
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-									has_normal_living_standard_type = yes
-									has_stratified_living_standard_type = yes
-									has_decadent_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_13
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								prosperity_gospel_check_trigger = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_shared_burden_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_low_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-						}
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-						if = {
-							limit = {
-								has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-								is_unemployed = yes
-								has_pop_flag = enable_should_apply_unemployment_penalties_op
-								exists = owner
-								owner = { is_galactic_community_member = yes }
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
-						}
-						if = {
-							limit = { 
-								OR = {
-									has_trait = trait_psionic
-									has_trait = trait_latent_psionic
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
-						}
-						if = {
-							limit = { 
-								exists = owner
-								owner = {
-									is_oligarchic_authority = yes
-									has_country_flag = cyber_individualist
-								} 
-							}
-							set_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1
-						}
-					}
-					specialist = {
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-									has_shared_burden_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_academic_living_standard_type = yes
-									has_very_high_living_standard_type = yes
-									has_decadent_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_3
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_high_living_standard_type = yes
-									has_normal_living_standard_type = yes
-									has_stratified_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_4
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								prosperity_gospel_check_trigger = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_shared_burden_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_low_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-						}
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-						if = {
-							limit = {
-								has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-								is_unemployed = yes
-								has_pop_flag = enable_should_apply_unemployment_penalties_op
-								exists = owner
-								owner = { is_galactic_community_member = yes }
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
-						}
-						if = {
-							limit = { 
-								OR = {
-									has_trait = trait_psionic
-									has_trait = trait_latent_psionic
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
-						}
-						if = {
-							limit = { 
-								exists = owner
-								owner = {
-									is_democratic_authority = yes
-									has_country_flag = synth_physical
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1
-						}
-					}
-					worker = {
-						if = {
-							limit = { 
-								exists = owner
-								owner = { is_gestalt = no }
-							}
-							set_pop_flag = enable_work_pop_assign_to_pop
-						}
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-									has_shared_burden_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_decadent_living_standard_type = yes
-									has_very_high_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_9
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_high_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_normal_living_standard_type = yes
-									has_academic_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_stratified_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_12
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								prosperity_gospel_check_trigger = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_1
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_shared_burden_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_low_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-						}
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-						if = {
-							limit = {
-								has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-								is_unemployed = yes
-								has_pop_flag = enable_should_apply_unemployment_penalties_op
-								exists = owner
-								owner = { is_galactic_community_member = yes }
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
-						}
-						if = {
-							limit = { 
-								OR = {
-									has_trait = trait_psionic
-									has_trait = trait_latent_psionic
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_16
-						}
-					}
-					complex_drone = {
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-					}
-					simple_drone = {
-						if = {
-							limit = { 
-								exists = owner
-								owner = { is_gestalt = yes }
-							}
-							set_pop_flag = enable_simple_drone_assign_to_pop
-						}
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-					}
-					deviant_drone = {
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-					}
-					corrupt_drone = {
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_low_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_shared_burden_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_normal_living_standard_type = yes
-									has_academic_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_high_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
-						}
-					}
-					slave = {
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-					}
-					bio_trophy = {
-						if = {
-							limit = { 
-								exists = owner
-								has_citizenship_type = { type = citizenship_organic_trophy country = owner }
-							}
-							set_pop_flag = enable_bio_trophy_pop_assign_to_pop
-						}
-						if = {
-							limit = { can_assemble_budding_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_6
-						}
-						if = {
-							limit = { can_assemble_tiyanki_pop = yes }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_14
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-						if = {
-							limit = {
-								has_global_flag = galactic_community_resolution_divinity_comfort_the_fallen
-								is_unemployed = yes
-								has_pop_flag = enable_should_apply_unemployment_penalties_op
-								exists = owner
-								owner = { is_galactic_community_member = yes }
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_15
-						}
-					}
-					pre_sapients = {
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-					}
-					xeno_ward = {
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-					}
-					criminal = {
-						if = {
-							limit = { 
-								NOR = {
-									has_very_high_living_standard_type = yes
-									has_high_living_standard_type = yes
-								}
-							}
-							set_pop_flag = enable_should_apply_unemployment_penalties_op
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_low_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_5
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_shared_burden_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_2
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								OR = {
-									has_normal_living_standard_type = yes
-									has_academic_living_standard_type = yes
-								}
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_11
-						}
-						if = {
-							limit = { 
-								can_generate_trade_value = yes
-								has_high_living_standard_type = yes
-							}
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_10
-						}
-						if = {
-							limit = { NOT = { has_trait = trait_noxious } }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_7
-						}
-						if = {
-							limit = { has_trait = trait_noxious }
-							set_pop_flag = VOP_catgory_POP_trade_value_add_op_8
-						}
-					}
-					purge = {
-						if = {
-							limit = { OR = {
-								is_being_purged = yes
-								has_pop_flag = event_purge
-								AND = { # controlled by crisis
-									exists = planet
-									planet = {
-										exists = controller
-										controller = {
-											OR = {
-												is_country_type = ai_empire
-												is_country_type = swarm
-											}
-										}
-									}
-									OR = { # contingency won't purge itself
-										NOT = { exists = event_target:custodian_bot }
-										AND = {
-											exists = event_target:custodian_bot
-											NOT = { species = { is_same_value = event_target:custodian_bot } }
-										}
-									}
-								}
-							} }
-							set_pop_flag = enable_purge_pop_assign_to_pop
-						}
-					}
-					precursor = {
-						if = {
-							limit = { 
-								exists = owner
-								owner = {
-									OR = {
-										is_country_type = fallen_empire
-										is_country_type = awakened_fallen_empire
-									}
-								}
-								OR = {
-									is_same_species = owner
-									owner = {
-										is_fallen_empire_spiritualist = yes
-									}
-								}
-							}
-							set_pop_flag = enable_precursor_pop_assign_to_pop
-						}
-					}
-					robot_servant = {
-						if = {
-							limit = { 
-								NAND = {
-									exists = planet
-									planet = {
-										exists = owner
-										owner = { is_gestalt = yes }
-									}
-								}
-								OR = {
-									is_shackled_robot = yes
-									is_non_sapient_robot = yes
-								}
-							}
-							set_pop_flag = enable_robot_servant_pop_assign_to_pop
-						}
-					}
-				}
-			}
+			vop_optimaze_event_pop_caculation_speceis_right = yes
+			
+			#trigger_modifier [category]
+			vop_optimaze_event_pop_caculation_pop_category_resource = yes
+			vop_optimaze_event_pop_caculation_jobs_pop_trigger_modifier = yes
 			#enable_allows_alien_leaders
-			if = {
-				limit = {
-					NOT = { is_same_species = owner }
-					has_citizenship_rights = yes
-				}
-				owner = { set_country_flag = enable_allows_alien_leaders }
-			}
+			vop_optimaze_event_pop_caculation_enable_allows_alien_leaders = yes
 			#pop jobs
-			if = {
-				limit = { has_job = clerk }
-				set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add
-				if = {
-					limit = { 
-						exists = owner
-						owner = { has_tradition = tr_mercantile_trickle_up_economics }
-					}
-					set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics
-				}
-				if = {
-					limit = { planet = {
-						exists = orbital_defence
-						orbital_defence = {
-							exists = starbase
-							starbase = { has_starbase_building = ring_trade_hub }
-						}
-					} }
-					set_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub
-				}
-				if = {
-					limit = { 
-						exists = owner
-						owner = { has_policy_flag = computation_core_production }
-					}
-					set_pop_flag = VOP_job_POP_clerk_has_computation_core_production
-				}
-				if = {
-					limit = { 
-						exists = owner
-						owner = { has_policy_flag = computation_core_stability }
-					}
-					set_pop_flag = VOP_job_POP_clerk_has_computation_core_stability
-				}
-				if = {
-					limit = { 
-						exists = owner
-						owner = { has_policy_flag = computation_core_research }
-					}
-					set_pop_flag = VOP_job_POP_clerk_has_computation_core_research
-				}
-				if = {
-					limit = { 
-						exists = owner
-						owner = { has_active_tradition = tr_virtuality_5 }
-					}
-					set_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5
-				}
-			}
-			if = {
-				limit = { battle_thrall_job_check_trigger = yes }
-				set_pop_flag = VOP_job_POP_enable_canbe_enforcer_jobs_pop
-			}
-			if = {
-				limit = { entertainer_job_check_trigger = yes }
-				set_pop_flag = VOP_job_POP_enable_canbe_entertainer_jobs_pop
-			}
-			if = {
-				limit = { 
-					owner = {
-						is_fallen_empire = yes
-						is_xenophile = yes
-					}
-					NOT = { is_same_species = owner }
-					is_robot_pop = no
-					planet = { has_building = building_fe_xeno_zoo }
-				}
-				set_pop_flag = VOP_job_POP_enable_canbe_fe_xeno_ward_jobs_pop
-			}
-			if = {
-				limit = { 
-					owner = {
-						is_fallen_empire = yes
-						is_fallen_empire_spiritualist = no
-						is_fallen_empire_machine = no
-					}
-					is_same_species = owner
-					NOR = {
-						has_trait = trait_mechanical
-						has_trait = trait_machine_unit
-					}
-				}
-				set_pop_flag = VOP_job_POP_enable_canbe_fe_hedonist_jobs_pop
-			}
+			vop_optimaze_event_pop_caculation_jobs = yes
 		}
 	}
 }
 
+#种族总控
 vop_optimaze_event_species_caculation = {
 	every_galaxy_species = {
 		#happiniess species
@@ -1486,234 +1723,224 @@ vop_optimaze_event_species_caculation = {
 	}
 }
 
+#星球人口AI控制
+vop_optimaze_event_planet_caculation_ai_pop = {
+	if = { 
+		limit = { owner = { is_ai = yes } } 
+		if = {
+			limit = { 
+				num_pops > 100 
+				NOT = { has_modifier = planet_population_control } 
+			}
+			add_modifier = { modifier = planet_population_control }
+		}
+		if = {
+			limit = { 
+				num_pops > 100 
+				NOT = { has_modifier = planet_population_control_gestalt } 
+			}
+			add_modifier = { modifier = planet_population_control_gestalt }
+		}
+		if = {
+			limit = { 
+				num_pops > 100 
+				NOT = { has_modifier = planet_robot_assembly_control } 
+			}
+			add_modifier = { modifier = planet_robot_assembly_control }
+		}
+		else_if = { 
+			limit = { 
+				num_pops <= 100 
+				OR = {
+					has_modifier = planet_population_control
+					has_modifier =  planet_population_control_gestalt
+					has_modifier = planet_robot_assembly_control
+				}
+			} 
+			remove_modifier = planet_population_control
+			remove_modifier = planet_population_control_gestalt
+			remove_modifier =  planet_robot_assembly_control
+		}
+	}
+}
+#星球总控变量初始化（第三步）
+vop_optimaze_event_planet_caculation_planet_variable_clear = {
+	clear_variable = trade_value_add_op_1_var
+	clear_variable = trade_value_add_op_2_var
+	clear_variable = trade_value_add_op_3_var
+	clear_variable = trade_value_add_op_4_var
+	clear_variable = trade_value_add_op_5_var
+	clear_variable = trade_value_add_op_6_var
+	clear_variable = trade_value_add_op_7_var
+	clear_variable = trade_value_add_op_8_var
+	clear_variable = trade_value_add_op_9_var
+	clear_variable = trade_value_add_op_10_var
+	clear_variable = trade_value_add_op_11_var
+	clear_variable = trade_value_add_op_12_var
+	clear_variable = trade_value_add_op_13_var
+	clear_variable = trade_value_add_op_14_var
+	clear_variable = trade_value_add_op_15_var
+	clear_variable = trade_value_add_op_16_var
+	clear_variable = trade_value_add_op_17_var
+	clear_variable = trade_value_add_op_18_var
+	clear_variable = trade_value_add_op_19_var
+	clear_variable = trade_value_add_op_20_var
+	clear_variable = trade_value_add_op_21_var
+	clear_variable = trade_value_add_op_22_var
+	clear_variable = trade_value_add_op_23_var
+	clear_variable = trade_value_add_op_24_var
+	clear_variable = trade_value_add_op_25_var
+	clear_variable = trade_value_add_op_26_var
+	clear_variable = trade_value_add_op_27_var
+	clear_variable = trade_value_add_op_28_var
+	clear_variable = trade_value_add_op_29_var
+	clear_variable = trade_value_add_op_30_var
+	clear_variable = trade_value_add_op_31_var
+	clear_variable = trade_value_add_op_32_var
+}
+#星球总控变量初始化设定（第四步）
+vop_optimaze_event_planet_caculation_planet_variable_setting_base = {
+	if = {
+		limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_$KEY$ }
+		prev = { change_variable = { which = trade_value_add_op_$KEY$_var value = $VALUE$ } }
+	}
+}
+vop_optimaze_event_planet_caculation_planet_variable_setting = {
+	every_owned_pop = {
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 1  VALUE = @trade_value_prosperity_gospel }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 2  VALUE = @trade_value_shared_burden }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 3  VALUE = @trade_value_very_high }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 4  VALUE = @trade_value_high }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 5  VALUE = @trade_value_normal }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 6  VALUE = @plantoid_budding_rate }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 7  VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 8  VALUE = @noxious_happiness_penalty }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 9  VALUE = @trade_value_very_high }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 10 VALUE = @trade_value_high }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 11 VALUE = @trade_value_normal }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 12 VALUE = @trade_value_low }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 13 VALUE = @trade_value_very_high }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 14 VALUE = @tiyanki_budding_rate }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 15 VALUE = @pop_happiness_unemply_rate }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 16 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 17 VALUE = 2 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 18 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 19 VALUE = 0.005 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 20 VALUE = 0.005 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 21 VALUE = 0.005 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 22 VALUE = 0.01 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 23 VALUE = 0.01 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 24 VALUE = 0.01 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 25 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 26 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 27 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 28 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 29 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 30 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 31 VALUE = 1 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 32 VALUE = 0.5 }
+	}
+}
+#最终计算变量初始化（第五步）
+vop_optimaze_event_planet_caculation_clear_finial_variable = {
+	set_variable = { which = trade_value_add_op_total value = 0 }
+	set_variable = { which = asseble_value_add_op_total value = 0 }
+	set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
+	set_variable = { which = planet_amenities_add_total value = 0 }
+	set_variable = { which = pop_happiness_unemply_op_total value = 0 }
+	set_variable = { which = pop_happiness_op_total value = 0 }
+	set_variable = { which = pop_non_noxious_happiness_op_total value = 0 }
+	set_variable = { which = computation_core_production_add_total value = 0 }
+	set_variable = { which = computation_core_stability_add_total value = 0 }
+	set_variable = { which = computation_core_research_add_total value = 0 }
+	set_variable = { which = paragon_origin_strengthened_government_iii_add_total value = 0 }
+	set_variable = { which = tr_virtuality_5_add_total value = 0 }
+	set_variable = { which = planet_jobs_ruler_produces_mult_total value = 0 }
+	set_variable = { which = planet_jobs_specialist_produces_mult_total value = 0 }
+	set_variable = { which = trait_psionic_trade_value_add_op_total value = 0 }
+}
+#最终修正变量计算 (第六步)
+vop_optimaze_event_planet_caculation_cacualation_modifier = {
+	multiply_variable = { which = trade_value_add_op_1_var value = value:scripted_modifier_mult|MODIFIER|pop_lifestyle_trade_value_mult| }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
+	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_32_var }
+
+	change_variable = { which = pop_non_noxious_happiness_op_total value = trade_value_add_op_8_var }
+
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_7_var }
+	multiply_variable = { which = trade_value_add_op_25_var value = modifier:citizen_pop_same_species_class_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_25_var }
+	multiply_variable = { which = trade_value_add_op_26_var value = modifier:citizen_pop_different_species_class_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_26_var }
+	multiply_variable = { which = trade_value_add_op_27_var value = modifier:pop_cyborg_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_27_var }
+	multiply_variable = { which = trade_value_add_op_28_var value = modifier:pop_non_cyborg_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_28_var }
+	multiply_variable = { which = trade_value_add_op_29_var value = modifier:pop_cyborg_worker_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_29_var }
+	multiply_variable = { which = trade_value_add_op_30_var value = modifier:pop_cyborg_worker_happiness }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_30_var }
+	multiply_variable = { which = trade_value_add_op_31_var value = modifier:planet_jobs_only_psionic_worker_produces_mult }
+	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_31_var }
+
+	change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
+	multiply_variable = { which = asseble_value_add_op_total value = value:budding_multiplier }
+
+	change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
+
+	change_variable = { which = pop_happiness_unemply_op_total value = trade_value_add_op_15_var }
+
+	change_variable = { which = trait_psionic_trade_value_add_op_total value = trade_value_add_op_16_var }
+	multiply_variable = { which = trait_psionic_trade_value_add_op_total value = modifier:planet_jobs_only_psionic_worker_produces_mult }
+
+	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_18_var }
+	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_17_var }
+	multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
+
+	change_variable = { which = computation_core_production_add_total value = trade_value_add_op_19_var }
+
+	change_variable = { which = computation_core_stability_add_total value = trade_value_add_op_20_var }
+
+	change_variable = { which = computation_core_research_add_total value = trade_value_add_op_21_var }
+
+	change_variable = { which = tr_virtuality_5_add_total value = trade_value_add_op_22_var }
+
+	change_variable = { which = planet_jobs_ruler_produces_mult_total value = trade_value_add_op_23_var }
+	multiply_variable = { which = planet_jobs_ruler_produces_mult_total value = value:count_specialists }
+
+	change_variable = { which = planet_jobs_specialist_produces_mult_total value = trade_value_add_op_24_var }
+	multiply_variable = { which = planet_jobs_specialist_produces_mult_total value = value:count_any_districts }
+}
+#星球总控
 vop_optimaze_event_planet_caculation = {
 	every_galaxy_planet = {
 		limit = { is_colony = yes }
 		if = {
 			limit = { NOT = { has_deposit = vop_Optimaze_depost } }
-			VOP_reload_save_fix = yes
 			add_deposit = vop_Optimaze_depost
 		}
-		if = { 
-			limit = { owner = { is_ai = yes } } 
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_population_control } 
-				}
-				add_modifier = { modifier = planet_population_control }
-			}
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_population_control_gestalt } 
-				}
-				add_modifier = { modifier = planet_population_control_gestalt }
-			}
-			if = {
-				limit = { 
-					num_pops > 100 
-					NOT = { has_modifier = planet_robot_assembly_control } 
-				}
-				add_modifier = { modifier = planet_robot_assembly_control }
-			}
-			else_if = { 
-				limit = { 
-					num_pops <= 100 
-					OR = {
-						has_modifier = planet_population_control
-						has_modifier =  planet_population_control_gestalt
-						has_modifier = planet_robot_assembly_control
-					}
-				} 
-				remove_modifier = planet_population_control
-				remove_modifier = planet_population_control_gestalt
-				remove_modifier =  planet_robot_assembly_control
-			}
-		}
+		vop_optimaze_event_planet_caculation_ai_pop = yes
 		vop_optimaze_game_rule_is_new_colony = yes
 		#[POP SECTION CALCULATION]
 		if = {
 			limit = { num_pops > 0 }
 
-			clear_variable = trade_value_add_op_1_var
-			clear_variable = trade_value_add_op_2_var
-			clear_variable = trade_value_add_op_3_var
-			clear_variable = trade_value_add_op_4_var
-			clear_variable = trade_value_add_op_5_var
-			clear_variable = trade_value_add_op_6_var
-			clear_variable = trade_value_add_op_8_var
-			clear_variable = trade_value_add_op_9_var
-			clear_variable = trade_value_add_op_10_var
-			clear_variable = trade_value_add_op_11_var
-			clear_variable = trade_value_add_op_12_var
-			clear_variable = trade_value_add_op_13_var
-			clear_variable = trade_value_add_op_14_var
-			clear_variable = trade_value_add_op_15_var
-			clear_variable = clerk_has_planet_amenities_add_var
-			clear_variable = clerk_has_planet_amenities_add_ring_trade_hub_var
-			clear_variable = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var
-			clear_variable = clerk_has_computation_core_production_add_var
-			clear_variable = clerk_has_computation_core_stability_add_var
-			clear_variable = clerk_has_computation_core_research_add_var
-			clear_variable = clerk_has_tr_virtuality_5_add_var
-			clear_variable = planet_cate_ruler_produces_mult_op_1_var
-			clear_variable = planet_jobs_specialist_produces_mult_op_1_var
-			clear_variable = trade_value_add_op_16_var
+			vop_optimaze_event_planet_caculation_planet_variable_clear = yes
 
-			every_owned_pop = {
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_1 }
-					prev = { change_variable = { which = trade_value_add_op_1_var value = @trade_value_prosperity_gospel } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_2 }
-					prev = { change_variable = { which = trade_value_add_op_2_var value = @trade_value_shared_burden } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_3 }
-					prev = { change_variable = { which = trade_value_add_op_3_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_4 }
-					prev = { change_variable = { which = trade_value_add_op_4_var value = @trade_value_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_5 }
-					prev = { change_variable = { which = trade_value_add_op_5_var value = @trade_value_normal } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_6 }
-					prev = { change_variable = { which = trade_value_add_op_6_var value = @plantoid_budding_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_8 }
-					prev = { change_variable = { which = trade_value_add_op_8_var value = @noxious_happiness_penalty } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_9 }
-					prev = { change_variable = { which = trade_value_add_op_9_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_10 }
-					prev = { change_variable = { which = trade_value_add_op_10_var value = @trade_value_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_11 }
-					prev = { change_variable = { which = trade_value_add_op_11_var value = @trade_value_normal } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_12 }
-					prev = { change_variable = { which = trade_value_add_op_12_var value = @trade_value_low } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_13 }
-					prev = { change_variable = { which = trade_value_add_op_13_var value = @trade_value_very_high } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_14 }
-					prev = { change_variable = { which = trade_value_add_op_14_var value = @tiyanki_budding_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_15 }
-					prev = { change_variable = { which = trade_value_add_op_15_var value = @pop_happiness_unemply_rate } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_16 }
-					prev = { change_variable = { which = trade_value_add_op_16_var value = 1 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_planet_jobs_ruler_produces_mult_op_1 }
-					prev = { change_variable = { which = planet_cate_ruler_produces_mult_op_1_var value = 0.01 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_catgory_POP_planet_jobs_specialist_produces_mult_op_1 }
-					prev = { change_variable = { which = planet_jobs_specialist_produces_mult_op_1_var value = 0.01 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_ring_trade_hub }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_ring_trade_hub_var value = 1 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_var value = 3 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics }
-					prev = { change_variable = { which = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var value = 1 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_production }
-					prev = { change_variable = { which = clerk_has_computation_core_production_add_var value = 0.005 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_stability }
-					prev = { change_variable = { which = clerk_has_computation_core_stability_add_var value = 0.005 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_computation_core_research }
-					prev = { change_variable = { which = clerk_has_computation_core_research_add_var value = 0.005 } }
-				}
-				if = {
-					limit = { has_pop_flag = VOP_job_POP_clerk_has_tr_virtuality_5 }
-					prev = { change_variable = { which = clerk_has_tr_virtuality_5_add_var value = 0.01 } }
-				}
-			}
-			set_variable = { which = trade_value_add_op_total value = 0 }
-			set_variable = { which = asseble_value_add_op_total value = 0 }
-			set_variable = { which = asseble_tiyanki_value_add_op_total value = 0 }
-			set_variable = { which = planet_amenities_add_total value = 0 }
-			set_variable = { which = pop_happiness_unemply_op_total value = 0 }
-			set_variable = { which = computation_core_production_add_total value = 0 }
-			set_variable = { which = computation_core_stability_add_total value = 0 }
-			set_variable = { which = computation_core_research_add_total value = 0 }
-			set_variable = { which = paragon_origin_strengthened_government_iii_add_total value = 0 }
-			set_variable = { which = tr_virtuality_5_add_total value = 0 }
-			set_variable = { which = planet_jobs_ruler_produces_mult_total value = 0 }
-			set_variable = { which = planet_jobs_specialist_produces_mult_total value = 0 }
-			set_variable = { which = trait_psionic_trade_value_add_op_total value = 0 }
+			vop_optimaze_event_planet_caculation_planet_variable_setting = yes
 
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_1_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_2_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_3_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_4_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_5_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_9_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_10_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_11_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_12_var }
-			change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
-			change_variable = { which = trade_value_add_op_total value = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var }
-			multiply_variable = { which = trade_value_add_op_total value = value:scripted_modifier_mult|MODIFIER|pop_job_trade_mult| }
+			vop_optimaze_event_planet_caculation_clear_finial_variable = yes
 
-			change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
-			multiply_variable = { which = asseble_value_add_op_total value = value:budding_multiplier }
-
-			change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
-
-			change_variable = { which = pop_happiness_unemply_op_total value = trade_value_add_op_15_var }
-
-			change_variable = { which = trait_psionic_trade_value_add_op_total value = trade_value_add_op_16_var }
-			multiply_variable = { which = trait_psionic_trade_value_add_op_total value = modifier:planet_jobs_only_psionic_worker_produces_mult }
-
-			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_ring_trade_hub_var }
-			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_var }
-			change_variable = { which = planet_amenities_add_total value = clerk_has_planet_amenities_add_tr_mercantile_trickle_up_economics_var }
-			multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
-
-			change_variable = { which = computation_core_production_add_total value = clerk_has_computation_core_production_add_var }
-
-			change_variable = { which = computation_core_stability_add_total value = clerk_has_computation_core_stability_add_var }
-
-			change_variable = { which = computation_core_research_add_total value = clerk_has_computation_core_research_add_var }
-
-			change_variable = { which = tr_virtuality_5_add_total value = clerk_has_tr_virtuality_5_add_var }
-
-			change_variable = { which = planet_jobs_ruler_produces_mult_total value = planet_cate_ruler_produces_mult_op_1_var }
-			multiply_variable = { which = planet_jobs_ruler_produces_mult_total value = value:count_specialists }
-
-			change_variable = { which = planet_jobs_specialist_produces_mult_total value = planet_jobs_specialist_produces_mult_op_1_var }
-			multiply_variable = { which = planet_jobs_specialist_produces_mult_total value = value:count_any_districts }
+			vop_optimaze_event_planet_caculation_cacualation_modifier = yes
 		}
 	}
 }
@@ -1770,19 +1997,4 @@ VOP_ai_REROURCE_opt = {
 		add_resource = { $TYPE$ = -1 mult = Vop_resource_stockpile_compare_$TYPE$ }
 		clear_variable = Vop_resource_stockpile_compare_$TYPE$
 	}
-}
-
-VOP_reload_save_fix = {
-	remove_modifier = str_trade_pop
-	remove_modifier = str_assemble_pop
-	remove_modifier = str_assemble_tiyanki_pop
-	remove_modifier = str_pop_non_noxious_happiness_pop
-	remove_modifier = str_pop_planet_amenities_add
-	remove_modifier = str_computation_core_production
-	remove_modifier = str_computation_core_stability
-	remove_modifier = str_computation_core_research
-	remove_modifier = str_tr_virtuality_5
-	remove_modifier = str_planet_jobs_ruler_produces_mult
-	remove_modifier = str_planet_jobs_specialist_produces_mult
-	remove_modifier = str_planet_jobs_worker_produces_mult
 }

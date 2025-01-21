@@ -1,0 +1,11 @@
+
+
+# triggered_pop_modifier = { #32
+# 	potential = {
+# 		exists = owner
+# 		has_citizenship_type = { type = citizenship_full country = owner }
+# 	}
+# 	key = civic_selective_kinship
+# 	pop_political_power = 1
+# 	mult = modifier:citizen_pop_political_power
+# }
