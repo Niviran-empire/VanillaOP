@@ -78,6 +78,7 @@ event = {
 		count_playable_country = { count > 0 } 
 	}
 	immediate = {
+		set_global_flag = VOP_flg_glbl_AP_no_ai
 		set_timed_global_flag = { flag = VOP_CD_vop_ai_fixed days = 1 }
 		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
@@ -126,6 +127,7 @@ event = {
 		count_playable_country = { count > 0 } 
 	}
 	immediate = {
+		set_global_flag = VOP_flg_glbl_AP_no_ai
 		set_timed_global_flag = { flag = VOP_CD_vop_ai_fixed days = 1 }
 		set_update_modifiers_batch = begin
 		vop_optimaze_action_116 = yes # action.116
