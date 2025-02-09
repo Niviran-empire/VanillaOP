@@ -5,12 +5,6 @@ on_game_start = {
 	}
 }
 
-on_game_start_country = {
-	events = {
-		vop_ai_fixed.3
-	}
-}
-
 on_single_player_save_game_load = {
 	events = {
 		vop_ai_fixed.1
@@ -32,13 +26,6 @@ on_single_player_save_game_load = {
 VOP_on_five_year_pulse = {
 	events = {
 		vop_ai_fixed.5
-	}
-}
-
-# this = country
-VOP_on_five_year_pulse_country = {
-	events = {
-		vop_ai_fixed.23		#_[AP]
 	}
 }
 
