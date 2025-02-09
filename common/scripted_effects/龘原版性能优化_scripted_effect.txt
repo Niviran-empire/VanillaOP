@@ -38,58 +38,29 @@ vop_optimaze_game_rule_pop_has_random_ethics = {
 		set_pop_flag = can_enable_pop_has_random_ethics
 	}
 }
-vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
-	remove_pop_flag = can_enable_can_generate_military_leader_from_pop
-	if = {
-		limit = {  
-			has_citizenship_rights = yes
-			NOT = { has_trait = trait_syncretic_proles }
-			can_think = yes
-			OR = {
-				is_robot_pop = no
-				owner = {
-					OR = {
-						has_technology = tech_synthetic_leaders
-						has_authority = auth_machine_intelligence
-						is_mechanical_empire = yes
-						is_individual_machine = yes
-					}
-				}
-			}
-			OR = {
-				is_same_species = root
-				owner = {
-					NAND = {
-						has_origin = origin_necrophage
-						has_trait = trait_necrophage
-					}
-				}
-			}
-			can_be_military_leader = yes
-		}
-		set_pop_flag = can_enable_can_generate_military_leader_from_pop
-	}
-}
 vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	remove_pop_flag = can_enable_can_generate_leader_from_pop
+	remove_pop_flag = can_enable_can_generate_military_leader_from_pop
 	if = {
 		limit = { 
 			has_citizenship_rights = yes
-			NOT = { has_trait = trait_syncretic_proles }
-			can_think = yes
+			NOR = {
+				has_trait = trait_syncretic_proles
+				can_think = no
+			}
 			OR = {
 				is_robot_pop = no
 				owner = {
 					OR = {
 						has_technology = tech_synthetic_leaders
-						has_authority = auth_machine_intelligence
+						is_machine_empire = yes
 						is_mechanical_empire = yes
 						is_individual_machine = yes
 					}
 				}
 			}
 			OR = {
-				is_same_species = root
+				is_same_species = owner
 				owner = {
 					NAND = {
 						has_origin = origin_necrophage
@@ -97,6 +68,10 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 					}
 				}
 			}
+		}
+		if = {
+			limit = { can_be_military_leader = yes }
+			set_pop_flag = can_enable_can_generate_military_leader_from_pop
 		}
 		set_pop_flag = can_enable_can_generate_leader_from_pop
 	}
@@ -1693,7 +1668,6 @@ vop_optimaze_event_pop_caculation = {
 	every_galaxy_pop = {
 		vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 		vop_optimaze_game_rule_pop_has_random_ethics = yes
-		vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
 		vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 		#[POP SECTION]
 		if = {

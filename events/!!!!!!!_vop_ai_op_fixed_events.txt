@@ -5,67 +5,16 @@
 #
 ###############################
 namespace = vop_ai_fixed
-event = {
-	id = vop_ai_fixed.1
-	hide_window = yes
-	is_triggered_only = yes
-	immediate = { 
-		set_global_flag = VOP_MOD_INSTALL
-		set_global_flag = force_disable_aow_megastructure
-		set_global_flag = force_adjust_aow_megastructure_cap
-		every_playable_country = { 
-			limit = { is_ai = no } 
-			country_event = { id = vop_ai_fixed.2 } 
-			country_event = { id = vop_ai_fixed.3 } 
-		} 
-	}
-}
-country_event = {
-	id = vop_ai_fixed.2
-	title = vop_ai_fixed.title
-	desc = vop_ai_fixed.desc
-	picture = GFX_evt_society_cache
-	show_sound = event_scanner
-	is_advisor_event = yes
-	is_triggered_only = yes
-	trigger = { is_ai = no }
-	option = { name = vop_ai_fixed.a }
-}
-
-country_event = {
-	id = vop_ai_fixed.3
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { exists = event_target:global_event_country }
-	immediate = {
-		if = {
-			limit = { is_ai = yes NOT = { has_country_flag = has_str_ai_modifier } }
-			add_modifier = { modifier = str_ai_modifier } set_country_flag = has_str_ai_modifier 
-		}
-		event_target:global_event_country = {
-			vop_debug_system_modifier = { TYPE = Kuat ORDER = 1 }
-			vop_debug_system_modifier = { TYPE = Kuat ORDER = 2 }
-			vop_debug_system_modifier = { TYPE = Kuat ORDER = 3 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 1 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 2 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 3 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 4 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 5 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 6 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 7 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 8 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 9 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 10 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 11 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 12 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 13 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 14 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 15 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 16 }
-			vop_debug_system_modifier = { TYPE = NOVERA ORDER = 17 }
-		}
-	}
-}
+# event = {
+# 	id = vop_ai_fixed.1
+# 	hide_window = yes
+# 	is_triggered_only = yes
+# 	immediate = { 
+# 		set_global_flag = VOP_MOD_INSTALL
+# 		#set_global_flag = force_disable_aow_megastructure
+# 		set_global_flag = force_adjust_aow_megastructure_cap
+# 	}
+# }
 
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
@@ -107,11 +56,11 @@ event = {
 				vop_optimaze_event_country_ships = { Ship_Size = cruiser Count = 10 } #ship op
 				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
-			vop_optimaze_tech_caculation = yes #TECH OP
-			if = { 
-				limit = { NOT = { has_modifier = str_ground_battle } } 
+			if = {
+				limit = { NOT = { has_modifier = str_ground_battle }  }
 				add_modifier = { modifier = str_ground_battle } 
 			}
+			vop_optimaze_tech_caculation = yes #TECH OP
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
 		vop_optimaze_event_species_caculation = yes #spciese event
@@ -160,64 +109,16 @@ event = {
 				vop_optimaze_event_country_ships = { Ship_Size = cruiser Count = 10 } #ship op
 				vop_optimaze_event_country_ships = { Ship_Size = small_ship_fallen_empire Count = 10 } #ship op
 			}
-			vop_optimaze_tech_caculation = yes #TECH OP
-			if = { 
-				limit = { NOT = { has_modifier = str_ground_battle } } 
+			if = {
+				limit = { NOT = { has_modifier = str_ground_battle }  }
 				add_modifier = { modifier = str_ground_battle } 
 			}
+			vop_optimaze_tech_caculation = yes #TECH OP
 		}
 		vop_optimaze_event_pop_caculation = yes # pop events
 		vop_optimaze_event_species_caculation = yes #spciese event
 		vop_optimaze_event_planet_caculation = yes # planet events
 		set_update_modifiers_batch = end
-	}
-}
-
-country_event = {
-	id = vop_ai_fixed.23
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { is_ai = yes }
-
-	immediate = {
-		if = {
-			limit = { NOT = { is_variable_set = TT_var_ascension_breakthrough_times } }
-			set_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
-		}
-		else_if = {
-			limit = {
-				is_variable_set = TT_var_ascension_breakthrough_times
-				resource_stockpile_compare = {
-					resource = unity
-					value >= 25000
-					mult = TT_var_ascension_breakthrough_times
-				}
-			}
-			add_resource = {
-				unity = -5000
-				mult = TT_var_ascension_breakthrough_times
-			}
-			remove_modifier = TT_mod_ascension_breakthrough
-			remove_modifier = TT_mod_ascension_breakthrough_EACI
-			if = {#原版加凝聚力
-				limit = { NOT = { has_global_flag = cultural_overhaul_active } }
-				add_modifier = {
-					modifier = TT_mod_ascension_breakthrough
-					multiplier = TT_var_ascension_breakthrough_times
-					days = -1
-				}
-			}
-			else_if = {#无限思潮mod加行政管理
-				limit = { has_global_flag = cultural_overhaul_active }
-				add_modifier = {
-					modifier = TT_mod_ascension_breakthrough_EACI
-					multiplier = TT_var_ascension_breakthrough_times
-					days = -1
-				}
-			}
-			change_variable = { which = TT_var_ascension_breakthrough_times value = 1 }
-		}
 	}
 }
 country_event = {
@@ -239,11 +140,3 @@ country_event = {
 		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
 	}
 }
-country_event = { inline_script = { 
-	script = pop_categories_version/pcv_notification_event_script 
-	ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 
-} }
-ship_event = { inline_script = { 
-	script = pop_categories_version/pcv_effect_event_script 
-	ID = vop_ai_fixed.7 
-} }
