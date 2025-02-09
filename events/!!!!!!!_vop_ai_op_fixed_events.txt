@@ -5,17 +5,6 @@
 #
 ###############################
 namespace = vop_ai_fixed
-# event = {
-# 	id = vop_ai_fixed.1
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	immediate = { 
-# 		set_global_flag = VOP_MOD_INSTALL
-# 		#set_global_flag = force_disable_aow_megastructure
-# 		set_global_flag = force_adjust_aow_megastructure_cap
-# 	}
-# }
-
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
 event = {
@@ -121,6 +110,7 @@ event = {
 		set_update_modifiers_batch = end
 	}
 }
+
 country_event = {
 	id = vop_ai_fixed.26
 	hide_window = yes

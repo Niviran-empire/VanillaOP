@@ -35,7 +35,7 @@ electric_storm = {
 		}
 		modifier = {
 			ship_speed_mult = 1
-			ship_shield_regen_add_static = -20	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
+			ship_shield_regen_add_static = -1	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
 		}
 	}
 
@@ -126,7 +126,7 @@ particle_storm = {
 			ships_upkeep_mult = 0.5
 			custom_tooltip = particle_storm_fleet_tt
 			show_only_custom_tooltip = no
-			ship_armor_regen_add_static = -20	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
+			ship_armor_regen_add_static = -1	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
 			ships_unity_produces_add = 0.5	#_|VOP新增|	cstorms.1050/hp<@storm_hp_perc_limit|添加产出=1
 		}
 	}
@@ -207,7 +207,7 @@ nexus_storm = {
 		nexus_storm_modifier = 1
 		custom_tooltip = nexus_storm_fleet_tt
 		show_only_custom_tooltip = no
-		ship_armor_regen_add_static = -60	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_high
+		ship_armor_regen_add_static = -2	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_high
 	}
 
 	on_start = {

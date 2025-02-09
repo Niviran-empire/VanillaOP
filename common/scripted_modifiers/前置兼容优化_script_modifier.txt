@@ -1,4 +1,0 @@
-nova_mod_order_check = {
-	icon = "mod_negative_traits"
-	category = country
-}
