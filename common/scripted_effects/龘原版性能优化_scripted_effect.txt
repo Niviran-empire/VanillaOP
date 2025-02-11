@@ -1744,17 +1744,11 @@ vop_optimaze_event_planet_caculation_planet_variable_clear = {
 	clear_variable = trade_value_add_op_3_var
 	clear_variable = trade_value_add_op_4_var
 	clear_variable = trade_value_add_op_5_var
-	clear_variable = trade_value_add_op_6_var
-	clear_variable = trade_value_add_op_7_var
-	clear_variable = trade_value_add_op_8_var
 	clear_variable = trade_value_add_op_9_var
 	clear_variable = trade_value_add_op_10_var
 	clear_variable = trade_value_add_op_11_var
 	clear_variable = trade_value_add_op_12_var
 	clear_variable = trade_value_add_op_13_var
-	clear_variable = trade_value_add_op_14_var
-	clear_variable = trade_value_add_op_15_var
-	clear_variable = trade_value_add_op_16_var
 	clear_variable = trade_value_add_op_17_var
 	clear_variable = trade_value_add_op_18_var
 	clear_variable = trade_value_add_op_19_var
@@ -1763,6 +1757,14 @@ vop_optimaze_event_planet_caculation_planet_variable_clear = {
 	clear_variable = trade_value_add_op_22_var
 	clear_variable = trade_value_add_op_23_var
 	clear_variable = trade_value_add_op_24_var
+	clear_variable = trade_value_add_op_32_var
+
+	clear_variable = trade_value_add_op_6_var
+	clear_variable = trade_value_add_op_7_var
+	clear_variable = trade_value_add_op_8_var
+	clear_variable = trade_value_add_op_14_var
+	clear_variable = trade_value_add_op_15_var
+	clear_variable = trade_value_add_op_16_var
 	clear_variable = trade_value_add_op_25_var
 	clear_variable = trade_value_add_op_26_var
 	clear_variable = trade_value_add_op_27_var
@@ -1770,49 +1772,49 @@ vop_optimaze_event_planet_caculation_planet_variable_clear = {
 	clear_variable = trade_value_add_op_29_var
 	clear_variable = trade_value_add_op_30_var
 	clear_variable = trade_value_add_op_31_var
-	clear_variable = trade_value_add_op_32_var
 }
 #星球总控变量初始化设定（第四步）
 vop_optimaze_event_planet_caculation_planet_variable_setting_base = {
 	if = {
 		limit = { has_pop_flag = VOP_catgory_POP_trade_value_add_op_$KEY$ }
-		prev = { change_variable = { which = trade_value_add_op_$KEY$_var value = $VALUE$ } }
+		$SCOPE$ = { change_variable = { which = trade_value_add_op_$KEY$_var value = $VALUE$ } }
 	}
 }
 vop_optimaze_event_planet_caculation_planet_variable_setting = {
 	every_owned_pop = {
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 1  VALUE = @trade_value_prosperity_gospel }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 2  VALUE = @trade_value_shared_burden }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 3  VALUE = @trade_value_very_high }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 4  VALUE = @trade_value_high }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 5  VALUE = @trade_value_normal }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 6  VALUE = @plantoid_budding_rate }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 7  VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 8  VALUE = @noxious_happiness_penalty }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 9  VALUE = @trade_value_very_high }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 10 VALUE = @trade_value_high }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 11 VALUE = @trade_value_normal }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 12 VALUE = @trade_value_low }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 13 VALUE = @trade_value_very_high }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 14 VALUE = @tiyanki_budding_rate }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 15 VALUE = @pop_happiness_unemply_rate }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 16 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 17 VALUE = 2 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 18 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 19 VALUE = 0.005 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 20 VALUE = 0.005 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 21 VALUE = 0.005 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 22 VALUE = 0.01 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 23 VALUE = 0.01 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 24 VALUE = 0.01 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 25 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 26 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 27 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 28 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 29 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 30 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 31 VALUE = 1 }
-		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 32 VALUE = 0.5 }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 1  VALUE = @trade_value_prosperity_gospel SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 2  VALUE = @trade_value_shared_burden SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 3  VALUE = @trade_value_very_high SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 4  VALUE = @trade_value_high SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 5  VALUE = @trade_value_normal SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 9  VALUE = @trade_value_very_high SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 10 VALUE = @trade_value_high SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 11 VALUE = @trade_value_normal SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 12 VALUE = @trade_value_low SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 13 VALUE = @trade_value_very_high SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 17 VALUE = 2 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 18 VALUE = 1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 19 VALUE = 0.005 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 20 VALUE = 0.005 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 21 VALUE = 0.005 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 22 VALUE = 0.01 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 23 VALUE = 0.01 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 24 VALUE = 0.01 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 32 VALUE = 0.5 SCOPE = PREV }
+
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 6  VALUE = @plantoid_budding_rate SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 7  VALUE = 1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 8  VALUE = @noxious_happiness_penalty SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 14 VALUE = @tiyanki_budding_rate SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 15 VALUE = @pop_happiness_unemply_rate SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 16 VALUE = 0.02 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 25 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 26 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 27 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 28 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 29 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 30 VALUE = 0.1 SCOPE = PREV }
+		vop_optimaze_event_planet_caculation_planet_variable_setting_base = { KEY = 31 VALUE = 0.1 SCOPE = PREV }
 	}
 }
 #最终计算变量初始化（第五步）
@@ -1848,6 +1850,25 @@ vop_optimaze_event_planet_caculation_cacualation_modifier = {
 	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_13_var }
 	change_variable = { which = trade_value_add_op_total value = trade_value_add_op_32_var }
 
+	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_18_var }
+	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_17_var }
+	multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
+
+	change_variable = { which = computation_core_production_add_total value = trade_value_add_op_19_var }
+
+	change_variable = { which = computation_core_stability_add_total value = trade_value_add_op_20_var }
+
+	change_variable = { which = computation_core_research_add_total value = trade_value_add_op_21_var }
+
+	change_variable = { which = tr_virtuality_5_add_total value = trade_value_add_op_22_var }
+
+	change_variable = { which = planet_jobs_ruler_produces_mult_total value = trade_value_add_op_23_var }
+	multiply_variable = { which = planet_jobs_ruler_produces_mult_total value = value:count_specialists }
+
+	change_variable = { which = planet_jobs_specialist_produces_mult_total value = trade_value_add_op_24_var }
+	multiply_variable = { which = planet_jobs_specialist_produces_mult_total value = value:count_any_districts }
+
+	
 	change_variable = { which = pop_non_noxious_happiness_op_total value = trade_value_add_op_8_var }
 
 	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_7_var }
@@ -1867,7 +1888,7 @@ vop_optimaze_event_planet_caculation_cacualation_modifier = {
 	change_variable = { which = pop_happiness_op_total value = trade_value_add_op_31_var }
 
 	change_variable = { which = asseble_value_add_op_total value = trade_value_add_op_6_var }
-	multiply_variable = { which = asseble_value_add_op_total value = value:budding_multiplier }
+	multiply_variable = { which = asseble_value_add_op_total value = value:str_planet_budding_multiplier }
 
 	change_variable = { which = asseble_tiyanki_value_add_op_total value = trade_value_add_op_14_var }
 
@@ -1875,24 +1896,6 @@ vop_optimaze_event_planet_caculation_cacualation_modifier = {
 
 	change_variable = { which = trait_psionic_trade_value_add_op_total value = trade_value_add_op_16_var }
 	multiply_variable = { which = trait_psionic_trade_value_add_op_total value = modifier:planet_jobs_only_psionic_worker_produces_mult }
-
-	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_18_var }
-	change_variable = { which = planet_amenities_add_total value = trade_value_add_op_17_var }
-	multiply_variable = { which = planet_amenities_add_total value = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult| }
-
-	change_variable = { which = computation_core_production_add_total value = trade_value_add_op_19_var }
-
-	change_variable = { which = computation_core_stability_add_total value = trade_value_add_op_20_var }
-
-	change_variable = { which = computation_core_research_add_total value = trade_value_add_op_21_var }
-
-	change_variable = { which = tr_virtuality_5_add_total value = trade_value_add_op_22_var }
-
-	change_variable = { which = planet_jobs_ruler_produces_mult_total value = trade_value_add_op_23_var }
-	multiply_variable = { which = planet_jobs_ruler_produces_mult_total value = value:count_specialists }
-
-	change_variable = { which = planet_jobs_specialist_produces_mult_total value = trade_value_add_op_24_var }
-	multiply_variable = { which = planet_jobs_specialist_produces_mult_total value = value:count_any_districts }
 }
 #星球总控
 vop_optimaze_event_planet_caculation = {
@@ -1907,7 +1910,6 @@ vop_optimaze_event_planet_caculation = {
 		#[POP SECTION CALCULATION]
 		if = {
 			limit = { num_pops > 0 }
-
 			vop_optimaze_event_planet_caculation_planet_variable_clear = yes
 
 			vop_optimaze_event_planet_caculation_planet_variable_setting = yes
