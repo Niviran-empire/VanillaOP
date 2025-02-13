@@ -54,6 +54,81 @@ country_event = {
 		}
 	}
 }
+country_event = {
+	id = vop_ai_fixed.24
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { 
+		has_global_flag = tidy_tradition_active
+		OR = {
+			AND = {
+				NOT = { has_tradition = tr_tt_liberation_finish }
+				any_owned_planet = {
+					has_modifier = TT_mod_PLNT_happy_specialist
+					has_modifier = TT_mod_PLNT_happy_worker
+					has_modifier = TT_mod_PLNT_happy_planet
+				}
+			}
+			AND = {
+				has_tradition = tr_tt_liberation_finish
+				any_owned_planet = {
+					NOR = {
+						has_modifier = TT_mod_PLNT_happy_specialist
+						has_modifier = TT_mod_PLNT_happy_worker
+						has_modifier = TT_mod_PLNT_happy_planet
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				NOT = { has_tradition = tr_tt_liberation_finish }
+			}
+			every_owned_planet = {
+				limit = {
+					has_modifier = TT_mod_PLNT_happy_specialist
+					has_modifier = TT_mod_PLNT_happy_worker
+					has_modifier = TT_mod_PLNT_happy_planet
+				}
+				remove_modifier = TT_mod_PLNT_happy_specialist
+				remove_modifier = TT_mod_PLNT_happy_worker
+				remove_modifier = TT_mod_PLNT_happy_planet
+			}
+		}
+		if = {
+			limit = {
+				has_tradition = tr_tt_liberation_finish
+			}
+			every_owned_planet = {
+				limit = {
+					NOR = {
+						has_modifier = TT_mod_PLNT_happy_specialist
+						has_modifier = TT_mod_PLNT_happy_worker
+						has_modifier = TT_mod_PLNT_happy_planet
+					}
+				}
+				add_modifier = {
+					modifier = TT_mod_PLNT_happy_specialist
+					days = -1
+				}
+				add_modifier = {
+					modifier = TT_mod_PLNT_happy_worker
+					days = -1
+				}
+				add_modifier = {
+					modifier = TT_mod_PLNT_happy_planet
+					days = -1
+				}
+				remove_modifier = TT_mod_PLNT_happy_specialist
+				remove_modifier = TT_mod_PLNT_happy_worker
+			}
+		}
+	}
+}
 event = {
 	id = vop_ai_fixed.1
 	hide_window = yes

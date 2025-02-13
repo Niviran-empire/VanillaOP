@@ -99,7 +99,7 @@ ring_world_1 = {
 		}
 
 		modifier = {
-			factor = 0
+			mult = 0
 			solar_system = {
 				exists = owner 
 				owner = { OR = {

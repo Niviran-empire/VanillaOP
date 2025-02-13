@@ -21,3 +21,11 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { always = no }
 }
+
+namespace = TT_ascension_breakthrough_ai
+planet_event = {
+	id = TT_tr_liberation.5
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { always = no }
+}

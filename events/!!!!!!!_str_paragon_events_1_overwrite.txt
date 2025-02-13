@@ -25,3 +25,38 @@ country_event = {#_|VOP优化|添加trigger修改effect
 		}
 	}
 }
+
+# on_colonized, give boost modifier if "Superior Colonies" Agenda is active.
+planet_event = {#_|VOP优化|trigger禁用
+	id = paragon.403
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { always = no }
+}
+
+# on_agenda_finished "Superior Colonies", check for young Colonies that should get the boost modifier.
+country_event = {#_|VOP优化|添加trigger修改effect
+	id = paragon.404
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		has_modifier = agenda_superior_colonies_finish
+	}
+
+	immediate = {
+		every_planet_within_border = {
+			limit = {
+				is_colony = yes
+				is_owned_by = root
+				NOT = { has_modifier = agenda_superior_colonies_planet_boost }
+			}
+			add_modifier = {
+				modifier = agenda_superior_colonies_planet_boost
+				days = @agenda_finish_modifier_duration
+			}
+		}
+	}
+}

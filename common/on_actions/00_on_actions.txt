@@ -444,6 +444,9 @@ VOP_on_five_year_pulse_country = {
 
 		##	|VOP转入|1年
 		paragon_2.1020 # Galactic Paragons negative leader trait event.
+
+		##	|VOP转入|政府决策	来自<政府决策>
+		paragon.404
 	}
 	# See also: on_five_year_random_pulse_country = {}
 	random_events = {

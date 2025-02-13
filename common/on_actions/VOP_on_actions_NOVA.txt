@@ -7,5 +7,6 @@ on_game_start_country = {
 VOP_on_five_year_pulse_country = {
 	events = {
 		vop_ai_fixed.23		#_[AP]
+		vop_ai_fixed.24		#_[TR]
 	}
 }
