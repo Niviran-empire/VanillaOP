@@ -22,7 +22,7 @@ country_event = {
 	trigger = { always = no }
 }
 
-namespace = TT_ascension_breakthrough_ai
+namespace = TT_tr_liberation
 planet_event = {
 	id = TT_tr_liberation.5
 	hide_window = yes
