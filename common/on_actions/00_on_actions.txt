@@ -1185,7 +1185,7 @@ on_colonized = {
 		clones.5 			# Clone Army (make sure pops don't migrate to die)
 		origin.3225 		# Progenitor Hive Missing
 		paragon.5010		# First planet finished colonization
-		paragon.403			# Give boost if "Superior Colonies" Agenda
+		#paragon.403		|VOP优化|禁用	融入VOP框架事件	# Give boost if "Superior Colonies" Agenda
 		awareness.135		# Planet colonised in pre-ftl system
 		paragon.100 		# Potentially abort Beholder chain
 
