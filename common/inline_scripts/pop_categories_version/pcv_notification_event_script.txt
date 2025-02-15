@@ -5,7 +5,7 @@ picture = GFX_evt_society_cache
 show_sound = event_scanner
 is_advisor_event = yes
 mean_time_to_happen = { days = 30 }
-trigger = { str_debug_check_trigger = yes }
+trigger = { $TYPE$ = yes }
 immediate = { 
 	change_variable = { which = alert_system_amount value = 1 } 
 	if = {

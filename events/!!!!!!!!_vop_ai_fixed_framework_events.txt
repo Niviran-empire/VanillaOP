@@ -1,7 +1,7 @@
 namespace = vop_ai_fixed
 country_event = { inline_script = { 
 	script = pop_categories_version/pcv_notification_event_script 
-	ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 
+	ID = vop_ai_fixed.4 TARGET = vop_ai_fixed.7 TYPE = str_debug_check_trigger
 } }
 ship_event = { inline_script = { 
 	script = pop_categories_version/pcv_effect_event_script 
