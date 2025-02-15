@@ -101,3 +101,71 @@ country_event = {#_|VOP新增|添加trigger
 		}
 	}
 }
+
+country_event = {
+	id = grand_archive.10065
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {#_|VOP新增||添加trigger|
+		exists = fromfrom
+		fromfrom = { check_variable_arithmetic = {
+			which = value:scripted_modifier_add|MODIFIER|heal_random_fleet_creature_on_death|
+			value > 0
+		} }
+	}
+
+	immediate = {
+		set_variable = {
+			which = local_heal_value
+			value = fromfrom.value:scripted_modifier_add|MODIFIER|heal_random_fleet_creature_on_death|
+		}
+		if = {
+			limit = { check_variable = { which = local_heal_value value > 0 } }
+
+			fromfrom.fleet = {
+				random_controlled_ship = {
+					limit = {
+						is_space_fauna = yes
+						NOT = { is_same_value = fromfrom }
+						has_hp_percentage < 1.0
+					}
+					repair_percentage = root.local_heal_value
+					repair_armor_percentage = root.local_heal_value
+				}
+			}
+		}
+	}
+}
+
+# Cutholoid revealed on_entering_system_fleet
+# Scope = fleet
+# From = System
+fleet_event = {
+	id = grand_archive.3030
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {#_|VOP新增||添加trigger|
+		has_grand_archive_dlc = yes
+		exists = event_target:cutholoids_country
+		controller = {
+			is_country_type = default
+			has_communications = event_target:cutholoids_country
+		}
+		from = { any_system_planet = { is_planet_class = pc_cutholoid } }
+	}
+
+	immediate = {
+		from = {
+			every_system_planet = {
+				limit = { is_planet_class = pc_cutholoid }
+				save_event_target_as = revealed_cutholoid
+				spawn_cutholoid_from_asteroid = {
+					LOCATION = event_target:revealed_cutholoid
+				}
+			}
+		}
+	}
+}
