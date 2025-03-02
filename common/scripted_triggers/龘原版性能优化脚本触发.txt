@@ -17,10 +17,10 @@ is_crisis_mod_country = {
 	OR = {
 		is_country_type = wg_crisis_country
 		is_country_type = afk_crisis_country
-		is_country_type = ag_kae_ge_invasion_country
+		is_country_type = Kuat_Galatic_Empire_invasion_country
 		is_country_type = Infinite_empire
-		is_country_type = ag_kuat_invasion_country
-		is_country_type = awakened_return_kuat_empire
+		is_country_type = eternal_fleet_country
+		is_country_type = kuat_awakened_returned_empire
 	}
 }
 
