@@ -190,21 +190,3 @@ country_event = {
 		}
 	}
 }
-
-
-namespace = PF_evt_MISC
-###[vop_ai_fixed]
-###_[pf新殖民地]
-#_<on_colonized>
-planet_event = {
-	id = PF_evt_MISC.22
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { always = no }
-	immediate = {
-		#_[迁出禁止]默认
-		remove_planet_flag = PF_flg_plnt_mig_prio
-		remove_planet_flag = PF_flg_plnt_mig_forced
-		set_planet_flag = PF_flg_plnt_mig_ignore
-	}
-}
