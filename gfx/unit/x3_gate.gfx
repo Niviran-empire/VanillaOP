@@ -13,7 +13,7 @@ objectTypes = {
 		}
 	}
 	pdxmesh = {
-		name = "x3_gate_mesh2"
+		name = "x3_gate_ship_mesh"
 		file = "gfx/unit/x3_gate.mesh"
 		scale = 1
 		meshsettings = {

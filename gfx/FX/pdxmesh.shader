@@ -4434,3 +4434,36 @@ Effect AotPlanetShieldPESkinnedShadow
 	PixelShader = "PixelPdxMeshStandardShadow"
 	Defines = { "IS_SHADOW" }
 }
+
+
+
+# // #########################################################################################################################################
+
+# // X3G Shader Effect Definitions here
+
+# // #########################################################################################################################################
+Effect PdxMeshShipHalo
+{
+	VertexShader = "VertexPdxMeshStandard"
+	PixelShader = "PixelPdxMeshShip"
+	Defines = {
+		"PDX_IMPROVED_BLINN_PHONG"
+		"RIM_LIGHT"
+		"ALPHA_TEST" 
+	}
+}
+Effect PdxMeshPlanetHalo
+{
+	VertexShader = "VertexPdxMeshStandard"
+	PixelShader = "PixelPdxMeshShip"
+	Defines = { "ALPHA_TEST" "NO_PLANET_EMISSIVE" "EMISSIVE" "PDX_IMPROVED_BLINN_PHONG" }
+}
+Effect PdxMeshNavigationButtonGate
+{
+	VertexShader = "VertexPdxMeshStandard"
+	PixelShader = "PixelPdxMeshShip"
+	Defines = {
+		"PDX_IMPROVED_BLINN_PHONG"
+	}
+	#DepthStencilState = "DepthStencilNoZWrite"
+}

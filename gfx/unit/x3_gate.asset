@@ -45,7 +45,7 @@ entity = {
 }
 entity = {
 	name = "x3_gate_entity"
-	pdxmesh = "x3_gate_mesh2"
+	pdxmesh = "x3_gate_ship_mesh"
 	scale = 7
 	cull_radius=800
 	default_state = "idle"
