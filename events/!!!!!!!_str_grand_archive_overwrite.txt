@@ -102,6 +102,7 @@ country_event = {#_|VOP新增|添加trigger
 	}
 }
 
+
 country_event = {
 	id = grand_archive.10065
 	hide_window = yes

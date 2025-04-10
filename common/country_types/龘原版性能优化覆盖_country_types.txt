@@ -41,7 +41,9 @@ default = {
 		}
 	}
 
-	trade_routes_available = { always = no }
+	trade_routes_available = {
+		is_gestalt = no
+	}
 
 	modules = {
 		standard_event_module = {}

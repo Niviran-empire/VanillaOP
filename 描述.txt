@@ -1,0 +1,28 @@
+[h1][b]Vanilla Basic Optimization[/b][/h1]
+[b]This MOD aims to improve the stability and speed of Stellaris. By optimizing the core game mechanics, players can enjoy a smoother gaming experience. Currently, the game stability has been improved by more than 75%[/b]
+[h1][b]MOD Content:[/b][/h1]
+[code]
+1. Optimize population detection efficiency
+2. Optimize ship engagement effects
+3. Optimize the burden of trade
+4. Optimize the impact of some high-consumption events
+5. Optimize instantaneous detection pressure
+6. Optimize the detection pressure of the original megastructure (excluding MOD megastructures)
+7. Optimize the detection pressure of the original storm
+8. Optimize the detection pressure of the post
+9. Optimize the detection pressure of population-related rules
+10. Optimize the detection pressure of some script variables
+[/code]
+
+[h1][b]MOD compatibility[/b][/h1]
+[code]
+1. Modified common\country_types
+2. Modified common\game_rules
+3. Modified common\on_actions
+4. Modified common\pop_categories
+5. Modified common\pop_faction_types
+6. Modified common\ethics
+7. Modified common\pop_jobs
+8. Modified common\species_rights
+[/code]
+[b]MODs related to the above changes may have some functional conflicts[/b]
