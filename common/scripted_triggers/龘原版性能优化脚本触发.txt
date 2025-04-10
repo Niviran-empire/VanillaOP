@@ -59,19 +59,13 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_1 = {
 		is_country_type = fallen_empire
 		is_country_type = awakened_fallen_empire
 
-		#is_progenitor_empires = yes
-		is_country_type = original_empire
-		is_country_type = original_empire_passive
-		is_country_type = original_empire_active		
+		#is_progenitor_empires = yes	
 	}
 }
 
 VOP_cb_CNTR_has_total_war_cb_SECTION_2 = {
 	OR = {
 		#is_progenitor_empires = yes
-		is_country_type = original_empire
-		is_country_type = original_empire_passive
-		is_country_type = original_empire_active	
 		is_country_type = awakened_fallen_empire
 		has_valid_civic = civic_hive_devouring_swarm
 		has_valid_civic = civic_machine_assimilator	
@@ -79,12 +73,7 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_2 = {
 }
 
 VOP_cb_CNTR_has_total_war_cb_SECTION_3 = {
-	OR = {
-		is_country_type = original_empire
-		is_country_type = original_empire_passive
-		is_country_type = original_empire_active		
-		is_country_type = default
-	}
+	is_country_type = default
 	NOR = {
 		# is_country_type = awakened_fallen_empire meaningless
 		has_valid_civic = civic_fanatic_purifiers
@@ -96,10 +85,6 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_3 = {
 
 VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
 	OR = {
-		#is_progenitor_empires = yes
-		is_country_type = original_empire
-		is_country_type = original_empire_passive
-		is_country_type = original_empire_active	
 		
 		#merg_is_awakened_fe = yes
 		is_country_type = awakened_fallen_empire

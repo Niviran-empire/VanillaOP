@@ -1,3 +1,0 @@
-NGameplay = {
-	TRIGGERED_MODIFIER_UPDATE_DELAY 	= 30
-}
