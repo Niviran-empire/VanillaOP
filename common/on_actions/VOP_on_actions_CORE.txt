@@ -28,9 +28,3 @@ VOP_on_five_year_pulse = {
 		vop_ai_fixed.5
 	}
 }
-
-VOP_on_monthly_pulse_country = {
-	events = {
-		vop_ai_fixed.26
-	}
-}

@@ -9,10 +9,6 @@ is_nivirana_battle_country = {
 	}
 }
 
-allows_alien_leaders = {
-	has_country_flag = enable_allows_alien_leaders
-}
-
 is_crisis_mod_country = {
 	OR = {
 		is_country_type = wg_crisis_country

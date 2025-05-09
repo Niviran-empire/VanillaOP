@@ -89,7 +89,7 @@ orbital_ring = {
 				limit = {
 					from = { is_ai = yes }
 				}
-				num_pops >= 25
+				pop_amount >= 2500
 			}
 		}
 	}
@@ -117,9 +117,6 @@ orbital_ring = {
 			create_starbase = {
 				size = orbital_ring_tier_1
 				owner = FROM
-				#module = <starbase_module>
-				#building = <starbase_building>
-				effect = { }
 			}
 		}
 		remove_megastructure = fromfrom

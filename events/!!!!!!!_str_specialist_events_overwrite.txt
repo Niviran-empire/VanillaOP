@@ -133,6 +133,7 @@ country_event = {#_|VOP新增|添加trigger
 				TIER = 2
 			}
 		}
+		from = { NOT = { leader_class = envoy } }
 	}
 
 	immediate = {

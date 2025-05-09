@@ -51,7 +51,6 @@ default = {
 		standard_leader_module = {}
 		standard_diplomacy_module = { contact_rule = does_first_contact_sites }
 		standard_technology_module = {}
-		standard_trade_routes_module = {}
 		standard_pop_factions_module = {}
 		standard_expansion_module = {}
 		standard_species_rights_module = {}
@@ -61,11 +60,11 @@ default = {
 	resources = {
 		category = country_base
 		produces = {
-			energy = 40
-			minerals = 40
-			physics_research = 20
-			society_research = 20
-			engineering_research = 20
+			energy = 20
+			minerals = 20
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
 			influence = 3
 			unity = 5
 			alloys = 5
@@ -77,7 +76,7 @@ default = {
 					has_valid_civic = civic_machine_servitor
 				}
 			}
-			consumer_goods = 10
+			consumer_goods = 15
 		}
 		produces = {
 			trigger = {
@@ -106,9 +105,11 @@ default = {
 						is_individual_machine = yes
 						has_country_flag = non_lithoid_subspecies
 					}
+					# Or have bioships
+					country_uses_bio_ships = yes
 				}
 			}
-			food = 10
+			food = 20
 		}
 		produces = {
 			trigger = {
@@ -137,21 +138,21 @@ default = {
 					}
 				}
 			}
-			minerals = 10
+			minerals = 20
 		}
 		produces = {
 			trigger = {
 				is_machine_empire = yes
 			}
-			energy = 10
+			energy = 20
 		}
 		produces = {
 			trigger = {
 				is_lithoid_empire = yes
 				has_valid_civic = civic_hive_cordyceptic_drones
 			}
-			food = 5
-			minerals = -5
+			food = 10
+			minerals = -10
 		}
 	}
 
@@ -160,7 +161,7 @@ default = {
 		category = planet_branch_offices
 		cost = {
 			energy = 1000
-			influence = 50
+			influence = 75
 		}
 	}
 }
@@ -223,7 +224,6 @@ primitive = {
 		}
 	}
 }
-
 
 fallen_empire = {
 	scaled_difficulty_bonuses = 1.0	# scales to setting
@@ -381,6 +381,8 @@ awakened_fallen_empire = {
 				action_invite_to_federation
 				action_leave_federation
 				action_kick_from_federation
+				action_build_spy_network
+				action_manage_spy_network
 			}
 			can_send = {
 				action_declare_war

@@ -26,15 +26,6 @@ country_event = {#_|VOP优化|添加trigger修改effect
 	}
 }
 
-# on_colonized, give boost modifier if "Superior Colonies" Agenda is active.
-planet_event = {#_|VOP优化|trigger禁用
-	id = paragon.403
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { always = no }
-}
-
 # on_agenda_finished "Superior Colonies", check for young Colonies that should get the boost modifier.
 country_event = {#_|VOP优化|添加trigger修改effect
 	id = paragon.404
@@ -43,19 +34,37 @@ country_event = {#_|VOP优化|添加trigger修改effect
 
 	trigger = {
 		is_ai = no
-		has_modifier = agenda_superior_colonies_finish
+		OR = {
+			has_modifier = agenda_superior_colonies_finish
+			has_modifier = agenda_superior_colonies_finish_wilderness
+		}
 	}
 
 	immediate = {
-		every_planet_within_border = {
+		if = {
+			# Not necessarily the last finished Agenda, but checking if it's active does the job.
 			limit = {
-				is_colony = yes
-				is_owned_by = root
-				NOT = { has_modifier = agenda_superior_colonies_planet_boost }
+				owner = {
+					OR = {
+						has_modifier = agenda_superior_colonies_finish
+						has_modifier = agenda_superior_colonies_finish_wilderness
+					}
+				}
 			}
-			add_modifier = {
-				modifier = agenda_superior_colonies_planet_boost
-				days = @agenda_finish_modifier_duration
+			# Check all our Colonies if they were founded last 10 years (has can_be_boosted flag).
+			every_system_within_border = {
+				every_system_planet = {
+					limit = {
+						is_colony = yes
+						is_owned_by = root.owner
+						has_planet_flag = superior_colonies_can_be_boosted
+					}
+					remove_planet_flag = superior_colonies_can_be_boosted
+					add_modifier = {
+						modifier = agenda_superior_colonies_planet_boost
+						days = @agenda_finish_modifier_duration
+					}
+				}
 			}
 		}
 	}
