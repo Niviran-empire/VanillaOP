@@ -11,7 +11,9 @@
 
 # This = pop
 pop_group_generates_crime = {
-	always = no
+	is_sapient = yes
+	is_non_sapient_robot = no
+	is_being_assimilated = no
 }
 
 # this = system
