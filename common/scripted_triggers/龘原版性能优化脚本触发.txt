@@ -1,25 +1,3 @@
-is_nivirana_battle_country = {
-	OR = {
-		is_country_type = ai_empire
-		is_country_type = extradimensional
-		is_country_type = extradimensional_2
-		is_country_type = extradimensional_3
-		is_country_type = swarm
-		is_crisis_mod_country = yes
-	}
-}
-
-is_crisis_mod_country = {
-	OR = {
-		is_country_type = wg_crisis_country
-		is_country_type = afk_crisis_country
-		is_country_type = Kuat_Galatic_Empire_invasion_country
-		is_country_type = Infinite_empire
-		is_country_type = eternal_fleet_country
-		is_country_type = kuat_awakened_returned_empire
-	}
-}
-
 has_food_upkeep = {
 	species = {
 		has_species_flag = can_has_food_upkeep
@@ -88,31 +66,6 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
 		has_valid_civic = civic_hive_devouring_swarm
 		has_valid_civic = civic_machine_assimilator
 		has_valid_civic = civic_machine_terminator
-	}
-}
-
-can_have_food_upkeep_species = {
-	OR = {
-		is_archetype = BIOLOGICAL
-		is_archetype = STARSHIPGIRLS
-		is_archetype = Dolls
-		is_archetype = DEITY
-		is_archetype = ASCENDED
-		is_archetype = KANSEN
-		is_archetype = NYTO
-		is_archetype = KZ_VOY_TERRAN_DESCENDANT
-		is_archetype = KZ_VOY_TERRAN_GAIA
-		is_archetype = WARSHIPGIRL
-		is_archetype = SHENHAI
-		is_archetype = NANITES_CROP
-		is_archetype = UNITED_FLEET
-		is_archetype = TOUHOUGIRLS
-		is_archetype = KANMUSU
-		is_archetype = SHINKAI
-		is_archetype = GENSO_POP
-		is_archetype = REMILIA
-		is_archetype = LITTLE_DEVIL
-		is_archetype = SFDOLL
 	}
 }
 

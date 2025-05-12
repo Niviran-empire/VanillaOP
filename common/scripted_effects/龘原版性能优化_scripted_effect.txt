@@ -77,7 +77,30 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 vop_optimaze_game_rule_can_has_food_upkeep = {
 	remove_species_flag = can_has_food_upkeep
 	if = {
-		limit = { can_have_food_upkeep_species = yes }
+		limit = {  
+			OR = {
+				is_archetype = BIOLOGICAL
+				is_archetype = STARSHIPGIRLS
+				is_archetype = Dolls
+				is_archetype = DEITY
+				is_archetype = ASCENDED
+				is_archetype = KANSEN
+				is_archetype = NYTO
+				is_archetype = KZ_VOY_TERRAN_DESCENDANT
+				is_archetype = KZ_VOY_TERRAN_GAIA
+				is_archetype = WARSHIPGIRL
+				is_archetype = SHENHAI
+				is_archetype = NANITES_CROP
+				is_archetype = UNITED_FLEET
+				is_archetype = TOUHOUGIRLS
+				is_archetype = KANMUSU
+				is_archetype = SHINKAI
+				is_archetype = GENSO_POP
+				is_archetype = REMILIA
+				is_archetype = LITTLE_DEVIL
+				is_archetype = SFDOLL
+			}
+		}
 		set_species_flag = can_has_food_upkeep
 	} 
 }
@@ -209,31 +232,6 @@ vop_optimaze_war_goals = {
 	if = {
 		limit = { VOP_cb_CNTR_has_total_war_cb_SECTION_4 = yes }
 		set_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4
-	}
-}
-
-#种族总控
-vop_optimaze_event_species_caculation = {
-	every_galaxy_species = {
-		#happiniess species
-		vop_optimaze_game_rule_can_has_food_upkeep = yes
-	}
-}
-
-#星球总控
-vop_optimaze_event_planet_caculation = {
-	every_galaxy_planet = {
-		limit = { is_colony = yes }
-		vop_optimaze_game_rule_is_new_colony = yes
-	}
-}
-
-#人口组总控
-vop_optimaze_event_pop_group_ruler_caculation = {
-	every_owned_pop_group = {
-		vop_optimaze_game_rule_can_vote_in_democratic_election = yes
-		vop_optimaze_game_rule_pop_has_random_ethics = yes
-		vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 	}
 }
 

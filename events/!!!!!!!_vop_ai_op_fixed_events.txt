@@ -36,10 +36,19 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
-			vop_optimaze_event_pop_group_ruler_caculation = yes
+			every_owned_pop_group = {
+				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+				vop_optimaze_game_rule_pop_has_random_ethics = yes
+				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+			}
 		}
-		vop_optimaze_event_species_caculation = yes #spciese event
-		vop_optimaze_event_planet_caculation = yes # planet events
+		every_galaxy_species = {
+			vop_optimaze_game_rule_can_has_food_upkeep = yes
+		}
+		every_galaxy_planet = {
+			limit = { is_colony = yes }
+			vop_optimaze_game_rule_is_new_colony = yes
+		}
 	}
 }
 event = {
@@ -60,10 +69,19 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
-			vop_optimaze_event_pop_group_ruler_caculation = yes
+			every_owned_pop_group = {
+				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+				vop_optimaze_game_rule_pop_has_random_ethics = yes
+				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+			}
 		}
-		vop_optimaze_event_species_caculation = yes #spciese event
-		vop_optimaze_event_planet_caculation = yes # planet events
+		every_galaxy_species = {
+			vop_optimaze_game_rule_can_has_food_upkeep = yes
+		}
+		every_galaxy_planet = {
+			limit = { is_colony = yes }
+			vop_optimaze_game_rule_is_new_colony = yes
+		}
 		set_update_modifiers_batch = end
 	}
 }
