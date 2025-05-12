@@ -36,6 +36,7 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
+			vop_optimaze_event_pop_group_ruler_caculation = yes
 		}
 		vop_optimaze_event_species_caculation = yes #spciese event
 		vop_optimaze_event_planet_caculation = yes # planet events
@@ -59,6 +60,7 @@ event = {
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
 			vop_optimaze_enclave_2065 = yes # enclave 2065
+			vop_optimaze_event_pop_group_ruler_caculation = yes
 		}
 		vop_optimaze_event_species_caculation = yes #spciese event
 		vop_optimaze_event_planet_caculation = yes # planet events

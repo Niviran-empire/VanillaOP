@@ -35,14 +35,14 @@ pop_group_has_random_ethics = {
 
 #Root = country
 #This = pop
-can_generate_military_leader_from_pop = {
+can_generate_military_leader_from_pop_group = {
 	has_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 }
 
 #Checks whether any leaders (scientists etc) can be formed from this pop
 #Root = country
 #This = pop
-can_generate_leader_from_pop = {
+can_generate_leader_from_pop_group = {
 	has_pop_group_flag = can_enable_can_generate_leader_from_pop
 }
 

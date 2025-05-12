@@ -31,7 +31,6 @@ vop_optimaze_game_rule_can_vote_in_democratic_election = {
 		set_pop_group_flag = can_enable_pop_election_vote
 	}
 }
-
 vop_optimaze_game_rule_pop_has_random_ethics = {
 	remove_pop_group_flag = can_enable_pop_has_random_ethics
 	if = {
@@ -45,12 +44,9 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	if = {
 		limit = { 
 			has_citizenship_rights = yes
-			NOR = {
-				has_trait = trait_syncretic_proles
-				can_think = no
-			}
+			can_think = no
 			OR = {
-				is_robot_pop = no
+				is_robot_pop_group = no
 				owner = {
 					OR = {
 						has_technology = tech_synthetic_leaders
@@ -77,6 +73,7 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 		set_pop_group_flag = can_enable_can_generate_leader_from_pop
 	}
 }
+#species
 vop_optimaze_game_rule_can_has_food_upkeep = {
 	remove_species_flag = can_has_food_upkeep
 	if = {
@@ -228,6 +225,15 @@ vop_optimaze_event_planet_caculation = {
 	every_galaxy_planet = {
 		limit = { is_colony = yes }
 		vop_optimaze_game_rule_is_new_colony = yes
+	}
+}
+
+#人口组总控
+vop_optimaze_event_pop_group_ruler_caculation = {
+	every_owned_pop_group = {
+		vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+		vop_optimaze_game_rule_pop_has_random_ethics = yes
+		vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 	}
 }
 
