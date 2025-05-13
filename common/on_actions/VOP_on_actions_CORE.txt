@@ -17,10 +17,12 @@ on_single_player_save_game_load = {
 #		}
 #	}
 
-#	VOP_on_yearly_pulse_country = {
-#		events = {
-#		}
-#	}
+VOP_on_yearly_pulse_country = {
+	events = {
+		vop_ai_fixed.26
+		vop_ai_fixed.27
+	}
+}
 
 # No scope, like on_game_start
 VOP_on_five_year_pulse = {

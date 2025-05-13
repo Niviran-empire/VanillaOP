@@ -1,0 +1,113 @@
+namespace = bio
+planet_event = {#_|VOP优化|添加trigger 只允许玩家
+	id = bio.755
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		sapient_pop_amount > 100
+		fromfrom = {
+			has_trait = trait_nascent_stage
+		}
+		from = { is_ai = no }
+	}
+
+	immediate = {
+		fromfrom = {
+			species = {
+				save_event_target_as = nascent_stage_source_species
+			}
+		}
+		if = {
+			limit = {
+				NOT = { exists = event_target:nascent_stage_species@fromfrom.species }
+			}
+			fromfrom = {
+				modify_species = {
+					species = species
+					add_trait = trait_presapient_stage
+					inherit_parent_rights = yes
+					sapient = no
+					change_scoped_species = no
+					effect = {
+						save_global_event_target_as = nascent_stage_species@event_target:nascent_stage_source_species
+					}
+				}
+			}
+		}
+		create_pop_group = {
+			pop_group = fromfrom
+			species = event_target:nascent_stage_species@event_target:nascent_stage_source_species
+			size = 0
+			effect = {
+				transfer_pop_amount = {
+					source = root.fromfrom
+					target = this
+					amount = root.local_pop_amount
+				}
+			}
+		}
+	}
+}
+
+
+namespace = country
+country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
+	id = country.2050
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = { always = no }
+
+	immediate = {
+		if = {
+			limit = {
+				has_policy_flag = eternal_vigilance_full_spending
+			}
+			every_owned_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				spawn_free_defense_platform = yes
+			}
+			every_owned_nonprimary_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				spawn_free_defense_platform = yes
+			}
+
+		}
+		else_if = {
+			limit = {
+				has_policy_flag = eternal_vigilance_half_spending
+			}
+			every_owned_starbase = {
+				limit = {
+					is_starbase_type = sfortress
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				spawn_free_defense_platform = yes
+			}
+			every_owned_nonprimary_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					OR = {
+						is_starbase_type = sorbital_fortress
+						is_starbase_type = sdeepspacecitadel
+					}
+					used_defense_platform_capacity_percent < 0.5
+				}
+				spawn_free_defense_platform = yes
+			}
+		}
+		country_event = {
+			id = country.2050
+			days = 180
+		}
+	}
+}

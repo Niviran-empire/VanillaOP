@@ -82,26 +82,92 @@ event = {
 			limit = { is_colony = yes }
 			vop_optimaze_game_rule_is_new_colony = yes
 		}
+		every_galaxy_fleet = {
+			limit = {
+				exists = owner
+				owner = { is_ai = yes }
+				any_owned_ship = { is_ship_size = military_station_small }
+			}
+			every_owned_ship = {
+				limit = { is_ship_size = military_station_small }
+				destroy_ship = this
+			}
+		}
 		set_update_modifiers_batch = end
 	}
 }
 
-# country_event = {
-# 	id = vop_ai_fixed.26
-# 	hide_window = yes
-# 	is_triggered_only = yes
-# 	trigger = { 
-# 		is_ai = yes
-# 		check_variable_arithmetic = { which = modifier:country_resource_max_add value >= 100000 }
-# 		OR = {
-# 			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-# 			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-# 			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-# 		}
-# 	}
-# 	immediate = { 
-# 		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
-# 		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
-# 		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-# 	}
-# }
+country_event = {
+	id = vop_ai_fixed.26
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { 
+		is_ai = yes
+		check_variable_arithmetic = { which = modifier:country_resource_max_add value >= 100000 }
+		OR = {
+			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
+			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
+		}
+	}
+	immediate = { 
+		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
+		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
+	}
+}
+
+country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
+	id = vop_ai_fixed.27
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		is_ai = no
+		has_ascension_perk = ap_eternal_vigilance
+	}
+	immediate = {
+		if = {
+			limit = {
+				has_policy_flag = eternal_vigilance_full_spending
+			}
+			every_owned_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				while = { count = 2 spawn_free_defense_platform = yes }
+			}
+			every_owned_nonprimary_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				while = { count = 2 spawn_free_defense_platform = yes }
+			}
+		}
+		else_if = {
+			limit = {
+				has_policy_flag = eternal_vigilance_half_spending
+			}
+			every_owned_starbase = {
+				limit = {
+					is_starbase_type = sfortress
+					fleet = { is_in_combat = no }
+					used_defense_platform_capacity_percent < 0.5
+				}
+				while = { count = 2 spawn_free_defense_platform = yes }
+			}
+			every_owned_nonprimary_starbase = {
+				limit = {
+					fleet = { is_in_combat = no }
+					OR = {
+						is_starbase_type = sorbital_fortress
+						is_starbase_type = sdeepspacecitadel
+					}
+					used_defense_platform_capacity_percent < 0.5
+				}
+				while = { count = 2 spawn_free_defense_platform = yes }
+			}
+		}
+	}
+}

@@ -69,3 +69,180 @@ country_event = {#_|VOP优化|添加trigger修改effect
 		}
 	}
 }
+
+country_event = {#_|VOP优化|添加trigger 只允许玩家
+	id = paragon.549
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		OR = {
+			has_paragon_dlc = yes
+			AND = {
+				has_origin = origin_evolutionary_predators
+				is_imperial_authority = yes
+				is_mutation_authority = yes
+			}
+		}
+		is_country_type = default
+		exists = from
+		from = {
+			is_pool_leader = no
+			NOT = { leader_class = envoy }
+			leader_years_of_service >= 2
+			NOT = {
+				has_leader_flag = leader_death_events_blocked
+			}
+			OR = {
+				has_base_skill >= 4
+				is_ruler = yes
+				has_leader_flag = renowned_leader
+				has_leader_flag = legendary_leader
+			}
+		}
+	}
+
+	immediate = {
+		random_list = {
+			80 = { # Do nothing
+				# Rulers should almost always get a funeral
+				modifier = {
+					factor = 0
+					from = { is_ruler = yes }
+				}
+				# Make repeated funerals less likely
+				modifier = {
+					factor = 5
+					has_country_flag = recently_had_leader_funeral
+				}
+			}
+			0 = { # Funeral event
+				# Rulers should almost always get a funeral
+				modifier = {
+					add = 1000
+					from = { is_ruler = yes }
+				}
+
+				# Slightly increase odds for more interesting leaders
+				modifier = {
+					add = 10
+					from = { is_councilor = yes }
+				}
+				modifier = {
+					add = 10
+					from = { has_leader_flag = renowned_leader }
+				}
+				modifier = {
+					add = 20
+					from = { has_leader_flag = legendary_leader }
+				}
+
+				# Increase chance for leaders of higher level
+				modifier = {
+					add = 10
+					from = { has_base_skill >= 4 }
+				}
+				modifier = {
+					add = 20
+					from = { has_base_skill >= 6 }
+				}
+				modifier = {
+					add = 30
+					from = { has_base_skill >= 8 }
+				}
+				modifier = {
+					add = 40
+					from = { has_base_skill >= 10 }
+				}
+
+				# Increase chance for leaders that have served the country for a long time
+				modifier = {
+					add = 10
+					from = { leader_years_of_service >= 10 }
+				}
+				modifier = {
+					add = 50
+					from = { leader_years_of_service >= 25 }
+				}
+				modifier = {
+					add = 100
+					from = { leader_years_of_service >= 50 }
+				}
+				modifier = {
+					add = 300
+					from = { leader_years_of_service >= 100 }
+				}
+
+				set_timed_country_flag = {
+					flag = recently_had_leader_funeral
+					years = 5
+				}
+
+				# Make a clone since the original is going to be deleted before any followup event is triggered.
+				create_country = {
+					name = "NAME_dead_leader_country"
+					type = faction
+					auto_delete = yes
+				}
+				last_created_country = {
+					clone_leader = {
+						target = from
+						effect = {
+							set_immortal = yes
+							save_event_target_as = dead_leader_clone
+						}
+					}
+				}
+				last_created_leader = {
+					set_owner = root
+					# This is a hack to make the leader not be added to player country.
+					# We must kill the leader once the event chain is done
+					exile_leader_as = dead_leader_clone_exile
+					set_years_served = from # Copy years served from the original
+					if = {
+						limit = {
+							from = { is_ruler = yes }
+						}
+						set_leader_flag = was_ruler_before_death
+					}
+				}
+
+				if = {
+					limit = {
+						is_gestalt = no
+					}
+					from = { set_leader_flag = use_unspecific_death_reason }
+					country_event = { id = paragon.550 scopes = { from = event_target:dead_leader_clone } }
+				}
+				else_if = {
+					limit = {
+						is_hive_empire = yes
+					}
+					from = { set_leader_flag = use_unspecific_death_reason }
+					country_event = { id = paragon.571 scopes = { from = event_target:dead_leader_clone } }
+				}
+				else_if = {
+					limit = {
+						from = {
+							species = {
+								or = {
+									is_species_class = ROBOT
+									is_species_class = MACHINE
+								}
+							}
+						}
+					}
+					from = { set_leader_flag = use_unspecific_death_reason }
+					country_event = { id = paragon.570 scopes = { from = event_target:dead_leader_clone } }
+				}
+				else = {
+					# Clean up the clone since we aren't using it.
+					event_target:dead_leader_clone = {
+						kill_leader = { show_notification = no }
+					}
+				}
+			}
+		}
+	}
+}
