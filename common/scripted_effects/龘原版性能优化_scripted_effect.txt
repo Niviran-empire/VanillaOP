@@ -31,6 +31,13 @@ vop_optimaze_game_rule_can_vote_in_democratic_election = {
 		set_pop_group_flag = can_enable_pop_election_vote
 	}
 }
+vop_optimaze_game_rule_pop_has_random_ethics = {
+	remove_pop_group_flag = can_enable_pop_has_random_ethics
+	if = {
+		limit = { NOT = { has_citizenship_type = { country = owner type = citizenship_organic_trophy } } }
+		set_pop_group_flag = can_enable_pop_has_random_ethics
+	}
+}
 vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	remove_pop_group_flag = can_enable_can_generate_leader_from_pop
 	remove_pop_group_flag = can_enable_can_generate_military_leader_from_pop

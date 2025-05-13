@@ -38,6 +38,7 @@ event = {
 			vop_optimaze_enclave_2065 = yes # enclave 2065
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			}
 		}
@@ -70,6 +71,7 @@ event = {
 			vop_optimaze_enclave_2065 = yes # enclave 2065
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			}
 		}
