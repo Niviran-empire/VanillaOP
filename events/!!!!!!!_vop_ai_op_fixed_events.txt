@@ -41,6 +41,10 @@ event = {
 				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			}
+			if = {
+				limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
+				add_modifier = { modifier = pop_unemployment_demotion_time_mult multiplier = -1 }
+			}
 		}
 		every_galaxy_species = {
 			vop_optimaze_game_rule_can_has_food_upkeep = yes
@@ -73,6 +77,10 @@ event = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+			}
+			if = {
+				limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
+				add_modifier = { modifier = pop_unemployment_demotion_time_mult multiplier = -1 }
 			}
 		}
 		every_galaxy_species = {
