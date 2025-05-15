@@ -43,6 +43,7 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	remove_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 	if = {
 		limit = { 
+			exists = owner
 			has_citizenship_rights = yes
 			can_think = yes
 			OR = {
@@ -77,30 +78,7 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 vop_optimaze_game_rule_can_has_food_upkeep = {
 	remove_species_flag = can_has_food_upkeep
 	if = {
-		limit = {  
-			OR = {
-				is_archetype = BIOLOGICAL
-				is_archetype = STARSHIPGIRLS
-				is_archetype = Dolls
-				is_archetype = DEITY
-				is_archetype = ASCENDED
-				is_archetype = KANSEN
-				is_archetype = NYTO
-				is_archetype = KZ_VOY_TERRAN_DESCENDANT
-				is_archetype = KZ_VOY_TERRAN_GAIA
-				is_archetype = WARSHIPGIRL
-				is_archetype = SHENHAI
-				is_archetype = NANITES_CROP
-				is_archetype = UNITED_FLEET
-				is_archetype = TOUHOUGIRLS
-				is_archetype = KANMUSU
-				is_archetype = SHINKAI
-				is_archetype = GENSO_POP
-				is_archetype = REMILIA
-				is_archetype = LITTLE_DEVIL
-				is_archetype = SFDOLL
-			}
-		}
+		limit = { is_archetype = BIOLOGICAL }
 		set_species_flag = can_has_food_upkeep
 	} 
 }

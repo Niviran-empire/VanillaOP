@@ -1,6 +1,11 @@
 on_game_start = {
 	events = {
 		vop_ai_fixed.1
+	}
+}
+
+on_game_start_country = {
+	events = {
 		vop_ai_fixed.6
 	}
 }
@@ -8,14 +13,8 @@ on_game_start = {
 on_single_player_save_game_load = {
 	events = {
 		vop_ai_fixed.1
-		vop_ai_fixed.6
 	}
 }
-
-#	on_tech_increased = {
-#		events = {
-#		}
-#	}
 
 VOP_on_yearly_pulse_country = {
 	events = {
@@ -25,7 +24,7 @@ VOP_on_yearly_pulse_country = {
 }
 
 # No scope, like on_game_start
-VOP_on_five_year_pulse = {
+VOP_on_bi_yearly_pulse_country = {
 	events = {
 		vop_ai_fixed.5
 	}
