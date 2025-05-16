@@ -76,7 +76,7 @@ event = {
 }
 
 # Monthly unity gain from low health ships affected by Particle Storm (see on_monthly_pulse)
-event = {
+event = { #_|VOP优化|	禁用,直接覆盖风暴属性实现
 	id = cstorms.1050
 	hide_window = yes
 	is_triggered_only = yes
@@ -115,7 +115,7 @@ event = {
 }
 
 # Cosmic Storms monthly affects
-event = {
+event = { #_|VOP优化|	禁用,直接覆盖风暴属性实现
 	id = cstorms.1100
 	hide_window = yes
 	is_triggered_only = yes

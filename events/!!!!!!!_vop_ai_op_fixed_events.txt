@@ -34,7 +34,11 @@ event = {
 			}
 		}
 		every_galaxy_species = {
+			vop_optimaze_game_rule_can_is_phototrophic = yes
 			vop_optimaze_game_rule_can_has_food_upkeep = yes
+			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
+			vop_optimaze_game_rule_can_has_energy_upkeep = yes
+			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_galaxy_planet = {
 			limit = { is_colony = yes }
@@ -82,7 +86,11 @@ event = {
 			}
 		}
 		every_galaxy_species = {
+			vop_optimaze_game_rule_can_is_phototrophic = yes
 			vop_optimaze_game_rule_can_has_food_upkeep = yes
+			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
+			vop_optimaze_game_rule_can_has_energy_upkeep = yes
+			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_galaxy_planet = {
 			limit = { is_colony = yes }
@@ -113,7 +121,11 @@ country_event = {
 			add_modifier = { modifier = pop_unemployment_demotion_time_mult multiplier = -1 }
 		}
 		every_owned_species = {
+			vop_optimaze_game_rule_can_is_phototrophic = yes
 			vop_optimaze_game_rule_can_has_food_upkeep = yes
+			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
+			vop_optimaze_game_rule_can_has_energy_upkeep = yes
+			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_owned_planet = {
 			limit = { is_colony = yes }
@@ -122,7 +134,7 @@ country_event = {
 	}
 }
 
-country_event = {
+country_event = {#_|VOP优化|AI资源储存性能
 	id = vop_ai_fixed.26
 	hide_window = yes
 	is_triggered_only = yes
@@ -193,6 +205,108 @@ country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
 				}
 				while = { count = 2 spawn_free_defense_platform = yes }
 			}
+		}
+	}
+}
+
+country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
+	id = vop_ai_fixed.28
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = {
+		has_crisis_level = crisis_behemoth_level_5
+		exists = capital_scope
+		capital_scope = {
+			pop_amount > 500
+			OR = {
+				num_assigned_jobs = { job = transference_volunteer value > 0 }
+				num_assigned_jobs = { job = transference_drone value > 0 }
+			}
+		}
+	}
+	immediate = {
+		capital_scope = {
+			owner = {
+				if = {
+					limit = {
+						is_gestalt = no
+					}
+					export_trigger_value_to_variable = {
+						#Kill 10% rounded up
+						trigger = num_assigned_jobs
+						parameters = {
+							job = transference_volunteer
+						}
+						variable = num_transference_jobs_var
+					}
+					divide_variable = {
+						which = num_transference_jobs_var
+						value = 5
+					}
+					ceiling_variable = num_transference_jobs_var
+				}
+				if = {
+					limit = {
+						is_gestalt = yes
+					}
+					export_trigger_value_to_variable = {
+						#Kill 20% rounded up
+						trigger = num_assigned_jobs
+						parameters = {
+							job = transference_drone
+						}
+						variable = num_transference_jobs_var
+					}
+					divide_variable = {
+						which = num_transference_jobs_var
+						value = 5
+					}
+					ceiling_variable = num_transference_jobs_var
+				}
+			}
+			while = {
+				count = owner.num_transference_jobs_var
+				random_owned_pop_job = {
+					limit = {
+						has_job_type = transference_volunteer
+					}
+					kill_assigned_pop_amount = { amount = 1 }
+				}
+				random_owned_pop_job = {
+					limit = {
+						has_job_type = transference_drone
+					}
+					kill_assigned_pop_amount = { amount = 1 }
+				}
+			}
+			owner = {
+				create_message = {
+					type = MESSAGE_POPS_TRANSFERRED
+					localization = MESSAGE_POPS_TRANSFERRED_DESC
+					days = @toast_message_days
+					target = root
+					variable = {
+						type = variable
+						varname = num_transference_jobs_var
+						localization = VALUE
+						scope = root
+					}
+				}
+			}
+		}
+		change_variable = {
+			which = pops_transferred
+			value = num_transference_jobs_var
+		}
+		country_event = {
+			id = biocrisis.255
+			days = 180
+		}
+	}
+	after = {
+		set_variable = {
+			which = num_transference_jobs_var
+			value = 0
 		}
 	}
 }

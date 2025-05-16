@@ -75,11 +75,64 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	}
 }
 #species
+vop_optimaze_game_rule_can_is_phototrophic = {
+	remove_species_flag = can_is_phototrophic
+	if = {
+		limit = { 
+			OR = {
+				has_trait = trait_plantoid_phototrophic
+				has_trait = trait_plantoid_radiotrophic
+			}
+		}
+		set_species_flag = can_is_phototrophic
+	} 
+}
 vop_optimaze_game_rule_can_has_food_upkeep = {
 	remove_species_flag = can_has_food_upkeep
 	if = {
-		limit = { is_archetype = BIOLOGICAL }
+		limit = { 
+			is_archetype = BIOLOGICAL 
+			NOT = { has_trait = trait_voidling }
+		}
 		set_species_flag = can_has_food_upkeep
+	} 
+}
+vop_optimaze_game_rule_can_has_mineral_upkeep = {
+	remove_species_flag = can_has_mineral_upkeep
+	if = {
+		limit = { 
+			is_archetype = LITHOID
+			NOT = { has_trait = trait_voidling }
+		}
+		set_species_flag = can_has_mineral_upkeep
+	} 
+}
+vop_optimaze_game_rule_can_has_energy_upkeep = {
+	remove_species_flag = can_has_energy_upkeep
+	if = {
+		limit = { 
+			OR = {
+				is_robotic_or_voidspawn_species = yes
+				has_trait = trait_cyborg_power_intensive
+				has_trait = trait_exd
+			}
+		}
+		set_species_flag = can_has_energy_upkeep
+	} 
+}
+vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = {
+	remove_species_flag = can_has_phototrophic_energy_upkeep
+	if = {
+		limit = { 
+			OR = {
+				has_trait = trait_plantoid_phototrophic
+				AND = {
+					has_trait = trait_plantoid_radiotrophic
+					NOT = { planet = { is_planet_class = pc_nuked } }
+				}
+			}
+		}
+		set_species_flag = can_has_phototrophic_energy_upkeep
 	} 
 }
 #planet
