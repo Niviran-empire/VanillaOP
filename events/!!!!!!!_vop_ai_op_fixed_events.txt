@@ -298,10 +298,6 @@ country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
 			which = pops_transferred
 			value = num_transference_jobs_var
 		}
-		country_event = {
-			id = biocrisis.255
-			days = 180
-		}
 	}
 	after = {
 		set_variable = {
