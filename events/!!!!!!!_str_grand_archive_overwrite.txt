@@ -48,6 +48,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {#_|VOP新增|添加trigger
+		exists = fromfrom
 		fromfrom = { check_modifier_value = { modifier = damage_random_nearby_enemy_on_death	value > 0 } }
 	}
 

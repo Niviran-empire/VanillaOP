@@ -9,6 +9,7 @@ planet_event = {#添加trigger
 	is_triggered_only = yes
 	
 	trigger = {#_|VOP新增|
+		exists = owner
 		owner = {
 			OR = {
 				has_agenda_selected = agenda_superior_colonies	#agenda_superior_colonies_finish
