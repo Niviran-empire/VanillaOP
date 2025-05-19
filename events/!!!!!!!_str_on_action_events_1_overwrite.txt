@@ -1,4 +1,4 @@
-#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\on_action_events_1.txt		action.64/action.85/action.90/
+#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\on_action_events_1.txt		action.85
 namespace = action
 
 
@@ -57,77 +57,6 @@ event = {#_|VOP优化|修改trigger
 				}
 			}
 			planet_event = { id = action.86 } # planet flips to starbase owner
-		}
-	}
-}
-
-namespace = pirate
-# Pirates Sighted On Action
-event = {
-	id = pirate.48
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	trigger = {
-		any_country = {
-			has_country_flag = birth_of_piracy
-			NOT = { has_country_flag = pirates_spawned }
-			any_system_within_border = {
-				any_system_planet = {
-					planet_resource_compare = {
-						resource = trade
-						value > 100
-					}
-				}
-			}
-		}
-	}
-
-	immediate = {
-		every_playable_country = {
-			limit = {
-				has_country_flag = birth_of_piracy
-				NOT = { has_country_flag = pirates_spawned }
-				any_system_within_border = {
-					any_system_planet = {
-						planet_resource_compare = {
-							resource = trade
-							value > 100
-						}
-					}
-				}
-			}
-			country_event = { id = pirate.49 }
-		}
-	}
-}
-
-event = {
-	id = pirate.4
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		any_country = {
-			NOT = { has_country_flag = birth_of_piracy }
-			has_monthly_income = {
-				resource = trade
-				value > 100
-			}
-		}
-	}
-
-	immediate = {
-		every_playable_country = {
-			limit = {
-				NOT = { has_country_flag = birth_of_piracy }
-				has_monthly_income = {
-					resource = trade
-					value > 100
-				}
-			}
-			country_event = { id = pirate.5 }
 		}
 	}
 }

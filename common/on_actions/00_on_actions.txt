@@ -1,4 +1,4 @@
-#_|VOP优化	/VOP转出/VOP转入	/VOP新增|
+#_|VOP优化	/VOP转出/VOP转入	/VOP新增|	VOP_=10个
 
 
 # Triggers when the game starts
@@ -91,7 +91,7 @@ VOP_on_monthly_pulse = {
 		marauder.151			# AI hires Marauder mercs
 		action.92				# make sure the swarm infests
 		action.93				# make sure extradimensionals have no planets
-		action.90				# rebuild outpost for orphaned colonies	#_|VOP优化|修改trigger
+		action.90				# rebuild outpost for orphaned colonies
 		apoc.301
 		distar.1082
 		distar.5014
@@ -251,7 +251,7 @@ VOP_on_yearly_pulse = {
 		crisis.8043		# Synth Queen Speech 2 setup
 		grand_archive.3001	# Cutholoid Respawn
 
-		##	|VOP转入|
+		##	|VOP转入|月检
 		cstorms.1000			# Cosmic Storms unity per system/planet
 	}
 }
@@ -286,7 +286,7 @@ VOP_on_decade_pulse = {
 	events = {
 		galactic_features.362 # Space fauna respawn
 		utopia.50		# Science Nexus (Think Tank) events
-#		syndaw.10		# machine leader malfunction chance #|原版禁用|
+#		syndaw.10		# machine leader malfunction chance
 		syndaw.400		# machine uprising + warning events
 		galcom.14		# check if anyone's missing an invite to the Galactic Community
 		drones.100		# Ancient Mining Drone Expansion Fleet setup (unclaimed systems)
@@ -349,8 +349,7 @@ VOP_on_monthly_pulse_country = {
 		ancrel.9902			# Archaoetech - Zro deficit ends - enable storm casters
 		ancrel.9906			# Archaoetech - Zro deficit starts - disable storm casters
 		paragon.6030		# Checks if your leader has enough zro to eat
-	#	action.720			#Void Hive Build Station		|VOP转出|1年
-	#	megastructures.50	# Habitat Orbital Restored		|VOP转出|1年
+	#	action.720			# Void Hive Build Station		|VOP转出|1年
 	#	astral_planes.1690	# Mirrored Empire setup			|VOP转出|1年
 	#	leader.300			# Favor Maker Councilor Trait	|VOP转出|1年
 		paragon.605			# Spawn Gestalt Nodes if any are missing
@@ -389,10 +388,10 @@ VOP_on_yearly_pulse_country = {
 		origin.5047		 		# Broken Shackles - Complimentary Thinking
 		origin.5041				# Broken Shackles - Factions Founded
 		origin.5011 			# Broken Shackles - Homesick Alternate
-		#paragon_2.1020 			# Galactic Paragons negative leader trait event. |VOP转出|5年
+	#	paragon_2.1020 			# Galactic Paragons negative leader trait event.	|VOP转出|5年
 		paragon.5955 			# Luminary Age Check
 		paragon.5960 			# Utility event for players continuing their old save
-		#action.2000				# Caravaneers random events gatekeeper |VOP优化|禁用全触发器
+	#	action.2000				# Caravaneers random events gatekeeper	|VOP优化|触发事件禁用+全部转入<年度random>
 		fallen_empires_tasks.10 # Fallen Empire task Failure - timer ran out (previously: MTTH 12 months)
 		grand_archive.1100 		# Primal Calling origin - Revealing the Voidworm Nests
 		timeline.33				# Milestone Game End
@@ -400,15 +399,14 @@ VOP_on_yearly_pulse_country = {
 		biocrisis.115 #Make sure Behemoths are angry
 		unplugged.4000 # Gatekeeper event for early Pop Factions
 		biocrisis.190 	# Behemoth Victory
-		
-		##	|VOP转入|1月	来自<月度国家>
+
+		##	|VOP转入|		来自<月度国家>
 		paragon.5034
 		paragon.5037
-		action.720			#Void Hive Build Station
-		megastructures.50	# Habitat Orbital Restored
+		action.720			# Void Hive Build Station
 		astral_planes.1690  # Mirrored Empire setup
 		leader.300			# Favor Maker Councilor Trait
-		##	|VOP转入|	来自<月度国家random>	从|每月25%|改为|每年100%|
+		##	|VOP转入|		来自<月度国家random>	从|每月25%|改为|每年100%|
 		origin.7300			# Fruitful origin - luring space fauna to feeding stations
 	}
 	#	|VOP转入|	来自<on_yearly_random_pulse_country_caravaneers_list>
@@ -422,7 +420,7 @@ VOP_on_yearly_pulse_country = {
 	}
 }
 
-###	|VOP转出|触发事件已禁用
+###	|VOP转出|	触发事件禁用[action.2000]+全部转入<年度random>
 # this = country, fired via action.2001 from on_yearly_pulse_country
 on_yearly_random_pulse_country_caravaneers_list = {
 	random_events = {
@@ -462,12 +460,11 @@ VOP_on_five_year_pulse_country = {
 		grand_archive.1005	# Primal Calling Space Fauna spawn for communication
 		grand_archive.4110	# Curators contact related to specimens
 		grand_archive.6000	# Treasure Troves - Treasure Hunter Origin
+		pirate.1 #Birth of Piracy gatekeeper here
+		bio.5001			# Chance for leaders to regain backup clones
 
 		##	|VOP转入|1年
 		paragon_2.1020 # Galactic Paragons negative leader trait event.
-
-		##	|VOP转入|政府决策	来自<政府决策>
-		paragon.404
 	}
 	# See also: on_five_year_random_pulse_country = {}
 	random_events = {
@@ -1234,7 +1231,7 @@ on_colonized = {
 		clones.5 			# Clone Army (make sure pops don't migrate to die)
 		origin.3225 		# Progenitor Hive Missing
 		paragon.5010		# First planet finished colonization
-		#paragon.403		|VOP优化|禁用	融入VOP框架事件	# Give boost if "Superior Colonies" Agenda
+		paragon.403			# Give boost if "Superior Colonies" Agenda	|VOP优化|添加trigger
 		awareness.135		# Planet colonised in pre-ftl system
 		paragon.100 		# Potentially abort Beholder chain
 
@@ -1342,8 +1339,8 @@ on_ship_destroyed_victim = {
 		grand_archive.1031	# Space Fauna Ships size decrease
 		grand_archive.3014	# Spotted Cutholoid killed
 		grand_archive.3025	# Spawn special debris for Cutholoids
-		grand_archive.10065	# Restorative Enzymes unique mutation healing
-	#	grand_archive.10090 # Catalytic Bladder unique mutation	#|VOP优化|禁用	星兽自爆伤害事件
+		grand_archive.10065	# Restorative Enzymes unique mutation healing		#|VOP优化|添加trigger
+		grand_archive.10090 # Catalytic Bladder unique mutation		#|VOP优化|添加trigger
 		crisis.7525		# Cosmogenesis Needle Destroyed
 		grand_archive.1160	# Frenzied Voidworms starbase destroyed
 		grand_archive.10100	# Fissile Cores Unique Mutation
@@ -1376,7 +1373,7 @@ on_ship_destroyed_perp = {
 		necroids.300 # Cordyceptic Drones killing space fauna
 		necroids.310 # Cordyceptic Drones killing Prethoryn
 		toxoids.7315 # Fate of the Toxic Entity
-		paragon_2.1005 # On ship destroyed leader traits.	#_|VOP优化|添加trigger
+		paragon_2.1005 # On ship destroyed leader traits.		|VOP优化|添加trigger
 		crisis.23015	# Synth Queen Titan Down
 		grand_archive.1050 # Primal Calling effects when killing space fauna
 		grand_archive.2230 # Buccaneer Council position effect
@@ -1396,7 +1393,7 @@ on_ship_destroyed_perp = {
 # From = attacker ship
 on_damage_taken = {
 	events = {
-		#grand_archive.10095 # Berserker Glands unique mutation	|VOP优化|此action有问题,不应触发任何事件
+	#	grand_archive.10095 # Berserker Glands unique mutation	|VOP优化|此action有问题,不应触发任何事件
 	}
 }
 
@@ -1966,7 +1963,9 @@ on_terraforming_complete = {
 		focus.130			# Empire Focus
 		timeline.42			# Timeline First Terraform
 		strange_worlds.1055 # Junk Moon Event 2
-		wilderness.5 # Wilderness Colonizing Planets
+		wilderness.5 		# Wilderness Colonizing Planets
+		terra.200			# Hive World District assignment
+		terra.210			# Machine World District assignment
 	}
 }
 
@@ -2012,6 +2011,7 @@ on_planet_bombarded = {
 		grand_archive.2190	# Planet bombarded by Voidworms
 		focus.145			# Empire Focus
 		biocrisis.80 	# Planet Bombarded by Behemoth
+		action.81 		# Turns planet into tombworld if using armageddon or pox stance
 	}
 }
 
@@ -2145,7 +2145,7 @@ on_leader_death_notify = {
 	events = {
 		bio.5000
 		bio.765			# Spare Organs
-		paragon.549 	# Leader Funeral Events
+		paragon.549 	# Leader Funeral Events		|VOP优化|修改trigger
 	}
 }
 
@@ -2454,7 +2454,7 @@ on_tech_increased = {
 		grand_archive.8320	# Treasure Hunters researching Gateway Activation
 		grand_archive.4199	# Archivism handle edge case
 		grand_archive.7401	# Fauna Core Ship Component Insights - getting insight after tech_controlled_mutations
-		grand_archive.7400	# Fauna Core Ship Component Insights - getting tech_controlled_mutations #_|VOP优化|添加trigger
+		grand_archive.7400	# Fauna Core Ship Component Insights - getting tech_controlled_mutations
 		strange_worlds.2020 # Fatal Mutations
 		focus.615
 		timeline.25         # Milestone First Rare Tech
@@ -2883,9 +2883,7 @@ on_pop_assembly = {
 	events = {
 		crisis.2055
 		crisis.2312
-		necroids.250 	# makes zombie pops
 		timeline.46 	# Timeline First Pop
-		bio.755			# Nascent Stage Logic
 	}
 }
 
@@ -3032,6 +3030,7 @@ on_capital_changed = {
 		crisis.7502 # Cosmogenesis pickup chain handling
 		timeline.52 # Timeline Changed Capital
 		biocrisis.260	# Validate planet buildings after moving the Mindlink districts
+		biocrisis.290 # Move Mind Meld project to new capital
 	}
 }
 
@@ -3163,6 +3162,7 @@ on_country_created = {
 		grand_archive.2350	# Voidworms Crisis immunity
 		timeline.1          # Add origin to timeline
 		biocrisis.165 		# Elder Voidspawn debuff
+		focus.5				# Set up variables for Empire Focuses
 	}
 }
 
@@ -3218,7 +3218,6 @@ on_megastructure_built = {
 		grand_archive.4120	# Curator Grand Archive Collection contact
 		grand_archive.4199	# Archivism handle edge case
 		focus.40			# Empire Focus
-		focus.75			# Empire Focus
 		timeline.8          # Timeline Megastructure
 		timeline.61			# Timeline Origin Event Built Second Habitat
 	}
@@ -3463,6 +3462,9 @@ on_colony_25_years_old = {
 
 # Fires for each planet every month (counting up from colonisation date, includes home planet)
 on_colony_monthly_pulse = {
+	events = {
+		necroids.250 	# makes zombie pops
+	}
 }
 
 # Fires for each planet every year (counting up from colonisation date, includes home planet)
@@ -3474,9 +3476,9 @@ on_colony_yearly_pulse = {
 	}
 	random_events = {
 	#	25 = crime.1 # Criminal Underworld Appears (Unemployment) 	#|VOP优化|禁用	犯罪
-	#	25 = crime.40 # Criminal Underworld Appears (High Crime)	#|VOP优化|禁用	犯罪
-	#	25 = crime.41 # Criminal Underworld Disappears (Low Crime)	#|VOP优化|禁用	犯罪
-		25 = 0
+	#	25 = crime.40 # Criminal Underworld Appears (High Crime) 	#|VOP优化|禁用	犯罪
+	#	25 = crime.41 # Criminal Underworld Disappears (Low Crime) 	#|VOP优化|禁用	犯罪
+	#	25 = 0
 	}
 }
 
@@ -3496,21 +3498,21 @@ on_colony_10_year_pulse = {
 	events = {
 		necroids.1 #Apotheosis for non-necrophage pops to necrophage
 		astral_planes.3080 #Formless Haven reward
-	#	action.2020	# Pops random events gatekeeper	#|VOP优化|禁用
+		#action.2020	# Pops random events gatekeeper
 	}
 }
 
-# this = pop, fired via action.2021	#|VOP优化|禁用
+# this = pop, fired via action.2021
 on_colony_10_year_pulse_random_pop_events_list = {
 	#random_events = {
 	#	50 = 0
-	#	50 = pop.1 # (previously: MTTH 200 months)	#|VOP优化|禁用
-	#	50 = pop.2 # (previously: MTTH 220 months)	#|VOP优化|禁用
-	#	50 = pop.5 # (previously: MTTH 220 months)	#|VOP优化|禁用
-	#	50 = pop.7 # (previously: MTTH 220 months)	#|VOP优化|禁用
-	#	50 = pop.9 # (previously: MTTH 220 months)	#|VOP优化|禁用
-	#	50 = pop.11 # (previously: MTTH 220 months)	#|VOP优化|禁用
-	#	50 = pop.13 # (previously: MTTH 220 months)	#|VOP优化|禁用
+	#	50 = pop.1 # (previously: MTTH 200 months)
+	#	50 = pop.2 # (previously: MTTH 220 months)
+	#	50 = pop.5 # (previously: MTTH 220 months)
+	#	50 = pop.7 # (previously: MTTH 220 months)
+	#	50 = pop.9 # (previously: MTTH 220 months)
+	#	50 = pop.11 # (previously: MTTH 220 months)
+	#	50 = pop.13 # (previously: MTTH 220 months)
 	#}
 }
 
@@ -3518,7 +3520,7 @@ on_colony_10_year_pulse_random_pop_events_list = {
 # scope: country, from: leader
 on_leader_spawned = {
 	events = {
-		utopia.2509			 # New Leaders Get Erudite Trait
+		utopia.2509			# New Leaders Get Erudite Trait
 		utopia.2510			# New Leaders Get Cyborg Trait
 		utopia.2560			# New Leaders Get Synthetic Trait
 		utopia.2651			# New Leaders Get Psionic Trait
@@ -4072,6 +4074,7 @@ on_branch_office_established = {
 on_branch_office_closed = {
 	events = {
 		emperor.62
+		focus.180			# Focus Task 10th Branch Office
 	}
 }
 
@@ -4101,7 +4104,7 @@ on_system_controller_changed = {
 # FROMFROM = Country: Occupier of the system
 on_system_returned = {
 	events = {
-		action.301		#_|VOP优化|添加trigger
+		action.301			#_|VOP优化|添加trigger
 	}
 }
 
@@ -4467,7 +4470,7 @@ on_commercial_pact_broken = {
 on_agenda_finished = {
 	events = {
 		paragon.402	# Tradition tr_statecraft_amongst_peers XP bonus.
-		paragon.404	# Give boost to young colonies if "Superior Colonies" Agenda is finished.
+		paragon.404	# Give boost to young colonies if "Superior Colonies" Agenda is finished.	|VOP优化|添加tirgger
 		focus.505	# Set Launch Diplomatic Agenda Flag for Focus
 		focus.105	# Empire Focus
 	}
@@ -4584,8 +4587,8 @@ on_synth_leader_malfunction = {
 #local_num_pops_changed = Num pops that switched ethic to This pop group
 on_daily_pop_ethics_divergence = {
 	events = {
-		# machine_age.2100 # Cybernetic Creed - add Creed traits to spiritualist pops
-		# machine_age.2101# Cybernetic Creed - remove Creed traits from non-spiritualist pops
+	#	machine_age.2100 # Cybernetic Creed - add Creed traits to spiritualist pops		|VOP优化|禁用
+	#	machine_age.2101 # Cybernetic Creed - remove Creed traits from non-spiritualist pops	|VOP优化|禁用
 		cyber.8 # Cyber objectors
 	}
 }
@@ -4880,6 +4883,14 @@ on_storm_encountered = {
 on_leader_captured = {
 	events = {
 		grand_archive.9000
+	}
+}
+
+# This = Country
+# This.local_country_biomass = amount of wilderness pops
+on_biomass_monthly = {
+	events = {
+		wilderness.10
 	}
 }
 

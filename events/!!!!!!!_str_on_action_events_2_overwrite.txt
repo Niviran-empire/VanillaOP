@@ -1,4 +1,4 @@
-#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\on_action_events_2.txt		action.222/action.301/action.300/
+#	|VOP新增/VOP优化|	同步追踪|4.0	\events\on_action_events_2.txt		action.222/action.301/action.300/
 namespace = action
 
 
@@ -100,6 +100,7 @@ system_event = {#_|VOP新增|添加trigger
 		}
 	}
 }
+
 system_event = {#_|VOP新增|添加trigger
 	id = action.300
 	is_triggered_only = yes

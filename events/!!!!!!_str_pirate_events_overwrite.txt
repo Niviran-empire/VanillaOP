@@ -1,0 +1,74 @@
+#	|VOP新增/VOP优化|	同步追踪|4.0		action.4/pirate.48
+
+namespace = pirate
+
+event = {#添加trigger
+	id = pirate.4
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {#_|VOP新增|
+		any_country = {
+			is_ai = yes
+			NOT = { has_country_flag = birth_of_piracy }
+			has_monthly_income = { resource = trade		value > 100 }
+		}
+	}
+
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				NOT = { has_country_flag = birth_of_piracy }
+				has_monthly_income = {
+					resource = trade
+					value > 100
+				}
+			}
+			country_event = { id = pirate.5 }
+		}
+	}
+}
+
+# Pirates Sighted On Action
+event = {#添加trigger
+	id = pirate.48
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {#_|VOP新增|
+		any_country = {
+			is_ai = yes
+			has_country_flag = birth_of_piracy
+			NOT = { has_country_flag = pirates_spawned }
+			any_system_within_border = {
+				any_system_planet = {
+					planet_resource_compare = {
+						resource = trade
+						value > 100
+					}
+				}
+			}
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				has_country_flag = birth_of_piracy
+				NOT = { has_country_flag = pirates_spawned }
+				any_system_within_border = {
+					any_system_planet = {
+						planet_resource_compare = {
+							resource = trade
+							value > 100
+						}
+					}
+				}
+			}
+			country_event = { id = pirate.49 }
+		}
+	}
+}
+

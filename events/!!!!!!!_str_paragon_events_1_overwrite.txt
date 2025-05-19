@@ -1,42 +1,56 @@
-#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\paragon_events_1.txt	paragon.405
+#	|VOP新增/VOP优化|	同步追踪|4.0	\events\paragon_events.txt		paragon.403/paragon.404/paragon.405	/paragon.549
 namespace = paragon
 
 
-# on_tradition_picked "tr_statecraft_inspiring_agendas", show a notification that they're available.
-country_event = {#_|VOP优化|添加trigger修改effect
-	id = paragon.405
+# on_colonized, give boost modifier if "Superior Colonies" Agenda is active.
+planet_event = {#添加trigger
+	id = paragon.403
 	hide_window = yes
 	is_triggered_only = yes
-
-	trigger = {# |VOP优化|trigger转入
-		has_tradition = tr_statecraft_inspiring_agendas
-		NOT = { has_country_flag = has_picked_tr_statecraft_inspiring_agendas }
+	
+	trigger = {#_|VOP新增|
+		owner = {
+			OR = {
+				has_agenda_selected = agenda_superior_colonies	#agenda_superior_colonies_finish
+				has_agenda_selected = agenda_superior_colonies_wilderness	#agenda_superior_colonies_finish_wilderness
+			}
+		}
 	}
 
-	immediate = {# |VOP优化|trigger转出
-		# Makes sure this is only triggered ONCE and only when tr_statecraft_inspiring_agendas was unlocked.
-		set_country_flag = has_picked_tr_statecraft_inspiring_agendas
-
-		create_message = {
-			type = COUNCIL_AGENDA_AVAILABLE
-			localization = MESSAGE_COUNCIL_AGENDA_AVAILABLE_UNLOCKED_INSPIRING_AGENDAS
-			days = 30
-			# Unfortunately can't set message type to: _MESSAGE_TYPE_COUNCIL_AGENDA_READY_, which would enable Left-click to open Council.
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					has_modifier = agenda_superior_colonies_finish
+					has_modifier = agenda_superior_colonies_finish_wilderness
+				}
+			}
+			add_modifier = {
+				modifier = agenda_superior_colonies_planet_boost
+				days = @agenda_finish_modifier_duration
+			}
+			remove_planet_flag = superior_colonies_can_be_boosted
+		}
+		else = {
+			# Set flag, so if Agenda is completed later, it can trigger Boost then (paragon.404).
+			set_timed_planet_flag = {
+				flag = superior_colonies_can_be_boosted
+				days = @agenda_finish_modifier_duration
+			}
 		}
 	}
 }
 
 # on_agenda_finished "Superior Colonies", check for young Colonies that should get the boost modifier.
-country_event = {#_|VOP优化|添加trigger修改effect
+country_event = {#添加trigger
 	id = paragon.404
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = {
-		is_ai = no
+	trigger = {#_|VOP新增|
 		OR = {
-			has_modifier = agenda_superior_colonies_finish
-			has_modifier = agenda_superior_colonies_finish_wilderness
+			has_agenda_selected = agenda_superior_colonies	#agenda_superior_colonies_finish
+			has_agenda_selected = agenda_superior_colonies_wilderness	#agenda_superior_colonies_finish_wilderness
 		}
 	}
 
@@ -70,13 +84,41 @@ country_event = {#_|VOP优化|添加trigger修改effect
 	}
 }
 
-country_event = {#_|VOP优化|添加trigger 只允许玩家
+# on_tradition_picked "tr_statecraft_inspiring_agendas", show a notification that they're available.
+country_event = {#_|VOP优化|添加trigger修改effect
+	id = paragon.405
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {# |VOP优化|trigger转入
+		has_tradition = tr_statecraft_inspiring_agendas
+		NOT = { has_country_flag = has_picked_tr_statecraft_inspiring_agendas }
+	}
+
+	immediate = {# |VOP优化|trigger转出
+		# Makes sure this is only triggered ONCE and only when tr_statecraft_inspiring_agendas was unlocked.
+		set_country_flag = has_picked_tr_statecraft_inspiring_agendas
+
+		create_message = {
+			type = COUNCIL_AGENDA_AVAILABLE
+			localization = MESSAGE_COUNCIL_AGENDA_AVAILABLE_UNLOCKED_INSPIRING_AGENDAS
+			days = 30
+			# Unfortunately can't set message type to: _MESSAGE_TYPE_COUNCIL_AGENDA_READY_, which would enable Left-click to open Council.
+		}
+	}
+}
+
+
+# Launch correct death event for certain leaders
+# This = Country
+# From = Leader
+country_event = {#修改trigger
 	id = paragon.549
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		is_ai = no
+		is_ai = no	#_|VOP优化|仅玩家
 		OR = {
 			has_paragon_dlc = yes
 			AND = {
@@ -246,3 +288,4 @@ country_event = {#_|VOP优化|添加trigger 只允许玩家
 		}
 	}
 }
+
