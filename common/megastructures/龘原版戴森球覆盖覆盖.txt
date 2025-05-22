@@ -9,8 +9,27 @@ dyson_sphere_0 = {
 	resources = {
 		category = megastructures
 		cost = {
-			alloys = 5000
 			unity = 1000
+		}
+		cost = {
+			trigger = {
+				country_uses_bio_ships = no
+			}
+			alloys = 5000
+		}
+		cost = {
+			trigger = {
+				country_uses_bio_ships = yes
+			}
+			alloys = 5000
+			mult = 0.5
+		}
+		cost = {
+			trigger = {
+				country_uses_bio_ships = yes
+			}
+			food = 5000
+			mult = @halved_alloy_to_food_cost_ratio
 		}
 
 		upkeep = {
@@ -18,24 +37,43 @@ dyson_sphere_0 = {
 		}
 	}
 
+	custom_tooltip_requirements = "MEGASTRUCTURE_TOOLTIP_REQUIREMENTS_DYSON_SPHERE"
+
 	prerequisites = { "tech_dyson_sphere" }
 
+	potential = {
+		has_machine_age_dlc = no
+	}
+
 	possible = {
-		exists = starbase
+		hidden_trigger = {
+			exists = starbase
+		}
 		custom_tooltip = {
 			fail_text = "requires_inside_border"
 			is_inside_border = from
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_dyson_sphere"
-			from = { OR = {
-				has_relic = r_contingency_core
-				NOT = { has_country_flag = built_dyson_sphere }
-			} }
+			from = {
+				OR = {
+					has_relic = r_contingency_core
+					NOT = { has_country_flag = built_dyson_sphere }
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_machine_age"
+			from = { has_machine_age_dlc = no }
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_dyson_sphere_two"
-			from = { NOT = { has_country_flag = built_dyson_sphere_contingency } }
+			from = {
+				NOR = {
+					has_country_flag = built_dyson_sphere_contingency
+					has_country_flag = built_dyson_sphere_contingency_swarm
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_surveyed_system"
@@ -49,8 +87,50 @@ dyson_sphere_0 = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = "requires_no_habitable_planets"
-			NOT = { any_system_planet = { OR = { is_colonizable = yes is_colony = yes } } }
+			fail_text = "requires_no_arc_furnace"
+			system_has_arc_furnace = no
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_arc_furnace_construction"
+			if = {
+				limit = {
+					system_has_arc_furnace = no
+				}
+				NOT = {
+					solar_system = {
+						has_star_flag = arc_furnace_construction
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_colonies"
+			NOT = {
+				any_system_planet = {
+					is_colony = yes
+					is_artificial = no
+					exists = owner
+					owner = {
+						is_primitive = no
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "blocked_by_pre_ftl_policy"
+			if = {
+				limit = {
+					any_system_planet = {
+						exists = owner
+						owner = {
+							is_primitive = yes
+						}
+					}
+				}
+				from = {
+					has_policy_flag = interference_aggressive
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_black_hole_neutron_star_pulsar"
@@ -93,8 +173,7 @@ dyson_sphere_0 = {
 			}
 			custom_tooltip = {
 				fail_text = "requires_no_existing_megastructure"
-				#NOT = { has_any_megastructure = yes }
-				NOT = { has_any_megastructure = yes }
+				has_any_megastructure = no
 			}
 		}
 	}
@@ -103,9 +182,14 @@ dyson_sphere_0 = {
 	# from = country
 	ai_weight = { factor = 0 }
 
-	on_build_start = {}
-	on_build_cancel = {}
+	on_build_start = {
+		set_star_flag = dyson_sphere_construction
+	}
+	on_build_cancel = {
+		remove_star_flag = dyson_sphere_construction
+	}
 	on_build_complete = {
+		remove_star_flag = dyson_sphere_construction
 		set_star_flag = dyson_sphere_built
 		remove_system_terraforming_candidates = yes
 		from = {
