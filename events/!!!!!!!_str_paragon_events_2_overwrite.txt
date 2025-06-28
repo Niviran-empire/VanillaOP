@@ -9,7 +9,20 @@ country_event = {#_|VOP新增|添加trigger
 
 	trigger = {#_|VOP新增|
 		exists = fromfrom
-		fromfrom = { exists = fleet.leader }
+		fromfrom = { 
+			exists = fleet.leader 
+			fleet.leader = {
+				OR = {
+					has_trait = leader_trait_corsair
+					has_trait = leader_trait_corsair_2
+					has_trait = leader_trait_shipbreaker
+					has_trait = leader_trait_shipbreaker_2
+					has_trait = leader_trait_juryrigger
+					has_trait = leader_trait_juryrigger_2
+					has_trait_tier1or2 = { TRAIT = leader_trait_crusader }
+				}
+			}
+		}
 	}
 	immediate = {
 		FROMFROM = { # Winning ship.
@@ -23,7 +36,6 @@ country_event = {#_|VOP新增|添加trigger
 							OR = {
 								has_trait = leader_trait_corsair
 								has_trait = leader_trait_corsair_2
-								has_trait = leader_trait_corsair_3
 							}
 							ROOT.FROM = { # Owner of losing ship.
 								is_default_or_fallen = yes
@@ -51,7 +63,7 @@ country_event = {#_|VOP新增|添加trigger
 					# Crusader / Crusader II
 					if = {
 						limit = {
-							has_trait_tier1or2or3 = {
+							has_trait_tier1or2 = {
 								TRAIT = leader_trait_crusader
 							}
 							ROOT.FROM = { # Owner of losing ship.
@@ -80,7 +92,6 @@ country_event = {#_|VOP新增|添加trigger
 							OR = {
 								has_trait = leader_trait_shipbreaker
 								has_trait = leader_trait_shipbreaker_2
-								has_trait = leader_trait_shipbreaker_3
 							}
 							ROOT.FROM = { # Owner of losing fleet.
 								is_default_or_fallen = yes
@@ -111,7 +122,6 @@ country_event = {#_|VOP新增|添加trigger
 							OR = {
 								has_trait = leader_trait_juryrigger
 								has_trait = leader_trait_juryrigger_2
-								has_trait = leader_trait_juryrigger_3
 							}
 						}
 						ROOT.FROMFROM = {

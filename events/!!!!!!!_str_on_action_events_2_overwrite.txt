@@ -41,7 +41,7 @@ planet_event = {#_|VOP新增|添加trigger
 					}
 					while = {
 						count = 3
-						random_owned_pop = {
+						random_owned_pop_group = {
 							limit = {
 								OR = {
 									prev = { has_modifier = doomsday_5 }

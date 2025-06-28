@@ -125,6 +125,7 @@ VOP_on_monthly_pulse = {
 		grand_archive.3106      # Cutholoids Inside Borders - Monthly Check
 		assimilation.50			# sub-species integration
 		assimilation.100		# species assimilation
+		assimilation.150		# similar sub-species merge
 	}
 }
 
@@ -1238,8 +1239,6 @@ on_colonized = {
 		astral_planes.3080 	# Formless Haven reward
 		cyber.7000			# Create pre-sapient species for Genesis Guides
 		cyber.7001			# Create preserves for pre-sapients already there for Genesis Guides
-		cybernetics.2026	# Virtual Machine pop creation
-		cybernetics.2031	# Virtual Machine pop destruction
 		cybernetics.5045	# Virtualize the colony ship stragglers
 		cstorms.2351		# Replace patriotic institute planetary modifier with building
 		focus.100			# Focus card
@@ -2105,6 +2104,7 @@ on_presence_revealed = {
 # This = Planet where the pop was bombed to death
 # From = Country which is raining down fire and brimstone
 # FromFrom = Biggest fleet bombarding the planet (the one we used the bombardment stance from)
+# local_kill_pop_amount = amount of pop killed
 on_pop_bombed_to_death = {
 	events = {
 		action.100
@@ -4164,6 +4164,8 @@ on_post_government_changed = {
 		bio.1131	# EvoPred Oligarch Immortality Addition
 		bio.171		# Purity Authority trait handling - give trait
 		bio.172		# Purity Authority trait handling - remove trait
+		cyber.7040	# Ensuring that you can still build a colony ship after changing your civics and become a guided sapience empire
+		cyber.7045	# Ensuring that you can still build a colony ship after changing your civics and stop being a guided sapience empire
 	}
 }
 
