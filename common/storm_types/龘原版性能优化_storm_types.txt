@@ -127,7 +127,6 @@ particle_storm = {
 			custom_tooltip = particle_storm_fleet_tt
 			show_only_custom_tooltip = no
 			ship_armor_regen_add_static = -1	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
-			ships_unity_produces_add = 0.5	#_|VOP新增|	cstorms.1050/hp<@storm_hp_perc_limit|添加产出=1
 		}
 	}
 

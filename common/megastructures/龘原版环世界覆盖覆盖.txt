@@ -123,24 +123,7 @@ ring_world_1 = {
 
 		modifier = {
 			factor = 0
-			solar_system = { exists = owner owner = { is_nirvana_empire = no } }
-		}
-
-		modifier = {
-			mult = 0
-			solar_system = {
-				exists = owner 
-				owner = { OR = {
-					AND = {
-						is_nirvana_empire_dragon = yes  
-						event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_dragon value > 0 } }
-					}
-					AND = {
-						is_nirvana_empire_council = yes  
-						event_target:global_event_country = { check_variable = { which = nivran_built_ringworld_council value > 0 } }
-					}
-				} }
-			}
+			solar_system = { exists = owner owner = { is_ai = no } }
 		}
 		
 		modifier = {
