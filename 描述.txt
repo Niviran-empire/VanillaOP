@@ -19,10 +19,11 @@
 1. Modified common\country_types
 2. Modified common\game_rules
 3. Modified common\on_actions
-4. Modified common\pop_categories
-5. Modified common\pop_faction_types
-6. Modified common\ethics
-7. Modified common\pop_jobs
-8. Modified common\species_rights
+4. Modified common\casus_belli
+5. Modified common\megastructures
+6. Modified common\storm_types
+7. Modified events\pirate_events
+8. Modified events\bio_events
+9. Modified events\more.....
 [/code]
 [b]MODs related to the above changes may have some functional conflicts[/b]

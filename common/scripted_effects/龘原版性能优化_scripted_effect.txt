@@ -128,7 +128,7 @@ vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = {
 				has_trait = trait_plantoid_phototrophic
 				AND = {
 					has_trait = trait_plantoid_radiotrophic
-					NOT = { planet = { is_planet_class = pc_nuked } }
+					NOT = { AND = { exists = planet planet = { is_planet_class = pc_nuked } } }
 				}
 			}
 		}
