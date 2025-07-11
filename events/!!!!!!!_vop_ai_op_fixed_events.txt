@@ -29,7 +29,12 @@ country_event = {
 				set_global_flag = VOP_flg_glbl_enbale_ethic
 			}
 			else = { remove_global_flag = VOP_flg_glbl_enbale_ethic }
+			country_event = { id = vop_ai_fixed.0 }
 		}
+	}
+	option = {
+		name = vop_ai_fixed.c
+		default_hide_option = yes
 	}
 }
 
