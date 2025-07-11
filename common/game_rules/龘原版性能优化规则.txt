@@ -30,9 +30,9 @@ can_vote_in_democratic_election = {
 # This = Pop
 # NOTE: species_has_happiness is also checked for this
 pop_group_has_random_ethics = {
-	exists = from
-	# has_pop_group_flag = can_enable_pop_has_random_ethics
-	from = { is_ai = no }
+	#exists = from
+	has_pop_group_flag = can_enable_pop_has_random_ethics
+	#from = { is_ai = no }
 }
 
 #Root = country
