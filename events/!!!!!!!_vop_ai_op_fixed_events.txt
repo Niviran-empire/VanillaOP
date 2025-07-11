@@ -7,6 +7,31 @@
 namespace = vop_ai_fixed
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
+country_event = {
+	id = vop_ai_fixed.0
+	hide_window = no
+	is_triggered_only = yes
+	title = vop_ai_fixed.0.title
+	desc = vop_ai_fixed.0.desc
+	picture = GFX_evt_alien_segregation
+	option = {
+		name = {
+			trigger = { NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic } }
+			text = vop_ai_fixed.0.a
+		}
+		name = {
+			trigger = { has_global_flag = VOP_flg_glbl_enbale_ethic }
+			text = vop_ai_fixed.0.b
+		}
+		hidden_effect = { 
+			if = {
+				limit = { NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic } }
+				set_global_flag = VOP_flg_glbl_enbale_ethic
+			}
+			else = { remove_global_flag = VOP_flg_glbl_enbale_ethic }
+		}
+	}
+}
 
 event = {
 	id = vop_ai_fixed.1
@@ -14,6 +39,10 @@ event = {
 	is_triggered_only = yes
 	trigger = { always = yes }
 	immediate = { 
+		random_country = {
+			limit = { is_ai = no }
+			country_event = { id = vop_ai_fixed.0 }
+		}
 		set_global_flag = VOP_MOD_INSTALL
 		#set_global_flag = force_disable_aow_megastructure
 		set_global_flag = force_adjust_aow_megastructure_cap
@@ -25,7 +54,6 @@ event = {
 			vop_optimaze_enclave_2065 = yes # enclave 2065
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
-				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			}
 			if = {
@@ -77,7 +105,6 @@ event = {
 			vop_optimaze_enclave_2065 = yes # enclave 2065
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
-				vop_optimaze_game_rule_pop_has_random_ethics = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			}
 			if = {
@@ -113,7 +140,6 @@ country_event = {
 		vop_optimaze_enclave_2065 = yes # enclave 2065
 		every_owned_pop_group = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
-			vop_optimaze_game_rule_pop_has_random_ethics = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 		}
 		if = {
