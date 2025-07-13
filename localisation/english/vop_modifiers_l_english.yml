@@ -157,3 +157,8 @@
  job_sub_clerk_desc: "$job_clerk_desc$" #NT!
 vop_Optimaze_depost:0 "PPCOC"
 vop_Optimaze_depost_desc:0 "All optimized planet population and class outputs are compensated here."
+vop_ai_fixed.0.title:0 "Preset Ethic"
+vop_ai_fixed.0.desc:0 "The basic operating environment has made corresponding adjustments to whether the population can have Ethic. Now you need to decide whether to enable Ethic according to your ideas.\n\nIf enabled, it may cause more performance fluctuations, but it can ensure that most of the original mechanisms that require Ethic are normal;\nIf disabled, it will destroy the original mechanisms that require Ethic, but it can significantly optimize the performance in the later stages."
+vop_ai_fixed.0.a:0 "Disabled Ethic"
+vop_ai_fixed.0.b:0 "Enabled Ethic"
+vop_ai_fixed.c:"Settings Completed"
