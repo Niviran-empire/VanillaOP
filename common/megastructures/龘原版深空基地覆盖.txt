@@ -87,9 +87,7 @@ deep_space_citadel_0 = {
 
 	# root = system
 	# from = country
-	ai_weight = {
-		factor = 0
-	}
+	ai_weight = { set = 0 }
 
 	on_build_start = {}
 	on_build_cancel = {}

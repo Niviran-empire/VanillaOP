@@ -190,7 +190,7 @@ dyson_swarm_1 = {
 
 	# root = system
 	# from = country
-	ai_weight = { factor = 0 }
+	ai_weight = { set = 0 }
 
 	on_build_start = {
 		from = {

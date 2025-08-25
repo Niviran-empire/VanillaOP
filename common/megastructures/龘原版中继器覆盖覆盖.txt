@@ -141,7 +141,7 @@ hyper_relay = {
 
 	# root = system
 	# from = country
-	ai_weight = { factor = 0 }
+	ai_weight = { set = 0 }
 
 	bypass_type = relay_bypass
 	on_build_queued = {

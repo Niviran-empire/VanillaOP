@@ -180,7 +180,7 @@ dyson_sphere_0 = {
 
 	# root = system
 	# from = country
-	ai_weight = { factor = 0 }
+	ai_weight = { set = 0 }
 
 	on_build_start = {
 		set_star_flag = dyson_sphere_construction
