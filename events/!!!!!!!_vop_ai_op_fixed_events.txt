@@ -165,26 +165,6 @@ country_event = {
 	}
 }
 
-country_event = {#_|VOP优化|AI资源储存性能
-	id = vop_ai_fixed.26
-	hide_window = yes
-	is_triggered_only = yes
-	trigger = { 
-		is_ai = yes
-		check_variable_arithmetic = { which = modifier:country_resource_max_add value >= 100000 }
-		OR = {
-			resource_stockpile_compare = { resource = energy value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = food value > modifier:country_resource_max_add }
-			resource_stockpile_compare = { resource = minerals value > modifier:country_resource_max_add }
-		}
-	}
-	immediate = { 
-		VOP_ai_REROURCE_opt = { TYPE = energy MULT = 0.5 }
-		VOP_ai_REROURCE_opt = { TYPE = food MULT = 0.5 }
-		VOP_ai_REROURCE_opt = { TYPE = minerals MULT = 0.5 }
-	}
-}
-
 country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
 	id = vop_ai_fixed.27
 	hide_window = yes

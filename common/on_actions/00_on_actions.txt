@@ -101,8 +101,8 @@ VOP_on_monthly_pulse = {
 		distar.10955
 	#	action.116				# enable resources for galactic market	|VOP优化|禁用	融入VOP框架事件
 	#	paragon_2.1145			# Aptitude - Champions of the Empire Tradition effect
-		pirate.48				#_|VOP优化|修改trigger
-		pirate.4				#_|VOP优化|修改trigger
+	#	pirate.48				#_|VOP优化|全事件禁用
+	#	pirate.4				#_|VOP优化|全事件禁用
 		crime.1000
 		origin.50				# "Scion": FE lends a fleet
 		origin.30				# "Scion": FE reclaims fleet
@@ -293,7 +293,7 @@ VOP_on_decade_pulse = {
 		drones.120		# Ancient Mining Drone Expansion Fleet setup (claimed systems too)
 		drones.200		# triggers a possible Space Crystal Splitter expansion (any system)
 		paragon_2.1140	# Shroud Preacher trait effect
-		pirate.100		# assorted late-game pirates
+	#	pirate.100		# assorted late-game pirates #_|VO优化|全事件禁用
 		fedev.600		# Federation Joint Operation - Trade League
 	}
 }
@@ -460,7 +460,7 @@ VOP_on_five_year_pulse_country = {
 		grand_archive.1005	# Primal Calling Space Fauna spawn for communication
 		grand_archive.4110	# Curators contact related to specimens
 		grand_archive.6000	# Treasure Troves - Treasure Hunter Origin
-		pirate.1 #Birth of Piracy gatekeeper here
+	#	pirate.1 #Birth of Piracy gatekeeper here # |VOP优化|全事件禁用
 		bio.5001			# Chance for leaders to regain backup clones
 
 		##	|VOP转入|1年
@@ -736,7 +736,7 @@ on_first_contact = {
 		tutorial.59 #Tutorial: First Contact
 		leviathans.9 #Leviathans
 		galactic_features.421 #VLUUR
-		pirate.155 #Thalassocracy pirates
+	#	pirate.155 #Thalassocracy pirates  #|VOP优化|全事件禁用
 		first_contact_critters.1000 #Establish comms for most cases
 		fircon.3515 #The Chosen (you breached the wormhole)
 
@@ -960,7 +960,7 @@ on_entering_system_fleet = {
 		nomad.7
 		nomad.8
 		leviathans.1005
-		pirate.10
+	#	pirate.10			#|VOP优化|全事件禁用
 		leviathans.610
 		leviathans.1030
 		akx.9200
@@ -1517,8 +1517,8 @@ on_fleet_destroyed_perp = {
 		leviathans.2014
 		leviathans.4
 		origin.4149	# Payback | Leviathan slain
-		pirate.13
-		pirate.24
+	#	pirate.13		#_|VO优化|全事件禁用
+	#	pirate.24		#_|VO优化|全事件禁用
 		akx.9318
 		akx.10030
 #		factions.330
@@ -1724,7 +1724,7 @@ on_building_mining_station = {
 		tutorial.10
 		tutorial.1000
 		tutorial.56
-		pirate.3
+	#	pirate.3		#_|VO优化|全事件禁用
 		leviathans.3200
 		anomaly.6830	# Mining for Food
 		anomaly.6880	# Sleeping Crystal
@@ -1890,7 +1890,7 @@ on_ship_disabled = {
 		distar.58
 		leviathans.2100
 		distar.5053
-		pirate.70
+	#	pirate.70			#_|VO优化|全事件禁用
 		grand_archive.8040	# Black Needle (Captain Hoo) disabled
 		grand_archive.8260	# Black Needle (Captain Inax) disabled
 		biocrisis.99 		# Behemoth Disabled
@@ -3672,7 +3672,7 @@ on_fleet_quantum_catapult = {
 # this = country
 on_pirate_spawn = {
 	events = {
-		pirate.49
+	#	pirate.49		#|VOP优化|全事件禁用
 	}
 }
 

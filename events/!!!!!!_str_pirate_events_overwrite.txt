@@ -1,74 +1,240 @@
-#	|VOP新增/VOP优化|	同步追踪|4.0		action.4/pirate.48
+#	|VOP新增/VOP优化|	同步追踪|4.0		pirate.1/pirate.4/pirate.48
 
 namespace = pirate
 
-event = {#添加trigger
-	id = pirate.4
-	hide_window = yes
+# Birth of Space Piracy
+country_event = { #_|VOP禁用|
+	id = pirate.1
 	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
 
-	trigger = {#_|VOP新增|
-		any_country = {
-			is_ai = yes
-			NOT = { has_country_flag = birth_of_piracy }
-			has_monthly_income = { resource = trade		value > 100 }
-		}
-	}
+ship_event = { #_|VOP禁用|
+	id = pirate.3
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
 
+event = { #_|VOP禁用|
+	id = pirate.4
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
 
-	immediate = {
-		every_playable_country = {
-			limit = {
-				NOT = { has_country_flag = birth_of_piracy }
-				has_monthly_income = {
-					resource = trade
-					value > 100
-				}
-			}
-			country_event = { id = pirate.5 }
-		}
-	}
+#yearly pulse event
+country_event = { #_|VOP禁用|
+	id = pirate.5
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Birth of Space Piracy (Hive Mind version)
+country_event = { #_|VOP禁用|
+	id = pirate.6
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Birth of Space Piracy (Machine version)
+country_event = { #_|VOP禁用|
+	id = pirate.7
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Spread of Space Piracy (Treasure Hunters/Hive Mind version)
+country_event = { #_|VOP禁用|
+	id = pirate.8
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Spread of Space Piracy (Treasure Hunters/Machine version)
+country_event = { #_|VOP禁用|
+	id = pirate.9
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# discovered pirate home system
+fleet_event = { #_|VOP禁用|
+	id = pirate.10
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# perp port
+# on_fleet_destroyed_perp
+# This = owner of fleet 1 (combatant)
+# From = owner of fleet 2 (destroyed)
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
+country_event = { #_|VOP禁用|
+	id = pirate.13
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# destroyed pirate home system
+country_event = { #_|VOP禁用|
+	id = pirate.15
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# raid from home system
+fleet_event = { #_|VOP禁用|
+	id = pirate.20
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Destroyed Pirate Station (HIDDEN)
+# on_fleet_destroyed_perp
+country_event = { #_|VOP禁用|
+	id = pirate.24
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Destroyed Pirate Station
+country_event = { #_|VOP禁用|
+	id = pirate.25
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Destroyed Pirate Station, Gained L-Cluster Insight
+country_event = { #_|VOP禁用|
+	id = pirate.26
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
 }
 
 # Pirates Sighted On Action
-event = {#添加trigger
+event = { #_|VOP禁用|
 	id = pirate.48
-	hide_window = yes
-
 	is_triggered_only = yes
-
-	trigger = {#_|VOP新增|
-		any_country = {
-			is_ai = yes
-			has_country_flag = birth_of_piracy
-			NOT = { has_country_flag = pirates_spawned }
-			any_system_within_border = {
-				any_system_planet = {
-					planet_resource_compare = {
-						resource = trade
-						value > 100
-					}
-				}
-			}
-		}
-	}
-
-	immediate = {
-		every_playable_country = {
-			limit = {
-				has_country_flag = birth_of_piracy
-				NOT = { has_country_flag = pirates_spawned }
-				any_system_within_border = {
-					any_system_planet = {
-						planet_resource_compare = {
-							resource = trade
-							value > 100
-						}
-					}
-				}
-			}
-			country_event = { id = pirate.49 }
-		}
-	}
+	hide_window = yes
+	trigger = { always = no }
 }
 
+# Pirates Sighted (HIDDEN)
+country_event = { #_|VOP禁用|
+	id = pirate.49
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Sighted
+country_event = { #_|VOP禁用|
+	id = pirate.50
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Hive Mind (HIDDEN)
+country_event = { #_|VOP禁用|
+	id = pirate.52
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Sighted (Drones)
+country_event = { #_|VOP禁用|
+	id = pirate.53
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Sighted (Non-Drones)
+country_event = { #_|VOP禁用|
+	id = pirate.54
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Machine Intelligence (HIDDEN)
+country_event = { #_|VOP禁用|
+	id = pirate.55 
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Sighted (Machines)
+country_event = { #_|VOP禁用|
+	id = pirate.56
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirates Sighted (Non-Machines)
+country_event = { #_|VOP禁用|
+	id = pirate.57
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# Pirate station spawns on disabled starbase (HIDDEN)
+ship_event = { #_|VOP禁用|
+	id = pirate.70
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+############################
+# Late-game Pirates
+# Written by Gemma Thomson
+############################
+
+# Setup (triggered by on_late_game_pulse): Choose a pirate fleet to spawn
+event = { #_|VOP禁用|
+	id = pirate.100
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+### Bemat Thalassocracy ###
+
+# Setup (event_target:global_event_country scope; randomly triggered in pirate.100): Find a suitable spawn point
+country_event = { #_|VOP禁用|
+	id = pirate.150
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}
+
+# The pirates encounter an empire (triggered by on_first_contact)
+# This = Initiating (e.g. player) empire
+# From = Pirate empire
+country_event = { #_|VOP禁用|
+	id = pirate.155
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = { always = no }
+}

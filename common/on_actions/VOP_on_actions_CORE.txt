@@ -18,7 +18,6 @@ on_single_player_save_game_load = {
 
 VOP_on_yearly_pulse_country = {
 	events = {
-		vop_ai_fixed.26			#AI资源处理
 		vop_ai_fixed.27			#永恒警戒处理
 		vop_ai_fixed.28			#兽飞五段处理
 	}
