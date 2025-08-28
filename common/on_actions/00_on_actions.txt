@@ -2884,7 +2884,7 @@ on_pop_assembly = {
 	events = {
 		crisis.2055
 		crisis.2312
-		timeline.46 	# Timeline First Pop
+		timeline.46 		# Timeline First Pop
 		assimilation.41 	# Replace assimilated assembly for assimilation target assembly
 	}
 }
