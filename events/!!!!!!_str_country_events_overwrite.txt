@@ -1,0 +1,9 @@
+namespace = country
+country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
+	id = country.2050
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = { always = no }
+}

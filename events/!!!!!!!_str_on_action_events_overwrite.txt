@@ -1,5 +1,65 @@
-#	|VOP新增/VOP优化|	同步追踪|4.0	\events\on_action_events_2.txt		action.222/action.301/action.300/
+#	|VOP新增/VOP优化|	同步追踪|3.14.159	\events\on_action_events_1.txt		action.85/action.222/action.301/action.300/
 namespace = action
+
+
+# Assimilate Pops on Yearly Pulse
+
+# Planets in mixed-ownership systems fall to starbase owner
+event = {#_|VOP优化|修改trigger
+	id = action.85
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_country = {
+			OR = {#_|VOP优化|从|非原始|改为|普通+堕落|
+				is_country_type = default
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			}
+			any_owned_planet = {
+				exists = starbase
+				starbase = { owner = { NOR = { is_same_value = prevprevprev	is_at_war_with = prevprevprev } } }
+			}
+		}
+	}
+
+	immediate = {
+		every_galaxy_planet = {
+			limit = {
+				exists = owner
+				owner = {
+					OR = {
+						is_country_type = default
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+				}
+				exists = starbase
+				starbase = {
+					exists = owner
+					owner = {
+						OR = {
+							is_country_type = default
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
+						}
+						NOR = {
+							is_same_value = prevprev.owner
+							is_at_war_with = prevprev.owner
+						}
+						NOT = {
+							has_active_event = {
+								preftl.180 #event to decide fate of pre-ftl civ
+							}
+						}
+					}
+				}
+			}
+			planet_event = { id = action.86 } # planet flips to starbase owner
+		}
+	}
+}
 
 
 planet_event = {#_|VOP新增|添加trigger

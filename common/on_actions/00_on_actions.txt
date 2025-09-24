@@ -378,7 +378,7 @@ VOP_on_monthly_pulse_country = {
 		shroud.52			# Monthly attunement modifiers handling: Instrument of Desire
 		shroud.53			# Monthly attunement modifiers handling: Cradle of Souls
 		shroud.54			# Monthly attunement modifiers handling: Whisperers in the Void
-		shroud.1505			# Ring Emitters monthly check if auras reemission is needed
+		shroud.1505			# Ring Emitters monthly check if auras reemission is needed |VOP优化|添加trigger
 		shroud.10305 		# Patron Objective Counter: po_reach_excellent_relations
 		shroud.11000		# Greater Patrons roll
 		shroud.11230		# The Reckoning integrity update
@@ -423,6 +423,7 @@ VOP_on_yearly_pulse_country = {
 		action.720			# Void Hive Build Station
 		astral_planes.1690  # Mirrored Empire setup
 		leader.300			# Favor Maker Councilor Trait
+		
 		##	|VOP转入|		来自<月度国家random>	从|每月25%|改为|每年100%|
 		origin.7300			# Fruitful origin - luring space fauna to feeding stations
 	}

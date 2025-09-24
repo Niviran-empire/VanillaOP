@@ -1,0 +1,37 @@
+namespace = shroud
+#_|VOP优化|添加trigger,修改effect
+country_event = {
+	id = shroud.1505
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_technology = tech_aura_resonation
+		any_system_within_border = {
+			exists = starbase
+			starbase = {
+				OR = {
+					has_starbase_building = aura_emitter
+					has_starbase_building = ring_aura_emitter
+				}
+			}
+			check_aura_suppressors = no
+		}
+	}
+
+	immediate = {
+		every_system_within_border = {
+			limit = {
+				exists = starbase
+				starbase = {
+					OR = {
+						has_starbase_building = aura_emitter
+						has_starbase_building = ring_aura_emitter
+					}
+				}
+				check_aura_suppressors = no
+			}
+			natural_spawn_psionic_aura = { OWNER = owner }
+		}
+	}
+}

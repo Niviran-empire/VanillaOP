@@ -1,0 +1,10 @@
+namespace = biocrisis.255
+#255 Kill off transference workers
+country_event = {#_|VOP优化|禁用自循环，年检查
+	id = biocrisis.255
+
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = { always = no }
+}

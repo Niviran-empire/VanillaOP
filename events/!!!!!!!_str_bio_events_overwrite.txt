@@ -49,25 +49,3 @@ planet_event = {#_|VOP优化|添加trigger 只允许玩家
 		}
 	}
 }
-
-
-namespace = country
-country_event = {#_|VOP优化|添加trigger修改effect 只允许玩家
-	id = country.2050
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	trigger = { always = no }
-}
-
-namespace = biocrisis.255
-#255 Kill off transference workers
-country_event = {#_|VOP优化|禁用自循环，年检查
-	id = biocrisis.255
-
-	is_triggered_only = yes
-	hide_window = yes
-
-	trigger = { always = no }
-}
