@@ -1,21 +1,3 @@
-has_food_upkeep = {
-	species = {
-		has_species_flag = can_has_food_upkeep
-	}
-}
-
-has_energy_upkeep = {
-	species = {
-		has_species_flag = can_has_energy_upkeep
-	}
-}
-
-has_mineral_upkeep = {
-	species = {
-		has_species_flag = can_has_mineral_upkeep
-	}
-}
-
 is_phototrophic = {
 	species = {
 		has_species_flag = can_is_phototrophic

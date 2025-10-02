@@ -37,7 +37,6 @@ default = {
 			military_minister_module
 			foreign_minister_module
 			interior_minister_module
-			mercenary_buyer_minister_module
 		}
 	}
 

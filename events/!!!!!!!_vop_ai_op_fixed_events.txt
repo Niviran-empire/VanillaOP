@@ -13,7 +13,8 @@ country_event = {
 	is_triggered_only = yes
 	title = vop_ai_fixed.0.title
 	desc = vop_ai_fixed.0.desc
-	picture = GFX_evt_alien_segregation
+	is_advisor_event = yes
+	trigger = { NOT = { has_global_flag = VOP_MOD_INSTALL } }
 	option = {
 		name = {
 			trigger = { NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic } }
@@ -36,6 +37,7 @@ country_event = {
 		name = vop_ai_fixed.c
 		default_hide_option = yes
 	}
+	after = { set_global_flag = VOP_MOD_INSTALL }
 }
 
 event = {
@@ -44,12 +46,8 @@ event = {
 	is_triggered_only = yes
 	trigger = { always = yes }
 	immediate = { 
-		random_country = {
-			limit = { is_ai = no }
-			country_event = { id = vop_ai_fixed.0 }
-		}
-		set_global_flag = VOP_MOD_INSTALL
-		#set_global_flag = force_disable_aow_megastructure
+		random_country = { limit = { is_ai = no } country_event = { id = vop_ai_fixed.0 } }
+		set_global_flag = force_disable_aow_megastructure
 		set_global_flag = force_adjust_aow_megastructure_cap
 		set_global_flag = VOP_flg_glbl_AP_no_ai
 		vop_optimaze_action_116 = yes # action.116
@@ -60,6 +58,7 @@ event = {
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+				vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
 			}
 			if = {
 				limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
@@ -68,9 +67,6 @@ event = {
 		}
 		every_galaxy_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_food_upkeep = yes
-			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
-			vop_optimaze_game_rule_can_has_energy_upkeep = yes
 			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_galaxy_planet = {
@@ -91,43 +87,31 @@ event = {
 	}
 }
 
-event = {
+country_event = {
 	id = vop_ai_fixed.5
 	hide_window = yes
 	is_triggered_only = yes
-	trigger = { 
-		NOT = { has_global_flag = VOP_CD_vop_ai_fixed }
-		count_playable_country = { count > 0 } 
-	}
+	trigger = { exists = this }
 	immediate = {
-		set_global_flag = VOP_flg_glbl_AP_no_ai
-		set_timed_global_flag = { flag = VOP_CD_vop_ai_fixed days = 1 }
 		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		# country_event tech
-		every_country = {
-			vop_optimaze_war_goals = yes # warcb
-			vop_optimaze_enclave_2065 = yes # enclave 2065
-			every_owned_pop_group = {
-				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
-				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
-			}
-			if = {
-				limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
-				add_modifier = { modifier = pop_unemployment_demotion_time_mult multiplier = -1 }
-			}
+		vop_optimaze_war_goals = yes # warcb
+		vop_optimaze_enclave_2065 = yes # enclave 2065
+		every_owned_pop_group = {
+			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
+			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+			vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
 		}
-		every_galaxy_species = {
+		if = {
+			limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
+			add_modifier = { modifier = pop_unemployment_demotion_time_mult multiplier = -1 }
+		}
+		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_food_upkeep = yes
-			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
-			vop_optimaze_game_rule_can_has_energy_upkeep = yes
 			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
-		every_galaxy_planet = {
-			limit = { is_colony = yes }
-			vop_optimaze_game_rule_is_new_colony = yes
-		}
+		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
 	}
 }
 
@@ -137,7 +121,6 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = this }
 	immediate = {
-		set_global_flag = VOP_flg_glbl_AP_no_ai
 		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		# country_event tech
@@ -146,6 +129,7 @@ country_event = {
 		every_owned_pop_group = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
+			vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
 		}
 		if = {
 			limit = { NOT = { has_modifier = pop_unemployment_demotion_time_mult } }
@@ -153,15 +137,9 @@ country_event = {
 		}
 		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_food_upkeep = yes
-			vop_optimaze_game_rule_can_has_mineral_upkeep = yes
-			vop_optimaze_game_rule_can_has_energy_upkeep = yes
 			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
-		every_owned_planet = {
-			limit = { is_colony = yes }
-			vop_optimaze_game_rule_is_new_colony = yes
-		}
+		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
 	}
 }
 

@@ -33,6 +33,37 @@ vop_optimaze_game_rule_can_vote_in_democratic_election = {
 }
 vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	remove_pop_group_flag = can_enable_can_generate_leader_from_pop
+	if = {
+		limit = { 
+			exists = owner
+			has_citizenship_rights = yes
+			can_think = yes
+			OR = {
+				is_robot_pop_group = no
+				owner = {
+					OR = {
+						has_technology = tech_synthetic_leaders
+						is_machine_empire = yes
+						is_mechanical_empire = yes
+						is_individual_machine = yes
+						has_country_flag = synthetic_fertility_no_bodies_left
+					}
+				}
+			}
+			OR = {
+				is_same_species = owner
+				owner = {
+					NAND = {
+						has_origin = origin_necrophage
+						has_trait = trait_necrophage
+					}
+				}
+			}
+		}
+		set_pop_group_flag = can_enable_can_generate_leader_from_pop
+	}
+}
+vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 	remove_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 	if = {
 		limit = { 
@@ -47,6 +78,7 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 						is_machine_empire = yes
 						is_mechanical_empire = yes
 						is_individual_machine = yes
+						has_country_flag = synthetic_fertility_no_bodies_left
 					}
 				}
 			}
@@ -59,12 +91,9 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 					}
 				}
 			}
+			can_be_military_leader = yes
 		}
-		if = {
-			limit = { can_be_military_leader = yes }
-			set_pop_group_flag = can_enable_can_generate_military_leader_from_pop
-		}
-		set_pop_group_flag = can_enable_can_generate_leader_from_pop
+		set_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 	}
 }
 #species
@@ -80,39 +109,6 @@ vop_optimaze_game_rule_can_is_phototrophic = {
 		set_species_flag = can_is_phototrophic
 	} 
 }
-vop_optimaze_game_rule_can_has_food_upkeep = {
-	remove_species_flag = can_has_food_upkeep
-	if = {
-		limit = { 
-			is_archetype = BIOLOGICAL 
-			NOT = { has_trait = trait_voidling }
-		}
-		set_species_flag = can_has_food_upkeep
-	} 
-}
-vop_optimaze_game_rule_can_has_mineral_upkeep = {
-	remove_species_flag = can_has_mineral_upkeep
-	if = {
-		limit = { 
-			is_archetype = LITHOID
-			NOT = { has_trait = trait_voidling }
-		}
-		set_species_flag = can_has_mineral_upkeep
-	} 
-}
-vop_optimaze_game_rule_can_has_energy_upkeep = {
-	remove_species_flag = can_has_energy_upkeep
-	if = {
-		limit = { 
-			OR = {
-				is_robotic_or_voidspawn_species = yes
-				has_trait = trait_cyborg_power_intensive
-				has_trait = trait_exd
-			}
-		}
-		set_species_flag = can_has_energy_upkeep
-	} 
-}
 vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = {
 	remove_species_flag = can_has_phototrophic_energy_upkeep
 	if = {
@@ -121,7 +117,7 @@ vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = {
 				has_trait = trait_plantoid_phototrophic
 				AND = {
 					has_trait = trait_plantoid_radiotrophic
-					NOT = { AND = { exists = planet planet = { is_planet_class = pc_nuked } } }
+					NOT = { planet = { is_planet_class = pc_nuked } }
 				}
 			}
 		}
