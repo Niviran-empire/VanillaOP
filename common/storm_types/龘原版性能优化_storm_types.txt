@@ -126,7 +126,7 @@ particle_storm = {
 			ships_upkeep_mult = 0.5
 			custom_tooltip = particle_storm_fleet_tt
 			show_only_custom_tooltip = no
-			ship_armor_regen_add_static = -1	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
+			ship_monthly_hull_damage = @storm_monthly_dmg_low #_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
 		}
 	}
 
@@ -206,7 +206,7 @@ nexus_storm = {
 		nexus_storm_modifier = 1
 		custom_tooltip = nexus_storm_fleet_tt
 		show_only_custom_tooltip = no
-		ship_armor_regen_add_static = -2	#_|VOP新增|	cstorms.1100/@storm_monthly_dmg_high
+		ship_monthly_hull_damage = @storm_monthly_dmg_high #_|VOP新增|	cstorms.1100/@storm_monthly_dmg_low
 	}
 
 	on_start = {

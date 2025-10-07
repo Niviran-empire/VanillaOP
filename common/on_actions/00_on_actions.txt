@@ -1374,8 +1374,8 @@ on_ship_destroyed_victim = {
 		grand_archive.1031	# Space Fauna Ships size decrease
 		grand_archive.3014	# Spotted Cutholoid killed
 		grand_archive.3025	# Spawn special debris for Cutholoids
-		grand_archive.10065	# Restorative Enzymes unique mutation healing		#|VOP优化|添加trigger
-		grand_archive.10090 # Catalytic Bladder unique mutation		#|VOP优化|添加trigger
+	#	grand_archive.10065	# Restorative Enzymes unique mutation healing		#|VOP优化|禁用
+	#	grand_archive.10090 # Catalytic Bladder unique mutation		#|VOP优化|禁用
 		crisis.7525		# Cosmogenesis Needle Destroyed
 		grand_archive.1160	# Frenzied Voidworms starbase destroyed
 		grand_archive.10100	# Fissile Cores Unique Mutation
