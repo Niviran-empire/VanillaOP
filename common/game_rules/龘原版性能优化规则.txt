@@ -70,3 +70,72 @@ can_build_research_station_around = {
 is_new_colony = {
 	has_planet_flag = can_enable_is_new_colony
 }
+
+can_add_advanced_traits = {
+	OR = {
+		has_tradition = tr_genetics_enhanced_expression
+		has_active_tradition = tr_purity_exemplary_genetics
+		has_active_tradition = tr_cloning_somatic_synthesization
+		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
+		has_active_tradition = tr_mutation_unnatural_selection
+		has_str_genemodding_tech = yes
+	}
+}
+
+#This, root = country
+can_add_negative_traits_organic = {
+	OR = {
+		has_utopia = yes
+		has_biogenesis_dlc = yes
+	}
+	OR = {
+		has_str_genemodding_tech = yes
+		has_tradition = tr_genetics_resequencing
+		has_active_tradition = tr_cybernetics_integrated_anatomy
+		has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+		has_active_tradition = tr_purity_genotype_regeneration
+		has_active_tradition = tr_purity_genotype_regeneration_wilderness
+		has_active_tradition = tr_mutation_unnatural_selection
+	}
+}
+
+#This, root = country
+can_remove_positive_traits_organic = {
+	OR = {
+		AND = {
+			OR = {
+				has_utopia = yes
+				has_biogenesis_dlc = yes
+			}
+			OR = {
+				has_str_genemodding_tech = yes
+				has_tradition = tr_genetics_resequencing
+				has_active_tradition = tr_cybernetics_integrated_anatomy
+				has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
+				has_active_tradition = tr_purity_genotype_regeneration
+				has_active_tradition = tr_purity_genotype_regeneration_wilderness
+				has_active_tradition = tr_cloning_somatic_synthesization
+				has_active_tradition = tr_cloning_somatic_synthesization_clone_army
+				has_active_tradition = tr_mutation_unnatural_selection
+			}
+		}
+		AND = {
+			has_toxoids = yes
+			has_origin = origin_overtuned
+		}
+		has_technology = tech_gene_expressions
+		has_technology = tech_epigenetic_triggers
+	}
+}
+
+#This, root = country
+can_modify_organic_portraits = {
+	OR = {
+		has_tradition = tr_genetics_creation
+		has_tradition = tr_purity_exemplary_genetics
+		has_active_tradition = tr_cloning_somatic_synthesization
+		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
+		has_tradition = tr_mutation_unnatural_selection
+		has_str_genemodding_tech = yes
+	}
+}

@@ -139,3 +139,13 @@ str_paragon_2_1005_trigger_3 = {
 		}
 	}
 }
+
+has_str_genemodding_tech = {
+	OR = {
+		has_wsg_genemodding_tech = yes
+		has_wg_special_authority = yes
+		has_afkspace_special_authority = yes
+		has_afkspace_specialmg_authority = yes
+		azurlane_default_govement_trigger = yes
+	}
+}

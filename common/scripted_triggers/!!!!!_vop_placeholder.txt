@@ -3,3 +3,8 @@ is_nirvana_empire = { always = no }
 is_nirvana_empire_dragon = { always = no }
 is_nirvana_empire_council = { always = no }
 is_invisable_faction = { always = no }
+has_wsg_genemodding_tech = { always = no }
+has_afkspace_special_authority = { always = no }
+has_afkspace_specialmg_authority = { always = no }
+azurlane_default_govement_trigger = { always = no }
+has_wg_special_authority = { always = no }
