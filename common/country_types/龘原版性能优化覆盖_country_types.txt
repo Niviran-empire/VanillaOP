@@ -85,6 +85,7 @@ default = {
 					AND = {
 						is_individual_machine = no
 						is_lithoid_empire = no
+						is_infernal_empire = no
 						OR = {
 							is_regular_empire = yes
 							is_hive_empire = yes
@@ -153,6 +154,12 @@ default = {
 			}
 			food = 10
 			minerals = -10
+		}
+		produces = {
+			trigger = {
+				is_infernal_empire = yes
+			}
+			alloys = 10
 		}
 	}
 

@@ -7,12 +7,13 @@ vop_optimaze_game_rule_system_sensor = {
 		remove_star_flag = can_enable_can_be_system_blocks_sensors
 		if = {
 			limit = { OR = {
-				##_|星云|	+RS/Sexp
 				is_inside_nebula = yes
 				has_modifier = space_storm
-				##_|封印星系|	+Sexp
+				has_modifier = zroni_storm
+				has_modifier = queen_scorn_storm
 				has_star_flag = lcluster
 				has_star_flag = sealed_system
+				has_star_flag = storm_system
 			} }
 			set_star_flag = can_enable_can_be_system_blocks_sensors
 		}
@@ -36,7 +37,10 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 	if = {
 		limit = { 
 			exists = owner
-			has_citizenship_rights = yes
+			OR = {
+				has_citizenship_rights = yes
+				has_citizenship_type = { type = citizenship_shroud_touched country = owner }
+			}
 			can_think = yes
 			OR = {
 				is_robot_pop_group = no
@@ -68,7 +72,10 @@ vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 	if = {
 		limit = { 
 			exists = owner
-			has_citizenship_rights = yes
+			OR = {
+				has_citizenship_rights = yes
+				has_citizenship_type = { type = citizenship_shroud_touched country = owner }
+			}
 			can_think = yes
 			OR = {
 				is_robot_pop_group = no
@@ -130,7 +137,10 @@ vop_optimaze_game_rule_is_new_colony = {
 	if = {
 		limit = { 
 			is_colony = yes colony_age < 180 pop_amount < 1000 
-			NOT = { has_planet_flag = has_building_kuat_command_center_auto } 
+			NOR = { 
+				has_planet_flag = has_building_kuat_command_center_auto 
+				has_planet_flag = synth_queen_bastille
+			} 
 		}
 		set_planet_flag = can_enable_is_new_colony
 	}
