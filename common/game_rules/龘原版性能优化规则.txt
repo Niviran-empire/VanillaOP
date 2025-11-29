@@ -139,3 +139,14 @@ can_modify_organic_portraits = {
 		has_str_genemodding_tech = yes
 	}
 }
+
+
+# this = country
+is_country_psionic = {
+	always = no
+}
+
+# this = species
+is_psionic_species = {
+	always = no
+}
