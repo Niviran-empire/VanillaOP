@@ -145,8 +145,3 @@ can_modify_organic_portraits = {
 is_country_psionic = {
 	always = no
 }
-
-# this = species
-is_psionic_species = {
-	always = no
-}
