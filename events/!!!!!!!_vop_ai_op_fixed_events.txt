@@ -50,11 +50,9 @@ event = {
 		set_global_flag = force_disable_aow_megastructure
 		set_global_flag = force_adjust_aow_megastructure_cap
 		set_global_flag = VOP_flg_glbl_AP_no_ai
-		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		every_country = {
 			vop_optimaze_war_goals = yes # warcb
-			vop_optimaze_enclave_2065 = yes # enclave 2065
 			every_owned_pop_group = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
@@ -67,7 +65,6 @@ event = {
 		}
 		every_galaxy_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_galaxy_planet = {
 			limit = { is_colony = yes }
@@ -93,11 +90,9 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = this }
 	immediate = {
-		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		# country_event tech
 		vop_optimaze_war_goals = yes # warcb
-		vop_optimaze_enclave_2065 = yes # enclave 2065
 		every_owned_pop_group = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
@@ -109,7 +104,6 @@ country_event = {
 		}
 		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
 	}
@@ -121,11 +115,9 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = this }
 	immediate = {
-		vop_optimaze_action_116 = yes # action.116
 		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
 		# country_event tech
 		vop_optimaze_war_goals = yes # warcb
-		vop_optimaze_enclave_2065 = yes # enclave 2065
 		every_owned_pop_group = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
@@ -137,7 +129,6 @@ country_event = {
 		}
 		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
-			vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = yes
 		}
 		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
 	}

@@ -4,12 +4,6 @@ is_phototrophic = {
 	}
 }
 
-has_phototrophic_energy_upkeep = {
-	species = {
-		has_species_flag = can_has_phototrophic_energy_upkeep
-	}
-}
-
 has_total_war_cb = {
 	OR = {
 		# Attacker checks

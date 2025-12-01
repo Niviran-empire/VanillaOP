@@ -105,7 +105,7 @@ VOP_on_monthly_pulse = {
 		graygoo.183
 		graygoo.510
 		distar.10955
-	#	action.116				# enable resources for galactic market	|VOP优化|禁用	融入VOP框架事件
+	#	action.116				# enable resources for galactic market	|VOP优化|转出	1年
 	#	paragon_2.1145			# Aptitude - Champions of the Empire Tradition effect
 	#	pirate.48				#_|VOP优化|全事件禁用
 	#	pirate.4				#_|VOP优化|全事件禁用
@@ -116,7 +116,7 @@ VOP_on_monthly_pulse = {
 		galcom.108
 		galactic_features.365	# Tiyanki Respawning
 		enclave.2055 			# If Khan dead, merc fleets break contract
-	#	enclave.2065 			# Unemployed mercs return to merc station	|VOP优化|禁用	融入VOP框架事件
+	#	enclave.2065 			# Unemployed mercs return to merc station	|VOP优化|转出	1年
 		fircon.10				# Adds pre-FTL insights
 		crisis.7017 			# Cosmogenesis Neural Chip Objective
 		crisis.24000			# Synth Queen rebuilds her capital if possible
@@ -261,6 +261,8 @@ VOP_on_yearly_pulse = {
 
 		##	|VOP转入|月检
 		cstorms.1000			# Cosmic Storms unity per system/planet
+		action.116				# enable resources for galactic market
+		enclave.2065 			# Unemployed mercs return to merc station
 	}
 }
 

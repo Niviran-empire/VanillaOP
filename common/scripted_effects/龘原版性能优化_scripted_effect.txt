@@ -1,7 +1,8 @@
 @noxious_happiness_penalty = -0.01
 @pop_happiness_unemply_rate = 0.10
-######rule################################
-#system
+#################
+#### pop_rule ###
+#################
 vop_optimaze_game_rule_system_sensor = {
 	every_system = {
 		remove_star_flag = can_enable_can_be_system_blocks_sensors
@@ -19,7 +20,6 @@ vop_optimaze_game_rule_system_sensor = {
 		}
 	}
 }
-#can_vote_in_democratic_election
 vop_optimaze_game_rule_can_vote_in_democratic_election = {
 	remove_pop_group_flag = can_enable_pop_election_vote
 	if = {
@@ -103,35 +103,6 @@ vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 		set_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 	}
 }
-#species
-vop_optimaze_game_rule_can_is_phototrophic = {
-	remove_species_flag = can_is_phototrophic
-	if = {
-		limit = { 
-			OR = {
-				has_trait = trait_plantoid_phototrophic
-				has_trait = trait_plantoid_radiotrophic
-			}
-		}
-		set_species_flag = can_is_phototrophic
-	} 
-}
-vop_optimaze_game_rule_can_has_phototrophic_energy_upkeep = {
-	remove_species_flag = can_has_phototrophic_energy_upkeep
-	if = {
-		limit = { 
-			OR = {
-				has_trait = trait_plantoid_phototrophic
-				AND = {
-					has_trait = trait_plantoid_radiotrophic
-					NOT = { planet = { is_planet_class = pc_nuked } }
-				}
-			}
-		}
-		set_species_flag = can_has_phototrophic_energy_upkeep
-	} 
-}
-#planet
 vop_optimaze_game_rule_is_new_colony = {
 	remove_planet_flag = can_enable_is_new_colony
 	if = {
@@ -145,95 +116,26 @@ vop_optimaze_game_rule_is_new_colony = {
 		set_planet_flag = can_enable_is_new_colony
 	}
 }
-######rule################################
 
-######other###############################
-vop_optimaze_action_116 = {
+#################
+#### pop_cate ###
+#################
+vop_optimaze_game_rule_can_is_phototrophic = {
+	remove_species_flag = can_is_phototrophic
 	if = {
-		limit = {
-			has_global_flag = galactic_market_founded
+		limit = { 
 			OR = {
-				NOT = { is_on_market = volatile_motes }
-				NOT = { is_on_market = exotic_gases }
-				NOT = { is_on_market = rare_crystals }
-				NOT = { is_on_market = sr_living_metal }
-				NOT = { is_on_market = sr_zro }
-				NOT = { is_on_market = sr_dark_matter }
+				has_trait = trait_plantoid_phototrophic
+				has_trait = trait_plantoid_radiotrophic
 			}
 		}
-		if = {
-			limit = {
-				NOT = { is_on_market = volatile_motes }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = volatile_motes value >= 1 }
-				}
-			}
-			enable_on_market = volatile_motes
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = exotic_gases }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = exotic_gases value >= 1 }
-				}
-			}
-			enable_on_market = exotic_gases
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = rare_crystals }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = rare_crystals value >= 1 }
-				}
-			}
-			enable_on_market = rare_crystals
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_living_metal }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_living_metal value >= 1 }
-				}
-			}
-			enable_on_market = sr_living_metal
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_zro }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_zro value >= 1 }
-				}
-			}
-			enable_on_market = sr_zro
-		}
-		else_if = {
-			limit = {
-				NOT = { is_on_market = sr_dark_matter }
-				any_playable_country = {
-					is_galactic_community_member = yes
-					resource_stockpile_compare = { resource = sr_dark_matter value >= 1 }
-				}
-			}
-			enable_on_market = sr_dark_matter
-		}
-	}
+		set_species_flag = can_is_phototrophic
+	} 
 }
 
-vop_optimaze_enclave_2065 = {
-	if = {
-		limit = {
-			is_country_type = enclave_mercenary
-			any_owned_fleet = { is_leased = no }
-		}
-		country_event = { id = enclave.2070 }
-	}
-}
-
+#################
+#### cnc_goal ###
+#################
 vop_optimaze_war_goals = {
 	remove_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
 	remove_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
