@@ -132,16 +132,16 @@ country_event = {#修改trigger
 		exists = from
 		from = {
 			is_pool_leader = no
-			NOT = { leader_class = envoy }
-			leader_years_of_service >= 2
-			NOT = {
+			NOR = {
+				leader_class = envoy
 				has_leader_flag = leader_death_events_blocked
 			}
+			leader_years_of_service >= 2
 			OR = {
 				has_base_skill >= 4
 				is_ruler = yes
-				has_leader_flag = renowned_leader
-				has_leader_flag = legendary_leader
+				is_leader_tier = leader_tier_renowned
+				is_leader_tier = leader_tier_legendary
 			}
 		}
 	}
@@ -174,11 +174,11 @@ country_event = {#修改trigger
 				}
 				modifier = {
 					add = 10
-					from = { has_leader_flag = renowned_leader }
+					from = { is_leader_tier = leader_tier_renowned }
 				}
 				modifier = {
 					add = 20
-					from = { has_leader_flag = legendary_leader }
+					from = { is_leader_tier = leader_tier_legendary }
 				}
 
 				# Increase chance for leaders of higher level
