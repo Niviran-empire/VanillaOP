@@ -145,3 +145,18 @@ can_modify_organic_portraits = {
 is_country_psionic = {
 	always = no
 }
+
+# THIS = Fleet
+# FROM = Country / Snare sender
+can_fleet_be_captured_by_snares = {
+	custom_tooltip = {
+		fail_text = "FLEETORDER_GRAVITY_SNARE_NO_COMMUNICATIONS"
+		exists = from
+		exists = owner
+		from = { has_communications = root.owner }
+	}
+	custom_tooltip = {
+		fail_text = "FLEETORDER_MUST_BE_SPACE_CRITTER"
+		has_fleet_flag = can_fleet_be_captured_by_snares
+	}
+}

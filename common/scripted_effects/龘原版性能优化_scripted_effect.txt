@@ -3,6 +3,26 @@
 #################
 #### pop_rule ###
 #################
+vop_optimaze_game_rule_can_fleet_be_captured_by_snares = {
+	every_owned_fleet = {
+		remove_fleet_flag = can_fleet_be_captured_by_snares
+		if = {
+			limit = { 
+				exists = owner
+				owner = {
+					OR = {
+						is_capturable_space_critter_country_type = yes
+						is_country_type = grave_guardian
+						is_country_type = lured_fauna_faction
+					}
+					is_guardian_country = no
+				}
+				any_owned_ship = { is_space_fauna = yes }
+			}
+			set_fleet_flag = can_fleet_be_captured_by_snares
+		}
+	}
+}
 vop_optimaze_game_rule_system_sensor = {
 	every_system = {
 		remove_star_flag = can_enable_can_be_system_blocks_sensors
