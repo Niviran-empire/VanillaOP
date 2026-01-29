@@ -141,5 +141,6 @@ has_str_genemodding_tech = {
 		has_afkspace_special_authority = yes
 		has_afkspace_specialmg_authority = yes
 		azurlane_default_govement_trigger = yes
+		has_wws_special_authority = yes
 	}
 }
