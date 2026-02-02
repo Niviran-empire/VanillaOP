@@ -29,3 +29,9 @@ VOP_on_bi_yearly_pulse_country = {
 		vop_ai_fixed.5
 	}
 }
+
+on_entering_battle = {
+	events = {
+		VOP_evt_ModifierUpdated.1
+	}
+}
