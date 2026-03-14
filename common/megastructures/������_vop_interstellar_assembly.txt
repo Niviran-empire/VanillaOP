@@ -50,6 +50,14 @@ interstellar_assembly_0 = {
 			is_inside_border = from
 		}
 		custom_tooltip = {
+			fail_text = "requires_no_existing_megastructure"
+			NOT = {
+				any_system_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+			}
+		}
+		custom_tooltip = {
 			fail_text = "requires_surveyed_system"
 			NOT = {
 				any_system_planet = {

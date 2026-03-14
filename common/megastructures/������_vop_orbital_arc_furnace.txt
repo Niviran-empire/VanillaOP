@@ -66,9 +66,6 @@ orbital_arc_furnace_1 = {
 
 	on_dismantle_complete = {
 		every_system_planet = {
-			limit = {
-				has_modifier = orbital_arc_furnace_1_mod
-			}
 			dismantle_arc_furnace_effect = yes
 		}
 		random_system_planet = {

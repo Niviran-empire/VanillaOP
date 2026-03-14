@@ -157,7 +157,14 @@ default = {
 		}
 		produces = {
 			trigger = {
-				is_infernal_empire = yes
+				OR = {
+					is_infernal_empire = yes
+					# Or a machine with an infernal species
+					AND = {
+						has_country_flag = infernal_subspecies
+						is_machine_empire = yes
+					}
+				}
 			}
 			alloys = 10
 		}

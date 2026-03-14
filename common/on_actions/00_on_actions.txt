@@ -72,7 +72,6 @@ on_game_start_country = {
 		shroud.200			# Superstitious Beliefs' Setup
 		shroud.1000			# Start Twisted Experimenters Situation
 		shroud.5000			# Secret Societies communication effect
-		shroud.5200			# Tankbound Tech Artificial Workforce insight
 		infernals.10		# Infernal Misc
 	}
 }
@@ -226,6 +225,7 @@ on_monthly_pulse_pre_ftl_observation_broken_shackles = {
 VOP_on_yearly_pulse = {
 	events = {
 		leviathans.10	# Opinion increase with Enclaves
+		cara.4101 		# Caravan neighbor gatekeeper
 		crisis.204
 		crisis.205
 		crisis.208
@@ -364,7 +364,6 @@ VOP_on_monthly_pulse_country = {
 	#	leader.300			# Favor Maker Councilor Trait	|VOP转出|1年
 		paragon.605			# Spawn Gestalt Nodes if any are missing
 		cyber.1570			# Remove Clear Thought Clinic modifiers
-		machine_age.2105	# Monthly Pulse to ensure that no spiritualist cybercreed pops have fallen between the cracks
 		crisis.7540			# Cosmogenesis - Empty lathe alert
 		cybernetics.5025	# Virtual Machine pop creation
 		cybernetics.5030	# Virtual Machine pop destruction
@@ -390,6 +389,7 @@ VOP_on_monthly_pulse_country = {
 		shroud.11230		# The Reckoning integrity update
 		infernals.2000		# Galactic Hyperthermia crisis
 		infernals.2020		# Hyperthermia crisis - Conduits do monthly damage
+		shroud.13000		# Zro deficit, chance of shroud incursion
 	}
 	random_events = {
 	#	75 = 0
@@ -401,7 +401,6 @@ VOP_on_monthly_pulse_country = {
 VOP_on_yearly_pulse_country = {
 	events = {
 		timeline.2				# Timeline event for the start of the year
-		cara.4101 				# Caravan neighbor gatekeeper
 		anomaly.6793 			# Ghost Ship follow-up event for psionic ascension
 		specialist.500 			# Scholarium Planetary Sensor
 		specialist.1100 		# Prospectorium Resource Discovery
@@ -1222,6 +1221,7 @@ on_system_survey_ship = {
 # Scope = Planet
 on_colonization_started = {
 	events = {
+		action.2105		# Clear any purge flags on the planet.
 		advisor.17
 		progress.3
 		progress.7
@@ -2350,6 +2350,7 @@ on_leader_assigned = {
 		bio.500 	# Familiar Face Leader Portrait Swap
 		bio.1115	# Evopred Oligarch Immortalilty
 		shroud.300	# Superstitious Beliefs Cycles: Councilors bonuses
+		toxoids.600			# Mutagenic Spas give Substance Abuser
 	}
 }
 
@@ -2617,7 +2618,6 @@ on_tech_increased = {
 		shroud.1565			# Add aura intensification research option if we made a covenant
 		shroud.2150			# Breaching the Shroud situation - handle approaches upgrade
 		shroud.10080 		# Patron Objective Counter: technologies
-		shroud.5210			# Tankbound automated efficiency malus update
 		shroud.6300			# Mindwarden Origin : psionic suppression tech
 		shroud.12140		# Shrouded Whispers zro reward on rare and psionics tech
 		tutorial.2600		# Tutorial - Psionic Aura
@@ -3251,6 +3251,7 @@ on_planet_transfer = {
 		wilderness.300 		# Convert wilderness disctricts
 		wilderness.310		# Wilderness Planet Converter
 		infernals.32 		# Stops Volcanic terraforming (scripted)
+		origin.4001			# Payback Modifier is removed
 	}
 }
 
@@ -3431,23 +3432,23 @@ on_country_created = {
 #From = optional, destroyer (country)
 on_country_destroyed = {
 	events = {
-		custodian.100 # Custodian destroyed
-		emperor.400 # Galactic Empire destroyed
-		crisis.210
-		crisis.1270
+		custodian.100 			# Custodian destroyed
+		emperor.400 			# Galactic Empire destroyed
+		crisis.210 				# Prethoryn Defeated
+		crisis.1270 			# Unbidden Defeated
 		action.61
-		crisis.2404
-		war_in_heaven.17 #WiH - both AFEs dead - do not flip the order here!
-		war_in_heaven.10 #WiH - first AFE dead by NAL - do not flip the order here
-		crisis.4020	# Menace Objective: Destroy Empire.
+		crisis.2404 			#Contingency Defeated
+		war_in_heaven.17 		#WiH - both AFEs dead - do not flip the order here!
+		war_in_heaven.10 		#WiH - first AFE dead by NAL - do not flip the order here
+		crisis.4020				# Menace Objective: Destroy Empire.
 		emperor.63
-		origin.3250 # Remove Progenitor Deposit
-		action.465 # Directive 67 achievement
-		action.470 # Destroy People of Earth achievement
-		action.480 # Zombie on my Lawn achievement
+		origin.3250 			# Remove Progenitor Deposit
+		action.465 				# Directive 67 achievement
+		action.470 				# Destroy People of Earth achievement
+		action.480 				# Zombie on my Lawn achievement
 		paragon.5935
 		paragon.5950
-		situation.2060 # Kaleidoscope - pass it to country destroyer
+		situation.2060 			# Kaleidoscope - pass it to country destroyer
 		astral_planes.3160		# Formless defeated their enemies
 		astral_planes.5006		# Remove Celestial Tear Modifier Event
 		grand_archive.500		# Curator destroyed
@@ -4293,6 +4294,7 @@ on_subject_integrated = {
 		cyber.7035 	# Intregrating Vassals with Pre-Sapient Preserves as a Genesis Guide Empire
 		grand_archive.4570	# Grand Archive Dismantled from subject integration
 		astral_planes.1001	# Delete Dimensional Fleet on Integration
+		shroud.4802			# Delete Eater Fleet on Integration
 		grand_archive.8065	# Unprotect Black Needle planet
 		shroud.75			# Psionic Aura suppression dismantled from subject integration
 	}
@@ -4478,6 +4480,7 @@ on_post_government_changed = {
 		bio.1131	# EvoPred Oligarch Immortality Addition
 		bio.171		# Purity Authority trait handling - give trait
 		bio.172		# Purity Authority trait handling - remove trait
+		cyber.7016  # Genesis Guide remove preserves on abandoning civic
 		cyber.7040	# Ensuring that you can still build a colony ship after changing your civics and become a guided sapience empire
 		cyber.7045	# Ensuring that you can still build a colony ship after changing your civics and stop being a guided sapience empire
 		shroud.805	# Superstitious Beliefs cycles removal if needed
@@ -4930,8 +4933,6 @@ on_synth_leader_malfunction = {
 #local_num_pops_changed = Num pops that switched ethic to This pop group
 on_daily_pop_ethics_divergence = {
 	events = {
-	#	machine_age.2100 # Cybernetic Creed - add Creed traits to spiritualist pops		|VOP优化|禁用
-	#	machine_age.2101 # Cybernetic Creed - remove Creed traits from non-spiritualist pops	|VOP优化|禁用
 		cyber.8 # Cyber objectors
 	}
 }
