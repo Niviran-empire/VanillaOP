@@ -5,3 +5,4 @@
  vop_ai_fixed.0.a:0 "已关闭人口思潮"
  vop_ai_fixed.0.b:0 "已开启人口思潮"
  vop_ai_fixed.c:"完成设置"
+ mod_can_add_negative_traits_organic: "可以为有机物种选择负面特质"

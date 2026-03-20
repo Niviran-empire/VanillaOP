@@ -6,3 +6,4 @@ vop_ai_fixed.0.desc:0 "The basic operating environment has been adjusted to allo
 vop_ai_fixed.0.a:0 "Population Ideology Disabled"
 vop_ai_fixed.0.b:0 "Population Ideology Enabled"
 vop_ai_fixed.c: "Settings Completed"
+mod_can_add_negative_traits_organic: "Allows the selection of negative traits for organic species."

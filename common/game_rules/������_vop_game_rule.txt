@@ -78,7 +78,7 @@ can_add_advanced_traits = {
 		has_active_tradition = tr_cloning_somatic_synthesization
 		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
 		has_active_tradition = tr_mutation_unnatural_selection
-		has_str_genemodding_tech = yes
+		check_modifier_value = { modifier = can_add_negative_traits_organic value != 0 }
 	}
 }
 
@@ -89,7 +89,7 @@ can_add_negative_traits_organic = {
 		has_biogenesis_dlc = yes
 	}
 	OR = {
-		has_str_genemodding_tech = yes
+		check_modifier_value = { modifier = can_add_negative_traits_organic value != 0 }
 		has_tradition = tr_genetics_resequencing
 		has_active_tradition = tr_cybernetics_integrated_anatomy
 		has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
@@ -108,7 +108,7 @@ can_remove_positive_traits_organic = {
 				has_biogenesis_dlc = yes
 			}
 			OR = {
-				has_str_genemodding_tech = yes
+				check_modifier_value = { modifier = can_add_negative_traits_organic value != 0 }
 				has_tradition = tr_genetics_resequencing
 				has_active_tradition = tr_cybernetics_integrated_anatomy
 				has_active_tradition = tr_cybernetics_assimilator_integrated_anatomy
@@ -136,7 +136,7 @@ can_modify_organic_portraits = {
 		has_active_tradition = tr_cloning_somatic_synthesization
 		has_active_tradition = tr_cloning_somatic_synthesization_clone_army
 		has_tradition = tr_mutation_unnatural_selection
-		has_str_genemodding_tech = yes
+		check_modifier_value = { modifier = can_add_negative_traits_organic value != 0 }
 	}
 }
 

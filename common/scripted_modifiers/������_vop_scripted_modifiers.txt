@@ -1,1 +1,2 @@
 begin_modifier_updated_batch = { icon = mod_ship_hull_mult good = yes hidden = yes category = ship }
+can_add_negative_traits_organic = { icon = mod_species_trait_picks_add good = yes category = country percentage = no localize_with_value_key = yes }
