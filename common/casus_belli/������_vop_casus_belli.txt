@@ -16,6 +16,15 @@ cb_colossus = {
 		}
 		has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb
 	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 150
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -40 }
+	}
 }
 
 cb_stop_colossus = {
@@ -36,5 +45,14 @@ cb_stop_colossus = {
 		}
 		from = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
 		NOT = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
+	}
+	proxy_war_resources = {
+		category = proxy_war
+		cost = {
+			influence = 150
+		}
+	}
+	on_proxy_war_start = {
+		pay_proxy_war_additional_resources = { VALUE = -40 }
 	}
 }
