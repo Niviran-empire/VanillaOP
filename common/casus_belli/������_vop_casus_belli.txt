@@ -2,9 +2,9 @@ cb_colossus = {
 	show_in_diplomacy = no
 	show_notification = no
 	potential = {
-		is_country_type = default
 		has_technology = "tech_colossus"
 		has_policy_flag = unrestricted_wars
+		is_country_type = default
 		NOT = { is_in_federation_with = from }
 	}
 	is_valid = {
