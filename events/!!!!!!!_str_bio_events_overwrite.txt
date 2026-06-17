@@ -1,5 +1,5 @@
 namespace = bio
-planet_event = {#_|VOP优化|添加trigger 只允许玩家
+carrier_event = {#_|VOP优化|添加trigger 只允许玩家
 	id = bio.755
 	is_triggered_only = yes
 	hide_window = yes

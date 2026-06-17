@@ -3,7 +3,7 @@ namespace = paragon
 
 
 # on_colonized, give boost modifier if "Superior Colonies" Agenda is active.
-planet_event = {#添加trigger
+carrier_event = {#添加trigger
 	id = paragon.403
 	hide_window = yes
 	is_triggered_only = yes
@@ -24,17 +24,18 @@ planet_event = {#添加trigger
 				OR = {
 					has_modifier = agenda_superior_colonies_finish
 					has_modifier = agenda_superior_colonies_finish_wilderness
+					has_modifier = agenda_superior_colonies_finish_nomad
 				}
 			}
 			add_modifier = {
 				modifier = agenda_superior_colonies_planet_boost
 				days = @agenda_finish_modifier_duration
 			}
-			remove_planet_flag = superior_colonies_can_be_boosted
+			remove_carrier_flag = superior_colonies_can_be_boosted
 		}
 		else = {
 			# Set flag, so if Agenda is completed later, it can trigger Boost then (paragon.404).
-			set_timed_planet_flag = {
+			set_timed_carrier_flag = {
 				flag = superior_colonies_can_be_boosted
 				days = @agenda_finish_modifier_duration
 			}
@@ -59,26 +60,23 @@ country_event = {#添加trigger
 		if = {
 			# Not necessarily the last finished Agenda, but checking if it's active does the job.
 			limit = {
-				owner = {
+				any_owned_colony = {
 					OR = {
 						has_modifier = agenda_superior_colonies_finish
 						has_modifier = agenda_superior_colonies_finish_wilderness
+						has_modifier = agenda_superior_colonies_finish_nomad
 					}
 				}
 			}
 			# Check all our Colonies if they were founded last 10 years (has can_be_boosted flag).
-			every_system_within_border = {
-				every_system_planet = {
-					limit = {
-						is_colony = yes
-						is_owned_by = root.owner
-						has_planet_flag = superior_colonies_can_be_boosted
-					}
-					remove_planet_flag = superior_colonies_can_be_boosted
-					add_modifier = {
-						modifier = agenda_superior_colonies_planet_boost
-						days = @agenda_finish_modifier_duration
-					}
+			every_owned_colony = {
+				limit = {
+					has_carrier_flag = superior_colonies_can_be_boosted
+				}
+				remove_carrier_flag = superior_colonies_can_be_boosted
+				add_modifier = {
+					modifier = agenda_superior_colonies_planet_boost
+					days = @agenda_finish_modifier_duration
 				}
 			}
 		}
@@ -135,6 +133,7 @@ country_event = {#修改trigger
 			NOR = {
 				leader_class = envoy
 				has_leader_flag = leader_death_events_blocked
+				has_trait = leader_trait_ruler_great_khan
 			}
 			leader_years_of_service >= 2
 			OR = {
@@ -224,6 +223,8 @@ country_event = {#修改trigger
 
 				# Make a clone since the original is going to be deleted before any followup event is triggered.
 				create_country = {
+					flag = none
+					default_ships = no
 					name = "NAME_dead_leader_country"
 					type = faction
 					auto_delete = yes

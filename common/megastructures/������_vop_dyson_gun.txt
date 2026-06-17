@@ -1,9 +1,9 @@
-quantum_catapult_0 = {
+dyson_gun_0 = {
 	entity = "construction_platform_entity"
 	construction_entity = "construction_platform_entity"
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
-	entity_offset = { x = -27 y = -27 }
+	entity_offset = { x = 0 y = -30 }
 	build_time = 1800
 	resources = {
 		category = megastructures
@@ -37,12 +37,17 @@ quantum_catapult_0 = {
 		}
 	}
 
-	custom_tooltip_requirements = "MEGASTRUCTURE_TOOLTIP_REQUIREMENTS_QUANTUM_CATAPULT"
+	custom_tooltip_requirements = "MEGASTRUCTURE_TOOLTIP_REQUIREMENTS_DYSON_GUN"
 
-	prerequisites = { "tech_quantum_catapult" }
+	prerequisites = { "tech_dyson_gun" }
+
+	potential = {
+		owner? = {
+			is_nomadic = no
+		}
+	}
 
 	possible = {
-		inline_script = megastructures/system_ownership_or_waystation_check
 		hidden_trigger = {
 			exists = starbase
 		}
@@ -106,7 +111,84 @@ quantum_catapult_0 = {
 
 	# root = system
 	# from = country
-	ai_weight = { set = 0 }
+	ai_weight = {
+		factor = 15
+
+		modifier = {
+			factor = 2
+			owner? = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 30000
+				}
+			}
+		}
+
+		modifier = {
+			factor = 0.1
+			owner? = {
+				is_pacifist = yes
+			}
+		}
+
+		modifier = {
+			factor = 2
+			owner? = {
+				is_militarist = yes
+			}
+		}
+
+		modifier = {
+			factor = 0.1
+			owner? = {
+				is_xenophile = yes
+			}
+		}
+
+		modifier = {
+			factor = 2
+			owner? = {
+				is_xenophobe = yes
+			}
+		}
+
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = {
+				exists = owner
+				NOT = {
+					owner = { is_same_value = from }
+				}
+			}
+		}
+
+		modifier = {
+			factor = 0
+			from = {
+				any_system_within_border = {
+					distance = {
+						source = root.solar_system
+						use_bypasses = no
+						min_jumps = 1
+						max_jumps = 25
+					}
+					any_system_megastructure = {
+						is_quantum_catapult_megastructure = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			from = {
+				any_system_within_border = {
+					any_system_megastructure = {
+						is_dyson_gun = yes
+					}
+				}
+			}
+		}
+	}
 
 	on_build_start = {}
 	on_build_cancel = {}
@@ -115,15 +197,15 @@ quantum_catapult_0 = {
 			if = {
 				limit = {
 					has_relic = r_contingency_core
-					has_country_flag = built_quantum_catapult_site
+					has_country_flag = built_dyson_gun_site
 				}
-				set_country_flag = built_quantum_catapult_site_contingency
+				set_country_flag = built_dyson_gun_site_contingency
 			}
 			else_if = {
 				limit = {
-					NOT = { has_country_flag = built_quantum_catapult_site }
+					NOT = { has_country_flag = built_dyson_gun_site }
 				}
-				set_country_flag = built_quantum_catapult_site
+				set_country_flag = built_dyson_gun_site
 				country_event = { id = tutorial.2126 }
 			}
 		}

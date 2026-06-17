@@ -124,16 +124,16 @@ vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 	}
 }
 vop_optimaze_game_rule_is_new_colony = {
-	remove_planet_flag = can_enable_is_new_colony
+	remove_carrier_flag = can_enable_is_new_colony
 	if = {
 		limit = { 
 			is_colony = yes colony_age < 180 pop_amount < 1000 
 			NOR = { 
-				has_planet_flag = has_building_kuat_command_center_auto 
-				has_planet_flag = synth_queen_bastille
+				has_carrier_flag = has_building_kuat_command_center_auto 
+				has_carrier_flag = synth_queen_bastille
 			} 
 		}
-		set_planet_flag = can_enable_is_new_colony
+		set_carrier_flag = can_enable_is_new_colony
 	}
 }
 

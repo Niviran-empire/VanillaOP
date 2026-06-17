@@ -56,13 +56,13 @@ event = {#_|VOP优化|修改trigger
 					}
 				}
 			}
-			planet_event = { id = action.86 } # planet flips to starbase owner
+			carrier_event = { id = action.86 } # planet flips to starbase owner
 		}
 	}
 }
 
 
-planet_event = {#_|VOP新增|添加trigger
+carrier_event = {#_|VOP新增|添加trigger
 	id = action.222
 	hide_window = yes
 
@@ -74,10 +74,10 @@ planet_event = {#_|VOP新增|添加trigger
 			has_origin = origin_doomsday
 			is_ai = yes
 			any_owned_planet = {
-				has_planet_flag = doomed_planet_origin
+				has_carrier_flag = doomed_planet_origin
 			}
 		}
-		NOT = { has_planet_flag = doomed_planet_origin }
+		NOT = { has_carrier_flag = doomed_planet_origin }
 	}
 
 	immediate = {
@@ -88,15 +88,15 @@ planet_event = {#_|VOP新增|添加trigger
 					has_origin = origin_doomsday
 					is_ai = yes
 					any_owned_planet = {
-						has_planet_flag = doomed_planet_origin
+						has_carrier_flag = doomed_planet_origin
 					}
 				}
-				NOT = { has_planet_flag = doomed_planet_origin }
+				NOT = { has_carrier_flag = doomed_planet_origin }
 			}
 			owner = {
 				random_owned_planet = {
 					limit = {
-						has_planet_flag = doomed_planet_origin
+						has_carrier_flag = doomed_planet_origin
 						pop_amount > 300
 					}
 					while = {

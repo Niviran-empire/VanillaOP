@@ -83,18 +83,82 @@ hyper_relay = {
 	}
 
 	possible = {
-		hidden_trigger = {
-			exists = starbase
+		if = {
+			limit = {
+				from = {
+					is_nomadic = no
+				}
+			}
+			hidden_trigger = {
+				exists = starbase
+			}
+			custom_tooltip = {
+				fail_text = "requires_inside_border_or_subject"
+				OR = {
+					is_inside_border = from
+					AND = {
+						owner? = {
+							is_subject = yes
+							overlord = {
+								is_same_value = from
+							}
+						}
+					}
+					AND = {
+						from = {
+							has_menace_perk = menp_defender_galcom_2
+						}
+						solar_system.owner? = {
+							OR = {
+								has_defensive_pact = from
+								is_in_federation_with = from
+								from = {
+									has_subject = prev
+								}
+							}
+						}
+					}
+				}
+			}
 		}
-		custom_tooltip = {
-			fail_text = "requires_inside_border_or_subject"
-			OR = {
-				is_inside_border = from
-				AND = {
-					exists = owner
-					owner = {
-						is_subject = yes
-						overlord = { is_same_value = from }
+		else = {
+			custom_tooltip = {
+				fail_text = requires_tier_2_waystation_on_wayline_or_subject
+				OR = {
+					any_starbase_in_system = {
+						is_waystation_starbase = yes
+						owner? = {
+							is_same_value = from
+						}
+						any_starbase_in_network = {
+							has_starbase_size >= starbase_waystation_2
+							owner? = {
+								is_same_value = from
+							}
+						}
+					}
+					AND = {
+						exists = starbase
+						owner? = {
+							is_subject = yes
+							overlord = {
+								is_same_value = from
+							}
+						}
+					}
+					AND = {
+						from = {
+							has_menace_perk = menp_defender_galcom_2
+						}
+						solar_system.owner? = {
+							OR = {
+								has_defensive_pact = from
+								is_in_federation_with = from
+								from = {
+									has_subject = prev
+								}
+							}
+						}
 					}
 				}
 			}
@@ -111,21 +175,34 @@ hyper_relay = {
 					}
 				}
 				AND = {
-					exists = owner
-					owner = {
+					exists = starbase
+					owner? = {
 						is_subject = yes
-						overlord = { is_same_value = from }
+						overlord = {
+							is_same_value = from
+						}
+					}
+				}
+				AND = {
+					exists = starbase
+					from = {
+						has_menace_perk = menp_defender_galcom_2
+					}
+					solar_system.owner? = {
+						OR = {
+							has_defensive_pact = from
+							is_in_federation_with = from
+							from = {
+								has_subject = prev
+							}
+						}
 					}
 				}
 			}
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_hyper_relay"
-			NOR = {
-				has_megastructure = hyper_relay
-				has_megastructure = hyper_relay_ruined
-				has_megastructure = hyper_relay_restored
-			}
+			has_any_hyper_relay = no
 		}
 		custom_tooltip = {
 			fail_text = "requires_technology_hyper_relays"
@@ -137,6 +214,10 @@ hyper_relay = {
 				count > 0
 			}
 		}
+	}
+
+	context_menu_potential = {
+		has_any_hyper_relay = no
 	}
 
 	placement_rules = {			# those would be ignored since the hyper relay is being "free-placed" between the inner and outer radius of the system

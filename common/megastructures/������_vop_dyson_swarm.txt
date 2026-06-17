@@ -43,6 +43,18 @@ dyson_swarm_1 = {
 
 	construction_blocks_and_blocked_by = none
 	custom_tooltip_requirements = "MEGASTRUCTURE_TOOLTIP_REQUIREMENTS_DYSON_SWARM"
+	tooltip_show_star_resources = yes
+	tooltip_best_systems_header = "MEGASTRUCTURE_DYSON_SWARM_BEST_SYSTEMS_TOOLTIP_HEADER"
+	tooltip_system_filter = {
+		system_has_dyson_swarm = no
+		is_binary_star = no
+		is_trinary_star = no
+		NOR = {
+			is_star_class = sc_black_hole
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+		}
+	}
 
 	dismantle_cost = {
 		category = megastructures
@@ -69,7 +81,7 @@ dyson_swarm_1 = {
 			limit = {
 				has_modifier = dyson_swarm_1_mod
 			}
-			remove_planet_flag = has_megastructure
+			remove_carrier_flag = has_megastructure
 			remove_modifier = dyson_swarm_1_mod
 		}
 		from = {
@@ -99,6 +111,7 @@ dyson_swarm_1 = {
 	}
 
 	possible = {
+		inline_script = megastructures/system_ownership_or_waystation_check
 		hidden_trigger = {
 			exists = starbase
 		}
@@ -144,6 +157,12 @@ dyson_swarm_1 = {
 	placement_rules = {
 		planet_possible = {
 			custom_tooltip = {
+				fail_text = "requires_no_protostar"
+				NOT = {
+					is_planet_class = pc_protostar
+				}
+			}
+			custom_tooltip = {
 				fail_text = "must_build_around_star"
 				is_star = yes
 			}
@@ -154,8 +173,15 @@ dyson_swarm_1 = {
 			custom_tooltip = {
 				fail_text = "requires_no_existing_megastructure"
 				NOR = {
-					has_planet_flag = megastructure
-					has_planet_flag = has_megastructure
+					has_carrier_flag = megastructure
+					has_carrier_flag = has_megastructure
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_deposit_on_star"
+				OR = {
+					has_deposit_for = shipclass_mining_station
+					has_deposit_for = shipclass_research_station
 				}
 			}
 			if = {
@@ -204,11 +230,16 @@ dyson_swarm_1 = {
 	}
 	on_build_complete = {
 		set_star_flag = conduit_excluded
-		from = { country_event = { id = cybernetics.1020 } }
 		fromfrom.planet = {
-			set_planet_flag = has_megastructure
+			add_modifier = {
+				modifier = dyson_swarm_1_mod
+				days = -1
+			}
+			set_carrier_flag = has_megastructure
 			if = {
-				limit = { has_orbital_station = yes }
+				limit = {
+					has_orbital_station = yes
+				}
 				orbital_station = {
 					dismantle = yes
 				}

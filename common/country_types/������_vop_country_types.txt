@@ -61,13 +61,18 @@ default = {
 		category = country_base
 		produces = {
 			energy = 20
-			minerals = 20
 			physics_research = 10
 			society_research = 10
 			engineering_research = 10
 			influence = 3
-			unity = 5
+			unity = 10
 			alloys = 5
+		}
+		produces = {
+			trigger = {
+				is_nomadic = no
+			}
+			minerals = 20
 		}
 		produces = {
 			trigger = {
@@ -175,7 +180,6 @@ default = {
 		category = planet_branch_offices
 		cost = {
 			trade = 1000
-			influence = 75
 		}
 	}
 }

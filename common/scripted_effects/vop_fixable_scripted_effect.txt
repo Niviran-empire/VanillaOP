@@ -1,0 +1,243 @@
+
+#_|VOP优化|修复原版的错误
+select_suitable_spawn_system = {
+	if = {
+		limit = { is_nomadic = no }
+		random_system_within_border = {
+			limit = {
+				is_capital_system = no
+				NOT = {
+					any_neighbor_system = {
+						OR = {
+							NOR = {
+								exists = owner
+								has_star_flag = hidden_treasure_system
+							}
+							AND = {
+								exists = owner
+								owner = { NOT = { is_same_value = root } }
+							}
+						}
+					}
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {
+					factor = 0.01
+					OR = {
+						has_star_flag = treasure_hunters_spawn_pinpoint
+						has_star_flag = hidden_treasure_system
+					}
+				}
+			}
+			set_star_flag = treasure_hunters_spawn_pinpoint
+			save_event_target_as = suitable_spawn_system
+		}
+	}
+	else = {
+		# Nomad path: use waystations as spatial anchors instead of border systems
+		random_owned_nonprimary_starbase = {
+			limit = {
+				is_waystation_starbase = yes
+				solar_system = {
+					NOT = {
+						any_neighbor_system = {
+							OR = {
+								NOR = {
+									exists = owner
+									has_star_flag = hidden_treasure_system
+								}
+								AND = {
+									exists = owner
+									owner = { NOT = { is_same_value = root } }
+								}
+							}
+						}
+					}
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {
+					factor = 0.01
+					solar_system = {
+						OR = {
+							has_star_flag = treasure_hunters_spawn_pinpoint
+							has_star_flag = hidden_treasure_system
+						}
+					}
+				}
+				# Favor waystations in active travel corridors
+				modifier = {
+					add = 2
+					has_neighboring_waystation = yes
+				}
+				modifier = {
+					add = 2
+					solar_system = {
+						count_neighbor_system = {
+							count >= 2
+							limit = {
+								any_fleet_in_system = {
+									is_waystation_ship = yes
+									owner = { is_same_value = root }
+								}
+							}
+						}
+					}
+				}
+				# Favor waystations near owned Arkships
+				modifier = {
+					add = 3
+					solar_system = {
+						any_neighbor_system = {
+							any_fleet_in_system = {
+								is_arkship_fleet = yes
+								owner = { is_same_value = root }
+							}
+						}
+					}
+				}
+			}
+			solar_system = {
+				set_star_flag = treasure_hunters_spawn_pinpoint
+				save_event_target_as = suitable_spawn_system
+			}
+		}
+	}
+	if = {
+		limit = {
+			NOT = { exists = event_target:suitable_spawn_system }
+		}
+		if = { #Fallback if you are nomadic we just grab a neighboring system to your arkship
+			limit = { is_nomadic = yes }
+			capital_scope.solar_system = {
+				random_neighbor_system = {
+					solar_system = {
+						save_event_target_as = suitable_spawn_system
+					}
+				}
+			}
+		}
+		else = {
+			capital_scope.solar_system = {
+				random_neighbor_system = {
+					limit = {
+						exists = owner
+						owner = { is_same_value = root }
+					}
+					save_event_target_as = suitable_spawn_system
+				}
+			}
+		}
+	}
+	# Select capital if there is no other solution (non-nomad only — nomads handled above)
+	if = {
+		limit = {
+			NOT = { exists = event_target:suitable_spawn_system }
+			is_nomadic = no
+		}
+		capital_scope.solar_system = {
+			save_event_target_as = suitable_spawn_system
+		}
+	}
+}
+#_|VOP优化|修复原版的错误
+paragon_origin_ascension_effect = {
+	optimize_memory
+	if = { #Focus - same for everyone
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_focus }
+		# country_event = { id = paragon.5265 }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_focus
+	}
+	if = { #Psionic
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_psychic_beacon }
+		ruler = { set_leader_flag = psychic_beacon }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_psychic_beacon
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_astropath }
+		ruler = { set_leader_flag = astropath }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_astropath
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_all_seeing }
+		ruler = { set_leader_flag = all_seeing }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_all_seeing
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_the_voice }
+		ruler = { set_leader_flag = the_voice }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_the_voice
+	}
+	if = { #Cybernetic
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_permanent_transmitters }
+		ruler = { set_leader_flag = permanent_transmitters }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_permanent_transmitters
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_sleep_inhibitors }
+		ruler = { set_leader_flag = sleep_inhibitors }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_sleep_inhibitors
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_tactical_interface }
+		ruler = { set_leader_flag = tactical_interface }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_tactical_interface
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_cognitive_analyzers }
+		ruler = { set_leader_flag = cognitive_analyzers }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_cognitive_analyzers
+	}
+	if = { #Synthetic
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_shared_learning_network }
+		ruler = { set_leader_flag = shared_learning_network }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_shared_learning_network
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_battle_calculation_systems }
+		ruler = { set_leader_flag = battle_calculation_systems }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_battle_calculation_systems
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_recycling_algorithms }
+		ruler = { set_leader_flag = recycling_algorithms }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_recycling_algorithms
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_vast_engineering_database }
+		ruler = { set_leader_flag = vast_engineering_database }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_vast_engineering_database
+	}
+	if = { #Genetic
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_brain_growth }
+		ruler = { set_leader_flag = brain_growth }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_brain_growth
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_gene_splicing }
+		ruler = { set_leader_flag = gene_splicing }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_gene_splicing
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_irresistible_charisma }
+		ruler = { set_leader_flag = irresistible_charisma }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_irresistible_charisma
+	}
+	if = {
+		limit = { has_country_flag = paragon_origin_ascension_flag_flipping_divided_attention }
+		ruler = { set_leader_flag = divided_attention }
+		remove_country_flag = paragon_origin_ascension_flag_flipping_divided_attention
+	}
+	ruler = {
+		if = {
+			limit = { has_leader_flag = paragon_origin_legendary_leader }
+			set_immortal = yes
+			remove_leader_flag = legendary_leader_coma
+			paragon_origin_delusion_trait_lowerer = yes
+		}
+	}
+	remove_country_flag = increase_leader_upkeep
+}

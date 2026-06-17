@@ -77,7 +77,7 @@ str_paragon_2_1005_trigger_1 = {
 	}
 	FROM = {
 		NOT = {
-			has_planet_flag = prospected_by@root.owner
+			has_carrier_flag = prospected_by@root.owner
 		}
 		OR = {
 			has_deposit_for = shipclass_mining_station
@@ -106,7 +106,7 @@ str_paragon_2_1005_trigger_2 = {
 			num_deposits = 0
 		}
 		NOT = {
-			has_planet_flag = prospected_by@root.owner
+			has_carrier_flag = prospected_by@root.owner
 		}
 	}
 }
@@ -129,7 +129,7 @@ str_paragon_2_1005_trigger_3 = {
 			num_deposits = 0
 		}
 		NOT = {
-			has_planet_flag = prospected_by@root.owner
+			has_carrier_flag = prospected_by@root.owner
 		}
 	}
 }

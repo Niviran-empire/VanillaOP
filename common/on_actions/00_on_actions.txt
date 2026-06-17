@@ -68,11 +68,15 @@ on_game_start_country = {
 		focus.5				# Set up variables for Empire Focuses
 		unplugged.199		# Unplugged Origin Setup
 		wilderness.100		# Wilderness Origin setup
-		game_start.75		# Force reset slaves
 		shroud.200			# Superstitious Beliefs' Setup
 		shroud.1000			# Start Twisted Experimenters Situation
 		shroud.5000			# Secret Societies communication effect
 		infernals.10		# Infernal Misc
+		nomads.200			# Set up the Champions Forge enclave
+		nomads.1000			# Start the Forever Cruise origin situation
+		nomads.20  			# Start the Nomadic Economic Situation
+		nomads.25 			# Start Nomads Variable Tracking
+		game_start.110		# Void dweller / Void machines advanced start habitat colonisation
 	}
 }
 
@@ -390,6 +394,7 @@ VOP_on_monthly_pulse_country = {
 		infernals.2000		# Galactic Hyperthermia crisis
 		infernals.2020		# Hyperthermia crisis - Conduits do monthly damage
 		shroud.13000		# Zro deficit, chance of shroud incursion
+		ambition.160 		# Defenders Objectives: No Aggressive War
 	}
 	random_events = {
 	#	75 = 0
@@ -425,6 +430,14 @@ VOP_on_yearly_pulse_country = {
 		shroud.8020				# Endbringers refresh paranoia modifier
 		shroud.12000			# Shroud leaders roll
 		infernals.2010			# Galactic Hyperthermia crisis
+		ambition.150 			# Defender objectives: Federation or Defense pacts
+		nomads.3000				# Non-Nomads issue contracts for nomads
+		nomads.3005				# Nomads (not Forever Cruise) issue contracts for themselves
+		nomads.1300				# Nomads (Forever Cruise) issue passenger and crew contracts for themselves
+		nomads.2100 			# Sacred Path Midgame Event
+		nomads.3080 			# Hired Guns modifier cleanup
+		nomads.8040				# Tribute Vault: stale loyalty modifier cleanup
+		arkship.1022			# Arkship NOT Disabled by Gatekeeper Event
 
 		##	|VOP转入|		来自<月度国家>
 		paragon.5034
@@ -682,7 +695,7 @@ on_late_game_pulse_country = {
 }
 
 # setup advanced colony. So far it has a pop on the capital and a colony shelter building matching the is_colony trigger
-# scope: planet
+# scope: colony
 # from: country
 on_initialize_advanced_colony = {
 	events = {
@@ -690,12 +703,16 @@ on_initialize_advanced_colony = {
 		game_start.21	# upgrade colony shelter on additional colonies
 		game_start.22	# set up additional buildings (mines, farms, power plants)
 		game_start.23	# add additional pops
+		game_start.105	# Void dweller colony init
+		game_start.130	# Nomadic colony init
 	}
 }
 
 on_become_advanced_empire = {
 	events = {
 		game_start.6
+		game_start.100	# Void dweller empire init
+		game_start.135	# Nomadic empire init
 	}
 }
 
@@ -719,7 +736,7 @@ on_custom_diplomacy = {
 		crisis.1050
 		crisis.1051
 		crisis.1052
-		nomad.30
+		namarian.30
 		leviathans.100 # Trader Enclaves (all)
 		leviathans.157 # XuraCorp (refusing comms.)
 		leviathans.160 # Riggans (refusing comms.)
@@ -728,6 +745,8 @@ on_custom_diplomacy = {
 		leviathans.301 # Artisan Enclave (refusing comms.)
 		leviathans.499 # Curator Enclave
 		leviathans.597 # Curator Enclave (refusing comms.)
+		nomads.150		   # Champions Forge Enclave
+		nomads.105		   # Champions Forge Enclave (refusing comms.)
 		utopia.3000
 		utopia.3010
 		crisis.2300
@@ -782,6 +801,7 @@ on_first_contact_finished = {
 		paragon_2.2100 #Gives progress to Xenolinguistics
 		grand_archive.7015	# Primal Calling Tiyanki Voidlure worked
 		focus.500 #Set First contact Flag for Focus
+		nomads.54			# Decipher Strange Signal via First Contact
 	}
 }
 
@@ -796,7 +816,7 @@ on_enforce_borders = {
 }
 
 # Triggers when ground combat starts
-# This = planet
+# This = colony
 # From = country attacking
 on_ground_combat_started = {
 	events = {
@@ -810,10 +830,10 @@ on_ground_combat_started = {
 
 # Triggers country_event for the attacker upon victory (before controller is switched)
 # This = country, lead attacker
-# From = country, planet owner
-# FromFrom = planet
-# 'Attacker' is the side that "IsHostile" to the planet controller. For example: spawned monster armies are attackers, but if they win and the player attempts to retake the planet, the player is the attacker
-on_planet_attackers_win = {
+# From = country, colony owner
+# FromFrom = colony
+# 'Attacker' is the side that "IsHostile" to the colony controller. For example: spawned monster armies are attackers, but if they win and the player attempts to retake the colony, the player is the attacker
+on_colony_attackers_win = {
 	events = {
 		# Utility
 		action.8		# (Hidden) Establish communications after conquest
@@ -845,23 +865,24 @@ on_planet_attackers_win = {
 		ancrel.4064		# Sentinels: "[Planet] Liberated"
 		biocrisis.85 	# Behemoth takes over a planet
 		shroud.6240		# Mindwardens - Homeworld reclaimed
+		nomads.1556		# Nomadic Champion trophy generator
 	}
 }
 
 # Triggers country_event for the attacker upon defeat
 # This = country, attack leader
-# From = country, planet owner
-# FromFrom = planet
-on_planet_attackers_lose = {
+# From = country, colony owner
+# FromFrom = colony
+on_colony_attackers_lose = {
 	events = {
 	}
 }
 
 # Triggers country_event for the defender upon victory
-# Root = country, planet owner
+# Root = country, colony owner
 # From = country, attack leader
-# FromFrom = planet
-on_planet_defenders_win = {
+# FromFrom = colony
+on_colony_defenders_win = {
 	events = {
 		colony.5
 		colony.56
@@ -875,10 +896,10 @@ on_planet_defenders_win = {
 }
 
 # Triggers country_event for the defender upon defeat
-# This = country, planet owner
+# This = country, colony owner
 # From = country, attack leader
-# FromFrom = planet
-on_planet_defenders_lose = {
+# FromFrom = colony
+on_colony_defenders_lose = {
 	events = {
 		colony.57
 		colony.113
@@ -964,6 +985,11 @@ on_entering_system = {
 		paragon.3120
 		paragon.3125
 		paragon.3130
+		nomads.30 		# Track Systems visited
+		arkship.141		# Eternal Chorus - Arrival at Target System
+		arkship.150		# Eternal Chorus - Follow-Up
+		arkship.160				# Diplomatic Overture - arrival at target system
+		nomads.4720 #Nomads Exploration Rewards
 	}
 	random_events = {
 	}
@@ -988,9 +1014,9 @@ on_entering_system_fleet = {
 		#story.408
 		anomaly.3114
 		anomaly.3115
-		nomad.3
-		nomad.7
-		nomad.8
+		namarian.3
+		namarian.7
+		namarian.8
 		leviathans.1005
 	#	pirate.10			#|VOP优化|全事件禁用
 		leviathans.610
@@ -1074,6 +1100,31 @@ on_entering_system_fleet = {
 		shroud.6100				# Mindwardens enter the buffer system
 		shroud.6220				# Mindwardens visit the buffer system again
 		shroud.6105				# Mindwardens enter an Exiled system
+		# nomads.210			# Champions Forge contestant enters the system
+		nomads.520				# Intercept Raid Fleet Spawner
+		nomads.565				# Heirs of the Khan Marauders want to negotiate
+		nomads.605				# Heirs returning to their clan for the final duel
+		nomads.1590				# Nomadic Princess POI
+		nomads.1610				# Nomadic Princess Continues Investigating
+		nomads.1605				# Nomadic Princess Continues Investigating
+		nomads.3036				# Diplomatic Support - Check if Arkship has entered systems to pick up diplomats
+		nomads.3045				# Diplomatic Support - Check if Arkship has entered system to drop off diplomats
+		nomads.3060				# Sightseeing Tour - Check if Arkship has entered the system to pick up tourists
+		nomads.3065				# Sightseeing Tour - Check if Arkship has entered the system for tourists to sightsee
+		nomads.3070				# Sightseeing Tour - Check if Arkship has entered the system to drop off tourists
+		astral_planes.5001		# Nomads: Celestial Tear Modifier Event
+		nomads.3050 			# Prisoner Disposal - Check if Arkship has entered system
+		nomads.9005				# GRS The Relay
+		nomads.9010				# GRS Unity
+	}
+}
+
+# A fleet has left a system
+# Scope = Fleet
+# From = System
+on_leaving_system_fleet = {
+	events = {
+		nomads.35				# Nomad trespassing flag for casus belli persistence during FTL jumps
 	}
 }
 
@@ -1089,6 +1140,11 @@ on_crossing_border = {
 		cara.1250 # Caravaneer Fleet 1 Re-Deal
 		cara.2250 # Caravaneer Fleet 2 Re-Deal
 		cara.3250 # Caravaneer Fleet 3 Re-Deal
+		arkship.860	# Nomadic empire breaches closed borders
+		arkship.870	# Nomadic empire enters open borders
+		arkship.880	# Our nomadic empire enters closed borders
+		arkship.890	# Our nomadic empire is cloaked and enters closed borders
+		arkship.910	# Nomadic empire encountering a Fallen Empire
 	}
 }
 
@@ -1141,6 +1197,8 @@ on_survey_planet = {
 		timeline.12         # Milestone First Arc Site
 		unplugged.198 # Machine legacy planet surveyed as unplugged origin
 		extreme_frontiers.1430  # New Bratulla surveyed
+		nomads.1524		# Nomadic Naturalist - Pre-Sapients Found
+		nomads.52		# NOMAD_CHECKLIST_SENSOR_CALIBRATION counter increment.
 	}
 
 	random_events = {
@@ -1185,6 +1243,14 @@ on_astral_rift_surveyed = {
 	}
 }
 
+# A country has gained a surveyed status on a ship. Can happen through changes in intel levels.
+# Root = Ship
+# From = Country
+on_ship_surveyed = {
+	events = {
+	}
+}
+
 # A country has gained a surveyed status on a planet.
 # Happens after "on_survey_planet" or "on_survey_astral_rift" if a science ship surveyed a planet or an Astral Rift.
 # Root = Country
@@ -1214,6 +1280,7 @@ on_system_survey_ship = {
 		machine_age.3400	# Arc Welders discover an ideal system
 		focus.25			# Empire Focus
 		advisor.15			# Advisor: Potential Colony
+		nomads.53			# Source of Strange Signal has been surveyed
 	}
 }
 
@@ -1246,7 +1313,7 @@ on_colonization_started = {
 }
 
 # A planet has been colonized.
-# Scope = Planet
+# Scope = Carrier
 on_colonized = {
 	events = {
 		action.360		# Get extra urban districts from modifiers
@@ -1287,11 +1354,12 @@ on_colonized = {
 		bio.1010			# Evolutionary Predators modifier added to planet
 		shroud.10005 		# Patron Objective Counters: po_establish_colony / po_colonize_gaia_world / po_colonize_tomb_world
 		shroud.6544			# Mindwarden colonization of Exiled planet (can happen if planet was previously bombed to death)
+		nomads.95
 	}
 }
 
 # A colony has been destroyed. Called just before owner and controller is cleared
-# Scope = Planet
+# Scope = Carrier
 on_colony_destroyed = {
 	events = {
 		colony.2002
@@ -1306,7 +1374,7 @@ on_colony_destroyed = {
 }
 
 # A colony has been destroyed by bombardment. Called after the planet's colony status has been cleared
-# This = Planet
+# This = Colony
 # From = Bombarder
 on_colony_destroyed_by_bombardment = {
 	events = {
@@ -1320,9 +1388,9 @@ on_colony_destroyed_by_bombardment = {
 on_entering_battle = {
 	events = {
 		paragon.3900
-		nomad.96
-		nomad.98
-		nomad.99
+		namarian.96
+		namarian.98
+		namarian.99
 		leviathans.155 		# Attacked Trader Enclave (any)
 		leviathans.350 		# Attacked Artisan Enclave
 		leviathans.595
@@ -1343,12 +1411,12 @@ on_entering_battle = {
 # This = owner of ship 1 (destroyed)
 # From = owner of ship 2 (combatant)
 # FromFrom = ship 1
-# FromFromFrom = ship 2
+# FromFromFrom = ship 2 # can be invalid if damage is done via other methods (like scripted action)
 on_ship_destroyed_victim = {
 	events = {
 		paragon.3903
 	#	syndaw.30
-		nomad.95
+		namarian.95
 		leviathans.3002
 		leviathans.3101
 		leviathans.592
@@ -1393,6 +1461,8 @@ on_ship_destroyed_victim = {
 		grand_archive.2095	# Voidworm Nest destruction
 		biocrisis.170 		# Elder Voidspawn dies
 		biocrisis.265 		# Mindlinked Behemoth dies
+		arkship.1010		# A Player Arkship has been destroyed
+		nomads.400			# Champions forge destroyed
 	}
 }
 
@@ -1434,7 +1504,9 @@ on_ship_destroyed_perp = {
 		shroud.10355 # Patron Objective Counter: po_destroy_pirates
 		shroud.10706 # Patron Objective Counter: po_build_defense_platform
 		shroud.11220 # The Reckoning ship destroy stat
-		shroud.12150 # Apostle of the End aura intensity reward on ship destroyed in EotC aura
+		shroud.12150 # Apostle of the End aura intensity reward on ship destroyed
+		ambition.180 		# Defender Objective: Destry crisis shipsin EotC aura
+		arkship.1000 # An Enemy Arkship has been destroyed
 	}
 	random_events = {
 	}
@@ -1460,6 +1532,7 @@ on_starbase_destroyed = {
 		action.225 # Cleanup
 		distar.1999 # Special Project Gatekeeper for Living Planet event chain
 		grand_archive.4500	# Grand Archive Destroyed after system is destroyed
+		nomads.8045 # Spawn debris when a disabled waystation is destroyed
 	}
 }
 
@@ -1468,6 +1541,16 @@ on_starbase_destroyed = {
 on_starbase_disabled = {
 	events = {
 		grand_archive.4530	# Grand Archive Destroyed for losing system
+		crisis.6205			# Nomad Crisis - Anchor Waystation disabled
+		arkship.1027		# Offer recovery special project for disabled nomad arkships/waystations
+	}
+}
+
+# THIS = Starbase
+# FROM = Previous Owner Country
+on_waystation_lost = {
+	events = {
+		nomads.99 # Notify about losing a waystation
 	}
 }
 
@@ -1525,6 +1608,8 @@ on_fleet_destroyed_victim = {
 		bio.3115			# Experimental Fleet Killed
 		unplugged.2035 # Machine legacy maker fleet destroyed
 		unplugged.197  # Machine legacy clean up after fleet destroyed
+		nomads.525	# Heirs Marauder Raid Contract Killer
+		nomads.530	# Heirs Marauder Starbase Contract Killer
 	}
 }
 
@@ -1618,6 +1703,8 @@ on_fleet_destroyed_perp = {
 		shroud.8700  # The Reckoning is destroyed
 		infernals.2150 # Red Giant miner guards destroyed
 		infernals.2120 # Red Giant miner station destroyed
+		nomads.545	# Marauder Hunter Tracker
+		nomads.1510	# Nomads attack an empire that likes to purge
 	}
 	random_events = {
 		300 = 0
@@ -1669,6 +1756,7 @@ on_space_battle_over = {
 		crisis.8170 #Synth Queen Outpost fight ends
 		focus.650 # Flags for Fight the Khan Task
 		focus.655 # Flags for Fight the Tempest Task
+		nomads.275		# Champions Forge Tournament Fleet Battle over
 	}
 }
 
@@ -1680,6 +1768,7 @@ on_fleet_exit_battle = {
 		grand_archive.7300	# Bio-repurposing creating debris with lost space fauna
 		grand_archive.7305	# Reanimator creating debris with lost space fauna
 		grand_archive.10105	# Cleanup ships that should be destroyed at combat end
+		nomads.510 			# Recent Nomad Combat Tracker
 	}
 }
 
@@ -1687,6 +1776,13 @@ on_fleet_exit_battle = {
 # From = disbanded fleet
 on_fleet_disbanded = {
 	events = {
+	}
+}
+
+# This = fleet
+on_fleet_went_mia = {
+	events = {
+		arkship.1445	# Arkships return immediately from MIA
 	}
 }
 
@@ -1930,6 +2026,9 @@ on_gaining_station_control = {
 # From = opponent war leader
 on_entering_war = {
 	events = {
+		nomads.756	# Khan: flag late-joining enemies as hostile to the Host
+		factions.13	# Set timed entered_war_as_attacker/defender flag for late-joiners
+		origin.5148	# Broken Shackles: dispatch the war-start events for late-joiners
 	}
 }
 
@@ -1955,6 +2054,10 @@ on_ship_disabled = {
 		grand_archive.8040	# Black Needle (Captain Hoo) disabled
 		grand_archive.8260	# Black Needle (Captain Inax) disabled
 		biocrisis.99 		# Behemoth Disabled
+		nomads.550			# Marauder Hunters Disabled
+		arkship.1023		# Notify the owner when one of their Arkships is disabled
+		arkship.1020		# Spawn scavengeable debris when a homicidal empire disables an Arkship
+		grand_archive.4540	# Grand Archive Module cleanup when hosting arkship is disabled
 	}
 }
 
@@ -1968,8 +2071,8 @@ on_ship_enabled = {
 # Note that this will trigger once for each combination of planet & original
 # species (but for uplifting this should be only once).
 #
-# Scope = planet_event
-# This = planet scope
+# Scope = colony_event
+# This = Colony scope
 # From = uplifted species (pre-modification)
 on_uplift_completion = {
 	events = {
@@ -2083,13 +2186,15 @@ on_planet_bombarded = {
 		infernals.2005		# Hyperthermia crisis objective
 		action.81 			# Turns planet into tombworld if using armageddon or pox stance
 		shroud.12110		# Disciple of the Eater reward
+		nomads.5005 		# Plundering Bombardment
+		nomads.3015 		# Raid Contract Bombardement tracker
 	}
 }
 
-# Planet has reached 0 pops from orbital bombardment
-# This = Planet
+# Colony has reached 0 pops from orbital bombardment
+# This = Colony
 # From = Bombarder
-on_planet_zero_pops = {
+on_colony_zero_pops = {
 	events = {
 		action.81
 		distar.1015
@@ -2107,15 +2212,15 @@ on_ground_combat_devastation = {
 	}
 }
 
-# Planet has reached 0 pops from collateral damage
-# This = Planet
+# Colony has reached 0 pops from collateral damage
+# This = Colony
 # From = Army owner
-on_planet_zero_pops_ground_combat = {
+on_colony_zero_pops_ground_combat = {
 }
 
-# Planet has reached a new ascension tier.
-# This = Planet
-on_planet_ascension_tier_increased = {
+# Colony has reached a new ascension tier.
+# This = Colony
+on_colony_ascension_tier_increased = {
 	events = {
 		shroud.10800	# Patron Objective Counter: po_ascend_planet
 		shroud.4845		# Stop free Planetary Ascension (Ascension Accord)
@@ -2124,7 +2229,7 @@ on_planet_ascension_tier_increased = {
 
 # Pop Group is abducted by raiding stance
 # This = Pop Group scope
-# From = planet abducted from
+# From = Colony abducted from
 on_pop_group_abducted = {
 	events = {
 		action.121
@@ -2133,8 +2238,9 @@ on_pop_group_abducted = {
 }
 
 # Pop Group is resettled
-# From is previous planet
-# planet = { } is new planet
+# This = Pop Group scope
+# From = previous colony
+# local_pop_amount = variable of how many pops were resettled
 on_pop_group_resettled = {
 	events = {
 		unrest.4350
@@ -2182,6 +2288,7 @@ on_post_communications_established_always_fire = {
 		grand_archive.4130		# Collection Curators rewards - Homicidal considerations
 		timeline.56 # Timeline Origin Event Lost Colony
 		timeline.37 # Timeline Meet Fallen Empire
+		nomads.3095 # Nomad Contract Intro
 	}
 }
 
@@ -2194,7 +2301,7 @@ on_presence_revealed = {
 }
 
 # Executed whenever a pop is killed due to bombardment damages
-# This = Planet where the pop was bombed to death
+# This = Colony where the pop was bombed to death
 # From = Country which is raining down fire and brimstone
 # FromFrom = Biggest fleet bombarding the planet (the one we used the bombardment stance from)
 # local_kill_pop_amount = amount of pop killed
@@ -2207,7 +2314,7 @@ on_pop_bombed_to_death = {
 }
 
 # Executed whenever a pop is killed by its planet devastation, caused by another country (not by bombarbment)
-# This = Planet where the pop died
+# This = Colony where the pop died
 # From = Attacker country
 on_pop_collateral_casualty = {
 	events = {
@@ -2217,7 +2324,7 @@ on_pop_collateral_casualty = {
 
 # Executed whenever a pop is sacrificed
 # This = Pop killed
-# From = Planet where the pop was killed
+# From = Colony where the pop was killed
 # FromFrom = Country intentionally killing the pop
 on_pop_sacrificed = {
 	events = {
@@ -2259,7 +2366,8 @@ on_leader_death_notify = {
 	events = {
 		bio.5000
 		bio.765			# Spare Organs
-		paragon.549 	# Leader Funeral Events		|VOP优化|修改trigger
+		paragon.549 	# Leader Funeral Events
+		nomads.635		# Player Khan Died
 	}
 }
 
@@ -2292,6 +2400,9 @@ on_leader_death = {
 		cstorms.330			# Storm-Rider died in storm
 		timeline.39         # Timeline Emperor Dies
 		leader.330			# Remove divine sovereign civic
+		nomads.1630			# Nomadic Princess dies
+		arkship.142			# Eternal Chorus - reassign or end chain if researcher dies
+		arkship.156			# Diplomatic Overture - reassign or end chain if official dies
 	}
 }
 
@@ -2317,6 +2428,8 @@ on_leader_fired = {
 		paragon.3906
 		distar.168 # Remove Event Node Traits
 		leader.330	# Remove divine sovereign civic
+		arkship.142	# Eternal Chorus - reassign or end chain if researcher is dismissed
+		arkship.156	# Diplomatic Overture - reassign or end chain if official is dismissed
 	}
 }
 
@@ -2351,6 +2464,7 @@ on_leader_assigned = {
 		bio.1115	# Evopred Oligarch Immortalilty
 		shroud.300	# Superstitious Beliefs Cycles: Councilors bonuses
 		toxoids.600			# Mutagenic Spas give Substance Abuser
+		ambition.215 		# Defender of the Galaxy Paladin Assigned
 	}
 }
 
@@ -2361,6 +2475,7 @@ on_leader_unassigned = {
 		bio.505 	# Familiar Face Leader Portrait Swapback
 		bio.1120	# Evopred Oligarch Immortality Removal
 		shroud.300	# Superstitious Beliefs Cycles: Councilors bonuses
+		ambition.220 		# Defender of the Galaxy Paladin Unassigned
 	}
 }
 
@@ -2384,7 +2499,7 @@ on_ruler_removed = {
 	}
 }
 
-# This = Planet
+# This = Colony
 on_blocker_cleared = {
 	events = {
 		tutorial.16
@@ -2458,6 +2573,7 @@ on_ship_built = {
 		shroud.10500		# Patron Objective Counter: po_clone_space_fauna
 		shroud.10705		# Patron Objective Counter: po_build_defense_platform
 		shroud.10940		# Patron Calling: po_clone_space_fauna_naval_capacity
+		ambition.210 		# Paladin Ship Built
 	}
 }
 
@@ -2475,6 +2591,8 @@ on_ship_designed = {
 on_ship_upgraded = {
 	events = {
 		crisis.2057
+		timeline.105 # First Arkship Upgraded to Tier 2 milestone
+		timeline.110 # First Arkship Upgraded to Tier 3 milestone
 	}
 }
 
@@ -2501,6 +2619,8 @@ on_war_beginning = {
 		bio.3160	# War declared when tasked with peace
 		bio.819		# Bodysnatchers declaring war
 		shroud.5051	# Proxy War bad opinion modifier set
+		nomads.515	# Recent Nomad War Tracker
+		nomads.755	# Khan: set the Host hostile to everyone fighting the Khan
 	}
 }
 
@@ -2517,6 +2637,12 @@ on_war_ended = {
 		focus.140			# Empire Focus
 		focus.660			# Set Flags for Defeat Fallen Empire Task
 		infernals.1051		# Galactic Crucible captured by non-crisis
+		nomads.94			# Re-enable Arkships
+		nomads.5020			# Deep Sleep Setup
+		nomads.5025			# Deep Sleep Removal
+		nomads.5030			# Deep Sleep Setup
+		nomads.5035			# Deep Sleep Removal
+		nomads.760			# Khan: reset Host hostility for enemies the Khan is no longer fighting
 	}
 }
 
@@ -2622,6 +2748,7 @@ on_tech_increased = {
 		shroud.12140		# Shrouded Whispers zro reward on rare and psionics tech
 		tutorial.2600		# Tutorial - Psionic Aura
 		tutorial.2610		# Tutorial - Aura intensification
+		nomads.80			# Grant the AI a second Arkship after researching Arkship Construction
 	}
 }
 
@@ -2631,7 +2758,7 @@ on_tech_increased = {
 # This = Country
 # From = Species ( Post Modification )
 # FromFrom = Species ( Original )
-# Prev = Planet
+# Prev = Colony
 on_modification_complete = {
 	events = {
 		tutorial.65
@@ -2663,7 +2790,7 @@ on_modification_completion = {
 # This = Country
 # From = Species ( Post Modification )
 # FromFrom = Species ( Original )
-# Prev = Planet
+# Prev = Colony
 on_subspecies_integration_step = {
 	events = {
 		utopia.2508 # Handle leader traits after species modification
@@ -2677,7 +2804,7 @@ on_subspecies_integration_step = {
 # This = Country
 # From = Species ( Post Modification )
 # FromFrom = Species ( Original )
-# Prev = Planet
+# Prev = Colony
 on_subspecies_integration_complete = {
 	events = {
 		utopia.2508 # Handle leader traits after species modification
@@ -2732,9 +2859,9 @@ on_planet_returned = {
 	}
 }
 
-# A planet decision is enacted.
-# Root = Planet
-# From = Planet Owner
+# A decision is enacted on a colony carrier.
+# Root = Carrier
+# From = Carrier Owner
 on_decision_enacted = {
 	events = {
 		focus.110	# Empire Focus
@@ -2756,7 +2883,7 @@ on_edict_activated = {
 # FromFrom = system escaping to
 on_emergency_ftl = {
 	events = {
-		nomad.97
+		namarian.97
 		leviathans.1010
 		leviathans.1013
 		leviathans.1014
@@ -2779,7 +2906,7 @@ on_emergency_ftl = {
 }
 
 #An army construction has been completed.
-# This = Planet
+# This = Colony
 # From = Army
 on_army_recruited = {
 	events = {
@@ -2792,7 +2919,7 @@ on_army_recruited = {
 # This = owner
 # From = army
 # FromFrom = opponent
-# FromFromFrom = planet
+# FromFromFrom = colony
 on_army_killed_in_combat = {
 	events = {
 		emperor.450
@@ -2821,7 +2948,7 @@ on_army_killed_no_combat = {
 }
 
 #A building construction has been completed.
-# This = Planet
+# This = Colony
 on_building_complete = {
 	events = {
 		tutorial.14
@@ -2840,21 +2967,21 @@ on_building_complete = {
 }
 
 # A building construction has been queued.
-# This = Planet
+# This = Colony
 on_building_queued = {
 	events = {
 	}
 }
 
 # A building construction has been unqueued.
-# This = Planet
+# This = Colony
 on_building_unqueued = {
 	events = {
 	}
 }
 
 # A building construction has been completed, which is an upgrade of previous building.
-# This = Planet
+# This = Colony
 on_building_upgraded = {
 	events = {
 		plant.100
@@ -2868,7 +2995,7 @@ on_building_upgraded = {
 }
 
 # A building construction has demolished.
-# This = Planet
+# This = Colony
 on_building_demolished = {
 	events = {
 		emperor.62
@@ -2880,7 +3007,7 @@ on_building_demolished = {
 	}
 }
 # A building repair has finished
-# This = Planet
+# This = Colony
 on_building_repaired = {
 	events = {
 		cybernetics.2026	# Virtual Machine pop creation
@@ -2890,7 +3017,7 @@ on_building_repaired = {
 }
 
 #A district construction has been completed.
-# This = Planet
+# This = Colony
 on_district_complete = {
 	events = {
 		cybernetics.2026	# Virtual Machine pop creation
@@ -2902,7 +3029,7 @@ on_district_complete = {
 }
 
 #A zone construction has been completed.
-# This = Planet
+# This = Colony
 on_zone_complete = {
 	events = {
 		action.2100			# Planetary/Sectory governor gains XP.
@@ -2910,7 +3037,7 @@ on_zone_complete = {
 }
 
 # A building construction has finished, replacing another building.
-# This = Planet
+# This = Colony
 on_building_replaced = {
 	events = {
 		akx.10000
@@ -2924,7 +3051,7 @@ on_building_replaced = {
 }
 
 # A building construction has been downgraded and replaced.
-# This = Planet
+# This = Colony
 on_building_downgraded = {
 	events = {
 		cybernetics.2026 # Virtual Machine pop creation
@@ -2934,7 +3061,7 @@ on_building_downgraded = {
 }
 
 # A building has been wrecked by a enemy and is now ruined.
-# This = Planet
+# This = Colony
 # From = Enemy country
 on_building_ruined = {
 	events = {
@@ -2947,21 +3074,21 @@ on_building_ruined = {
 }
 
 # A district construction has been queued.
-# This = Planet
+# This = Colony
 on_district_queued = {
 	events = {
 	}
 }
 
 # A district construction has been unqueued.
-# This = Planet
+# This = Colony
 on_district_unqueued = {
 	events = {
 	}
 }
 
 # A district construction has demolished.
-# This = Planet
+# This = Colony
 on_district_demolished = {
 	events = {
 		cybernetics.2026 # Virtual Machine pop creation
@@ -2970,7 +3097,7 @@ on_district_demolished = {
 }
 
 # Auto-designation has changed the planet's designation.
-# This = Planet
+# This = Colony
 on_auto_colony_type_changed = {
 }
 
@@ -3015,6 +3142,8 @@ on_war_won = {
 		timeline.28 # Milestone Won War in Heaven
 		bio.3140		# Hive Fallen Empire War Fragment War Task
 		bio.1080		# EvoPred Apex Predator Trait Tracker
+		nomads.3075		# War with nomad mercenaries ends
+		nomads.3100		# Cancel unaccepted Join Wars contracts
 	}
 }
 
@@ -3050,6 +3179,8 @@ on_status_quo = {
 		action.45
 		origin.5141 #Broken Shackles vs MSI
 		shroud.5046	# Secret Societies proxy war bonus
+		nomads.3076		# War with nomad mercenaries ends
+		nomads.3101		# Cancel unaccepted Join Wars contracts
 	}
 }
 
@@ -3063,6 +3194,30 @@ on_status_quo_forced = {
 	events = {
 		action.39
 		origin.5141 #Broken Shackles vs MSI
+		nomads.3076		# War with nomad mercenaries ends
+		nomads.3101		# Cancel unaccepted Join Wars contracts
+	}
+}
+
+# A trade deal to end the war has been signed
+# Root = Main Attacker
+# From = Main Defender
+# FromFrom = War
+on_war_end_trade_deal = {
+	events = {
+		nomads.3075		# War with nomad mercenaries ends
+	}
+}
+
+# One of the allies has signed a trade deal to leave a war early
+# Root = Main Ally
+# From = Actor
+# FromFrom = War
+on_war_participant_leaves_early = {
+	events = {
+		nomads.3075		# War with nomad mercenaries ends
+		action.43		# Early leaver: force truce with opposing side so they cannot immediately rejoin
+		nomads.760		# Khan: reset Host hostility for enemies the Khan is no longer fighting
 	}
 }
 
@@ -3080,9 +3235,9 @@ on_host_new_species = {
 	}
 }
 
-# A pop has been added to the planet
-# Root = pop
-# From = planet
+# A pop has been added to the colony
+# This = Pop Group
+# From = Colony
 # local_pop_amount = variable of how much was grown
 on_pop_group_added = {
 	events = {
@@ -3101,7 +3256,7 @@ on_pop_group_rights_change = {
 }
 
 # A pop amount has been grown
-# This = Planet scope
+# This = Colony scope
 # From = Country
 # FromFrom = Pop group
 # local_pop_amount = variable of how much was grown
@@ -3114,7 +3269,7 @@ on_pop_growth = {
 }
 
 # A pop amount has been assembled
-# This = Planet scope
+# This = Colony scope
 # From = Country
 # FromFrom = Pop group
 # local_pop_amount = variable of how much was assembled
@@ -3128,7 +3283,7 @@ on_pop_assembly = {
 }
 
 # A pop has finished purging
-# This = Planet scope
+# This = Colony scope
 # From = Country
 # FromFrom = Pop group
 # local_pop_amount = variable of how many pops were purged
@@ -3152,11 +3307,12 @@ on_pop_purged = {
 		timeline.23 # Milestone First Purge
 		bio.1070 # EvoPred Gene Harvesting
 		shroud.10510 # Patron Objective Counter: po_kill_pop
+		nomads.10 # Temporary Nomad Vassal Purge Cleanup
 	}
 }
 
 # A pop has been displaced
-# This = Planet scope
+# This = Colony
 # From = Country
 # FromFrom = Pop group
 # local_pop_amount = variable of how many pops were displaced
@@ -3168,9 +3324,9 @@ on_pop_displaced = {
 	}
 }
 
-# Initial rebels manage to take control of the planet, happens before the new owner is set, after the war is created.
+# Initial rebels manage to take control of the colony, happens before the new owner is set, after the war is created.
 # This = Rebel Country
-# From = Planet
+# From = Colony
 # FromFrom = War
 on_rebels_take_planet = {
 	events = {
@@ -3181,9 +3337,9 @@ on_rebels_take_planet = {
 
 # Initial rebels manage to take control of the planet, happens after the new owner is set, after the war is created.
 # This = Rebel Country
-# From = Planet
+# From = Colony
 # FromFrom = War
-on_rebels_take_planet_owner_switched = {
+on_rebels_take_colony_owner_switched = {
 	events = {
 		action.36
 	}
@@ -3191,8 +3347,8 @@ on_rebels_take_planet_owner_switched = {
 
 #FromFrom = Former Owner
 #From = Country scope (new owner, so invalid)
-#This = Planet scope
-on_planet_ownerless = {
+#This = Colony scope
+on_colony_ownerless = {
 	events = {
 		action.85 	#_|VOP优化|修改trigger
 		action.89
@@ -3208,10 +3364,10 @@ on_planet_ownerless = {
 }
 
 # Fired whenever a new owner is set for a planet, following a war or through trade
-# This = Planet scope
+# This = Colony scope
 # From = Country scope (new owner)
 # FromFrom = Country scope (previous owner, if any)
-on_planet_transfer = {
+on_colony_transfer = {
 	events = {
 		action.89			# Cleaning up planetary modifiers
 		mega.205			# remove invalid political Decisions
@@ -3254,15 +3410,17 @@ on_planet_transfer = {
 		wilderness.310		# Wilderness Planet Converter
 		infernals.32 		# Stops Volcanic terraforming (scripted)
 		origin.4001			# Payback Modifier is removed
+		nomads.1			# Spinning up a vassal if a Nomad ever gets owernship of a planet
+		nomads.5			# Spinning up a vassal if a Nomad ever gets owernship of a planet and wants to purge it
 	}
 }
 
 # Fired whenever a new owner is set for a planet, and the planet was aggressively conquered
-# NOTE: fired in ADDITION to on_planet_transfer
-# This = Planet scope
+# NOTE: fired in ADDITION to on_colony_transfer
+# This = Colony scope
 # From = Country scope (new owner)
 # FromFrom = Former Owner
-on_planet_conquer = {
+on_colony_conquer = {
 	events = {
 		action.42		# Land appropriation
 		action.84
@@ -3275,8 +3433,8 @@ on_planet_conquer = {
 }
 
 #You have changed the location of your capital. Also called when a country's capital is first set e.g. during galaxy creation (but then FROM is not set)
-#this/root = new capital
-#from = old capital
+#This = Colony (new capital)
+#From = Colony (old capital)
 on_capital_changed = {
 	events = {
 		origin.3205
@@ -3298,6 +3456,7 @@ on_fleet_enter_orbit = {
 		bio.600 	# Aerospace Adaptation - Fleet enters orbit of friendly planet
 		bio.610 	# Aerospace Adaptation - Fleet enters orbit of hostile planet
 		biocrisis.275
+		nomads.3085 #Hired guns - Fleet enters orbit of hostile planet
 	}
 	random_events = {
 		90 = 0
@@ -3311,6 +3470,7 @@ on_fleet_leave_orbit = {
 	events = {
 		bio.605
 		bio.615
+		nomads.3090 #Hired guns - Fleet exits orbit of hostile planet
 	}
 }
 
@@ -3457,6 +3617,7 @@ on_country_destroyed = {
 		grand_archive.8067		# Unprotect Black Needle planet
 		shroud.6546				# Mindwarden Exiled destroyed (Psionic War ended)
 		infernals.1050			# Hyperthermia crisis destroyed
+		ambition.190 			# Defenders Objective: Destroy Crisis Country
 	}
 }
 
@@ -3465,6 +3626,16 @@ on_country_destroyed = {
 on_country_type_changed = {
 	events = {
 		grand_archive.2350	# Voidworms Crisis immunity
+	}
+}
+
+# A Megastructure has started building
+# Root = Country
+# From = System
+# FromFrom = Fleet
+on_megastructure_build_start = {
+	events = {
+		nomads.3025			# Megastructure Support Contract
 	}
 }
 
@@ -3481,7 +3652,6 @@ on_megastructure_built = {
 		utopia.80
 		utopia.4007			# alert message
 		awareness.145		# Megastructure built or upgraded in pre-ftl system
-		grand_archive.8090	# Treasure Hunters Grand Archive built
 		grand_archive.4120	# Curator Grand Archive Collection contact
 		grand_archive.4199	# Archivism handle edge case
 		focus.40			# Empire Focus
@@ -3492,6 +3662,7 @@ on_megastructure_built = {
 		shroud.6305			# Mindwardens built a Shroud Seal in border system
 		shroud.6540			# Mindwardens Psionic War Shroud Seal build
 		shroud.6585			# Mindwardens Shroud Seal reconstruction
+		nomads.5020
 	}
 }
 
@@ -3796,6 +3967,43 @@ on_colony_10_year_pulse_random_pop_events_list = {
 	#}
 }
 
+mobile_arkship_random_events = {
+	random_events = {
+		20 = arkship.5 # An Old container
+		20 = arkship.60 # Engine Contaminants
+		20 = arkship.65 # Start Your Engines
+		10 = arkship.95 # Spinal Mount Stress
+		10 = arkship.105 # Under Pressure
+		20 = arkship.125 # The Forgetting
+		20 = arkship.140 # The Eternal Chorus
+		20 = arkship.155 # A Diplomatic Overture
+		20 = arkship.700 # A Core Conspiracy
+		20 = arkship.1030 # A Mysterious Sickness
+		20 = arkship.1070 # An Unsettling Stillness
+		20 = arkship.1075 # A Faltering Core
+		20 = arkship.1090 # A Playground of Giants
+		20 = arkship.1100 # A Putrid Smell
+		20 = arkship.1120 # A Forgotten Level
+		20 = arkship.1160 # Black Hole Phenomenon
+		20 = arkship.1165 # Planetary Illuminations
+		20 = arkship.1170 # The Skin of a Giant
+		20 = arkship.1185 # Unregulated Trade
+		20 = arkship.1205 # The Only Sky We Know
+		20 = arkship.1215 # Fungal Contamination
+		20 = arkship.1240 # Unknown Resource Usage
+		20 = arkship.1300 # The Grand Refurbishment
+		20 = arkship.1385 # Star-Crossed Lovers
+	}
+}
+
+# This = Country
+# Fired from champions_forge_arrival_effect and champions_forge_contract_arrival_effect
+on_champions_forge_tournament_start = {
+	events = {
+		nomads.250
+	}
+}
+
 # a new leader is created
 # scope: country, from: leader
 on_leader_spawned = {
@@ -3837,12 +4045,11 @@ empire_init_add_technologies = {
 	}
 }
 
-# Called during empire initialization when starting a new game if has_secondary_species game rule is true.
-# Called before empire_init_create_capital_pops.
-# scope: planet
+# Called during empire initialization when starting a new game.
+# scope: colony
 # from: founder species
 # fromfrom: secondary species (if exists)
-empire_init_capital_planet = {
+empire_init_capital_colony = {
 	events = {
 		game_start.12 # starting buildings, districts & pops
 		# at this point the species might have changed (because we added traits), so FROMFROM might not be the secondary species anymore
@@ -3988,8 +4195,8 @@ on_starbase_transfer = {
 # FromFromFrom = Additional Attacked Fleet (if part of ongoing combat)
 on_fleet_combat_joined_attacker = {
 	events = {
-		aquatics.300 # You attacked the Aquatic Dragon in first contact
-		aquatics.310 # You attacked it while establishing comms with it (origin endgame)
+		aquatics.300 	# You attacked the Aquatic Dragon in first contact
+		aquatics.310 	# You attacked it while establishing comms with it (origin endgame)
 	}
 }
 
@@ -4046,6 +4253,7 @@ on_system_gained = {
 		bio.3370			# Angered the Control Fragment by rebuilding the system too soon
 		wilderness.100		# Nudge to colonize worlds (after time delay)
 		shroud.60			# Psionic Aura suppression dismantled
+		nomads.15			# Event handling logic if a nomad got system, which they never should.
 	}
 }
 
@@ -4087,10 +4295,12 @@ on_relic_lost = {
 # From = Archaeological Site
 on_arch_stage_finished = {
 	events = {
-		shroud.10045 # Patron Objective Counter: po_complete_arc_site_stage / po_complete_arc_site_or_rift_stage
+		shroud.10045 	# Patron Objective Counter: po_complete_arc_site_stage\po_complete_arc_site_or_rift_stage
 	}
 }
 
+# This = Fleet ( science vessel )
+# From = Archaeological Site
 on_arch_site_finished = {
 	events = {
 		achievement.6		# Archaeologist achievement
@@ -4098,6 +4308,8 @@ on_arch_site_finished = {
 		grand_archive.4150	# Galactic Curators rewards
 		focus.35			# Empire Focus
 		shroud.10035		# Patron Objective Counter: po_complete_arc_site / po_complete_arc_site_or_rift
+		nomads.40 			# Nomad excavates owned dig site without permission
+		nomads.41 			# Nomad excavates owned dig site with permission
 	}
 	random_events = {
 		90 = 0
@@ -4149,6 +4361,7 @@ on_resolution_passed = {
 		shroud.5020			# Secret Societes United in Purpose
 		shroud.10200 		# Patron Objective Counters: po_pass_resolution_galcom / po_pass_X_resolution
 		shroud.10700 	 	# Patron Objective Counter: po_galcom_vote
+		ambition.170 		# Defender Objective: Engage in the Galcom
 	}
 }
 
@@ -4188,6 +4401,7 @@ on_add_community_member = {
 		galcom.200
 		origin.5079 #Communications between MSI and Broken Shackles through Galcom
 		origin.4050  # Payback - Make Them Pay chain - Joined the galcom
+		ambition.330 	#DotG joins the galcom
 	}
 }
 
@@ -4204,10 +4418,14 @@ on_add_to_council = {
 	events = {
 		emperor.95
 		focus.550
+		ambition.335 #DotG Becomes Councillor
 	}
 }
 
 on_remove_from_council = {
+	events = {
+		ambition.315 	#Defender of the Galaxy - Paladin reassignment
+	}
 }
 
 on_join_alliance = {
@@ -4270,6 +4488,7 @@ on_sign_research_pact = {
 # From = subject's overlord
 on_becoming_subject = {
 	events = {
+		nomads.94			# Re-enable Arkships disabled during the subjugation war
 		action.214		# Join Overlord's Federation if laws permit
 		crisis.5020		# Menace Objective - Vassalise Empires
 		emperor.80		# New vassal joins Imperium
@@ -4299,6 +4518,7 @@ on_subject_integrated = {
 		shroud.4802			# Delete Eater Fleet on Integration
 		grand_archive.8065	# Unprotect Black Needle planet
 		shroud.75			# Psionic Aura suppression dismantled from subject integration
+		nomads.5020 		# Deep Sleep Setup
 	}
 }
 
@@ -4372,7 +4592,7 @@ on_first_contact_generic_stage_2 = {
 	}
 }
 
-# THIS = Planet: Branch office planet
+# THIS = Colony: Branch office colony
 # FROM = Country: Branch office owner
 on_branch_office_established = {
 	events = {
@@ -4381,7 +4601,7 @@ on_branch_office_established = {
 	}
 }
 
-# THIS = Planet: Branch office planet
+# THIS = Colony: Branch office colony
 # FROM = Country: Branch office owner
 on_branch_office_closed = {
 	events = {
@@ -4486,6 +4706,8 @@ on_post_government_changed = {
 		cyber.7040	# Ensuring that you can still build a colony ship after changing your civics and become a guided sapience empire
 		cyber.7045	# Ensuring that you can still build a colony ship after changing your civics and stop being a guided sapience empire
 		shroud.805	# Superstitious Beliefs cycles removal if needed
+		nomads.1030	# Forever Cruise Mutiny Complete
+		action.2150 # Free government reform
 	}
 }
 
@@ -4504,6 +4726,7 @@ on_tradition_picked = {
 		specialist.800		#_|VOP优化|添加trigger
 		paragon.405			#_|VOP优化|添加trigger
 		shroud.10050	# Patron Objective Counters: po_pick_X_tradition
+		nomads.310		# Clean up CFL trophy
 	}
 }
 
@@ -4582,6 +4805,7 @@ on_debris_researched = {
 	events = {
 		paragon_2.1110	# Salvager trait
 		focus.60		# Empire Focus
+		nomads.3035		# Scan Debris Contract
 	}
 }
 
@@ -4593,6 +4817,7 @@ on_debris_researched = {
 on_debris_scavenged = {
 	events = {
 		paragon_2.1110 # Salvager trait
+		nomads.3035    # Scan Debris Contract
 	}
 }
 
@@ -4615,6 +4840,7 @@ on_debris_reanimated = {
 on_debris_scavenged_and_researched = {
 	events = {
 		toxoids.700 # Scavengers civic and Salvager trait
+		nomads.3035 # Scan Debris Contract
 	}
 }
 
@@ -4735,6 +4961,7 @@ on_astral_rift_spawned = {
 		astral_planes.7		# Trigger A Rift In Space situation
 		astral_planes.8		# Add Astral Threads deposits
 		astral_planes.2151	# Riftworld Rift Affinity modifier added to every colony
+		astral_planes.5055	# Nomads: A Rift In Space situation trigger (waystation in system)
 	}
 }
 
@@ -4779,6 +5006,7 @@ on_astral_rift_exploration_complete = {
 		focus.55			# Empire Focus
 		shroud.10036		# Patron Objective Counter: po_complete_arc_site_or_rift
 		timeline.11         # Milestone First Astral Rift
+		nomads.42 			# Nomad excavates owned Astral Rift with permission
 	}
 	random_events = {
 		1 = astral_planes.6095  # Final Escapee Mercedes Romero
@@ -5628,5 +5856,71 @@ on_patron_delve_failed = {
 on_new_country_selected = {
 	events = {
 		shroud.8800
+	}
+}
+
+# Fired when a ship goes mobile after encamping
+# scope = carrier
+# from = carrier owner
+on_arkship_mobile = {
+	events = {
+		nomads.39		# Festival ended: start cooldown and reset the Celebration approach
+	}
+}
+
+# Fired when a ship becomes encamped
+# scope = carrier
+# from = carrier owner
+on_arkship_encamped = {
+	events = {
+		nomads.36 		# Start Festival
+		nomads.5040		# Place tent ships for Encampment
+	}
+}
+
+# Fired when a system locked (encamped) ship is killed
+# scope = system (where ship was locked in)
+on_system_locked_ship_killed = {
+	events = {
+		# ambient objects can be removed here
+	}
+}
+
+# Fired through nomads.6000
+# This = Arkship
+on_contract_event_common = {
+	random_events = {
+		1 = nomads.6005 # Found Loot
+		1 = nomads.6020 # Unexpected Cargo
+		1 = nomads.6055 # Academic Inquiry
+		1 = nomads.6060 # Operational Dispute
+		1 = nomads.6065 # Downtime Request
+		1 = nomads.6070 # A Growing Reputation
+		1 = nomads.6075 # Survey Data Windfall
+	}
+}
+on_contract_event_rare = {
+	random_events = {
+		1 = nomads.6015 #Module Failure
+	}
+}
+on_contract_event_unique = {
+	random_events = {
+		#1 = nomads.60xx
+		#1 =
+	}
+}
+
+# Fired when a Waystation is constructed
+# this = galactic object/solar system
+# from = waystation owner
+# fromfrom = waystation starbase
+on_waystation_built = {
+	events = {
+		arkship.900
+		nomads.3054 # Build Waystation Contract Complete
+		shroud.10922 # Build Waystation calling
+		astral_planes.5060	# Nomads: A Rift In Space situation trigger (waystation built at rift)
+		timeline.95 # First Waystation milestone
 	}
 }

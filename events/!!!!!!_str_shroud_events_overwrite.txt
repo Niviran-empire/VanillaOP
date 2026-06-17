@@ -7,31 +7,36 @@ country_event = {
 
 	trigger = {
 		has_technology = tech_aura_resonation
-		any_system_within_border = {
-			exists = starbase
-			starbase = {
-				OR = {
-					has_starbase_building = aura_emitter
-					has_starbase_building = ring_aura_emitter
-				}
+		any_owned_starbase = {
+			has_starbase_aura_emitter = yes
+			solar_system = {
+				is_psionic_aura_suppressed = no
 			}
-			is_psionic_aura_suppressed = no
 		}
 	}
 
 	immediate = {
-		every_system_within_border = {
+		every_owned_starbase = {
 			limit = {
-				exists = starbase
-				starbase = {
-					OR = {
-						has_starbase_building = aura_emitter
-						has_starbase_building = ring_aura_emitter
-					}
+				has_starbase_aura_emitter = yes
+				solar_system = {
+					is_psionic_aura_suppressed = no
 				}
-				is_psionic_aura_suppressed = no
 			}
-			natural_spawn_psionic_aura = { OWNER = owner }
+			solar_system = {
+				natural_spawn_psionic_aura = { OWNER = root }
+			}
+		}
+		every_owned_nonprimary_starbase = {
+			limit = {
+				has_starbase_aura_emitter = yes
+				solar_system = {
+					is_psionic_aura_suppressed = no
+				}
+			}
+			solar_system = {
+				natural_spawn_psionic_aura = { OWNER = root }
+			}
 		}
 	}
 }

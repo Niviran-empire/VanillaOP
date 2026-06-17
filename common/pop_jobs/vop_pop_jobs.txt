@@ -1,0 +1,55 @@
+#_|VOP优化|修复原版的错误
+stratovent_researcher = {
+	category = specialist
+	is_capped_by_modifier = yes
+
+	swappable_data = {
+		default = {
+			condition_string = SPECIALIST_JOB_TRIGGER
+			building_icon = building_nanolab_1
+			icon = xeno_zoo_keeper
+		}
+	}
+
+	tags = { research trade amenities }
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	resources = {
+		category = planet_researchers
+		produces = {
+			society_research = 1.5
+			trade = 3
+		}
+		upkeep = {
+			consumer_goods = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = { NOT = { has_valid_civic = civic_dystopian_society } }
+		}
+		planet_amenities_add = 300
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	inline_script = "jobs/academia_recruiter_naval_cap_add"
+
+	inline_script = "jobs/inf_navalcap_jobs"
+
+	weight = {
+		weight = @specialist_job_weight
+		mult = value:scripted_modifier_job_weight_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	inline_script = "jobs/automodding_priority_research"
+
+}

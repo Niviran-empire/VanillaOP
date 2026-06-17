@@ -174,3 +174,26 @@ event = { #_|VOP优化|	禁用,直接覆盖风暴属性实现
 		}
 	}
 }
+
+country_event = {
+	id =  cstorms.180
+	event_chain = cs_inetian_chain
+	title = cstorms.180.name
+	desc = cstorms.180.desc
+	picture = GFX_evt_poor_stormshelter
+	location = event_target:wm_digsite_storm_formation
+	show_sound = event_sensor_ping
+
+	is_triggered_only = yes
+
+	option = { ##no rewards this is a transition event
+		name = cstorms.180.a
+		event_target:wm_digsite_storm_formation = {
+			create_archaeological_site = site_weathermanipulators_storm_formation
+			hidden_effect = {
+				root = { set_visited = event_target:wm_digsite_storm_formation.solar_system }
+				mark_used_by_precursor = yes
+			}
+		}
+	}
+}
