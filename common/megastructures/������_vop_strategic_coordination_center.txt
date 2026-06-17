@@ -63,7 +63,7 @@ strategic_coordination_center_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_strategic_coordination_center"
-			from = {
+			from? = {
 				OR = {
 					has_relic = r_contingency_core
 					NOT = { has_country_flag = built_strategic_coordination_center_site }
@@ -72,7 +72,7 @@ strategic_coordination_center_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_strategic_coordination_center_two"
-			from = { NOT = { has_country_flag = built_strategic_coordination_center_site_contingency } }
+			from? = { NOT = { has_country_flag = built_strategic_coordination_center_site_contingency } }
 		}
 	}
 
@@ -123,7 +123,7 @@ strategic_coordination_center_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		from = {
+		from? = {
 			if = {
 				limit = {
 					has_relic = r_contingency_core

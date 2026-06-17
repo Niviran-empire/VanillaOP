@@ -127,10 +127,10 @@ galactic_crucible_0 = {
 			}
 			remove_planet = yes
 		}
-		from = {
+		from? = {
 			set_country_flag = built_galactic_crucible
 		}
-		fromfrom = {
+		fromfrom? = {
 			set_megastructure_flag = galactic_crucible
 			set_megastructure_flag = galactic_crucible@owner
 		}
@@ -140,7 +140,7 @@ galactic_crucible_0 = {
 		factor = 3
 		modifier = {
 			factor = 3
-			from = {
+			from? = {
 				is_nomadic = no
 			}
 			sector? = {
@@ -149,7 +149,7 @@ galactic_crucible_0 = {
 		}
 		modifier = {
 			factor = 0.1
-			from = {
+			from? = {
 				is_nomadic = no
 			}
 			starbase = {

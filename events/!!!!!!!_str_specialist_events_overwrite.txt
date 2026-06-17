@@ -15,12 +15,12 @@ country_event = {#_|VOP新增|添加trigger
 	immediate = {
 		if = {
 			limit = { is_specialist_subject_type = { TYPE = bulwark } }
-			FROM = {
+			from? = {
 				if = {
 					limit = { exists = starbase }
 					starbase = { add_bulwark_array = yes }
 					if = {
-						limit = { ROOT = { any_agreement = { specialist_tier >= 3 } } }
+						limit = { root? = { any_agreement = { specialist_tier >= 3 } } }
 						starbase = { add_disintegrator_field = yes }
 					}
 				}
@@ -39,16 +39,16 @@ country_event = {#_|VOP新增|添加trigger
 		OR = {
 			AND = {
 				is_specialist_subject_type = { TYPE = bulwark }
-				FROMFROM = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
+				fromfrom? = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
 			}
 			AND = {
 				is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
-				FROMFROM = {
+				fromfrom? = {
 					is_specialist_subject_type = { TYPE = bulwark }
 					NOT = { any_agreement = { specialist_tier = 3 } }
 				}
 			}
-			from = {
+			from? = {
 				exists = starbase
 				starbase = { fleet = { any_controlled_ship = {
 					is_ship_class = shipclass_starbase
@@ -63,18 +63,18 @@ country_event = {#_|VOP新增|添加trigger
 
 	immediate = {
 		if = { # checks if a new owner exists
-			limit = { exists = FROMFROM }
+			limit = { exists = fromfrom }
 			if = {
 				limit = {
 					is_specialist_subject_type = { TYPE = bulwark }
-					FROMFROM = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
+					fromfrom? = { NOT = { is_specialist_subject_type = { TYPE = bulwark } } }
 				}
-				FROM = {
+				from? = {
 					if = {
 						limit = { exists = starbase }
 						starbase = { remove_bulwark_array = yes }
 						if = {
-							limit = { ROOT = { any_agreement = { specialist_tier >= 3 } } }
+							limit = { root? = { any_agreement = { specialist_tier >= 3 } } }
 							starbase = { remove_disintegrator_field = yes }
 						}
 					}
@@ -83,12 +83,12 @@ country_event = {#_|VOP新增|添加trigger
 			else_if = {
 				limit = {
 					is_specialist_subject_tier = { TYPE = bulwark TIER = 3 }
-					FROMFROM = {
+					fromfrom? = {
 						is_specialist_subject_type = { TYPE = bulwark }
 						NOT = { any_agreement = { specialist_tier = 3 } }
 					}
 				}
-				FROM = {
+				from? = {
 					if = {
 						limit = { exists = starbase }
 						starbase = {
@@ -99,7 +99,7 @@ country_event = {#_|VOP新增|添加trigger
 			}
 		}
 		else = { # if no new owner, always remove the disintegrator field (just a failsafe, systems with no onwer shouldn't have a starbase)
-			FROM = {
+			from? = {
 				if = {
 					limit = { exists = starbase }
 					starbase = {
@@ -133,7 +133,7 @@ country_event = {#_|VOP新增|添加trigger
 				TIER = 2
 			}
 		}
-		from = { NOT = { leader_class = envoy } }
+		from? = { NOT = { leader_class = envoy } }
 	}
 
 	immediate = {
@@ -146,7 +146,7 @@ country_event = {#_|VOP新增|添加trigger
 						TIER = 2
 					}
 				}
-				FROM = {
+				from? = {
 					add_specialist_trait_to_leader_in_pool = {
 						TYPE = bulwark
 						CLASS = commander
@@ -160,7 +160,7 @@ country_event = {#_|VOP新增|添加trigger
 						TIER = 2
 					}
 				}
-				FROM = {
+				from? = {
 					add_specialist_trait_to_leader_in_pool = {
 						TYPE = scholarium
 						CLASS = scientist
@@ -174,7 +174,7 @@ country_event = {#_|VOP新增|添加trigger
 						TIER = 2
 					}
 				}
-				FROM = {
+				from? = {
 					add_specialist_trait_to_leader_in_pool = {
 						TYPE = prospectorium
 						CLASS = official

@@ -59,7 +59,7 @@ gateway_0 = {
 	}
 
 	on_dismantle_complete = {
-		from = {
+		from? = {
 			add_resource = {
 				alloys = 2500
 				mult = modifier:megastructure_dismantle_refund_mult
@@ -74,7 +74,7 @@ gateway_0 = {
 	possible = {
 		if = {
 			limit = {
-				from = { is_nomadic = no }
+				from? = { is_nomadic = no }
 			}
 			hidden_trigger = {
 				exists = starbase
@@ -91,14 +91,14 @@ gateway_0 = {
 						}
 					}
 					AND = {
-						from = { has_menace_perk = menp_defender_galcom_2 }
+						from? = { has_menace_perk = menp_defender_galcom_2 }
 						exists = solar_system
 						exists = solar_system.owner
 						solar_system.owner = {
 							OR = {
 								has_defensive_pact = from
 								is_in_federation_with = from
-								from = { has_subject = prev }
+								from? = { has_subject = prev }
 							}
 						}
 					}
@@ -122,14 +122,14 @@ gateway_0 = {
 						}
 					}
 					AND = {
-						from = { has_menace_perk = menp_defender_galcom_2 }
+						from? = { has_menace_perk = menp_defender_galcom_2 }
 						exists = solar_system
 						exists = solar_system.owner
 						solar_system.owner = {
 							OR = {
 								has_defensive_pact = from
 								is_in_federation_with = from
-								from = { has_subject = prev }
+								from? = { has_subject = prev }
 							}
 						}
 					}
@@ -167,7 +167,7 @@ gateway_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_technology_gateway_construction"
-			from = { has_technology = tech_gateway_construction }
+			from? = { has_technology = tech_gateway_construction }
 		}
 	}
 
@@ -181,6 +181,6 @@ gateway_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		from = { country_event = { id = apoc.14 } }
+		from? = { country_event = { id = apoc.14 } }
 	}
 }

@@ -1,5 +1,5 @@
 is_phototrophic = {
-	species = {
+	species? = {
 		has_species_flag = can_is_phototrophic
 	}
 }
@@ -11,14 +11,14 @@ has_total_war_cb = {
 			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
 			OR = {
 				has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_2
-				AND = { has_valid_civic = civic_machine_terminator from = { is_synthetic_empire = no } }
+				AND = { has_valid_civic = civic_machine_terminator from? = { is_synthetic_empire = no } }
 				AND = { has_valid_civic = civic_fanatic_purifiers NOT = { is_same_species = from } }
 			}
 		}
 		# End threat checks
 		AND = {
 			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_3
-			from = { has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4 }
+			from? = { has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4 }
 		}
 	}
 }
@@ -69,13 +69,12 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
 }
 
 str_paragon_2_1005_trigger_1 = {
-	exists = leader
-	leader = {
+	leader? = {
 		has_trait_tier1or2or3 = {
 			TRAIT = leader_trait_prospector
 		}
 	}
-	FROM = {
+	from? = {
 		NOT = {
 			has_carrier_flag = prospected_by@root.owner
 		}
@@ -87,13 +86,12 @@ str_paragon_2_1005_trigger_1 = {
 }
 
 str_paragon_2_1005_trigger_2 = {
-	exists = leader
-	leader = {
+	leader? = {
 		has_trait_tier1or2or3 = {
 			TRAIT = leader_trait_observant
 		} 
 	}
-	FROM = {
+	from? = {
 		has_anomaly = no
 		is_colonizable = no
 		OR = {
@@ -112,11 +110,10 @@ str_paragon_2_1005_trigger_2 = {
 }
 
 str_paragon_2_1005_trigger_3 = {
-	exists = leader
-	leader = {
+	leader? = {
 		has_trait = leader_trait_midas_touch
 	}
-	FROM = {
+	from? = {
 		has_anomaly = no
 		is_colonizable = no
 		OR = {

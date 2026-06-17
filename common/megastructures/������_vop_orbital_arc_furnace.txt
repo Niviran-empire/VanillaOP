@@ -97,7 +97,7 @@ orbital_arc_furnace_1 = {
 			remove_carrier_flag = has_megastructure
 			remove_carrier_flag = has_arc_furnace
 		}
-		from = {
+		from? = {
 			add_resource = {
 				alloys = 500
 				mult = modifier:megastructure_dismantle_refund_mult
@@ -166,7 +166,7 @@ orbital_arc_furnace_1 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_less_than_x_arc_furnaces"
-			from = {
+			from? = {
 				check_variable = {
 					which = arc_furnace_counter
 					value <= value:arc_furnace_limit
@@ -191,7 +191,7 @@ orbital_arc_furnace_1 = {
 			}
 			if = {
 				limit = {
-					from = { is_ai = yes }
+					from? = { is_ai = yes }
 				}
 				solar_system = {
 					count_system_planet = {
@@ -222,7 +222,7 @@ orbital_arc_furnace_1 = {
 			limit = {
 				exists = from
 			}
-			from = {
+			from? = {
 				change_variable = {
 					which = arc_furnace_counter
 					value = 1
@@ -236,7 +236,7 @@ orbital_arc_furnace_1 = {
 			limit = {
 				exists = from
 			}
-			from = {
+			from? = {
 				if = {
 					limit = {
 						check_variable = {
@@ -265,7 +265,7 @@ orbital_arc_furnace_1 = {
 			}
 			set_planet_entity = { entity = invisible_turret_entity }
 		}
-		from = {
+		from? = {
 			country_event = {
 				id = cybernetics.1000
 			}

@@ -164,7 +164,7 @@ dyson_gun_0 = {
 
 		modifier = {
 			factor = 0
-			from = {
+			from? = {
 				any_system_within_border = {
 					distance = {
 						source = root.solar_system
@@ -180,7 +180,7 @@ dyson_gun_0 = {
 		}
 		modifier = {
 			factor = 0
-			from = {
+			from? = {
 				any_system_within_border = {
 					any_system_megastructure = {
 						is_dyson_gun = yes
@@ -193,7 +193,7 @@ dyson_gun_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		from = {
+		from? = {
 			if = {
 				limit = {
 					has_relic = r_contingency_core

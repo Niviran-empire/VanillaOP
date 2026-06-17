@@ -9,7 +9,7 @@ country_event = {#_|VOP新增|添加trigger
 
 	trigger = {#_|VOP新增|
 		exists = fromfrom
-		fromfrom = { 
+		fromfrom? = { 
 			exists = fleet.leader 
 			fleet.leader = {
 				OR = {
@@ -26,8 +26,8 @@ country_event = {#_|VOP新增|添加trigger
 	}
 	immediate = {
 		# Cache the destroyed ship so trait rewards can scale off its used naval capacity.
-		FROMFROMFROM = { save_event_target_as = paragon_destroyed_ship }
-		FROMFROM = { # Winning ship.
+		fromfromfrom? = { save_event_target_as = paragon_destroyed_ship }
+		fromfrom? = { # Winning ship.
 			if = {
 				limit = { exists = fleet.leader }
 				fleet.leader = {
@@ -39,13 +39,13 @@ country_event = {#_|VOP新增|添加trigger
 								has_trait = leader_trait_corsair
 								has_trait = leader_trait_corsair_2
 							}
-							ROOT.FROM = { # Owner of losing ship.
+							ROOT.from? = { # Owner of losing ship.
 								is_default_or_fallen = yes
 							}
 						}
 						if = {
 							limit = { has_trait = leader_trait_corsair }
-							ROOT = { # Owner of winning ship.
+							root? = { # Owner of winning ship.
 								add_resource = {
 									energy = @trait_corsair_amt
 									mult = value:trait_kill_naval_cap_scaling|MULT|value:hells_heart_effect|
@@ -53,7 +53,7 @@ country_event = {#_|VOP新增|添加trigger
 							}
 						}
 						else = {
-							ROOT = { # Owner of winning ship.
+							root? = { # Owner of winning ship.
 								add_resource = {
 									energy = @trait_corsair_2_amt
 									mult = value:trait_kill_naval_cap_scaling|MULT|value:hells_heart_effect|
@@ -68,14 +68,14 @@ country_event = {#_|VOP新增|添加trigger
 							has_trait_tier1or2 = {
 								TRAIT = leader_trait_crusader
 							}
-							ROOT.FROM = { # Owner of losing ship.
+							ROOT.from? = { # Owner of losing ship.
 								is_default_or_fallen = yes
 							}
 						}
 
-						ROOT = {
+						root? = {
 							if = {
-								limit = { PREV = { has_trait = leader_trait_crusader } }
+								limit = { prev? = { has_trait = leader_trait_crusader } }
 								add_resource = {
 									unity = @trait_crusader_fleet_amt
 									mult = value:trait_kill_naval_cap_scaling|MULT|1|
@@ -97,13 +97,13 @@ country_event = {#_|VOP新增|添加trigger
 								has_trait = leader_trait_shipbreaker
 								has_trait = leader_trait_shipbreaker_2
 							}
-							ROOT.FROM = { # Owner of losing fleet.
+							ROOT.from? = { # Owner of losing fleet.
 								is_default_or_fallen = yes
 							}
 						}
 						if = {
 							limit = { has_trait = leader_trait_shipbreaker }
-							ROOT = {
+							root? = {
 								add_resource = {
 									alloys = @trait_shipbreaker_amt
 									mult = value:trait_kill_naval_cap_scaling|MULT|value:hells_heart_effect|
@@ -111,7 +111,7 @@ country_event = {#_|VOP新增|添加trigger
 							}
 						}
 						else = {
-							ROOT = {
+							root? = {
 								add_resource = {
 									alloys = @trait_shipbreaker_2_amt
 									mult = value:trait_kill_naval_cap_scaling|MULT|value:hells_heart_effect|
@@ -128,9 +128,9 @@ country_event = {#_|VOP新增|添加trigger
 								has_trait = leader_trait_juryrigger_2
 							}
 						}
-						ROOT.FROMFROM = {
+						ROOT.fromfrom? = {
 							if = {
-								limit = { PREV = { has_trait = leader_trait_juryrigger } }
+								limit = { prev? = { has_trait = leader_trait_juryrigger } }
 								repair_percentage = @trait_juryrigger_amt
 							}
 							else = {
@@ -147,10 +147,10 @@ country_event = {#_|VOP新增|添加trigger
 								has_trait = leader_trait_plunderer_2
 							}
 						}
-						ROOT.FROMFROM = {
+						ROOT.fromfrom? = {
 							if = {
-								limit = { PREV = { has_trait = leader_trait_plunderer } }
-								root = {
+								limit = { prev? = { has_trait = leader_trait_plunderer } }
+								root? = {
 									random_list = {
 										1 = {
 											add_resource = {
@@ -168,7 +168,7 @@ country_event = {#_|VOP新增|添加trigger
 								}
 							}
 							else = {
-								root = {
+								root? = {
 									random_list = {
 										1 = {
 											add_resource = {

@@ -69,7 +69,7 @@ hyper_relay = {
 	}
 
 	on_dismantle_complete = {
-		from = {
+		from? = {
 			add_resource = {
 				alloys = 500
 				rare_crystals = 100
@@ -85,7 +85,7 @@ hyper_relay = {
 	possible = {
 		if = {
 			limit = {
-				from = {
+				from? = {
 					is_nomadic = no
 				}
 			}
@@ -105,14 +105,14 @@ hyper_relay = {
 						}
 					}
 					AND = {
-						from = {
+						from? = {
 							has_menace_perk = menp_defender_galcom_2
 						}
 						solar_system.owner? = {
 							OR = {
 								has_defensive_pact = from
 								is_in_federation_with = from
-								from = {
+								from? = {
 									has_subject = prev
 								}
 							}
@@ -147,14 +147,14 @@ hyper_relay = {
 						}
 					}
 					AND = {
-						from = {
+						from? = {
 							has_menace_perk = menp_defender_galcom_2
 						}
 						solar_system.owner? = {
 							OR = {
 								has_defensive_pact = from
 								is_in_federation_with = from
-								from = {
+								from? = {
 									has_subject = prev
 								}
 							}
@@ -185,14 +185,14 @@ hyper_relay = {
 				}
 				AND = {
 					exists = starbase
-					from = {
+					from? = {
 						has_menace_perk = menp_defender_galcom_2
 					}
 					solar_system.owner? = {
 						OR = {
 							has_defensive_pact = from
 							is_in_federation_with = from
-							from = {
+							from? = {
 								has_subject = prev
 							}
 						}
@@ -206,7 +206,7 @@ hyper_relay = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_technology_hyper_relays"
-			from = { has_technology = tech_hyper_relays }
+			from? = { has_technology = tech_hyper_relays }
 		}
 		custom_tooltip = {
 			fail_text = "requires_hyperlane"
@@ -229,20 +229,20 @@ hyper_relay = {
 
 	bypass_type = relay_bypass
 	on_build_queued = {
-		fromfrom = {
+		fromfrom? = {
 			fleet_event = { id = astral_planes.1010 }
 		}
 	}
 	on_build_unqueued = {
-		fromfrom = {
+		fromfrom? = {
 			fleet_event = { id = astral_planes.1015 }
 		}
 	}
 	on_build_complete = {
-		fromfromfrom = {
+		fromfromfrom? = {
 			fleet_event = { id = astral_planes.1020 }
 		}
-		from = {
+		from? = {
 			country_event = { id = tutorial.2131 }
 		}
 	}

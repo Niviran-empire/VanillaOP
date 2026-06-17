@@ -27,7 +27,7 @@ event = {
 				#	Count
 				every_system_within_border = {
 					limit = { has_star_flag = storm_system }
-					prev = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
+					prev? = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
 				}
 			}
 			##	按星球产出
@@ -49,7 +49,7 @@ event = {
 						has_owner = yes
 						solar_system = { has_star_flag = storm_system }
 					}
-					prev = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
+					prev? = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
 				}
 				#	Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
 				if = {
@@ -101,7 +101,7 @@ event = { #_|VOP优化|	禁用,直接覆盖风暴属性实现
 					solar_system = { is_inside_storm = particle_storm }
 				}
 
-				PREV = { change_variable = { which = storm_affected_ship_count value = 60 } }
+				prev? = { change_variable = { which = storm_affected_ship_count value = 60 } }
 			}
 
 			# Update/remove modifier as needed
@@ -191,7 +191,7 @@ country_event = {
 		event_target:wm_digsite_storm_formation = {
 			create_archaeological_site = site_weathermanipulators_storm_formation
 			hidden_effect = {
-				root = { set_visited = event_target:wm_digsite_storm_formation.solar_system }
+				root? = { set_visited = event_target:wm_digsite_storm_formation.solar_system }
 				mark_used_by_precursor = yes
 			}
 		}

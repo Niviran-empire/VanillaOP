@@ -6,18 +6,18 @@ carrier_event = {#_|VOP优化|添加trigger 只允许玩家
 
 	trigger = {
 		sapient_pop_amount > 100
-		fromfrom = {
+		fromfrom? = {
 			has_trait = trait_nascent_stage
 		}
 		check_variable = {
 			which = local_pop_amount
 			value > 0
 		}
-		from = { is_ai = no }
+		from? = { is_ai = no }
 	}
 
 	immediate = {
-		fromfrom = {
+		fromfrom? = {
 			modify_species = {
 				species = species
 				add_trait = trait_presapient_stage

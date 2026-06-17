@@ -77,7 +77,7 @@ matter_decompressor_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_matter_decompressor"
-			from = {
+			from? = {
 				OR = {
 					has_relic = r_contingency_core
 					NOT = { has_country_flag = built_matter_decompressor_site }
@@ -86,7 +86,7 @@ matter_decompressor_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_matter_decompressor_two"
-			from = { NOT = { has_country_flag = built_matter_decompressor_site_contingency } }
+			from? = { NOT = { has_country_flag = built_matter_decompressor_site_contingency } }
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_megastructure"
@@ -123,7 +123,7 @@ matter_decompressor_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		from = {
+		from? = {
 			if = {
 				limit = {
 					has_relic = r_contingency_core

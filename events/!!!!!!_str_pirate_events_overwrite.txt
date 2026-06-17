@@ -76,8 +76,8 @@ fleet_event = { #_|VOP禁用|
 # on_fleet_destroyed_perp
 # This = owner of fleet 1 (combatant)
 # From = owner of fleet 2 (destroyed)
-# FromFrom = fleet 1
-# FromFromFrom = fleet 2
+# fromfrom = fleet 1
+# fromfromFrom = fleet 2
 country_event = { #_|VOP禁用|
 	id = pirate.13
 	is_triggered_only = yes

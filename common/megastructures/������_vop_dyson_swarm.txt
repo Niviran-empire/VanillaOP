@@ -84,7 +84,7 @@ dyson_swarm_1 = {
 			remove_carrier_flag = has_megastructure
 			remove_modifier = dyson_swarm_1_mod
 		}
-		from = {
+		from? = {
 			add_resource = {
 				alloys = 500
 				mult = modifier:megastructure_dismantle_refund_mult
@@ -145,7 +145,7 @@ dyson_swarm_1 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_less_than_x_dyson_swarms"
-			from = {
+			from? = {
 				check_variable = {
 					which = dyson_swarm_counter
 					value <= value:dyson_swarm_limit
@@ -186,7 +186,7 @@ dyson_swarm_1 = {
 			}
 			if = {
 				limit = {
-					from = { is_ai = yes }
+					from? = { is_ai = yes }
 				}
 				NOR = {
 					has_deposit = d_energy_1
@@ -205,7 +205,7 @@ dyson_swarm_1 = {
 	ai_weight = { set = 0 }
 
 	on_build_start = {
-		from = {
+		from? = {
 			change_variable = {
 				which = dyson_swarm_counter
 				value = 1
@@ -213,7 +213,7 @@ dyson_swarm_1 = {
 		}
 	}
 	on_build_cancel = {
-		from = {
+		from? = {
 			if = {
 				limit = {
 					check_variable = {

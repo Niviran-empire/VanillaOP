@@ -55,14 +55,14 @@ deep_space_citadel_0 = {
 			OR = {
 				is_inside_border = from
 				AND = {
-					from = { has_menace_perk = menp_defender_galcom_2 }
+					from? = { has_menace_perk = menp_defender_galcom_2 }
 					exists = solar_system
 					exists = solar_system.owner
 					solar_system.owner = {
 						OR = {
 							has_defensive_pact = from
 							is_in_federation_with = from
-							from = { has_subject = prev }
+							from? = { has_subject = prev }
 						}
 					}
 				}
@@ -71,7 +71,7 @@ deep_space_citadel_0 = {
 		custom_tooltip = {
 			fail_text = "requires_surveyed_system"
 			OR = {
-				from = { has_menace_perk = menp_defender_galcom_2 }
+				from? = { has_menace_perk = menp_defender_galcom_2 }
 				NOT = {
 					any_system_planet = {
 						is_surveyed = {
@@ -109,7 +109,7 @@ deep_space_citadel_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		fromfrom = {
+		fromfrom? = {
 			remove_megastructure = this
 		}
 	}

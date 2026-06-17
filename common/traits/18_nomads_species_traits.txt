@@ -185,11 +185,11 @@ trait_structural_awareness = {
 	assembly_score = {
 		modifier = {
 			add = 1.5
-			from = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
+			from? = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
 		}
 		modifier = {
 			subtract = 1.5
-			from = {
+			from? = {
 				NOT = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
 			}
 		}
@@ -226,11 +226,11 @@ trait_interconnected = {
 	assembly_score = {
 		modifier = {
 			add = 1.5
-			from = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
+			from? = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
 		}
 		modifier = {
 			subtract = 1.5
-			from = {
+			from? = {
 				NOT = { uses_district_set = nomad } #_|VOP优化|修复原版的错误
 			}
 		}
@@ -292,11 +292,11 @@ trait_defence_drones = {
 	assembly_score = {
 		modifier = {
 			add = 1.5
-			from = { is_artificial = yes }
+			from? = { is_artificial = yes }
 		}
 		modifier = {
 			subtract = 1.5
-			from = { is_artificial = no }
+			from? = { is_artificial = no }
 		}
 	}
 }

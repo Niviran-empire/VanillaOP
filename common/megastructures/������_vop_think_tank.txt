@@ -76,7 +76,7 @@ think_tank_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_think_tank"
-			from = {
+			from? = {
 				OR = {
 					has_relic = r_contingency_core
 					NOT = { has_country_flag = built_think_tank }
@@ -85,7 +85,7 @@ think_tank_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_think_tank_two"
-			from = { NOT = { has_country_flag = built_think_tank_contingency } }
+			from? = { NOT = { has_country_flag = built_think_tank_contingency } }
 		}
 	}
 
@@ -144,7 +144,7 @@ think_tank_0 = {
 		fromfrom.planet = {
 			set_carrier_flag = has_megastructure
 		}
-		from = {
+		from? = {
 			if = {
 				limit = {
 					has_relic = r_contingency_core

@@ -33,17 +33,17 @@ cb_stop_colossus = {
 	potential = {
 		is_country_type = default
 		NOT = { is_in_federation_with = from }
-		from = { has_technology = "tech_colossus" }
+		from? = { has_technology = "tech_colossus" }
 	}
 	is_valid = {
 		has_total_war_cb = no
-		from = { is_country_type = default }
+		from? = { is_country_type = default }
 		NOT = { is_overlord_to = FROM }
 		OR = {
 			is_subject = no
 			overlord = { NOT = { is_same_value = from } }
 		}
-		from = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
+		from? = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
 		NOT = { has_country_flag = VOP_cb_CNTR_has_stop_colossus_cb }
 	}
 	proxy_war_resources = {

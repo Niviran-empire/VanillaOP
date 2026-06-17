@@ -51,7 +51,7 @@ cosmogenesis_world_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_cosmogenesis_world"
-			from = {
+			from? = {
 				NOT = { has_country_flag = cosmogenesis_world_built }
 			}
 		}
@@ -66,7 +66,7 @@ cosmogenesis_world_0 = {
 		}
 		custom_tooltip = {
 			fail_text = cosmogenesis_aborted_tt
-			from = { NOT = { has_country_flag = cosmogenesis_aborted } }
+			from? = { NOT = { has_country_flag = cosmogenesis_aborted } }
 		}
 	}
 
@@ -126,7 +126,7 @@ cosmogenesis_world_0 = {
 			}
 			if = {
 				limit = {
-					from = { is_ai = yes }
+					from? = { is_ai = yes }
 				}
 				or = {
 					has_deposit_for = shipclass_mining_station
@@ -172,7 +172,7 @@ cosmogenesis_world_0 = {
 	on_build_cancel = {}
 
 	on_build_complete = {
-		from = { set_country_flag = cosmogenesis_world_built }
+		from? = { set_country_flag = cosmogenesis_world_built }
 		spawn_planet = {
 			class = "pc_cosmogenesis_world"
 			location = fromfrom.planet
@@ -217,12 +217,12 @@ cosmogenesis_world_0 = {
 				create_pop_group = {
 					species = owner_main_species
 				}
-				from = {
+				from? = {
 					room_name_override = ""
 				}
 				if = {
 					limit = {
-						FROM = {
+						from? = {
 							has_country_flag = cosmogenesis_aborted
 						}
 					}

@@ -113,7 +113,7 @@ country_event = {
 					check_modifier_value = { modifier = ship_shield_reduction value = 0 }
 					has_shield_percentage < 0.1
 				}
-				prev = { add_mission_counter = {
+				prev? = { add_mission_counter = {
 					mission =  NOMAD_CHECKLIST_SHIELD_REALIGNMENT
 					counter = SHIELD_REALIGNMENT
 					amount = 1
@@ -155,7 +155,7 @@ country_event = {
 					check_modifier_value = { modifier = ship_shield_reduction value = 0 }
 					has_shield_percentage < 0.1
 				}
-				prev = { add_mission_counter = {
+				prev? = { add_mission_counter = {
 					mission =  NOMAD_CHECKLIST_SHIELD_REALIGNMENT
 					counter = SHIELD_REALIGNMENT
 					amount = 1

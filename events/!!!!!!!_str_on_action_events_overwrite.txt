@@ -104,8 +104,8 @@ carrier_event = {#_|VOP新增|添加trigger
 						random_owned_pop_group = {
 							limit = {
 								OR = {
-									prev = { has_modifier = doomsday_5 }
-									root = {
+									prev? = { has_modifier = doomsday_5 }
+									root? = {
 										habitability = {
 											who = prev.species
 											value > 0.3

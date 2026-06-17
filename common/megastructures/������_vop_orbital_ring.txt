@@ -115,7 +115,7 @@ orbital_ring = {
 			}
 			if = {
 				limit = {
-					from = { is_ai = yes }
+					from? = { is_ai = yes }
 				}
 				pop_amount >= 2500
 			}
@@ -135,7 +135,7 @@ orbital_ring = {
 			save_event_target_as = orbital_ring_planet
 		}
 		remove_megastructure = fromfrom
-		from = {
+		from? = {
 			country_event = { id = tutorial.2121 }
 		}
 	}

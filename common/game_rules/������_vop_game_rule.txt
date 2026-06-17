@@ -54,16 +54,14 @@ can_generate_leader_from_pop_group = {
 # From = planet
 # Checks if the country is allowed to build a mining station around this planet/star
 can_build_mining_station_around = {
-	exists = root
-	ROOT = { is_ai = no }
+	root? = { is_ai = no }
 }
 
 # Root/this = country
 # From = planet
 # Checks if the country is allowed to build a research station around this planet/star
 can_build_research_station_around = {
-	exists = root
-	ROOT = { is_ai = no }
+	root? = { is_ai = no }
 }
 
 # This = Planet
@@ -145,12 +143,11 @@ is_country_psionic = {
 # THIS = Fleet
 # FROM = Country / Snare sender
 can_fleet_be_captured_by_snares = {
-	from = { is_ai = no }
+	from? = { is_ai = no }
 	custom_tooltip = {
 		fail_text = "FLEETORDER_GRAVITY_SNARE_NO_COMMUNICATIONS"
-		exists = from
 		exists = owner
-		from = { has_communications = root.owner }
+		from? = { has_communications = root.owner }
 	}
 	custom_tooltip = {
 		fail_text = "FLEETORDER_MUST_BE_SPACE_CRITTER"

@@ -128,7 +128,7 @@ country_event = {#修改trigger
 		}
 		is_country_type = default
 		exists = from
-		from = {
+		from? = {
 			is_pool_leader = no
 			NOR = {
 				leader_class = envoy
@@ -151,7 +151,7 @@ country_event = {#修改trigger
 				# Rulers should almost always get a funeral
 				modifier = {
 					factor = 0
-					from = { is_ruler = yes }
+					from? = { is_ruler = yes }
 				}
 				# Make repeated funerals less likely
 				modifier = {
@@ -163,57 +163,57 @@ country_event = {#修改trigger
 				# Rulers should almost always get a funeral
 				modifier = {
 					add = 1000
-					from = { is_ruler = yes }
+					from? = { is_ruler = yes }
 				}
 
 				# Slightly increase odds for more interesting leaders
 				modifier = {
 					add = 10
-					from = { is_councilor = yes }
+					from? = { is_councilor = yes }
 				}
 				modifier = {
 					add = 10
-					from = { is_leader_tier = leader_tier_renowned }
+					from? = { is_leader_tier = leader_tier_renowned }
 				}
 				modifier = {
 					add = 20
-					from = { is_leader_tier = leader_tier_legendary }
+					from? = { is_leader_tier = leader_tier_legendary }
 				}
 
 				# Increase chance for leaders of higher level
 				modifier = {
 					add = 10
-					from = { has_base_skill >= 4 }
+					from? = { has_base_skill >= 4 }
 				}
 				modifier = {
 					add = 20
-					from = { has_base_skill >= 6 }
+					from? = { has_base_skill >= 6 }
 				}
 				modifier = {
 					add = 30
-					from = { has_base_skill >= 8 }
+					from? = { has_base_skill >= 8 }
 				}
 				modifier = {
 					add = 40
-					from = { has_base_skill >= 10 }
+					from? = { has_base_skill >= 10 }
 				}
 
 				# Increase chance for leaders that have served the country for a long time
 				modifier = {
 					add = 10
-					from = { leader_years_of_service >= 10 }
+					from? = { leader_years_of_service >= 10 }
 				}
 				modifier = {
 					add = 50
-					from = { leader_years_of_service >= 25 }
+					from? = { leader_years_of_service >= 25 }
 				}
 				modifier = {
 					add = 100
-					from = { leader_years_of_service >= 50 }
+					from? = { leader_years_of_service >= 50 }
 				}
 				modifier = {
 					add = 300
-					from = { leader_years_of_service >= 100 }
+					from? = { leader_years_of_service >= 100 }
 				}
 
 				set_timed_country_flag = {
@@ -246,7 +246,7 @@ country_event = {#修改trigger
 					set_years_served = from # Copy years served from the original
 					if = {
 						limit = {
-							from = { is_ruler = yes }
+							from? = { is_ruler = yes }
 						}
 						set_leader_flag = was_ruler_before_death
 					}
@@ -256,19 +256,19 @@ country_event = {#修改trigger
 					limit = {
 						is_gestalt = no
 					}
-					from = { set_leader_flag = use_unspecific_death_reason }
+					from? = { set_leader_flag = use_unspecific_death_reason }
 					country_event = { id = paragon.550 scopes = { from = event_target:dead_leader_clone } }
 				}
 				else_if = {
 					limit = {
 						is_hive_empire = yes
 					}
-					from = { set_leader_flag = use_unspecific_death_reason }
+					from? = { set_leader_flag = use_unspecific_death_reason }
 					country_event = { id = paragon.571 scopes = { from = event_target:dead_leader_clone } }
 				}
 				else_if = {
 					limit = {
-						from = {
+						from? = {
 							species = {
 								or = {
 									is_species_class = ROBOT
@@ -277,7 +277,7 @@ country_event = {#修改trigger
 							}
 						}
 					}
-					from = { set_leader_flag = use_unspecific_death_reason }
+					from? = { set_leader_flag = use_unspecific_death_reason }
 					country_event = { id = paragon.570 scopes = { from = event_target:dead_leader_clone } }
 				}
 				else = {
