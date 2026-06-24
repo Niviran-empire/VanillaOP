@@ -1,3 +1,4 @@
 @psionic_finish_mult = 0.02
 @max_unlocked_council_positions = 4
+@ag_num_zone_buildings = 3
 #_|VOP优化|修复原版的错误

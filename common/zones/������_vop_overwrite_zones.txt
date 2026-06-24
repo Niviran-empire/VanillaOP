@@ -1,5 +1,4 @@
 
-@ag_num_zone_buildings = 3
 zone_urban = {
 	icon = GFX_district_specialization_urban
 	base_buildtime = @zone_buildtime
