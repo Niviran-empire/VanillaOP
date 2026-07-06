@@ -35,6 +35,7 @@ vop_optimaze_game_rule_system_sensor = {
 				has_star_flag = lcluster
 				has_star_flag = sealed_system
 				has_star_flag = storm_system
+				check_modifier_value = { modifier = touhou_system_blocks_sensors value > 0 }
 			} }
 			set_star_flag = can_enable_can_be_system_blocks_sensors
 		}
