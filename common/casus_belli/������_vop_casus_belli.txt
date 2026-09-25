@@ -9,6 +9,7 @@ cb_colossus = {
 	}
 	is_valid = {
 		has_total_war_cb = no
+		from? = { is_country_type = default }
 		NOT = { is_overlord_to = FROM }
 		OR = {
 			is_subject = no

@@ -63,6 +63,7 @@ vop_optimaze_game_rule_can_generate_leader_from_pop = {
 				has_citizenship_type = { type = citizenship_shroud_touched country = owner }
 			}
 			can_think = yes
+			NOT = { has_trait = trait_syncretic_proles }
 			OR = {
 				is_robot_pop_group = no
 				owner = {
@@ -98,6 +99,7 @@ vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 				has_citizenship_type = { type = citizenship_shroud_touched country = owner }
 			}
 			can_think = yes
+			NOT = { has_trait = trait_syncretic_proles }
 			OR = {
 				is_robot_pop_group = no
 				owner = {
@@ -128,10 +130,14 @@ vop_optimaze_game_rule_is_new_colony = {
 	remove_carrier_flag = can_enable_is_new_colony
 	if = {
 		limit = { 
-			is_colony = yes colony_age < 180 pop_amount < 1000 
+			is_colony = yes
+			is_under_colonization = no
+			colony_age < 180
+			pop_amount < 1000 
 			NOR = { 
 				has_carrier_flag = has_building_kuat_command_center_auto 
 				has_carrier_flag = synth_queen_bastille
+				has_planet_flag = synth_queen_bastille
 			} 
 		}
 		set_carrier_flag = can_enable_is_new_colony
