@@ -91,13 +91,16 @@ orbital_arc_furnace_1 = {
 		}
 		random_system_planet = {
 			limit = {
-				has_carrier_flag = has_arc_furnace
+				has_planet_flag = has_arc_furnace
 			}
-			set_planet_entity = { entity = pc_molten }
-			remove_carrier_flag = has_megastructure
-			remove_carrier_flag = has_arc_furnace
+			set_planet_entity = {
+				entity = pc_molten
+			}
+			remove_planet_flag = has_megastructure
+			remove_planet_flag = has_arc_furnace
+			move_consecration_aura_to_body_effect = yes
 		}
-		from? = {
+		from = {
 			add_resource = {
 				alloys = 500
 				mult = modifier:megastructure_dismantle_refund_mult
@@ -125,24 +128,7 @@ orbital_arc_furnace_1 = {
 
 	possible = {
 		inline_script = megastructures/system_ownership_or_waystation_check
-		hidden_trigger = {
-			exists = starbase
-		}
-		custom_tooltip = {
-			fail_text = "requires_inside_border"
-			is_inside_border = from
-		}
-		custom_tooltip = {
-			fail_text = "requires_surveyed_system"
-			NOT = {
-				any_system_planet = {
-					is_surveyed = {
-						who = prev.from
-						status = no
-					}
-				}
-			}
-		}
+		inline_script = megastructures/system_surveyed_or_waystation_check
 		custom_tooltip = {
 			fail_text = "requires_no_dyson_sphere"
 			system_has_dyson_sphere = no
@@ -166,7 +152,7 @@ orbital_arc_furnace_1 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_less_than_x_arc_furnaces"
-			from? = {
+			from = {
 				check_variable = {
 					which = arc_furnace_counter
 					value <= value:arc_furnace_limit
@@ -185,8 +171,8 @@ orbital_arc_furnace_1 = {
 			custom_tooltip = {
 				fail_text = "requires_no_existing_megastructure"
 				NOR = {
-					has_carrier_flag = megastructure
-					has_carrier_flag = has_megastructure
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
 				}
 			}
 			if = {

@@ -11,14 +11,45 @@ has_total_war_cb = {
 			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_1
 			OR = {
 				has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_2
-				AND = { has_valid_civic = civic_machine_terminator from? = { is_synthetic_empire = no } }
-				AND = { has_valid_civic = civic_fanatic_purifiers NOT = { is_same_species = from } }
+				AND = {
+					has_valid_civic = civic_machine_terminator
+					from? = {
+						NOR = {
+							has_country_flag = synthetic_empire
+							is_machine_empire = yes
+							is_individual_machine = yes
+						}
+					}
+				}
+				AND = {
+					has_valid_civic = civic_fanatic_purifiers
+					NOT = { is_same_species = from }
+				}
 			}
 		}
 		# End threat checks
 		AND = {
 			has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_3
-			from? = { has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4 }
+			OR = {
+				from? = { has_country_flag = VOP_cb_CNTR_has_total_war_cb_SECTION_4 }
+				AND = {
+					has_country_flag = heir_of_the_khan_khan
+					from? = {
+						OR = {
+							is_galactic_emperor = yes
+							is_galactic_custodian = yes
+							has_been_declared_crisis = yes
+						}
+					}
+				}
+			}
+		}
+		# EotC Total War
+		has_country_flag = reached_eotc_situation_stage2
+		# Total War against EotC
+		AND = {
+			has_country_flag = can_declare_total_war_to_eotc
+			from? = { has_covenant_with_end_of_the_cycle = yes }
 		}
 	}
 }
@@ -41,30 +72,39 @@ VOP_cb_CNTR_has_total_war_cb_SECTION_2 = {
 		#is_progenitor_empires = yes
 		is_country_type = awakened_fallen_empire
 		has_valid_civic = civic_hive_devouring_swarm
-		has_valid_civic = civic_machine_assimilator	
+		has_valid_civic = civic_machine_assimilator
+		has_valid_civic = civic_scorched_earth
+		has_valid_civic = civic_hive_scorched_earth
+		has_menace_perk = menp_behemoth_ever_hungry
 	}
 }
 
 VOP_cb_CNTR_has_total_war_cb_SECTION_3 = {
 	is_country_type = default
 	NOR = {
-		# is_country_type = awakened_fallen_empire meaningless
-		has_valid_civic = civic_fanatic_purifiers
-		has_valid_civic = civic_hive_devouring_swarm
-		has_valid_civic = civic_machine_assimilator
-		has_valid_civic = civic_machine_terminator
-	}
-}
-
-VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
-	OR = {
-		
-		#merg_is_awakened_fe = yes
 		is_country_type = awakened_fallen_empire
 		has_valid_civic = civic_fanatic_purifiers
 		has_valid_civic = civic_hive_devouring_swarm
 		has_valid_civic = civic_machine_assimilator
 		has_valid_civic = civic_machine_terminator
+		has_valid_civic = civic_scorched_earth
+		has_valid_civic = civic_hive_scorched_earth
+	}
+}
+
+VOP_cb_CNTR_has_total_war_cb_SECTION_4 = {
+	OR = {
+		#merg_is_awakened_fe = yes
+		is_country_type = awakened_fallen_empire
+		is_country_type = synth_queen
+		has_valid_civic = civic_fanatic_purifiers
+		has_valid_civic = civic_hive_devouring_swarm
+		has_valid_civic = civic_machine_assimilator
+		has_valid_civic = civic_machine_terminator
+		has_valid_civic = civic_scorched_earth
+		has_valid_civic = civic_hive_scorched_earth
+		has_menace_perk = menp_behemoth_ever_hungry
+		has_country_flag = heir_of_the_khan_khan
 	}
 }
 

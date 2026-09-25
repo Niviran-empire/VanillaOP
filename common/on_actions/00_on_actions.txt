@@ -72,7 +72,6 @@ on_game_start_country = {
 		shroud.1000			# Start Twisted Experimenters Situation
 		shroud.5000			# Secret Societies communication effect
 		infernals.10		# Infernal Misc
-		nomads.200			# Set up the Champions Forge enclave
 		nomads.1000			# Start the Forever Cruise origin situation
 		nomads.20  			# Start the Nomadic Economic Situation
 		nomads.25 			# Start Nomads Variable Tracking
@@ -131,6 +130,7 @@ VOP_on_monthly_pulse = {
 		grand_archive.2106      # Voidworms Inside Borders - Monthly Check
 		grand_archive.3104      # Cutholoids Inside Borders - Monthly Clean Up
 		grand_archive.3106      # Cutholoids Inside Borders - Monthly Check
+		nomads.11				# Hand a nomad purge-vassal's assimilated pops to the overlord, then clean up the emptied vassal
 		assimilation.50			# sub-species integration
 		assimilation.100		# species assimilation
 		assimilation.150		# similar sub-species merge
@@ -236,6 +236,7 @@ VOP_on_yearly_pulse = {
 		crisis.240		# Prethoryn Army reinforcements
 		crisis.1254
 		crisis.2080
+		crisis.2049		# (Hidden) Sweep for Contingency worlds no longer held by the Contingency
 		crisis.2310
 		crisis.122
 		marauder.85		# Marauder mercenary Fleet available for hire (mid-game)
@@ -382,6 +383,7 @@ VOP_on_monthly_pulse_country = {
 		infernals.30		# World Forger civics terraforming
 		biocrisis.285 		# Behemoth
 		bio.1075			# EvoPred Faction Tracker
+		bio.1135			# EvoPred tally of what its nomad purge vassals are purging
 		shroud.50			# Monthly attunement modifiers handling: Eater of Worlds
 		shroud.51			# Monthly attunement modifiers handling: Composer of Strands
 		shroud.52			# Monthly attunement modifiers handling: Instrument of Desire
@@ -438,6 +440,7 @@ VOP_on_yearly_pulse_country = {
 		nomads.3080 			# Hired Guns modifier cleanup
 		nomads.8040				# Tribute Vault: stale loyalty modifier cleanup
 		arkship.1022			# Arkship NOT Disabled by Gatekeeper Event
+		crisis.7545				# Reapply Synaptic Lathe purge type (save repair)
 
 		##	|VOP转入|		来自<月度国家>
 		paragon.5034
@@ -779,7 +782,7 @@ on_custom_diplomacy = {
 # Triggered when two empires discover each other
 # This = Empire 1
 # From = Empire 2
-# fromfromfrom = System where contact occurred
+# FromFromfrom = System where contact occurred
 on_first_contact = {
 	events = {
 		tutorial.59 #Tutorial: First Contact
@@ -808,8 +811,8 @@ on_first_contact_finished = {
 # Triggered when an Empire has fleets within another Empire's borders.
 # This = receiver
 # From = sender
-# fromfrom = fleet
-# fromfromFrom = system
+# FromFrom = fleet
+# FromFromFrom = system
 on_enforce_borders = {
 	events = {
 	}
@@ -831,7 +834,7 @@ on_ground_combat_started = {
 # Triggers country_event for the attacker upon victory (before controller is switched)
 # This = country, lead attacker
 # From = country, colony owner
-# fromfrom = colony
+# FromFrom = colony
 # 'Attacker' is the side that "IsHostile" to the colony controller. For example: spawned monster armies are attackers, but if they win and the player attempts to retake the colony, the player is the attacker
 on_colony_attackers_win = {
 	events = {
@@ -872,7 +875,7 @@ on_colony_attackers_win = {
 # Triggers country_event for the attacker upon defeat
 # This = country, attack leader
 # From = country, colony owner
-# fromfrom = colony
+# FromFrom = colony
 on_colony_attackers_lose = {
 	events = {
 	}
@@ -881,7 +884,7 @@ on_colony_attackers_lose = {
 # Triggers country_event for the defender upon victory
 # Root = country, colony owner
 # From = country, attack leader
-# fromfrom = colony
+# FromFrom = colony
 on_colony_defenders_win = {
 	events = {
 		colony.5
@@ -898,7 +901,7 @@ on_colony_defenders_win = {
 # Triggers country_event for the defender upon defeat
 # This = country, colony owner
 # From = country, attack leader
-# fromfrom = colony
+# FromFrom = colony
 on_colony_defenders_lose = {
 	events = {
 		colony.57
@@ -925,7 +928,7 @@ on_system_first_visited = {
 # Triggers event when each country first sends a ship into the system (once per country)
 # Scope = Ship
 # From = System
-# fromfrom = Country
+# FromFrom = Country
 on_entering_system_first_time = {
 	events = {
 		graygoo.160
@@ -979,7 +982,7 @@ on_entering_system_first_time = {
 # Triggers event when ship enters a system. It's usually better to use on_entering_system_first_time or on_entering_system_fleet
 # Scope = Ship
 # From = System
-# fromfrom = Country
+# FromFrom = Country
 on_entering_system = {
 	events = {
 		paragon.3120
@@ -1000,6 +1003,7 @@ on_entering_system = {
 # From = System
 on_entering_system_fleet = {
 	events = {
+		cstorms.3115	# Storm Chasers nomads: keep a storm influence field on the arkship's current system
 		paragon.3901
 		action.40
 		country.211
@@ -1125,13 +1129,14 @@ on_entering_system_fleet = {
 on_leaving_system_fleet = {
 	events = {
 		nomads.35				# Nomad trespassing flag for casus belli persistence during FTL jumps
+		nomads.8005				# Space Fauna leaving system of a waystation they destroyed
 	}
 }
 
 # A fleet executes a move order to exit borders
 # Scope = Fleet
 # From = Origin System
-# fromfrom = Destination System
+# FromFrom = Destination System
 on_crossing_border = {
 	events = {
 		cara.1010 # Caravaneer Fleet 1 intro
@@ -1170,7 +1175,7 @@ on_survey_planet = {
 		tutorial.2140	# Tutorial: Observation Posts
 		tutorial.55		# Tutorial: Strategic Resources
 		leviathans.2010	# "The Spectral Clockwork" (Wraith)
-		distar.130		# (Hidden) "Old Foes"/"Pyorun–Czyrni" gatekeeper
+		distar.130		# (Hidden) "Old Foes"/"Pyorun-Czyrni" gatekeeper
 		action.941		# Strategic resource discovered
 		distar.256		# Phaseshifting Planet
 		ancrel.2050		# Planetary Mechanocalibrator
@@ -1181,8 +1186,7 @@ on_survey_planet = {
 		galactic_features.386 # Tiyanki Graveyard System
 		origin.6160		# Fear of the Dark: "The Hunters"
 		uplift.6000		# "Upliftable/Pre-Sapient Species Found"
-		paragon_2.2000	# Prospector trait effects
-		grand_archive.2240	# deposit_increase_on_survey_chance modifier
+		paragon_2.2000	# deposit_increase_on_survey_chance
 		awareness.115	# Uncloaked science ship surveys pre-ftl planet
 		fircon.5020		# "Habinte Unified Worlds Encountered" (Solarpunk)
 		origin.5000		# Broken Shackles: Encountering Main Pop Homeworld
@@ -1225,7 +1229,7 @@ on_survey_astral_rift = {
 # A country has gained a surveyed status on a planet. Happens after "on_survey_planet" if a science ship surveyed a planet. (Can also happen without a ship through changes in intel levels)
 # Root = Planet
 # From = Country
-# fromfrom = Fleet of the science ship that surveyed it, if any
+# FromFrom = Fleet of the science ship that surveyed it, if any
 on_planet_surveyed = {
 	events = {
 		action.46
@@ -1237,7 +1241,7 @@ on_planet_surveyed = {
 # A country has gained a surveyed status on an astral rift. Happens after "on_survey_astral_rift" if a science ship surveyed an astral rift. (Can also happen without a ship through changes in intel levels)
 # Root = Astral Rift
 # From = Country
-# fromfrom = Fleet of the science ship that surveyed it, if any
+# FromFrom = Fleet of the science ship that surveyed it, if any
 on_astral_rift_surveyed = {
 	events = {
 	}
@@ -1255,7 +1259,7 @@ on_ship_surveyed = {
 # Happens after "on_survey_planet" or "on_survey_astral_rift" if a science ship surveyed a planet or an Astral Rift.
 # Root = Country
 # From = system
-# fromfrom = Fleet of the science ship that surveyed it, if any
+# FromFrom = Fleet of the science ship that surveyed it, if any
 on_system_survey = {
 	events = {
 		tutorial.18
@@ -1294,7 +1298,6 @@ on_colonization_started = {
 		progress.7
 		paragon.5005 # First planet start colonization
 		distar.300 # Change junkheap planetview image
-		mega.110 # Colonization unconsecration
 		origin.3010 #Lithoid origin deposit/modifier
 		origin.3101 #Remnants colonial goodies
 		federations3.120 #Kept Grounds, if Wenkwort Artem has been colonised
@@ -1316,6 +1319,7 @@ on_colonization_started = {
 # Scope = Carrier
 on_colonized = {
 	events = {
+		mega.110 # Clear consecration when the body is colonized
 		action.360		# Get extra urban districts from modifiers
 		crisis.203
 		anomaly.4171
@@ -1362,6 +1366,7 @@ on_colonized = {
 # Scope = Carrier
 on_colony_destroyed = {
 	events = {
+		nomads.13 # Hand a purge-vassal's resources + the NOMADIC_PURGE_COMPLETE toast up to the overlord
 		colony.2002
 		origin.3002 #ToL Tree death
 		colony.9895 #Remove 'Sprawling Slums' blockers
@@ -1383,8 +1388,8 @@ on_colony_destroyed_by_bombardment = {
 
 # This = owner of fleet 1
 # From = owner of fleet 2
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 on_entering_battle = {
 	events = {
 		paragon.3900
@@ -1410,8 +1415,8 @@ on_entering_battle = {
 
 # This = owner of ship 1 (destroyed)
 # From = owner of ship 2 (combatant)
-# fromfrom = ship 1
-# fromfromFrom = ship 2 # can be invalid if damage is done via other methods (like scripted action)
+# FromFrom = ship 1
+# FromFromFrom = ship 2 # can be invalid if damage is done via other methods (like scripted action)
 on_ship_destroyed_victim = {
 	events = {
 		paragon.3903
@@ -1468,8 +1473,8 @@ on_ship_destroyed_victim = {
 
 # This = owner of ship 1 (combatant)
 # From = owner of ship 2 (destroyed)
-# fromfrom = ship 1
-# fromfromFrom = ship 2
+# FromFrom = ship 1
+# FromFromFrom = ship 2
 on_ship_destroyed_perp = {
 	events = {
 		leviathans.1016
@@ -1516,7 +1521,9 @@ on_ship_destroyed_perp = {
 # From = attacker ship
 on_damage_taken = {
 	events = {
-	#	grand_archive.10095 # Berserker Glands unique mutation	|VOP优化|此action有问题,不应触发任何事件
+	#	grand_archive.10095 # Berserker Glands unique mutation
+	#	nomads.51			# Resolve Shield Realignment mission
+	#	nomads.8004			# Waystation disabled on hit in nomad raid war
 	}
 }
 
@@ -1546,18 +1553,27 @@ on_starbase_disabled = {
 	}
 }
 
+# Does not fire when an occupation ends and control reverts to the owner
+# This = occupying country
+# From = starbase that changed controller
+on_starbase_occupied = {
+	events = {
+	}
+}
+
 # THIS = Starbase
 # FROM = Previous Owner Country
 on_waystation_lost = {
 	events = {
 		nomads.99 # Notify about losing a waystation
+		grand_archive.4545 # Destroy Grand Archive if its sustaining tier-2 waystation is gone
 	}
 }
 
 # This = owner of ship 1 (destroyed)
 # From = owner of ship 2 (combatant)
-# fromfrom = ship 1
-# fromfromFrom = ship 2
+# FromFrom = ship 1
+# FromFromFrom = ship 2
 on_ship_disengaged_victim = {
 	events = {
 	}
@@ -1565,8 +1581,8 @@ on_ship_disengaged_victim = {
 
 # This = owner of ship 1 (combatant)
 # From = owner of ship 2 (destroyed)
-# fromfrom = ship 1
-# fromfromFrom = ship 2
+# FromFrom = ship 1
+# FromFromFrom = ship 2
 on_ship_disengaged_perp = {
 	events = {
 	}
@@ -1574,8 +1590,8 @@ on_ship_disengaged_perp = {
 
 # This = owner of fleet 1 (destroyed)
 # From = owner of fleet 2 (combatant)
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 on_fleet_destroyed_victim = {
 	events = {
 		country.16
@@ -1610,13 +1626,14 @@ on_fleet_destroyed_victim = {
 		unplugged.197  # Machine legacy clean up after fleet destroyed
 		nomads.525	# Heirs Marauder Raid Contract Killer
 		nomads.530	# Heirs Marauder Starbase Contract Killer
+		nomads.8006 # Enabling a Waystation a fauna disabled
 	}
 }
 
 # This = owner of fleet 1 (combatant)
 # From = owner of fleet 2 (destroyed)
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 on_fleet_destroyed_perp = {
 	events = {
 		country.9
@@ -1720,8 +1737,8 @@ on_fleet_destroyed_perp = {
 
 # This = owner of fleet 1 (winner)
 # From = owner of fleet 2 (loser)
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 # This fires whenever a fleet is finished with a combat through any means (emergency ftl, destroyed, disabled)
 on_space_battle_won = {
 	events = {
@@ -1731,27 +1748,32 @@ on_space_battle_won = {
 		origin.4022 #Payback debt collectors chain | fallback - another empire destroys the debt collectors
 		focus.610
 		shroud.12100 # Disciple of the Eater reward
+		nomads.610	# Heirs duel winner event, no other players
+		nomads.615	# Heirs duel winner event, other players
+		nomads.3055 # Pest Control Contract Complete
 	}
 }
 
 # This = owner of fleet 1 (loser)
 # From = owner of fleet 2 (winner)
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 # This fires whenever a fleet is finished with a combat through any means (emergency ftl, destroyed, disabled)
 on_space_battle_lost = {
 	events = {
+		defense_platform_policy.4 # Recover disabled platforms (Resilient Frames doctrine)
 		shroud.11240	# Lost to the Reckoning
 	}
 }
 
 # This = owner of fleet 1 (winner)
 # From = owner of fleet 2 (loser)
-# fromfrom = fleet 1
-# fromfromFrom = fleet 2
+# FromFrom = fleet 1
+# FromFromFrom = fleet 2
 # Fires when a combat is finished from a lack of enemies
 on_space_battle_over = {
 	events = {
+		defense_platform_policy.3 # Recover disabled platforms (Resilient Frames doctrine)
 		crisis.8145 #Synth Queen Convoy raid ends
 		crisis.8170 #Synth Queen Outpost fight ends
 		focus.650 # Flags for Fight the Khan Task
@@ -1801,7 +1823,7 @@ on_army_disbanded = {
 
 # This = owner of fleet
 # From = fleet
-# fromfrom = planet (if any)
+# FromFrom = planet (if any)
 on_fleet_auto_move_arrival = {
 	events = {
 		distar.5008
@@ -1823,7 +1845,7 @@ on_fleet_auto_move_arrival = {
 
 # This = fleet
 # From = country that borrowed the fleet
-# fromfrom = country that owns the fleet
+# FromFrom = country that owns the fleet
 # Is fired immediately after fleet is leased out
 on_fleet_contract_started = {
 	events = {
@@ -1833,8 +1855,8 @@ on_fleet_contract_started = {
 
 # This = fleet
 # From = country that borrowed the fleet
-# fromfrom = country that owns the fleet
-# fromfromFrom = country that initiated the ending (the same as owner in a case of expiration)
+# FromFrom = country that owns the fleet
+# FromFromFrom = country that initiated the ending (the same as owner in a case of expiration)
 # Is fired immediately after fleet contract is expired
 on_fleet_contract_expired = {
 	events = {
@@ -1846,8 +1868,8 @@ on_fleet_contract_expired = {
 
 # This = fleet
 # From = country that borrowed the fleet
-# fromfrom = country that owns the fleet
-# fromfromFrom = country that initiated the ending (trade deal actor when the contract cancellation is a part of trade deal)
+# FromFrom = country that owns the fleet
+# FromFromFrom = country that initiated the ending (trade deal actor when the contract cancellation is a part of trade deal)
 # Is fired immediately after fleet contract is cancelled (when controller prematurely finishes the contract or when the contract cancellation is a part of trade deal)
 on_fleet_contract_cancelled = {
 	events = {
@@ -1858,8 +1880,8 @@ on_fleet_contract_cancelled = {
 
 # This = fleet
 # From = country that borrowed the fleet
-# fromfrom = country that owns the fleet
-# fromfromFrom = country that initiated the ending (main attacker in a case of war)
+# FromFrom = country that owns the fleet
+# FromFromFrom = country that initiated the ending (main attacker in a case of war)
 # Is fired immediately after fleet contract is broken (when country is attacked by someone of when a war is started)
 on_fleet_contract_broken = {
 	events = {
@@ -1933,6 +1955,7 @@ on_building_wormhole_station = {
 #From = owner country
 on_building_starbase_outpost = {
 	events = {
+		defense_platform_policy.2 # Apply Reinforced Plating field to a new starbase fleet
 		tutorial.76
 		distar.199 # Special Project Gatekeeper for Living Planet event chain
 		distar.254
@@ -2064,6 +2087,7 @@ on_ship_disabled = {
 # This = Ship
 on_ship_enabled = {
 	events = {
+		grand_archive.4542	# Grand Archive Module re-enable when hosting arkship is no longer occupied
 	}
 }
 
@@ -2136,6 +2160,7 @@ on_terraforming_complete = {
 # This = Planet
 on_planet_class_changed = {
 	events = {
+		mega.110 # Clear consecration when the body is transformed
 		aquatics.1005
 		action.490
 		terra.0
@@ -2188,6 +2213,7 @@ on_planet_bombarded = {
 		shroud.12110		# Disciple of the Eater reward
 		nomads.5005 		# Plundering Bombardment
 		nomads.3015 		# Raid Contract Bombardement tracker
+		crisis.7534			# Synaptic Lathe bombarded to full devastation
 	}
 }
 
@@ -2303,7 +2329,7 @@ on_presence_revealed = {
 # Executed whenever a pop is killed due to bombardment damages
 # This = Colony where the pop was bombed to death
 # From = Country which is raining down fire and brimstone
-# fromfrom = Biggest fleet bombarding the planet (the one we used the bombardment stance from)
+# FromFrom = Biggest fleet bombarding the planet (the one we used the bombardment stance from)
 # local_kill_pop_amount = amount of pop killed
 on_pop_bombed_to_death = {
 	events = {
@@ -2325,7 +2351,7 @@ on_pop_collateral_casualty = {
 # Executed whenever a pop is sacrificed
 # This = Pop killed
 # From = Colony where the pop was killed
-# fromfrom = Country intentionally killing the pop
+# FromFrom = Country intentionally killing the pop
 on_pop_sacrificed = {
 	events = {
 		shroud.10515 # Patron Objective Counter: po_kill_pop
@@ -2544,6 +2570,7 @@ on_policy_changed = {
 # From = Planet
 on_ship_built = {
 	events = {
+		defense_platform_policy.1 # Apply defense platform doctrine to newly built platforms
 		tutorial.40
 		tutorial.8
 		tutorial.21
@@ -2558,7 +2585,7 @@ on_ship_built = {
 		grand_archive.3024	# Cutholoid built from code
 		grand_archive.10000	# Unique Mutations for space fauna counter
 		grand_archive.9970	# Primal Calling first cloning tech insight
-		focus.15			# Empire Focus - Clone 5 Space Amoebas
+		focus.15			# Empire Focus - Build 5 Corvettes or Clone 5 Space Amoebas
 		focus.16			# Empire Focus - Produce 5 Maulers
 		focus.605			# Set up flags for corvette building Focus 2/2
 		focus.625			# Set up flags for platform building focus 2/2
@@ -2631,7 +2658,7 @@ on_war_ended = {
 	events = {
 		fallen_empires.14
 		utopia.2660
-		origin.6256			# Fear of the Dark Seperatists made neutral
+		origin.6256			# Fear of the Dark Separatists made neutral
 		paragon.5213
 		paragon.5223
 		focus.140			# Empire Focus
@@ -2649,8 +2676,8 @@ on_war_ended = {
 # A country has been released through a peace deal in a war
 # Root = new country
 # From = country forcing the release
-# fromfrom = country they are released from
-# fromfromFrom = war
+# FromFrom = country they are released from
+# FromFromFrom = war
 on_country_released_in_war = {
 	events = {
 		action.320
@@ -2699,7 +2726,7 @@ on_tech_increased = {
 		ancrel.4008
 		aquatics.190 #Dragon Material Study
 		aquatics.250 #Dragon Communications Study
-		action.400 #Planetary Unification
+		action.400 	# Societal Unification
 		enclave.7005 # Salvager Introduction
 		origin.4306 # Payback Out of Warranty chain - Genetic Healthcare
 		origin.5500 # Broken Shackles - Upgrade Research Labs
@@ -2757,7 +2784,7 @@ on_tech_increased = {
 #
 # This = Country
 # From = Species ( Post Modification )
-# fromfrom = Species ( Original )
+# FromFrom = Species ( Original )
 # Prev = Colony
 on_modification_complete = {
 	events = {
@@ -2789,7 +2816,7 @@ on_modification_completion = {
 #
 # This = Country
 # From = Species ( Post Modification )
-# fromfrom = Species ( Original )
+# FromFrom = Species ( Original )
 # Prev = Colony
 on_subspecies_integration_step = {
 	events = {
@@ -2803,7 +2830,7 @@ on_subspecies_integration_step = {
 #
 # This = Country
 # From = Species ( Post Modification )
-# fromfrom = Species ( Original )
+# FromFrom = Species ( Original )
 # Prev = Colony
 on_subspecies_integration_complete = {
 	events = {
@@ -2835,13 +2862,14 @@ on_favor_gained = {
 # A planets controller becomes a country not the same as the owner.
 # Root = Planet
 # From = Planet Owner
-# fromfrom = Planet Controller (the one occupying)
+# FromFrom = Planet Controller (the one occupying)
 on_planet_occupied = {
 	events = {
 		colony.9095
 		paragon.5930	# "Under One Rule": remove "Sustaining Apparatus" modifier
 		astral_planes.5020 # Celestial Tear Modifier Event removed
 		crisis.300		# Crisis faction gains control of a planet and starts purging it
+		crisis.2047		# (Hidden) Contingency world lost to another empire, self-destructs
 		shroud_forged.322
 		shroud.6706			# (Hidden) Mindwarden Origin : abort / restart Sanctum of the Lost situation
 	}
@@ -2850,7 +2878,7 @@ on_planet_occupied = {
 # A planets controller becomes the owner of the planet.
 # Root = Planet
 # From = Planet Owner
-# fromfrom = Previous Planet Controller (the one who was occupying)
+# FromFrom = Previous Planet Controller (the one who was occupying)
 on_planet_returned = {
 	events = {
 		astral_planes.5010 # Celestial Tear Modifier Event
@@ -2880,7 +2908,7 @@ on_edict_activated = {
 # A fleet has successfully escaped from combat, executed right before the fleet enters FTL
 # This = escaping fleet
 # From = system escaped from
-# fromfrom = system escaping to
+# FromFrom = system escaping to
 on_emergency_ftl = {
 	events = {
 		namarian.97
@@ -2918,8 +2946,8 @@ on_army_recruited = {
 #An army has been killed in ground combat
 # This = owner
 # From = army
-# fromfrom = opponent
-# fromfromFrom = colony
+# FromFrom = opponent
+# FromFromFrom = colony
 on_army_killed_in_combat = {
 	events = {
 		emperor.450
@@ -3115,7 +3143,7 @@ on_tutorial_level_changed = {
 # A war has been won
 # Root = Winner Warleader
 # From = Loser Warleader
-# fromfrom = War
+# FromFrom = War
 on_war_won = {
 	events = {
 		action.37 		# Default victory message
@@ -3150,7 +3178,7 @@ on_war_won = {
 # A war has been lost
 # Root = Loser Warleader
 # From = Winner Warleader
-# fromfrom = War
+# FromFrom = War
 on_war_lost = {
 	events = {
 		action.38 # Default defeat message
@@ -3170,9 +3198,9 @@ on_war_lost = {
 # A status quo has been signed
 # Root = Actor
 # From = Recipient
-# fromfrom = Main Attacker
-# fromfromFrom = Main Defender
-# fromfromfromfrom = War
+# FromFrom = Main Attacker
+# FromFromFrom = Main Defender
+# FromFromFromFrom = War
 on_status_quo = {
 	events = {
 		action.39
@@ -3181,28 +3209,30 @@ on_status_quo = {
 		shroud.5046	# Secret Societies proxy war bonus
 		nomads.3076		# War with nomad mercenaries ends
 		nomads.3101		# Cancel unaccepted Join Wars contracts
+		nomads.3105		# Total war: seize occupied arkships from defeated nomads
 	}
 }
 
 # A status quo has been signed, by force
 # Root = Recipient
 # From = Actor
-# fromfrom = Main Attacker
-# fromfromFrom = Main Defender
-# fromfromfromfrom = War
+# FromFrom = Main Attacker
+# FromFromFrom = Main Defender
+# FromFromFromFrom = War
 on_status_quo_forced = {
 	events = {
 		action.39
 		origin.5141 #Broken Shackles vs MSI
 		nomads.3076		# War with nomad mercenaries ends
 		nomads.3101		# Cancel unaccepted Join Wars contracts
+		nomads.3105		# Total war: seize occupied arkships from defeated nomads
 	}
 }
 
 # A trade deal to end the war has been signed
 # Root = Main Attacker
 # From = Main Defender
-# fromfrom = War
+# FromFrom = War
 on_war_end_trade_deal = {
 	events = {
 		nomads.3075		# War with nomad mercenaries ends
@@ -3212,7 +3242,7 @@ on_war_end_trade_deal = {
 # One of the allies has signed a trade deal to leave a war early
 # Root = Main Ally
 # From = Actor
-# fromfrom = War
+# FromFrom = War
 on_war_participant_leaves_early = {
 	events = {
 		nomads.3075		# War with nomad mercenaries ends
@@ -3258,7 +3288,7 @@ on_pop_group_rights_change = {
 # A pop amount has been grown
 # This = Colony scope
 # From = Country
-# fromfrom = Pop group
+# FromFrom = Pop group
 # local_pop_amount = variable of how much was grown
 on_pop_growth = {
 	events = {
@@ -3271,7 +3301,7 @@ on_pop_growth = {
 # A pop amount has been assembled
 # This = Colony scope
 # From = Country
-# fromfrom = Pop group
+# FromFrom = Pop group
 # local_pop_amount = variable of how much was assembled
 on_pop_assembly = {
 	events = {
@@ -3285,7 +3315,7 @@ on_pop_assembly = {
 # A pop has finished purging
 # This = Colony scope
 # From = Country
-# fromfrom = Pop group
+# FromFrom = Pop group
 # local_pop_amount = variable of how many pops were purged
 on_pop_purged = {
 	events = {
@@ -3314,7 +3344,7 @@ on_pop_purged = {
 # A pop has been displaced
 # This = Colony
 # From = Country
-# fromfrom = Pop group
+# FromFrom = Pop group
 # local_pop_amount = variable of how many pops were displaced
 on_pop_displaced = {
 	events = {
@@ -3327,7 +3357,7 @@ on_pop_displaced = {
 # Initial rebels manage to take control of the colony, happens before the new owner is set, after the war is created.
 # This = Rebel Country
 # From = Colony
-# fromfrom = War
+# FromFrom = War
 on_rebels_take_planet = {
 	events = {
 		action.30
@@ -3338,14 +3368,14 @@ on_rebels_take_planet = {
 # Initial rebels manage to take control of the planet, happens after the new owner is set, after the war is created.
 # This = Rebel Country
 # From = Colony
-# fromfrom = War
+# FromFrom = War
 on_rebels_take_colony_owner_switched = {
 	events = {
 		action.36
 	}
 }
 
-#fromfrom = Former Owner
+#FromFrom = Former Owner
 #From = Country scope (new owner, so invalid)
 #This = Colony scope
 on_colony_ownerless = {
@@ -3366,7 +3396,7 @@ on_colony_ownerless = {
 # Fired whenever a new owner is set for a planet, following a war or through trade
 # This = Colony scope
 # From = Country scope (new owner)
-# fromfrom = Country scope (previous owner, if any)
+# FromFrom = Country scope (previous owner, if any)
 on_colony_transfer = {
 	events = {
 		action.89			# Cleaning up planetary modifiers
@@ -3412,6 +3442,8 @@ on_colony_transfer = {
 		origin.4001			# Payback Modifier is removed
 		nomads.1			# Spinning up a vassal if a Nomad ever gets owernship of a planet
 		nomads.5			# Spinning up a vassal if a Nomad ever gets owernship of a planet and wants to purge it
+		arkship.1450		# Clean up Grand Refurbishment situation modifiers when an arkship changes hands
+		nomads.16			# Sets colony_event on arkships to prevent weird events sneaking through
 	}
 }
 
@@ -3419,12 +3451,13 @@ on_colony_transfer = {
 # NOTE: fired in ADDITION to on_colony_transfer
 # This = Colony scope
 # From = Country scope (new owner)
-# fromfrom = Former Owner
+# FromFrom = Former Owner
 on_colony_conquer = {
 	events = {
 		action.42		# Land appropriation
 		action.84
 		crisis.5010		# Crisis Menace Objective: Conquer a Colony
+		crisis.2047		# (Hidden) Contingency world lost to another empire, self-destructs
 		cstorms.8100	# give special project to get rid of modifier
 		focus.150		# Empire Focus
 		focus.675		# Empire Focus - Sets Flag for Conquer Worlds focus 2/2
@@ -3632,7 +3665,7 @@ on_country_type_changed = {
 # A Megastructure has started building
 # Root = Country
 # From = System
-# fromfrom = Fleet
+# FromFrom = Fleet
 on_megastructure_build_start = {
 	events = {
 		nomads.3025			# Megastructure Support Contract
@@ -3642,8 +3675,8 @@ on_megastructure_build_start = {
 # A Megastructure has been built
 # Root = Country
 # From = Megastructure
-# fromfrom = System
-# fromfromFrom = Fleet
+# FromFrom = System
+# FromFromFrom = Fleet
 on_megastructure_built = {
 	events = {
 		utopia.2000
@@ -3669,7 +3702,7 @@ on_megastructure_built = {
 # A Megastructure has begun to be upgraded
 # Root = Country
 # From = Megastructure
-# fromfrom = System
+# FromFrom = System
 on_megastructure_upgrade_begin = {
 	events = {
 		utopia.2001
@@ -3680,7 +3713,7 @@ on_megastructure_upgrade_begin = {
 # A Megastructure has been upgraded
 # Root = Country
 # From = Megastructure
-# fromfrom = System
+# FromFrom = System
 on_megastructure_upgraded = {
 	events = {
 		utopia.2003
@@ -4019,7 +4052,6 @@ on_leader_spawned = {
 		paragon_2.2065 		# Change admiral/general background class.
 		origin.6265 		# Fear of the Dark Leader Spawned after Merge
 		paragon_2.2200 		# Randomize "leader_pending_negative_traits" for new Leader.
-		machine_age.2235	# Cybernetic Creed Leaders Get Cybrog Traits with special traits
 		cyber.22            # Spiritualist leaders
 	}
 	random_events = {
@@ -4048,11 +4080,11 @@ empire_init_add_technologies = {
 # Called during empire initialization when starting a new game.
 # scope: colony
 # from: founder species
-# fromfrom: secondary species (if exists)
+# FromFrom: secondary species (if exists)
 empire_init_capital_colony = {
 	events = {
 		game_start.12 # starting buildings, districts & pops
-		# at this point the species might have changed (because we added traits), so fromfrom might not be the secondary species anymore
+		# at this point the species might have changed (because we added traits), so FromFrom might not be the secondary species anymore
 	}
 }
 
@@ -4096,14 +4128,14 @@ on_bypass_explored = {
 # Called upon entering FTL (on-action name scripted on the Bypass type)
 # THIS = Fleet
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_entering_gateway = {
 }
 
 # Called upon entering FTL (on-action name scripted on the Bypass type)
 # THIS = Fleet
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_entering_wormhole = {
 	events = {
 		achievement.4
@@ -4115,7 +4147,7 @@ on_entering_wormhole = {
 # Called upon entering FTL (on-action name scripted on the Bypass type)
 # THIS = Fleet
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_entering_shroud_tunnel = {
 	events = {
 		origin.5610 # Teachers Origin - not player-facing
@@ -4133,7 +4165,7 @@ on_entering_shroud_tunnel = {
 # Called upon entering FTL (on-action name scripted on the Bypass type)
 # THIS = Fleet
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_entering_strange_wormhole = {
 	events = {
 		astral_planes.3000
@@ -4148,14 +4180,14 @@ on_jump_drive = {
 # Called upon a catapult jump being finished, per ship in catapulted fleet
 # THIS = Ship
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_ship_quantum_catapult = {
 }
 
 # Called upon a catapult jump being finished, per fleet
 # THIS = Fleet
 # FROM = System jumping to
-# fromfrom = System jumped from
+# FROMFROM = System jumped from
 on_fleet_quantum_catapult = {
 	events = {
 		action.425 # Yeet the Fleet
@@ -4176,6 +4208,7 @@ on_pirate_spawn = {
 # FROM = Former Owner (Country)
 on_starbase_transfer = {
 	events = {
+		defense_platform_policy.5 # Reconcile captured starbase to the new owner's defense platform doctrine
 		action.223
 		distar.199 # Special Project Gatekeeper for Living Planet event chain
 		distar.254
@@ -4191,8 +4224,8 @@ on_starbase_transfer = {
 
 # This = Aggressor Fleet
 # From = Attacked Fleet
-# fromfrom = Additional Attacked Fleet (if part of ongoing combat)
-# fromfromFrom = Additional Attacked Fleet (if part of ongoing combat)
+# FromFrom = Additional Attacked Fleet (if part of ongoing combat)
+# FromFromFrom = Additional Attacked Fleet (if part of ongoing combat)
 on_fleet_combat_joined_attacker = {
 	events = {
 		aquatics.300 	# You attacked the Aquatic Dragon in first contact
@@ -4202,8 +4235,8 @@ on_fleet_combat_joined_attacker = {
 
 # This = Attacked Fleet
 # From = Aggressor Fleet
-# fromfrom = Additional Attacked Fleet (if joining ongoing combat)
-# fromfromFrom = Additional Attacked Fleet (if joining ongoing combat)
+# FromFrom = Additional Attacked Fleet (if joining ongoing combat)
+# FromFromFrom = Additional Attacked Fleet (if joining ongoing combat)
 on_fleet_combat_joined_defender = {
 	events = {
 		cara.1001 # Caravaneer Fleet 1
@@ -4215,7 +4248,7 @@ on_fleet_combat_joined_defender = {
 }
 
 # From = system
-# fromfrom = country (new owner)
+# FromFrom = country (new owner)
 # This = country (previous owner)
 on_system_lost = {
 	events = {
@@ -4233,7 +4266,7 @@ on_system_lost = {
 }
 
 # From = system
-# fromfrom = country (previous owner)
+# FromFrom = country (previous owner)
 # This = country (new owner)
 on_system_gained = {
 	events = {
@@ -4259,7 +4292,7 @@ on_system_gained = {
 
 # This = Pop group
 # From = Country (buyer)
-# fromfrom = Country (seller)
+# Fromfrom = Country (seller)
 on_slave_sold_on_market = {
 }
 
@@ -4383,6 +4416,7 @@ on_galactic_community_formed = {
 	events = {
 		galcom.60
 		timeline.74 # Timeline Galactic Community Formed
+		nomads.200 # Spawn the Champions Forge enclave
 	}
 }
 
@@ -4610,9 +4644,11 @@ on_branch_office_closed = {
 	}
 }
 
+# The primary starbase and all planet colonies owned by FromFrom in the system have been occupied
+# Note: Not called during total war
 # THIS = System: system being occupied
 # FROM = Country: Conqueror of the system
-# fromfrom = Country: Original owner of the system
+# FromFrom = Country: Original owner of the system
 on_system_occupied = {
 	events = {
 		crisis.6100
@@ -4622,7 +4658,7 @@ on_system_occupied = {
 
 # THIS = System: system whos controller has changed
 # FROM = Country: New controller of the system
-# fromfrom = Country: Old controller of the system
+# FromFrom = Country: Old controller of the system
 on_system_controller_changed = {
 	events = {
 		action.300			#_|VOP优化|添加trigger
@@ -4636,7 +4672,7 @@ on_system_controller_changed = {
 
 # THIS = System: system being returned from occupation
 # FROM = Country: Previous owner of the system
-# fromfrom = Country: Occupier of the system
+# FromFrom = Country: Occupier of the system
 on_system_returned = {
 	events = {
 		action.301			#_|VOP优化|添加trigger
@@ -4646,7 +4682,7 @@ on_system_returned = {
 # A planet has been rendered ownerless, it has an orbital ring or similar, though. The orbital ring is still there, but is about to be deleted
 # this = starbase
 # from = planet
-# fromfrom = old owner
+# FromFrom = old owner
 on_orbital_defense_planet_ownerless = {
 	events = {
 		action.503
@@ -4707,6 +4743,7 @@ on_post_government_changed = {
 		cyber.7045	# Ensuring that you can still build a colony ship after changing your civics and stop being a guided sapience empire
 		shroud.805	# Superstitious Beliefs cycles removal if needed
 		nomads.1030	# Forever Cruise Mutiny Complete
+		necroids.315 # Remove the sacrifice boon on abandoning Death Cult
 		action.2150 # Free government reform
 	}
 }
@@ -4743,7 +4780,7 @@ on_ascension_perk_picked = {
 # Executed when a megastructure has a new owner
 # this = new owner
 # from = megastructure
-# fromfrom = old owner (if existing)
+# FromFrom = old owner (if existing)
 on_megastructure_change_owner = {
 	events = {
 		crisis.6200	#Aetherophasic Engine captured by non-crisis
@@ -4755,7 +4792,7 @@ on_megastructure_change_owner = {
 # Executed when a megastructure is rendered ownerless
 # this = solar system containing megastructure
 # from = megastructure
-# fromfrom = old owner (if existing)
+# FromFrom = old owner (if existing)
 on_megastructure_ownerless = {
 }
 
@@ -4799,8 +4836,8 @@ on_establish_mercenary_enclave = {
 # Fired when a science ship succesfully analyzed or scavenged debris
 # this = country
 # from = debris
-# fromfrom = controller of destroyed ship
-# fromfromfrom = science ship
+# FromFrom = controller of destroyed ship
+# FromFromfrom = science ship
 on_debris_researched = {
 	events = {
 		paragon_2.1110	# Salvager trait
@@ -4812,8 +4849,8 @@ on_debris_researched = {
 # Fired when a science ship succesfully analyzed or scavenged debris
 # this = country
 # from = debris
-# fromfrom = controller of destroyed ship
-# fromfromfrom = science ship
+# FromFrom = controller of destroyed ship
+# FromFromfrom = science ship
 on_debris_scavenged = {
 	events = {
 		paragon_2.1110 # Salvager trait
@@ -4824,8 +4861,8 @@ on_debris_scavenged = {
 # Fired when a science ship succesfully analyzed or scavenged debris
 # this = country
 # from = debris
-# fromfrom = controller of destroyed ship
-# fromfromfrom = science ship
+# FromFrom = controller of destroyed ship
+# FromFromfrom = science ship
 on_debris_reanimated = {
 	events = {
 		grand_archive.7310 # Reanimate fauna
@@ -4835,8 +4872,8 @@ on_debris_reanimated = {
 # Fired when a science ship succesfully analyzed or scavenged debris
 # this = country
 # from = debris
-# fromfrom = controller of destroyed ship
-# fromfromfrom = science ship
+# FromFrom = controller of destroyed ship
+# FromFromfrom = science ship
 on_debris_scavenged_and_researched = {
 	events = {
 		toxoids.700 # Scavengers civic and Salvager trait
@@ -4846,7 +4883,7 @@ on_debris_scavenged_and_researched = {
 
 # Fired when a ship completes a special project.
 # this = country
-# fromfromfrom = ship
+# FromFromfrom = ship
 special_project_success = {
 	events = {
 		focus.30		# Empire Focus
@@ -4968,7 +5005,7 @@ on_astral_rift_spawned = {
 # Executed when the exploration of an astral rift starts
 # THIS = Country: Explorer country
 # FROM = AstralRift: Explored astral rift
-# fromfrom = Exploring Fleet
+# FromFrom = Exploring Fleet
 on_astral_rift_exploration_start = {
 	events = {
 		astral_planes.3		# Lock rift if it may reward a relic
@@ -4982,7 +5019,7 @@ on_astral_rift_exploration_start = {
 # Executed when an astral rift event is about to be fired
 # THIS = Country: Explorer country
 # FROM = AstralRift: Explored astral rift
-# fromfrom = Exploring Fleet
+# FromFrom = Exploring Fleet
 on_astral_rift_pre_event_fire = {
 	events = {
 		astral_planes.6		# Setup event description flags
@@ -4993,7 +5030,7 @@ on_astral_rift_pre_event_fire = {
 # Executed when the exploration of an astral rift ends
 # THIS = Country: Explorer country
 # FROM = AstralRift: Explored astral rift
-# fromfrom = Exploring Fleet
+# FromFrom = Exploring Fleet
 on_astral_rift_exploration_complete = {
 	events = {
 		astral_planes.4		# Unlock rift if it was possible to get a relic from it but we didn't
@@ -5163,7 +5200,6 @@ on_synth_leader_malfunction = {
 #local_num_pops_changed = Num pops that switched ethic to This pop group
 on_daily_pop_ethics_divergence = {
 	events = {
-		cyber.8 # Cyber objectors
 	}
 }
 
@@ -5353,15 +5389,6 @@ on_truce_end = {
 	}
 }
 
-# Fired when starbase is occupied and changes controller
-# This = New controller
-# From = Starbase being occupied
-on_starbase_occupied = {
-	events = {
-		crisis.7535 #Synaptic Lathe Captured
-	}
-}
-
 # A specimen has been acquired
 # This = country receiving the specimen
 on_specimen_acquired = {
@@ -5510,8 +5537,8 @@ on_storm_encountered = {
 
 # This = Leader captured
 # from = perpetrator country
-# fromfrom = victim country
-# fromfromfrom = system where it happened
+# FromFrom = victim country
+# FromFromfrom = system where it happened
 on_leader_captured = {
 	events = {
 		grand_archive.9000
@@ -5914,7 +5941,7 @@ on_contract_event_unique = {
 # Fired when a Waystation is constructed
 # this = galactic object/solar system
 # from = waystation owner
-# fromfrom = waystation starbase
+# FromFrom = waystation starbase
 on_waystation_built = {
 	events = {
 		arkship.900

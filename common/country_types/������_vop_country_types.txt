@@ -22,7 +22,6 @@ default = {
 	ai = {
 		enabled = yes
 		declare_war = yes
-		min_navy_for_wars = 0.5
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = yes
 		internal_policies = yes
@@ -60,6 +59,9 @@ default = {
 	resources = {
 		category = country_base
 		produces = {
+			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
+			}
 			energy = 20
 			physics_research = 10
 			society_research = 10
@@ -71,11 +73,13 @@ default = {
 		produces = {
 			trigger = {
 				is_nomadic = no
+				NOT = { has_origin = origin_nomadic_purger }
 			}
 			minerals = 20
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = {
 					is_gestalt = no
 					has_valid_civic = civic_machine_servitor
@@ -85,6 +89,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = { #Either
 					# You're a non-lithoid non-individual machine, regular empire or hive mind
 					AND = {
@@ -119,6 +124,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				# Either
 				OR = {
 					# You're a lithoid regular empire or hive mind
@@ -148,12 +154,14 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				is_machine_empire = yes
 			}
 			energy = 20
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				is_lithoid_empire = yes
 				has_valid_civic = civic_hive_cordyceptic_drones
 			}
@@ -162,6 +170,7 @@ default = {
 		}
 		produces = {
 			trigger = {
+				NOT = { has_origin = origin_nomadic_purger }
 				OR = {
 					is_infernal_empire = yes
 					# Or a machine with an infernal species
@@ -266,7 +275,6 @@ fallen_empire = {
 	ai = {
 		enabled = yes
 		declare_war = yes
-		min_navy_for_wars = 0.0
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = no
 		internal_policies = no
@@ -357,7 +365,6 @@ awakened_fallen_empire = {
 	ai = {
 		enabled = yes
 		declare_war = yes
-		min_navy_for_wars = 0.2
 		min_assault_armies_for_wars = @armies_for_declaring_war
 		colonizer = yes
 		internal_policies = yes

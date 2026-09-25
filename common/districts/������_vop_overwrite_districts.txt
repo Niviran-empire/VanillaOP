@@ -25,7 +25,7 @@ district_city = {
 
 	show_on_uncolonized = {
 		exists = from
-		from? = {
+		from = {
 			is_regular_empire = yes
 		}
 		OR = {
@@ -251,7 +251,7 @@ district_arcology_housing = {
 
 	show_on_uncolonized = {
 		exists = from
-		from? = { is_wilderness_empire = no }
+		from = { is_wilderness_empire = no }
 		uses_district_set = city_world
 	}
 
@@ -741,6 +741,7 @@ district_arcology_urban_3 = {
 		district_nexus
 		district_hive
 		district_ark_military
+		district_ark_forever_cruise
 		# Fuck PDX's stupid conversion.
 		################################# New Contents #################################
         district_ag_ancient_city_empty_03
@@ -871,7 +872,7 @@ district_generator = {
 			uses_district_set = shattered_ring_world
 		}
 		exists = from
-		from? = { is_wilderness_empire = no }
+		from = { is_wilderness_empire = no }
 		NOT = { has_modifier = resort_colony }
 	}
 
@@ -1047,7 +1048,7 @@ district_mining = {
 			uses_district_set = shattered_ring_world
 		}
 		exists = from
-		from? = { is_wilderness_empire = no }
+		from = { is_wilderness_empire = no }
 		NOT = { has_modifier = resort_colony }
 	}
 
@@ -1200,7 +1201,7 @@ district_farming = {
 			uses_district_set = shattered_ring_world
 		}
 		exists = from
-		from? = { is_wilderness_empire = no }
+		from = { is_wilderness_empire = no }
 		NOT = { has_modifier = resort_colony }
 	}
 
@@ -1417,7 +1418,7 @@ district_rw_city = {
 
 	show_on_uncolonized = {
 		exists = from
-		from? = { is_gestalt = no }
+		from = { is_gestalt = no }
 		uses_district_set = ring_world
 	}
 

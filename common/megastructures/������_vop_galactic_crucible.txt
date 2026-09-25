@@ -18,17 +18,7 @@ galactic_crucible_0 = {
 	}
 	possible = {
 		inline_script = megastructures/system_ownership_or_waystation_check
-		custom_tooltip = {
-			fail_text = "requires_surveyed_system"
-			NOT = {
-				any_system_planet = {
-					is_surveyed = {
-						who = prev.from
-						status = no
-					}
-				}
-			}
-		}
+		inline_script = megastructures/system_surveyed_or_waystation_check
 		custom_tooltip = {
 			fail_text = "requires_no_arc_furnace"
 			system_has_arc_furnace = no
@@ -80,6 +70,15 @@ galactic_crucible_0 = {
 				}
 			}
 		}
+		custom_tooltip = {
+			fail_text = "requires_no_consecrated_worlds"
+			NOT = {
+				any_system_planet = {
+					has_modifier = consecrated_world
+					is_in_galactic_crucible_radius = yes
+				}
+			}
+		}
 	}
 
 	placement_rules = {
@@ -109,38 +108,35 @@ galactic_crucible_0 = {
 
 	on_build_complete = {
 		fromfrom.planet = {
-			set_carrier_flag = megastructure
-			set_carrier_flag = has_megastructure
+			set_planet_flag = megastructure
+			set_planet_flag = has_megastructure
 		}
 		every_system_planet = {
 			limit = {
 				is_star = no
-				distance = {
-					source = solar_system.star
-					min_distance >= 10
-					max_distance <= 75
-					same_solar_system = yes
-				}
+				is_in_galactic_crucible_radius = yes
 			}
 			every_moon = {
+				clear_consecration_effect = yes
 				remove_planet = yes
 			}
+			clear_consecration_effect = yes
 			remove_planet = yes
 		}
-		from? = {
+		from = {
 			set_country_flag = built_galactic_crucible
 		}
-		fromfrom? = {
+		fromfrom = {
 			set_megastructure_flag = galactic_crucible
 			set_megastructure_flag = galactic_crucible@owner
 		}
 	}
 
 	ai_weight = {
-		factor = 3
+		factor = 0
 		modifier = {
 			factor = 3
-			from? = {
+			from = {
 				is_nomadic = no
 			}
 			sector? = {
@@ -149,7 +145,7 @@ galactic_crucible_0 = {
 		}
 		modifier = {
 			factor = 0.1
-			from? = {
+			from = {
 				is_nomadic = no
 			}
 			starbase = {

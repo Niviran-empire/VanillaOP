@@ -310,6 +310,19 @@ defined_text = {
 }
 
 defined_text = {
+	name = GetGalCommunityOrGalImperium_RULOC_GEN
+	text = {
+		trigger = { has_galactic_emperor = no }
+		localization_key = GALACTIC_COMMUNITY_RULOC_GEN
+	}
+	text = {
+		trigger = { has_galactic_emperor = yes }
+		localization_key = GALACTIC_EMPIRE_RULOC_GEN
+	}
+	default = GALACTIC_COMMUNITY_RULOC_PREP #Fallback
+}
+
+defined_text = {
 	name = GetGalCommunityOrGalImperium_RULOC_PREP
 	text = {
 		trigger = { has_galactic_emperor = no }
@@ -320,4 +333,56 @@ defined_text = {
 		localization_key = GALACTIC_EMPIRE_RULOC_PREP
 	}
 	default = GALACTIC_COMMUNITY_RULOC_PREP #Fallback
-}	
+}
+
+defined_text = {
+	name = GetResearcherPlural_RULOC_Nom_lower
+	text = {
+		trigger = {
+			is_scope_valid = yes
+			is_regular_empire = yes
+		}
+		localization_key = job_researcher_plural_RULOC_Nom_lower
+	}
+	text = {
+		trigger = {
+			is_scope_valid = yes
+			is_hive_empire = yes
+			is_wilderness_empire = no
+		}
+		localization_key = job_brain_drone_plural_RULOC_Nom_lower
+	}
+	text = {
+		trigger = {
+			is_scope_valid = yes
+			is_wilderness_empire = yes
+		}
+		localization_key = job_evosymbiont_plural_RULOC_Nom_lower
+	}
+	text = {
+		trigger = {
+			is_scope_valid = yes
+			is_machine_empire = yes
+		}
+		localization_key = job_calculator_plural_RULOC_Nom_lower
+	}
+	default = job_researcher_plural_RULOC_Nom_lower
+}
+
+defined_text = {
+	name = GetPlanetArkship_RULOC
+	text = {
+		trigger = {
+			is_nomadic = no
+		}
+		localization_key = "concept_planet_RULOC"
+	}
+	text = {
+		trigger = {
+			is_nomadic = yes
+		}
+		localization_key = "arkship_RULOC"
+	}
+	default = "concept_planet_RULOC"
+}
+
