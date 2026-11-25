@@ -25,16 +25,65 @@ can_vote_in_democratic_election = {
 	has_pop_group_flag = can_enable_pop_election_vote
 }
 
-# Root = Pop
+# Root = Pop Group
 # From = Country
-# This = Pop
+# This = Species
 # NOTE: species_has_happiness is also checked for this
+#_|VOP优化|三档思潮预设：默认仅玩家开启（兼容4.6意识形态/绝对思潮且省去全银河AI思潮分裂），可切换全开或全关
 pop_group_has_random_ethics = {
 	if = {
-		limit = { has_global_flag = VOP_flg_glbl_enbale_ethic }
-		exists = from NOT = { has_citizenship_type = { country = from type = citizenship_organic_trophy } }
+		limit = { has_global_flag = VOP_flg_glbl_disable_ethic_all }
+		always = no
 	}
-	else = { always = no }
+	else_if = {
+		limit = { has_global_flag = VOP_flg_glbl_enbale_ethic }
+		exists = from
+		NOT = { has_citizenship_type = { country = from type = citizenship_organic_trophy } }
+	}
+	else = {
+		exists = from
+		from? = { is_ai = no }
+		NOT = { has_citizenship_type = { country = from type = citizenship_organic_trophy } }
+	}
+}
+
+#Root = country
+#This = pop_group
+#_|VOP优化|联动三档思潮预设：默认仅玩家开启时短路AI人口组派系归属计算，全关时全银河短路
+pop_group_can_join_factions = {
+	if = {
+		limit = { has_global_flag = VOP_flg_glbl_disable_ethic_all }
+		always = no
+	}
+	else_if = {
+		limit = {
+			NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic }
+			owner? = { is_ai = yes }
+		}
+		always = no
+	}
+	else_if = {
+		limit = {
+			owner? = {
+				is_democratic_authority = yes
+				has_country_flag = cyber_collectivist
+			}
+		}
+		OR = {
+			pop_group_has_happiness = yes
+			has_trait = trait_cybernetic
+		}
+	}
+	else = {
+		pop_group_has_happiness = yes
+	}
+}
+
+# This = pop_group
+# Pops that can follow an ideology (only these are considered by the Galactic Strength)
+#_|VOP优化|4.6高频规则旗标缓存，由 vop_ai_fixed.1/5/6 随现有 pop_group 循环统一刷新
+pop_group_can_follow_ideology = {
+	has_pop_group_flag = can_enable_pop_follow_ideology
 }
 
 #Root = country
@@ -130,11 +179,6 @@ can_modify_organic_portraits = {
 	}
 }
 
-
-# this = country
-is_country_psionic = {
-	always = no
-}
 
 # THIS = Fleet
 # FROM = Country / Snare sender

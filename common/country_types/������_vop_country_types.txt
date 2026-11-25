@@ -36,6 +36,7 @@ default = {
 			military_minister_module
 			foreign_minister_module
 			interior_minister_module
+			#_|VOP优化|刻意禁用 mercenary_buyer_minister_module 与 enclave_founder_minister_module
 		}
 	}
 
@@ -54,6 +55,7 @@ default = {
 		standard_species_rights_module = {}
 		standard_grand_archive_module = {}
 		standard_shroud_module = {}
+		standard_ideology_module = {}
 	}
 
 	resources = {

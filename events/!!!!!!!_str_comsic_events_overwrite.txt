@@ -3,8 +3,7 @@ namespace = cstorms
 
 
 #	每月从被风暴影响的星球/星系收取资源		改为年检+变量调整
-#_note	var|PF_var_cntr_V_country_storms_PRODUCES_unity|配合国家容器产生资源,无需不断设置修正
-event = {
+event = { #_|VOP优化|已由00_on_actions转入年度脉冲，同步4.6原版风暴凝聚力修正（含游牧）
 	id = cstorms.1000
 	hide_window = yes
 	is_triggered_only = yes
@@ -16,21 +15,49 @@ event = {
 
 	immediate = {
 		every_playable_country = {
-			##	按星系产出
+			# Unity per system
 			if = {
 				limit = {
 					is_galactic_community_member = yes
 					is_active_resolution = "resolution_cosmic_storms_shared_knowledge"
 				}
-				
-				set_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 0 }
-				#	Count
-				every_system_within_border = {
-					limit = { has_star_flag = storm_system }
-					prev? = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
+
+				# Reset counters
+				set_variable = { which = storm_affected_system_count value = 0 }
+				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_system_count VALUE_IF_CREATED = 0 }
+
+				# Count
+				if = {
+					limit = { is_nomadic = yes }
+					every_owned_ship = {
+						limit = {
+							OR = {
+								is_arkship_ship = yes
+								is_waystation_ship = yes
+							}
+							solar_system? = { has_star_flag = storm_system }
+						}
+						PREV = { change_variable = { which = storm_affected_system_count value = 1 } }
+					}
+				}
+				else = {
+					every_system_within_border = {
+						limit = {
+							has_star_flag = storm_system
+						}
+
+						PREV = { change_variable = { which = storm_affected_system_count value = 1 } }
+					}
+				}
+
+				# Update/remove modifier as needed
+				update_modifier_amount_if_needed = {
+					MODIFIER = storm_unity_gain_modifier
+					MULT_VAR = storm_affected_system_count
+					PREV_MULT_VAR = prev_storm_affected_system_count
 				}
 			}
-			##	按星球产出
+			# Unity per planet
 			else_if = {
 				limit = {
 					is_galactic_community_member = yes
@@ -42,16 +69,38 @@ event = {
 					}
 				}
 
-				set_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 0 }
-				#	Count
-				every_planet_within_border = {
-					limit = {
-						has_owner = yes
-						solar_system = { has_star_flag = storm_system }
+				# Reset counters
+				set_variable = { which = storm_affected_planet_count value = 0 }
+				create_variable_if_not_exists = { VARIABLE = prev_storm_affected_planet_count VALUE_IF_CREATED = 0 }
+
+				# Count
+				if = {
+					limit = { is_nomadic = yes }
+					every_owned_ship = {
+						limit = {
+							OR = {
+								is_arkship_ship = yes
+								is_waystation_ship = yes
+							}
+							solar_system? = { has_star_flag = storm_system }
+						}
+						PREV = { change_variable = { which = storm_affected_planet_count value = 1 } }
 					}
-					prev? = { change_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 60 } }
 				}
-				#	Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
+				else = {
+					every_planet_within_border = {
+						limit = {
+							has_owner = yes
+							solar_system = {
+								has_star_flag = storm_system
+							}
+						}
+
+						PREV = { change_variable = { which = storm_affected_planet_count value = 1 } }
+					}
+				}
+
+				# Tier 3 and 4 of the resolutions gain 2 unity per planet and the final tier 3 per planet.
 				if = {
 					limit = {
 						OR = {
@@ -59,17 +108,25 @@ event = {
 							is_active_resolution = "resolution_cosmic_storms_utilization_protocols"
 						}
 					}
-					multiply_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 2 }
+					multiply_variable = { which = storm_affected_planet_count value = 2 }
 				}
 				else_if = {
-					limit = { is_active_resolution = "resolution_cosmic_storms_manipulation_mandate" }
-					multiply_variable = { which = PF_var_cntr_V_country_storms_PRODUCES_unity	value = 3 }
+					limit = {
+						is_active_resolution = "resolution_cosmic_storms_manipulation_mandate"
+					}
+					multiply_variable = { which = storm_affected_planet_count value = 3 }
+				}
+
+				# Update/remove modifier as needed
+				update_modifier_amount_if_needed = {
+					MODIFIER = storm_unity_gain_modifier
+					MULT_VAR = storm_affected_planet_count
+					PREV_MULT_VAR = prev_storm_affected_planet_count
 				}
 			}
-			#	CLEAR
-			else_if = {
-				limit = { is_variable_set = PF_var_cntr_V_country_storms_PRODUCES_unity }
-				clear_variable = PF_var_cntr_V_country_storms_PRODUCES_unity
+			# Remove modifier or it might linger after repealing/switching resolutions.
+			else = {
+				remove_modifier = storm_unity_gain_modifier
 			}
 		}
 	}
@@ -193,6 +250,17 @@ country_event = {
 			hidden_effect = {
 				root? = { set_visited = event_target:wm_digsite_storm_formation.solar_system }
 				mark_used_by_precursor = yes
+			}
+		}
+		# fallback point of interest at the new dig site
+		if = {
+			limit = { has_event_chain = cs_inetian_chain }
+			create_point_of_interest = {
+				id = wm_storm_formation_poi
+				name = wm_storm_formation_poi_name
+				desc = wm_storm_formation_poi_desc
+				event_chain = cs_inetian_chain
+				location = event_target:wm_digsite_storm_formation
 			}
 		}
 	}

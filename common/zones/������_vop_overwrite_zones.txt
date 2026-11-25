@@ -42,7 +42,7 @@ zone_urban = {
 		habitat_urban
 	}
 
-	include = {
+	included_buildings = {
 		all
 	}
 
@@ -639,6 +639,20 @@ zone_fortress = {
 		AMOUNT = @scaling_district_1_job
 	}
 
+	potential = {
+		owner? = {
+			is_wilderness_empire = no
+		}
+	}
+
+	unlock = {
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
 	zone_sets = {
 		urban
 		habitat_urban
@@ -767,7 +781,8 @@ zone_subterranean_urban = {
 	}
 
 	ai_priority = 1
-	convert_to = { 
+	convert_to = {
+		zone_minerals 
 		ag_common_zone_urban 
 		zone_aon_city
 		zone_azur_city
@@ -865,7 +880,10 @@ zone_agrarian_urban = {
 	}
 
 	ai_priority = 1
-	convert_to = { 
+	convert_to = {
+		zone_agrarian_anglers
+		zone_anglers
+		zone_food 
 		ag_common_zone_urban 
 		zone_aon_city
 		zone_azur_city
@@ -887,6 +905,24 @@ zone_minerals = {
 	inline_script = {
 		script = zones/shared_minerals_zone
 		AMOUNT = @scaling_district_1_job
+	}
+
+	potential = { # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # planet scope
+		hidden_trigger = {
+			exists = owner
+			owner = {
+				is_wilderness_empire = no
+			}
+		}
 	}
 
 	zone_sets = {
@@ -1031,6 +1067,22 @@ zone_energy = {
 	inline_script = {
 		script = zones/shared_energy_zone
 		AMOUNT = @scaling_district_1_job
+	}
+
+	potential = { # planet scope
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # planet scope
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
 	}
 
 	zone_sets = {
@@ -1240,6 +1292,8 @@ zone_anglers = {
 
 	ai_priority = 5
 	convert_to = {
+		zone_agrarian_urban
+		zone_food
 		ag_double_zone_food_01
 		ag_double_zone_food_02
 		ag_double_zone_food_03
@@ -1270,13 +1324,6 @@ zone_exotic_gases = {
 
 	swap_type = district_farming_exotic_gases
 	swap_type_weight = 5
-
-	resources = {
-		category = planet_zones
-		cost = {
-			minerals = @zone_cost
-		}
-	}
 
 	zone_sets = {
 		food
@@ -1691,10 +1738,6 @@ zone_unity_bio_trophy_ring_world = {
 		zone_wsg_rw_auto_uf_military
 		zone_wsg_uf_military
 		zone_wsg_arcology_rw_soildier		
-	}	
-
-	triggered_district_planet_modifier = {
-		planet_housing_add = -1500
 	}
 }
 
@@ -1702,6 +1745,20 @@ zone_fortress_ring_world = {
 	inline_script = {
 		script = zones/shared_fortress_zone
 		AMOUNT = @doubled_scaling_district_1_job
+	}
+
+	potential = {
+		owner? = {
+			is_wilderness_empire = no
+		}
+	}
+
+	unlock = {
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
 	}
 
 	swap_type = district_ring_world_fortress
@@ -1795,6 +1852,22 @@ zone_energy_ring_world = {
 	inline_script = {
 		script = zones/shared_energy_zone
 		AMOUNT = @doubled_scaling_district_1_job
+	}
+
+	potential = { # planet scope
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
+	}
+
+	unlock = { # planet scope
+		hidden_trigger = {
+			owner? = {
+				is_wilderness_empire = no
+			}
+		}
 	}
 
 	swap_type = district_ring_world_energy

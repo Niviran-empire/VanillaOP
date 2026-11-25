@@ -1,9 +1,13 @@
 ﻿l_english:
 
-vop_ai_fixed.0.title:0 "Population Ideology Preset"
+vop_ai_fixed.0.title:0 "Population Ethics Preset"
 
-vop_ai_fixed.0.desc:0 "The basic operating environment has been adjusted to allow the population to have ideological tendencies. Now you need to decide whether to enable population ideology based on your preference.\n\nEnabling it may cause significant performance fluctuations, but it will ensure that most of the Vanilla mechanisms that require population ideology function normally;\nDisabling it will break the Vanilla mechanisms that require population ideology, but it will significantly optimize later performance.\n\nThis setting option will only appear once."
-vop_ai_fixed.0.a:0 "Population Ideology Disabled"
-vop_ai_fixed.0.b:0 "Population Ideology Enabled"
+vop_ai_fixed.0.desc:0 "The optimization environment provides three presets for population ethics and faction participation. Click the button below to cycle through modes:\n\n- §GPlayer Only (Recommended Default)§!: Keeps full factions, fanatic factions, 4.6 Ideologies and Absolute Ethics for players while disabling AI pop ethics and factions, retaining 90%+ late-game performance gains. Players can still spread ideologies to AIs via Cultural Envoys and Ideological Reach;\n- §YAll Empires Enabled§!: Full vanilla behavior (including regular AIs forming fanatic factions), with higher late-game performance overhead;\n- §RAll Empires Disabled§!: Maximum late-game performance, but disables regular empire factions and fanatic-faction-dependent 4.6 Ideology mechanics.\n\nThis setting prompt only appears once at game start."
+vop_ai_fixed.0.p:0 "Current: Player-Only Pop Ethics (Recommended)"
+vop_ai_fixed.0.a:0 "Current: All Pop Ethics Disabled"
+vop_ai_fixed.0.b:0 "Current: All Pop Ethics Enabled"
 vop_ai_fixed.c: "Settings Completed"
 mod_can_add_negative_traits_organic: "Allows the selection of negative traits for organic species."
+ begin_modifier_updated_batch_modifier: "Combat Modifier Batch"
+ mod_begin_modifier_updated_batch: "Combat Modifier Batch"
+ mod_touhou_system_blocks_sensors: "System Blocks Sensors (Compatibility Placeholder)"

@@ -147,6 +147,12 @@ gateway_0 = {
 						}
 					}
 				}
+				any_starbase_in_system = {
+					is_waystation_starbase = yes
+					owner? = {
+						is_same_value = from
+					}
+				}
 				AND = {
 					exists = owner
 					owner = {

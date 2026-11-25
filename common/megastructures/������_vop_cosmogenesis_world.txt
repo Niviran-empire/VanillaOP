@@ -1,3 +1,10 @@
+@position_offset_x = -14
+@position_offset_y = -14
+#these polar coordinates define the same point as position_offset above
+@polar_offset_angle = 45
+@polar_offset_radius = 19.799	# sqrt( 14^2 + 14^2 )
+@plane_offset = 5
+
 cosmogenesis_world_0 = {
 	entity = ""
 	construction_entity = "neural_calculator_phase_1_entity"

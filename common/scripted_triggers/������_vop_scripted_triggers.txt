@@ -127,7 +127,7 @@ str_paragon_2_1005_trigger_1 = {
 
 str_paragon_2_1005_trigger_2 = {
 	leader? = {
-		has_trait_tier1or2or3 = {
+		has_trait_tier1or2 = {
 			TRAIT = leader_trait_observant
 		} 
 	}
@@ -157,7 +157,7 @@ str_paragon_2_1005_trigger_3 = {
 		has_anomaly = no
 		is_colonizable = no
 		OR = {
-			can_have_volatile_motes_deposit = yes
+			can_have_volatile_motes_deposits = yes
 			can_have_rare_crystals_deposits = yes
 			can_have_exotic_gases_deposits = yes
 		}

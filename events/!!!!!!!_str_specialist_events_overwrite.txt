@@ -1,5 +1,5 @@
 #	|VOP新增/VOP优化|		同步追踪|3.14.159	\events\overlord_specialist_events.txt
-#_evts	specialist.200/specialist.300/specialist.400/specialist.800
+#_evts	specialist.200/specialist.300/specialist.800 (specialist.400已在4.6并入leader.200)
 namespace = specialist
 
 
@@ -111,79 +111,6 @@ country_event = {#_|VOP新增|添加trigger
 	}
 }
 
-# On leader spawned.
-country_event = {#_|VOP新增|添加trigger
-	id = specialist.400
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {#_|VOP新增|
-		is_specialist_subject = yes
-		OR = {
-			is_specialist_subject_tier = {
-				TYPE = bulwark
-				TIER = 2
-			}
-			is_specialist_subject_tier = {
-				TYPE = scholarium
-				TIER = 2
-			}
-			is_specialist_subject_tier = {
-				TYPE = prospectorium
-				TIER = 2
-			}
-		}
-		from? = { NOT = { leader_class = envoy } }
-	}
-
-	immediate = {
-		if = {
-			limit = { is_specialist_subject = yes }
-			if = {
-				limit = {
-					is_specialist_subject_tier = {
-						TYPE = bulwark
-						TIER = 2
-					}
-				}
-				from? = {
-					add_specialist_trait_to_leader_in_pool = {
-						TYPE = bulwark
-						CLASS = commander
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					is_specialist_subject_tier = {
-						TYPE = scholarium
-						TIER = 2
-					}
-				}
-				from? = {
-					add_specialist_trait_to_leader_in_pool = {
-						TYPE = scholarium
-						CLASS = scientist
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					is_specialist_subject_tier = {
-						TYPE = prospectorium
-						TIER = 2
-					}
-				}
-				from? = {
-					add_specialist_trait_to_leader_in_pool = {
-						TYPE = prospectorium
-						CLASS = official
-					}
-				}
-			}
-		}
-	}
-}
 
 # On acquiring tradition finisher.
 country_event = {#_|VOP优化|添加trigger修改effect

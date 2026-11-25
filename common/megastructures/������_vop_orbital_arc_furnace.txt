@@ -64,6 +64,9 @@ orbital_arc_furnace_1 = {
 	tooltip_best_systems_header = "MEGASTRUCTURE_ARC_FURNACE_BEST_SYSTEMS_TOOLTIP_HEADER"
 	tooltip_system_filter = {
 		system_has_arc_furnace = no
+		any_system_planet = {
+			is_planet_class = pc_molten
+		}
 	}
 
 	dismantle_cost = {
@@ -194,9 +197,7 @@ orbital_arc_furnace_1 = {
 		}
 	}
 
-	country_modifier = {
-		custom_tooltip = orbital_arc_furnace_1_mod_tooltip
-	}
+	custom_tooltip_with_modifiers = orbital_arc_furnace_1_mod_tooltip
 
 	# root = system
 	# from = country
@@ -250,6 +251,7 @@ orbital_arc_furnace_1 = {
 				}
 			}
 			set_planet_entity = { entity = invisible_turret_entity }
+			move_consecration_aura_to_furnace_effect = yes
 		}
 		from? = {
 			country_event = {

@@ -1,4 +1,4 @@
-#	|VOP新增/VOP优化|	同步追踪|4.0	\events\paragon_events.txt		paragon.403/paragon.404/paragon.405	/paragon.549
+#	|VOP新增/VOP优化|	同步追踪|4.6	\events\paragon_events.txt		paragon.403/paragon.404/paragon.405/paragon.450/paragon.549
 namespace = paragon
 
 
@@ -107,11 +107,41 @@ country_event = {#_|VOP优化|添加trigger修改effect
 	}
 }
 
+#_|VOP优化|招募领袖 Toast 提示仅对玩家触发，拦截全银河 AI 无效消息创建
+leader_event = { # Leader Hired Toast Message
+	id = paragon.450
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = owner
+		owner = { is_ai = no }
+	}
+
+	immediate = {
+		create_message = {
+			type = MESSAGE_RECRUITED_LEADER
+			localization = MESSAGE_RECRUITED_LEADER_DESC
+			days = @toast_message_days
+			target = THIS
+			variable = {
+				type = name
+				localization = LEADER
+				scope = THIS
+			}
+			variable = {
+				key = "border"
+				value = "GFX_invisible"
+			}
+		}
+	}
+}
+
 
 # Launch correct death event for certain leaders
 # This = Country
 # From = Leader
-country_event = {#修改trigger
+country_event = {#_|VOP优化|仅玩家（已同步4.6黄金一代分支）
 	id = paragon.549
 	hide_window = yes
 	is_triggered_only = yes
@@ -125,17 +155,24 @@ country_event = {#修改trigger
 				is_imperial_authority = yes
 				is_mutation_authority = yes
 			}
+			AND = {
+				is_golden_generation_leader_death = yes
+				OR = {
+					NOT = { has_country_flag = has_triggered_golden_generation_funeral }
+					from? = { is_ruler = yes }
+				}
+			}
 		}
 		is_country_type = default
 		exists = from
 		from? = {
 			is_pool_leader = no
+			leader_years_of_service >= 2
 			NOR = {
 				leader_class = envoy
 				has_leader_flag = leader_death_events_blocked
 				has_trait = leader_trait_ruler_great_khan
 			}
-			leader_years_of_service >= 2
 			OR = {
 				has_base_skill >= 4
 				is_ruler = yes
@@ -158,12 +195,23 @@ country_event = {#修改trigger
 					factor = 5
 					has_country_flag = recently_had_leader_funeral
 				}
+				# First Golden Generation leader death usually gets a funeral
+				modifier = {
+					factor = 0
+					is_golden_generation_leader_death = yes
+				}
 			}
 			0 = { # Funeral event
 				# Rulers should almost always get a funeral
 				modifier = {
 					add = 1000
 					from? = { is_ruler = yes }
+				}
+
+				# First Golden Generation leader death usually gets a funeral
+				modifier = {
+					factor = 1000
+					is_golden_generation_leader_death = yes
 				}
 
 				# Slightly increase odds for more interesting leaders
@@ -221,36 +269,7 @@ country_event = {#修改trigger
 					years = 5
 				}
 
-				# Make a clone since the original is going to be deleted before any followup event is triggered.
-				create_country = {
-					flag = none
-					default_ships = no
-					name = "NAME_dead_leader_country"
-					type = faction
-					auto_delete = yes
-				}
-				last_created_country = {
-					clone_leader = {
-						target = from
-						effect = {
-							set_immortal = yes
-							save_event_target_as = dead_leader_clone
-						}
-					}
-				}
-				last_created_leader = {
-					set_owner = root
-					# This is a hack to make the leader not be added to player country.
-					# We must kill the leader once the event chain is done
-					exile_leader_as = dead_leader_clone_exile
-					set_years_served = from # Copy years served from the original
-					if = {
-						limit = {
-							from? = { is_ruler = yes }
-						}
-						set_leader_flag = was_ruler_before_death
-					}
-				}
+				create_dead_leader_clone = yes
 
 				if = {
 					limit = {
@@ -290,4 +309,3 @@ country_event = {#修改trigger
 		}
 	}
 }
-

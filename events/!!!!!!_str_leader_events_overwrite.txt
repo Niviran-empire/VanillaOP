@@ -116,32 +116,7 @@ leader_event = {
 			}
 		}
 
-		# Aptitude Traditions
-		# Adds a random common trait
-		if = {
-			limit = {
-				owner = {
-					has_tradition = tr_aptitude_finish
-				}
-			}
-			add_trait = {
-				trait = random_common
-				show_message = no
-			}
-		}
-
-		# Optimized Neurology
-		# Adds a random common trait
-		if = {
-			limit = {
-				owner = {
-					has_optimized_neurology_tradition = yes
-				}
-			}
-			add_trait = {
-				trait = random_common
-			}
-		}
+		add_initial_leader_traits_effect = yes
 
 		# Under One Rule
 		if = {
@@ -192,6 +167,49 @@ leader_event = {
 			}
 			give_trait_no_notify_ignore_autocracy_restriction = {
 				TRAIT = leader_trait_corsair
+			}
+		}
+
+		# Specialist Subjects
+		if = {
+			limit = {
+				has_specialist_subject_leader_trait = no
+			}
+			if = {
+				limit = {
+					leader_class = commander
+					owner = {
+						is_specialist_subject_tier = {
+							TYPE = bulwark
+							TIER = 2
+						}
+					}
+				}
+				add_bulwark_leader_trait = yes
+			}
+			else_if = {
+				limit = {
+					leader_class = scientist
+					owner = {
+						is_specialist_subject_tier = {
+							TYPE = scholarium
+							TIER = 2
+						}
+					}
+				}
+				add_scholarium_leader_trait = yes
+			}
+			else_if = {
+				limit = {
+					leader_class = official
+					owner = {
+						is_specialist_subject_tier = {
+							TYPE = prospectorium
+							TIER = 2
+						}
+					}
+				}
+				add_prospectorium_leader_trait = yes
 			}
 		}
 
@@ -260,7 +278,7 @@ leader_event = {
 					# Base 75% chance of nothing
 					modifier = {
 						factor = 0
-						root.owner = {
+						root.owner = { #_|VOP优化|修复原版的错误（leader_event下root为leader，需切至root.owner）
 							is_cloning_authority = yes
 							has_cloning_biochemical_composure_tradition = yes
 						}
@@ -288,6 +306,43 @@ leader_event = {
 			}
 			give_trait_no_notify_ignore_autocracy_restriction = {
 				TRAIT = leader_trait_plunderer
+			}
+		}
+
+		# Cybernetic Creed traits
+		# Adds the Ritualistic Implants trait
+		if = {
+			limit = {
+				species = {
+					has_cybernetic_creed_trait = yes
+				}
+				NOR = {
+					leader_class = envoy
+					has_trait = leader_trait_ritualistic_implants_cyborg
+					has_trait = leader_trait_psionic
+					has_any_chosen_one_leader_trait = yes
+				}
+			}
+			add_trait = {
+				trait = leader_trait_ritualistic_implants_cyborg
+				show_message = no
+			}
+		}
+
+		# Elite Academy
+		if = {
+			limit = {
+				owner = {
+					num_buildings = {
+						type = building_elite_academy
+						value > 0
+						disabled = no
+						in_construction = no
+					}
+				}
+			}
+			give_trait_no_notify_ignore_autocracy_restriction = {
+				TRAIT = leader_trait_elite_alumnus
 			}
 		}
 	}

@@ -35,6 +35,7 @@ event = {#_|VOP优化|修改trigger
 						is_country_type = awakened_fallen_empire
 					}
 				}
+				is_nomadic_synaptic_lathe = no
 				exists = starbase
 				starbase = {
 					exists = owner
@@ -93,31 +94,67 @@ carrier_event = {#_|VOP新增|添加trigger
 				}
 				NOT = { has_carrier_flag = doomed_planet_origin }
 			}
+			save_event_target_as = vop_doomsday_dest_planet
 			owner = {
 				random_owned_planet = {
 					limit = {
 						has_carrier_flag = doomed_planet_origin
 						pop_amount > 300
 					}
-					while = {
-						count = 3
-						random_owned_pop_group = {
-							limit = {
-								OR = {
-									prev? = { has_modifier = doomsday_5 }
-									root? = {
-										habitability = {
-											who = prev.species
-											value > 0.3
-										}
+					save_event_target_as = vop_doomsday_src_planet
+					#_|VOP优化|展开固定3次while并缓存event_target消除循环内跨作用域查询
+					random_owned_pop_group = {
+						limit = {
+							OR = {
+								event_target:vop_doomsday_src_planet = { has_modifier = doomsday_5 }
+								event_target:vop_doomsday_dest_planet = {
+									habitability = {
+										who = prev.species
+										value > 0.3
 									}
 								}
 							}
-							resettle_pop_group = {
-								POP_GROUP = this
-								PLANET = root
-								AMOUNT = 100
+						}
+						resettle_pop_group = {
+							POP_GROUP = this
+							PLANET = event_target:vop_doomsday_dest_planet
+							AMOUNT = 100
+						}
+					}
+					random_owned_pop_group = {
+						limit = {
+							OR = {
+								event_target:vop_doomsday_src_planet = { has_modifier = doomsday_5 }
+								event_target:vop_doomsday_dest_planet = {
+									habitability = {
+										who = prev.species
+										value > 0.3
+									}
+								}
 							}
+						}
+						resettle_pop_group = {
+							POP_GROUP = this
+							PLANET = event_target:vop_doomsday_dest_planet
+							AMOUNT = 100
+						}
+					}
+					random_owned_pop_group = {
+						limit = {
+							OR = {
+								event_target:vop_doomsday_src_planet = { has_modifier = doomsday_5 }
+								event_target:vop_doomsday_dest_planet = {
+									habitability = {
+										who = prev.species
+										value > 0.3
+									}
+								}
+							}
+						}
+						resettle_pop_group = {
+							POP_GROUP = this
+							PLANET = event_target:vop_doomsday_dest_planet
+							AMOUNT = 100
 						}
 					}
 				}

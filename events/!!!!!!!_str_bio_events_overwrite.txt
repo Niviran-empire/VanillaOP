@@ -1,28 +1,51 @@
 namespace = bio
-carrier_event = {#_|VOP优化|添加trigger 只允许玩家
+carrier_event = {#_|VOP优化|添加trigger 只允许玩家（已同步4.6）
 	id = bio.755
 	is_triggered_only = yes
 	hide_window = yes
 
 	trigger = {
 		sapient_pop_amount > 100
-		fromfrom? = {
-			has_trait = trait_nascent_stage
-		}
-		check_variable = {
-			which = local_pop_amount
-			value > 0
-		}
 		from? = { is_ai = no }
+		fromfrom? = {
+			is_sapient = yes
+			has_trait = trait_nascent_stage
+			check_variable = {
+				which = local_pop_amount
+				value > 0
+			}
+		}
 	}
 
 	immediate = {
+		# Only the pops that just grew become Pre-Sapient. Demoting the whole group would
+		# undo the maturation that returns them to the adult species.
 		fromfrom? = {
+			save_event_target_as = nascent_grown_pop_group
 			modify_species = {
 				species = species
 				add_trait = trait_presapient_stage
 				inherit_parent_rights = yes
 				sapient = no
+				change_scoped_species = no
+				effect = {
+					save_event_target_as = nascent_presapient_species
+				}
+			}
+		}
+		create_pop_group = {
+			pop_group = event_target:nascent_grown_pop_group
+			species = event_target:nascent_presapient_species
+			size = 0
+			# Without a category the whole colony is re-bucketed, which empties the source
+			# group before the transfer can read it.
+			category = pre_sapients
+			effect = {
+				transfer_pop_amount = {
+					source = event_target:nascent_grown_pop_group
+					target = this
+					amount = root.local_pop_amount
+				}
 			}
 		}
 	}

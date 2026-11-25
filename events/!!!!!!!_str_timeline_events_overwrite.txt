@@ -1,0 +1,90 @@
+#	|VOP新增/VOP优化|	同步追踪|4.6	\events\timeline_events.txt		timeline.23/timeline.29
+namespace = timeline
+
+#_|VOP优化|on_pop_purged 时间轴里程碑仅对玩家触发，拦截全银河 AI 净化触发
+carrier_event = {
+	id = timeline.23
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+		from = {
+			is_ai = no
+			is_country_type = default
+			NAND = {
+				has_country_flag = first_pop_purged
+				has_country_flag = has_purged_species@fromfrom.species
+			}
+		}
+	}
+
+	immediate = {
+		fromfrom.species = {
+			save_event_target_as = this_species
+		}
+
+		from = {
+			save_event_target_as = this_country
+			if = {
+				limit = {
+					NOT = { has_country_flag = first_pop_purged }
+				}
+				set_country_flag = first_pop_purged
+				add_timeline_event = {
+					type = timeline_milestone
+					override_id = timeline_first_pop_purged
+					override_tooltip = "TIMELINE_EVENT_FIRST_PURGE_TOOLTIP"
+					override_types = { country species }
+					override_text = { "text:TIMELINE_FIRST_PURGE" }
+					override_texture = { "background:GFX_evt_death_from_above" }
+					targets = { event_target:this_country event_target:this_species }
+				}
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = has_purged_species@event_target:this_species }
+				}
+				set_country_flag = has_purged_species@event_target:this_species
+				add_timeline_event = {
+					type = timeline_empire
+					override_id = timeline_pop_purged
+					override_tooltip = "TIMELINE_EVENT_PURGE_TOOLTIP"
+					override_types = { country species }
+					override_text = { "text:TIMELINE_PURGE" }
+					override_texture = { "background:GFX_evt_death_from_above" }
+					targets = { event_target:this_country event_target:this_species }
+				}
+			}
+		}
+	}
+}
+
+#_|VOP优化|虚境突破时间轴里程碑仅对玩家触发（并由 00_on_actions 移至年度国家脉冲）
+country_event = {
+	id = timeline.29
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		is_country_type = default
+		NOT = { has_country_flag = breached_the_shroud }
+		has_completed_special_project_in_log = BREACHING_SHROUD_PROJECT
+	}
+
+	immediate = {
+		set_country_flag = breached_the_shroud
+
+		save_event_target_as = this_country
+		add_timeline_event = {
+			type = timeline_milestone
+			override_id = timeline_breached_the_shroud
+			override_tooltip = "TIMELINE_EVENT_BREACHED_THE_SHROUD_TOOLTIP"
+			override_types = { country }
+			override_text = { "text:TIMELINE_BREACHED_THE_SHROUD" }
+			override_texture = { "background:GFX_evt_psionics" }
+			targets = { event_target:this_country }
+		}
+	}
+}

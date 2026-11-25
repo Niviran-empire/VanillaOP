@@ -4,22 +4,24 @@
 #### pop_rule ###
 #################
 vop_optimaze_game_rule_can_fleet_be_captured_by_snares = {
-	every_owned_fleet = {
-		remove_fleet_flag = can_fleet_be_captured_by_snares
-		if = {
-			limit = { 
-				exists = owner
-				owner = {
-					OR = {
-						is_capturable_space_critter_country_type = yes
-						is_country_type = grave_guardian
-						is_country_type = lured_fauna_faction
-					}
-					is_guardian_country = no
-				}
-				any_owned_ship = { is_space_fauna = yes }
+	#_|VOP优化|外层跳过非野怪国家，避免每两年对全银河普通帝国舰队做无意义遍历
+	if = {
+		limit = {
+			OR = {
+				is_capturable_space_critter_country_type = yes
+				is_country_type = grave_guardian
+				is_country_type = lured_fauna_faction
 			}
-			set_fleet_flag = can_fleet_be_captured_by_snares
+			is_guardian_country = no
+		}
+		every_owned_fleet = {
+			remove_fleet_flag = can_fleet_be_captured_by_snares
+			if = {
+				limit = {
+					any_owned_ship = { is_space_fauna = yes }
+				}
+				set_fleet_flag = can_fleet_be_captured_by_snares
+			}
 		}
 	}
 }
@@ -34,6 +36,7 @@ vop_optimaze_game_rule_system_sensor = {
 				has_modifier = queen_scorn_storm
 				has_star_flag = lcluster
 				has_star_flag = sealed_system
+				has_star_flag = surveillance_supercomputer_system
 				has_star_flag = storm_system
 				check_modifier_value = { modifier = touhou_system_blocks_sensors value > 0 }
 			} }
@@ -51,6 +54,25 @@ vop_optimaze_game_rule_can_vote_in_democratic_election = {
 			is_being_purged = no
 		}
 		set_pop_group_flag = can_enable_pop_election_vote
+	}
+}
+vop_optimaze_game_rule_pop_group_can_follow_ideology = {
+	remove_pop_group_flag = can_enable_pop_follow_ideology
+	if = {
+		limit = {
+			exists = owner
+			is_sapient = yes
+			is_enslaved = no
+			is_being_purged = no
+			can_think = yes
+			OR = {
+				pop_group_has_happiness = yes
+				owner = { is_gestalt = yes }
+			}
+			is_interlink_cyborg_pop = no
+			has_disconnected_drone_citizenship_type = no
+		}
+		set_pop_group_flag = can_enable_pop_follow_ideology
 	}
 }
 vop_optimaze_game_rule_can_generate_leader_from_pop = {
@@ -121,7 +143,30 @@ vop_optimaze_game_rule_can_generate_military_leader_from_pop = {
 					}
 				}
 			}
-			can_be_military_leader = yes
+			#_|VOP优化|内联4.6原版can_be_military_leader并以owner替代root，避免全局event调用时root作用域失效
+			is_enslaved = no
+			is_sapient = yes
+			OR = {
+				is_robot_pop_group = no
+				owner = { has_policy_flag = ai_full_rights }
+				owner = { is_machine_empire = yes }
+				owner = { is_individual_machine = yes }
+			}
+			OR = {
+				AND = {
+					owner = { is_machine_empire = yes }
+					OR = {
+						has_citizenship_type = { type = citizenship_full_machine country = owner }
+						has_citizenship_type = { type = citizenship_cruise_crew country = owner }
+						has_citizenship_type = { type = citizenship_shroud_touched country = owner }
+					}
+					has_military_service_type = { type = military_service_full }
+				}
+				AND = {
+					NOT = { owner = { is_machine_empire = yes } }
+					has_military_service_type = { type = military_service_full }
+				}
+			}
 		}
 		set_pop_group_flag = can_enable_can_generate_military_leader_from_pop
 	}

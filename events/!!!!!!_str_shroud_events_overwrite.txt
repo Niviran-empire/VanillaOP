@@ -40,3 +40,55 @@ country_event = {
 		}
 	}
 }
+
+#_|VOP优化|on_colony_transfer/ownerless 前置建筑检测上提至 trigger
+carrier_event = {
+	id = shroud.8300
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_building = building_chamber_of_silence
+	}
+
+	immediate = {
+		remove_building = building_chamber_of_silence
+	}
+}
+
+#_|VOP优化|on_building_ruined 前置建筑类型过滤上提至 trigger
+carrier_event = {
+	id = shroud.9000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			last_building_changed = building_psionic_suppressor
+			last_building_changed = building_ancient_ward_2
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { last_building_changed = building_psionic_suppressor }
+			if = {
+				limit = { has_active_building = building_psionic_suppressor }
+				add_eotc_aura_psionic_suppressor = yes
+			}
+			else = {
+				remove_eotc_aura_psionic_suppressor = yes
+			}
+		}
+		else_if = {
+			limit = { last_building_changed = building_ancient_ward_2 }
+			if = {
+				limit = { has_active_building = building_ancient_ward_2 }
+				add_eotc_aura_grand_ward = yes
+			}
+			else = {
+				remove_eotc_aura_grand_ward = yes
+			}
+		}
+	}
+}

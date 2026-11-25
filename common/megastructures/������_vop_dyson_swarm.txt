@@ -185,9 +185,7 @@ dyson_swarm_1 = {
 		}
 	}
 
-	country_modifier = {
-		custom_tooltip = dyson_swarm_1_mod_tooltip
-	}
+	custom_tooltip = dyson_swarm_1_mod_tooltip
 
 	# root = system
 	# from = country

@@ -28,3 +28,10 @@ VOP_on_bi_yearly_pulse_country = {
 		vop_ai_fixed.5
 	}
 }
+
+# No scope, global bi-yearly pulse
+VOP_on_bi_yearly_pulse = {
+	events = {
+		vop_ai_fixed.7			#全局星系传感器阻断缓存刷新
+	}
+}

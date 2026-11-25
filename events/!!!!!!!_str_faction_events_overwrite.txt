@@ -1,0 +1,37 @@
+#	|VOP新增/VOP优化|	同步追踪|4.6	\events\faction_events.txt		factions.15
+namespace = factions
+
+#_|VOP优化|on_colony_transfer 前置修正检测上提至 trigger，消除殖民地易主空事件创建
+carrier_event = {
+	id = factions.15
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_modifier = planet_political_frontier
+			has_modifier = planet_political_safezone
+			has_modifier = planet_political_crackdown
+			has_modifier = planet_political_admittance
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { has_modifier = planet_political_frontier }
+			remove_modifier = planet_political_frontier
+		}
+		if = {
+			limit = { has_modifier = planet_political_safezone }
+			remove_modifier = planet_political_safezone
+		}
+		if = {
+			limit = { has_modifier = planet_political_crackdown }
+			remove_modifier = planet_political_crackdown
+		}
+		if = {
+			limit = { has_modifier = planet_political_admittance }
+			remove_modifier = planet_political_admittance
+		}
+	}
+}

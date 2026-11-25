@@ -864,6 +864,7 @@ district_generator = {
 
 	zone_slots = {
 		slot_energy
+		slot_energy_urban
 	}
 
 	show_on_uncolonized = {
@@ -983,15 +984,6 @@ district_generator = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_tankbound_empire = yes }
-		}
-		modifier = {
-			job_technician_automated_workforce_mult = 1.0
-		}
-	}
 
 	inline_script = {
 		script = districts/district_triggered_name_generator
@@ -1026,6 +1018,7 @@ district_mining = {
 
 	zone_slots = {
 		slot_minerals
+		slot_minerals_urban
 	}
 
 	desc = {
@@ -1193,6 +1186,7 @@ district_farming = {
 
 	zone_slots = {
 		slot_food
+		slot_food_urban
 	}
 
 	show_on_uncolonized = {
@@ -1365,15 +1359,6 @@ district_farming = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_tankbound_empire = yes }
-		}
-		modifier = {
-			job_farmer_automated_workforce_mult = 1.0
-		}
-	}
 
 	inline_script = {
 		script = districts/district_triggered_name_farming
@@ -1757,8 +1742,6 @@ district_rw_urban_1 = {
 				is_tankbound_empire = yes
 			}
 		}
-		job_technician_automated_workforce_mult = 1.0
-		job_farmer_automated_workforce_mult = 1.0
 		job_production_overseer_add = 100
 	}
 
@@ -1806,6 +1789,7 @@ district_rw_urban_2 = {
 	conversion_ratio = 1
 	convert_to = {
 		district_ark_military
+		district_ark_forever_cruise
 		# Fuck PDX's stupid conversion.
 		################################# New Contents #################################
         district_ag_ancient_city_empty_02
@@ -1900,8 +1884,6 @@ district_rw_urban_2 = {
 				is_tankbound_empire = yes
 			}
 		}
-		job_technician_automated_workforce_mult = 1.0
-		job_farmer_automated_workforce_mult = 1.0
 		job_production_overseer_add = 100
 	}
 
@@ -2051,8 +2033,6 @@ district_rw_urban_3 = {
 				is_tankbound_empire = yes
 			}
 		}
-		job_technician_automated_workforce_mult = 1.0
-		job_farmer_automated_workforce_mult = 1.0
 		job_production_overseer_add = 100
 	}
 

@@ -1,0 +1,498 @@
+#	|VOP新增/VOP优化|	同步追踪|4.6	\events\forceofwill_events.txt		forceofwill.45/46/50/51/260/2000/2104/2125/7000/8015
+namespace = forceofwill
+
+#_|VOP优化|on_system_affected_by_ideology 前置修正检查上提至 trigger，避免每次星系疆域变动空遍历殖民地与方舟舰
+system_event = {
+	id = forceofwill.45
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			any_system_planet_colony = { has_modifier = suppress_foreign_ideology }
+			any_system_ship_colony = { has_modifier = suppress_foreign_ideology }
+		}
+	}
+
+	immediate = {
+		every_system_planet_colony = {
+			limit = {
+				has_modifier = suppress_foreign_ideology
+				owner = {
+					ideology? = {
+						is_same_value = root.from
+					}
+				}
+			}
+			remove_modifier = suppress_foreign_ideology
+		}
+		every_system_ship_colony = {
+			limit = {
+				has_modifier = suppress_foreign_ideology
+				owner = {
+					ideology? = {
+						is_same_value = root.from
+					}
+				}
+			}
+			remove_modifier = suppress_foreign_ideology
+		}
+	}
+}
+
+#_|VOP优化|on_system_affected_by_ideology 前置修正检查上提至 trigger
+system_event = {
+	id = forceofwill.46
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_system_planet_colony = { has_modifier = celebrate_ideology }
+	}
+
+	immediate = {
+		every_system_planet_colony = {
+			limit = {
+				has_modifier = celebrate_ideology
+				NOT = {
+					owner = {
+						ideology? = {
+							is_same_value = root.from
+						}
+					}
+				}
+			}
+			remove_modifier = celebrate_ideology
+		}
+	}
+}
+
+#_|VOP优化|on_system_unaffected_by_ideology 前置修正检查上提至 trigger
+system_event = {
+	id = forceofwill.50
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			any_system_planet_colony = { has_modifier = suppress_foreign_ideology }
+			any_system_ship_colony = { has_modifier = suppress_foreign_ideology }
+		}
+	}
+
+	immediate = {
+		every_system_planet_colony = {
+			limit = {
+				has_modifier = suppress_foreign_ideology
+			}
+			remove_modifier = suppress_foreign_ideology
+		}
+		every_system_ship_colony = {
+			limit = {
+				has_modifier = suppress_foreign_ideology
+			}
+			remove_modifier = suppress_foreign_ideology
+		}
+	}
+}
+
+#_|VOP优化|on_system_unaffected_by_ideology 前置修正检查上提至 trigger
+system_event = {
+	id = forceofwill.51
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_system_planet_colony = { has_modifier = celebrate_ideology }
+	}
+
+	immediate = {
+		every_system_planet_colony = {
+			limit = {
+				has_modifier = celebrate_ideology
+			}
+			remove_modifier = celebrate_ideology
+		}
+	}
+}
+
+#_|VOP优化|自我之道静修人口月检短路：仅当存在静修星球或待归零计数时才遍历星球
+country_event = {
+	id = forceofwill.260
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_path_of_the_self_empire = yes
+		OR = {
+			any_owned_planet = { has_carrier_flag = decision_meditation_active }
+			check_variable = { which = spirit_cultivation_planet_decision_pops value > 0 }
+		}
+	}
+
+	immediate = {
+		set_variable = {
+			which = spirit_cultivation_planet_decision_pops
+			value = 0
+		}
+		every_owned_planet = {
+			# add trigger check to isolate meditating planets
+			limit = {
+				has_carrier_flag = decision_meditation_active
+			}
+			export_trigger_value_to_variable = {
+				trigger = count_owned_pop_amount
+				variable = local_pops
+			}
+			if = {
+				limit = {
+					check_variable = { which = local_pops value > 0 }
+				}
+				root = {
+					change_variable = {
+						which = spirit_cultivation_planet_decision_pops
+						value = prev.local_pops
+					}
+				}
+			}
+		}
+	}
+}
+
+#_|VOP优化|绝对威权压榨生活标准处决：由 00_on_actions 移至年度国家脉冲（年化 2×12=24 人口）并给星球循环补 limit 短路
+country_event = {
+	id = forceofwill.2000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_ethic = ethic_absolute_authoritarian
+		any_owned_pop_group = {
+			has_living_standard = { type = living_standard_crushing }
+			OR = {
+				is_pop_category = worker
+				is_enslaved = yes
+			}
+		}
+	}
+
+	immediate = {
+		every_owned_planet = {
+			limit = {
+				any_owned_pop_group = {
+					has_living_standard = { type = living_standard_crushing }
+					OR = {
+						is_pop_category = worker
+						is_enslaved = yes
+					}
+				}
+			}
+			random_owned_pop_group = {
+				limit = {
+					has_living_standard = { type = living_standard_crushing }
+					OR = {
+						is_pop_category = worker
+						is_enslaved = yes
+					}
+				}
+				kill_pop_group = {
+					pop_group = this
+					amount = 24
+				}
+			}
+		}
+	}
+}
+
+#_|VOP优化|狂热派系月检补格式塔与派系数量短路，拦截全银河格式塔与无派系AI空遍历
+country_event = {
+	id = forceofwill.2104
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_force_of_will_dlc = yes
+		ideologies_enabled = yes
+		years_passed > 10
+		is_gestalt = no
+		count_pop_faction = { count > 0 }
+	}
+
+	immediate = {
+		# Faction approval window logic
+		every_pop_faction = {
+			if = {
+				limit = { NOT = { is_variable_set = fanatic_approval_months } }
+				set_variable = {
+					which = fanatic_approval_months
+					value = 0
+				}
+			}
+			if = {
+				limit = { is_eligible_fanatic = yes }
+				change_variable = {
+					which = fanatic_approval_months
+					value = 1
+				}
+			}
+			else = {
+				set_variable = {
+					which = fanatic_approval_months
+					value = 0
+				}
+			}
+		}
+
+		ordered_pop_faction = {
+			limit = {
+				is_eligible_fanatic = yes
+				check_variable = {
+					which = fanatic_approval_months
+					value >= @fanatic_faction_approval_window
+				}
+			}
+			order_by = trigger:faction_approval
+			position = 0
+			prev = {
+				random_list = {
+					1 = { # 0.1%: Faction becomes fanatic
+						modifier = { # 0.5% while the empire has no fanatic faction yet
+							add = 4
+							fanatic_faction_exists = no
+						}
+						country_event = {
+							id = forceofwill.2105
+							scopes = { from = prev }
+						}
+					}
+					999 = { # Nothing happens
+						modifier = {
+							add = -4
+							fanatic_faction_exists = no
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#_|VOP优化|on_colony_transfer 前置修正与非格式塔检查上提至 trigger
+carrier_event = {
+	id = forceofwill.2125
+
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_modifier = foreign_ideology_deviancy
+		exists = from
+		from = {
+			is_gestalt = no
+		}
+	}
+
+	immediate = {
+		remove_modifier = foreign_ideology_deviancy
+	}
+}
+
+#_|VOP优化|文化特使月检补舰队旗标短路，避免研究科技后无在途特使时每月空遍历全部舰队
+country_event = {
+	id = forceofwill.7000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_force_of_will_dlc = yes
+		has_technology = tech_cultural_envoys
+		any_owned_fleet = {
+			has_fleet_flag = cultural_envoy_fleet_converting
+		}
+	}
+
+	immediate = {
+		save_event_target_as = envoy_country
+
+		every_owned_fleet = {
+			limit = {
+				has_fleet_flag = cultural_envoy_fleet_converting
+			}
+			save_event_target_as = envoy_fleet
+
+			# Target empire loses opinion of the envoy empire each month.
+			# cultural_envoy_target is the colony the envoy is converting: a planet OR an arkship (ship colony).
+			cultural_envoy_target? = {
+				if = {
+					limit = {
+						is_colony = yes
+						owner? = {
+							NOT = {
+								is_same_value = event_target:envoy_country
+							}
+						}
+					}
+					owner = {
+						add_opinion_modifier = {
+							who = event_target:envoy_country
+							modifier = opinion_cultural_envoy_converting
+							mult = event_target:envoy_fleet.value:cultural_envoy_conversion_modifier_mult
+						}
+					}
+					if = {
+						limit = {
+							owner = {
+								is_gestalt = no # Gestalt pops can't be converted
+							}
+						}
+						set_variable = {
+							which = pop_convertible_group_count
+							value = value:cultural_envoy_convertible_group_count
+						}
+						if = {
+							limit = {
+								check_variable = {
+									which = pop_convertible_group_count
+									value > 0
+								}
+							}
+							# Spread the monthly conversion across every group that still has pops to convert,
+							# so capacity is not wasted on a single nearly-converted group.
+							set_variable = {
+								which = pop_conversion_amount
+								value = event_target:envoy_fleet.value:cultural_envoy_conversion_amount
+							}
+							divide_variable = {
+								which = pop_conversion_amount
+								value = pop_convertible_group_count
+							}
+							ceiling_variable = pop_conversion_amount
+							if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_authoritarian = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_authoritarian
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_egalitarian = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_egalitarian
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_militarist = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_militarist
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_pacifist = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_pacifist
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_materialist = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_materialist
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_spiritualist = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_spiritualist
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_xenophobe = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_xenophobe
+								}
+							}
+							else_if = {
+								limit = {
+									event_target:envoy_country.ideology = {
+										is_xenophile = yes
+									}
+								}
+								cultural_envoy_convert_pop_groups = {
+									ETHIC = ethic_xenophile
+								}
+							}
+							clear_variable = pop_conversion_amount
+
+							# Holds converted pops in the envoy's faction until this colony goes long enough without a conversion
+							set_timed_planet_flag = {
+								flag = recently_converted_by_ideology@event_target:envoy_country.ideology
+								days = @cultural_envoy_conversion_attraction_days
+							}
+						}
+						clear_variable = pop_convertible_group_count
+					}
+				}
+			}
+
+			# Leader XP grant on the envoy fleet's leader.
+			leader? = {
+				add_experience = value:cultural_envoy_leader_experience
+			}
+		}
+	}
+}
+
+#_|VOP优化|on_ship_destroyed_perp 极高频战斗钩子将特质检测上提至 trigger，避免每次击沉任意舰船空创事件
+country_event = {
+	id = forceofwill.8015
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		has_force_of_will_dlc = yes
+		fromfrom? = {
+			fleet.leader? = {
+				has_trait = leader_trait_harkaloid_organ
+			}
+		}
+	}
+
+	immediate = {
+		fromfrom? = {
+			fleet.leader? = {
+				if = {
+					limit = { NOT = { is_variable_set = harkaloid_lifespan_bonus } }
+					set_variable = { which = harkaloid_lifespan_bonus value = 0 }
+				}
+				change_variable = { which = harkaloid_lifespan_bonus value = @harkaloid_lifespan_days_per_kill }
+			}
+		}
+	}
+}

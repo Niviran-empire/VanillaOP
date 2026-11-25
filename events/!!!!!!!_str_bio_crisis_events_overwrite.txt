@@ -1,4 +1,4 @@
-namespace = biocrisis.255
+namespace = biocrisis
 #255 Kill off transference workers
 country_event = {#_|VOP优化|禁用自循环，年检查
 	id = biocrisis.255

@@ -17,27 +17,48 @@ country_event = {
 	trigger = { NOT = { has_global_flag = VOP_MOD_INSTALL } }
 	option = {
 		name = {
-			trigger = { NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic } }
-			text = vop_ai_fixed.0.a
+			trigger = {
+				NOR = {
+					has_global_flag = VOP_flg_glbl_enbale_ethic
+					has_global_flag = VOP_flg_glbl_disable_ethic_all
+				}
+			}
+			text = vop_ai_fixed.0.p
 		}
 		name = {
 			trigger = { has_global_flag = VOP_flg_glbl_enbale_ethic }
 			text = vop_ai_fixed.0.b
 		}
-		hidden_effect = { 
+		name = {
+			trigger = { has_global_flag = VOP_flg_glbl_disable_ethic_all }
+			text = vop_ai_fixed.0.a
+		}
+		hidden_effect = {
 			if = {
-				limit = { NOT = { has_global_flag = VOP_flg_glbl_enbale_ethic } }
+				limit = {
+					NOR = {
+						has_global_flag = VOP_flg_glbl_enbale_ethic
+						has_global_flag = VOP_flg_glbl_disable_ethic_all
+					}
+				}
 				set_global_flag = VOP_flg_glbl_enbale_ethic
 			}
-			else = { remove_global_flag = VOP_flg_glbl_enbale_ethic }
+			else_if = {
+				limit = { has_global_flag = VOP_flg_glbl_enbale_ethic }
+				remove_global_flag = VOP_flg_glbl_enbale_ethic
+				set_global_flag = VOP_flg_glbl_disable_ethic_all
+			}
+			else = {
+				remove_global_flag = VOP_flg_glbl_disable_ethic_all
+			}
 			country_event = { id = vop_ai_fixed.0 }
 		}
 	}
 	option = {
 		name = vop_ai_fixed.c
 		default_hide_option = yes
+		hidden_effect = { set_global_flag = VOP_MOD_INSTALL }
 	}
-	after = { set_global_flag = VOP_MOD_INSTALL }
 }
 
 event = {
@@ -57,6 +78,7 @@ event = {
 				vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 				vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 				vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
+				vop_optimaze_game_rule_pop_group_can_follow_ideology = yes
 			}
 			vop_optimaze_game_rule_can_fleet_be_captured_by_snares = yes #captured rule
 		}
@@ -87,7 +109,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = this }
 	immediate = {
-		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
+		#_|VOP优化|全银河星系探测缓存已迁至全局事件 vop_ai_fixed.7，避免每国家重复遍历全银河
 		vop_optimaze_game_rule_can_fleet_be_captured_by_snares = yes #captured rule
 		# country_event tech
 		vop_optimaze_war_goals = yes # warcb
@@ -95,11 +117,23 @@ country_event = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
+			vop_optimaze_game_rule_pop_group_can_follow_ideology = yes
 		}
 		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
 		}
-		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
+		every_owned_planet = {
+			limit = {
+				OR = {
+					has_carrier_flag = can_enable_is_new_colony
+					AND = {
+						is_colony = yes
+						colony_age < 180
+					}
+				}
+			}
+			vop_optimaze_game_rule_is_new_colony = yes
+		}
 		if = {
 			limit = {  
 				is_nomadic = yes
@@ -129,7 +163,7 @@ country_event = {
 	is_triggered_only = yes
 	trigger = { exists = this }
 	immediate = {
-		vop_optimaze_game_rule_system_sensor = yes #sensor gamerule
+		#_|VOP优化|开局星系探测缓存由全局事件 vop_ai_fixed.1 统一执行一次
 		vop_optimaze_game_rule_can_fleet_be_captured_by_snares = yes #captured rule
 		# country_event tech
 		vop_optimaze_war_goals = yes # warcb
@@ -137,11 +171,23 @@ country_event = {
 			vop_optimaze_game_rule_can_vote_in_democratic_election = yes
 			vop_optimaze_game_rule_can_generate_leader_from_pop = yes
 			vop_optimaze_game_rule_can_generate_military_leader_from_pop = yes
+			vop_optimaze_game_rule_pop_group_can_follow_ideology = yes
 		}
 		every_owned_species = {
 			vop_optimaze_game_rule_can_is_phototrophic = yes
 		}
-		every_owned_planet = { vop_optimaze_game_rule_is_new_colony = yes }
+		every_owned_planet = {
+			limit = {
+				OR = {
+					has_carrier_flag = can_enable_is_new_colony
+					AND = {
+						is_colony = yes
+						colony_age < 180
+					}
+				}
+			}
+			vop_optimaze_game_rule_is_new_colony = yes
+		}
 		if = {
 			limit = {  
 				is_nomadic = yes
@@ -165,7 +211,17 @@ country_event = {
 	}
 }
 
-country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
+#_|VOP优化|全局双年脉冲统一刷新一次星系传感器阻断缓存（替代原国家事件重复遍历全银河）
+event = {
+	id = vop_ai_fixed.7
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		vop_optimaze_game_rule_system_sensor = yes
+	}
+}
+
+country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查（CW282/CW286批量处决优化+修复消息目标）
 	id = vop_ai_fixed.28
 	hide_window = yes
 	is_triggered_only = yes
@@ -182,13 +238,14 @@ country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
 	}
 	immediate = {
 		capital_scope = {
+			save_event_target_as = transference_target_colony
 			owner = {
 				if = {
 					limit = {
 						is_gestalt = no
 					}
 					export_trigger_value_to_variable = {
-						#Kill 10% rounded up
+						#Kill 20% rounded up (annualized from 10% per 180 days)
 						trigger = num_assigned_jobs
 						parameters = {
 							job = transference_volunteer
@@ -206,7 +263,7 @@ country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
 						is_gestalt = yes
 					}
 					export_trigger_value_to_variable = {
-						#Kill 20% rounded up
+						#Kill 20% rounded up (annualized from 10% per 180 days)
 						trigger = num_assigned_jobs
 						parameters = {
 							job = transference_drone
@@ -220,19 +277,34 @@ country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
 					ceiling_variable = num_transference_jobs_var
 				}
 			}
-			while = {
-				count = owner.num_transference_jobs_var
-				random_owned_pop_job = {
-					limit = {
-						has_job_type = transference_volunteer
-					}
-					kill_assigned_pop_amount = { amount = 1 }
+			set_variable = {
+				which = num_transference_jobs_var
+				value = owner.num_transference_jobs_var
+			}
+			#_|VOP优化|用单次按比例处决取代while逐个处决，消除循环内高频岗位重算与跨作用域读取
+			if = {
+				limit = {
+					check_variable = { which = num_transference_jobs_var value <= 1 }
 				}
 				random_owned_pop_job = {
 					limit = {
-						has_job_type = transference_drone
+						OR = {
+							has_job_type = transference_volunteer
+							has_job_type = transference_drone
+						}
 					}
 					kill_assigned_pop_amount = { amount = 1 }
+				}
+			}
+			else = {
+				every_owned_pop_job = {
+					limit = {
+						OR = {
+							has_job_type = transference_volunteer
+							has_job_type = transference_drone
+						}
+					}
+					kill_assigned_pop_amount = { percentage = 0.2 }
 				}
 			}
 			owner = {
@@ -240,12 +312,12 @@ country_event = {#_|VOP优化|禁用自循环 180 to 360 年检查
 					type = MESSAGE_POPS_TRANSFERRED
 					localization = MESSAGE_POPS_TRANSFERRED_DESC
 					days = @toast_message_days
-					target = root
+					target = event_target:transference_target_colony
 					variable = {
 						type = variable
 						varname = num_transference_jobs_var
 						localization = VALUE
-						scope = root
+						scope = capital_scope
 					}
 				}
 			}

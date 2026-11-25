@@ -1,0 +1,6 @@
+# 单开模式跨 Mod 兼容占位（common/scripted_modifiers 为 LIOS，文件名前置 !!! 排在最前，加载对应 Mod 时自动被覆盖）
+touhou_system_blocks_sensors = {
+	good = no
+	hidden = yes
+	category = system
+}

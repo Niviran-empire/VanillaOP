@@ -193,20 +193,26 @@ country_event = {#_|VOP新增|添加trigger
 	}
 }
 
-ship_event = {#_|VOP新增|添加trigger
+ship_event = {#_|VOP优化|同步4.6原版单次check_modifier_value轻量触发
 	id = paragon_2.2000
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { str_paragon_2_1005_trigger_1 = yes }	#_|VOP新增|
+	trigger = {
+		exists = controller
+		check_modifier_value = {
+			modifier = deposit_increase_on_survey_chance_mult
+			value > 0
+		}
+	}
 
 	immediate = {
 		# We wait a day in order to check if any anomalies or dig sites have spawned.
-		# Midas Touch trait
-		# Prospector traits
 		ship_event = {
 			id = paragon_2.2001
-			scopes = { from = from }
+			scopes = {
+				from = from
+			}
 			days = 1
 		}
 	}
